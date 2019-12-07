@@ -1,0 +1,488 @@
+---
+---
+@import "functions";
+@import "fonts-files-web";
+@import "fonts";
+@import "colors-common";
+@import "colors";
+@import "animation";
+@import "ruby-characters";
+@import "pagination";
+
+body {
+  font-size: 12pt;
+  font-weight: 400;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: 5vmin 1fr 5vmin;
+  gap: 0 0;
+  grid-template-rows: repeat(auto-fill, auto);
+  grid-template-areas:
+    "policy-banner policy-banner policy-banner"
+    ". title ."
+    ". navigation ."
+    ". controls ."
+    ". content ."
+    ". fb-comments ."
+    ". footer ."
+    ". social-icons .";
+
+  > header {
+    grid-area: title;
+  }
+
+  > nav {
+    grid-area: navigation;
+
+    @media (min-width: 576px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 5vmin;
+      grid-template-rows: repeat(auto-fill, auto);
+    }
+
+    @media (min-width: 992px) {
+      display: initial;
+    }
+
+    p {
+      margin-top: 0px;
+
+      @media (max-width: 575px) {
+        border: 1px solid;
+        border-radius: .5em;
+        -webkit-appearance: button;
+        -moz-appearance: button;
+        appearance: button;
+        display: block;
+        flex-grow: 1;
+        flex-basis: 0;
+        text-align: center;
+      
+        &:last-child {
+          margin-bottom: 1em;
+        }
+
+        a {
+          display: block;
+          margin: .4em .5em .5em;
+        }
+      }
+    }
+  }
+
+  > .controls {
+    grid-area: controls;
+    display: flex;
+    margin: 0 -.5em;
+    flex-wrap: wrap;
+  }
+
+  > main {
+    grid-area: content;
+
+    p {
+      -webkit-hyphens: auto;
+      -ms-hyphens:auto;
+      hyphens: auto;
+      text-align: left;
+    }
+
+    header nav,
+    footer nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      align-content: stretch;
+
+      @media (min-width: 576px) {
+        margin: 0 -.5em;
+      }
+
+      span {
+        margin: 0;
+      }
+
+      .previous {
+        a {
+          margin-left: 2.5em;
+        }
+
+        a::after {
+          float: left;
+          content: '◀';
+          left: -1em;
+        }
+      }
+
+      .next {
+        a {
+          margin-right: 2.2em;
+        }
+
+        a::after {
+          float: right;
+          content: '▶';
+        }
+      }
+
+      .early-acess {
+        a {
+          margin-right: .5em;
+
+          img {
+            float: right;
+            position: relative;
+            right: 1em;
+            margin: -1em;
+            clear: both;
+          }
+        }
+
+        a::after {
+          content: '';
+        }
+      }
+
+      a::after {
+        display: block;
+        overflow: visible;
+        height: 1px;
+        position: relative;
+        font-size: 200%;
+        bottom: .7em;
+        width: 0;
+        clear: both;
+        color: $primary-dark;
+      }
+
+      .button {
+        margin: .5em .5em;
+      }
+
+      a {
+        min-width: 60vw;
+
+        @media (min-width: 768px) {
+          min-width: 350px;
+        }
+      }
+    }
+  }
+
+  > footer {
+    grid-area: footer;
+    
+  }
+
+  > .policy-banner {
+    display: none;
+    grid-area: policy-banner;
+    
+    p,
+    .policy-button,
+    .policy-button-all {
+      display: block;
+      padding: .5em;
+      margin: 1em;
+      border-radius: 0.9em;
+    }
+  }
+  
+  > .social-icons {
+    grid-area: social-icons;
+  }
+  
+  > #comments {
+    grid-area: fb-comments;
+  }
+  
+  > .fb-comments {
+    grid-area: fb-comments;
+    margin: 0 -.5em;
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 0 1fr 16em 0;
+    gap: 5vmin 5vmin;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "policy-banner policy-banner policy-banner policy-banner"
+      ". title title ."
+      ". navigation navigation ."
+      ". controls controls ."
+      ". content content ."
+      ". fb-comments fb-comments . "
+      ". social-icons footer .";
+  }
+
+  @media (min-width: 992px) {
+    font-size: 14pt;
+
+    grid-template-columns: 0 16em 1fr 0;
+    gap: 1vmin 10vmin;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "policy-banner policy-banner policy-banner policy-banner"
+      ". title content ."
+      ". navigation content ."
+      ". controls content ."
+      ". . content ."
+      ". . content ."
+      ". social-icons fb-comments ."
+      ". footer fb-comments ."
+      ". . . .";
+  }
+}
+
+h1, .h1 {
+  font-size: 200%;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h2, .h2 {
+  font-size: 150%;
+  font-weight: 600;
+}
+
+h1, h2 {
+  + p {
+    margin-top: 0;
+  }
+}
+
+.icons {
+  display: flex;
+
+  a {
+    margin-left: .5em;
+    max-width: 96px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    img {
+      border-radius: 7px;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.cover-image {
+  width: 100%;
+  max-width: 500px;
+}
+
+.block-right {
+  display: block;
+  float: right;
+}
+
+.block-left {
+  display: block;
+  float: left;
+}
+
+figure {
+  margin: 0;
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.post-image a
+{
+  text-align: center;
+  display: block; 
+}
+
+.button {
+  border: 1px solid;
+  border-radius: .5em;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  display: block;
+  flex-grow: 1;
+  flex-basis: 0;
+  text-align: center;
+  margin: 0 .5em;
+  margin-block-start: .5em;
+  margin-block-end: .5em;
+
+  a {
+    display: block;
+    margin: .4em .5em .5em;
+  }
+}
+
+.interface {
+  display: block;
+  margin: 1em 0 1em 0;
+  padding: 0em;
+  font-style: normal;
+  border: 1px solid;
+  border-radius: .3em;
+  break-inside: avoid;
+
+  .interface {
+    margin: 0 1em 1em;
+  }
+
+  > p, > h3 {
+    margin: 0 1em 1em;
+
+    &:first-child {
+      position: relative;
+      display: block;
+      border: 0;
+      border-radius: .3em;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: .5em 1em;
+      margin: 0 0 1em;
+      font-weight: bold;
+      break-after: avoid;
+    }
+  }
+
+  > table {
+    margin: 0 1em 1em;
+  }
+
+  ul {
+    margin: 0 1em 1em;
+    padding-left: 1.5em;
+
+    li {
+      margin: 3pt 0;
+
+      > ul  {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.count {
+  text-align: right;
+  display: inline-block;
+
+  &.w-2 {
+    width: 2em;
+  }
+
+  &.w-3 {
+    width: 3em;
+  }
+}
+
+.fb-comments {
+  text-align: center;
+  min-height: 2em;
+}
+
+.clearfix {
+  content: "";
+  clear: both;
+}
+
+a {
+  text-decoration: none;
+}
+
+.unicode-icon {
+  display: block;
+  width: 1.5em;
+  float: left;
+  text-align: right;
+  margin-right: .5em;
+  font-family: emoji;
+}
+
+.lg-up {
+  display: none;
+  
+  @media (min-width: 992px) {
+    display: initial;
+  }
+}
+
+.pdf-only {
+  display: none;
+}
+
+.blog-post .button {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+li:empty {
+  display: none;
+}
+
+.right-2 {
+  td:nth-child(2n) {
+    text-align: right;
+
+    rb {
+      text-align: right;
+    }
+  }
+}
+
+.talkify-control-center {
+  display: none;
+}
+
+#commentfields {
+  border: 0;
+  padding: 0;
+
+  input, textarea {
+    display: block;
+    width: 100%;
+  }
+
+  > div {
+    margin: 0.5em;
+  }
+}
+
+#comments {
+  ol {
+    list-style-type: none;
+    padding-inline-start: 0;
+  }
+
+  img {
+    float: left;
+    margin: 0 .5em 1em 1em;
+  }
+}
+
+.support {
+  flex-basis: 100%;
+
+  a img {
+    border-radius: 7px;
+  }
+}
+
+.discord {
+  border-bottom-right-radius: 0 !important;
+}
+
+.patreon {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}

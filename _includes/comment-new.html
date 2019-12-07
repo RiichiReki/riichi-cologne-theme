@@ -1,0 +1,51 @@
+<h2>Leave a Comment</h2>
+<form action="/fake" method="post" id="commentform" class="form-horizontal">
+  <fieldset id="commentfields">
+    <input name="redirect" type="hidden" value="{{ site.url }}/thanks-for-commenting/">
+    <input name="post_id" type="hidden" value="{{ slug }}">
+    <input name="comment-site" type="hidden" value="{{ site.url }}">
+    <div>
+      <label for="message">Comment*</label>
+      <textarea name="message" id="message" placeholder="Leave a comment."></textarea>
+    </div>
+    <div>
+      <label for="name">Name*</label>
+      <input type="text" name="name" id="name" placeholder="Name" />
+      <label for="email">Email* <span>(not shown)</span></label>
+      <input type="email" name="email" id="email" placeholder="name@domain.tld" />
+      <label for="url">Website</label>
+      <input type="text" name="url" id="url" placeholder="https://domain.tld" />
+    </div>
+    <div class="button">
+      <a onclick="setupForm()" type="button" id="commentbutton">Check Comment</a>
+    </div>
+  </fieldset>
+</form>
+<script>
+    function setupForm() {
+      var status = document.getElementById('commentstatus');
+      status.innerText = '';
+
+      var requiredIds = [ 'message', 'email', 'name' ];
+      var missing = requiredIds.filter(id => document.getElementById(id).value.length < 3);
+      if (missing.length > 0) {
+        status.innerText = 'Some required fields are missing - (' + missing.join(', ') + ')';
+        return;
+      }
+
+      var button = document.getElementById('commentbutton');
+      if (button.innerText != 'Send Comment') {
+        button.innerText = 'Send Comment';
+        return;
+      }
+
+      var form = document.getElementById('commentform');
+      form.action = '{{ site.comments.receiver }}';
+      button.innerText = 'Posting...';
+      button.disabled = true;
+      form.submit();
+      var fields = document.getElementById('commentfields');
+      fields.disabled = true;
+    }
+  </script>
+<div id="commentstatus" style="clear:both" class="status"></div>

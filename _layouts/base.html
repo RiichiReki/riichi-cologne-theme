@@ -1,0 +1,156 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#d53600">
+    {% assign title = page.title | append: " | " | append: site.title %}
+    <title>{{ title | truncate: 67, "…" }}</title>
+    <meta name="generator" content="Jekyll v{{ jekyll.version }}">
+    <!-- Load Optimization -->
+    {% for font in site.preload.fonts %}
+    <link rel="preload" href="{{ font | absolute_url }}" as="font" crossorigin="anonymous">
+    {% endfor %}
+    {% if page.type == "post" or page.type == "chapter" %}
+      <link rel="preload" href="{{ '/assets/images/facebook.png' | absolute_url }}" as="image">
+      <link rel="preload" href="{{ '/assets/images/twitter.png' | absolute_url }}" as="image">
+      <link rel="preload" href="{{ '/assets/images/tumblr.png' | absolute_url }}" as="image">
+      <link rel="preload" href="{{ '/assets/images/vk.png' | absolute_url }}" as="image">
+      <link rel="preload" href="{{ '/assets/images/pocket.png' | absolute_url }}" as="image">
+      <link rel="preload" href="{{ '/assets/images/mix.png' | absolute_url }}" as="image">
+      <link rel="preload" href="{{ '/assets/images/pinterest.png' | absolute_url }}" as="image">
+      <link rel="preload" href="{{ '/assets/images/reddit.png' | absolute_url }}" as="image">
+    {% endif %}
+
+    {% capture js %}{% include scripts.min.js %}{% endcapture %}
+    {% assign css = site.pages | where: 'url', '/assets/css/main.css' | last | map: "content" | join: '' | sha384_64 %}
+    {% assign js = js | sha384_64 %}{% assign size = js | size %}
+    {% if size > 64 %}{% assign js = site.time | date: '%Y%m%d%H' %}{% assign css = site.time | date: '%Y%m%d%H' %}{% endif %}
+    <link rel="stylesheet" 
+      href="{{ "/assets/css/main.css" | absolute_url }}?{{css}}">
+    <script defer
+      src="{{ "/assets/scripts/scripts.min.js" | absolute_url }}?{{ js }}"
+    {% if size == 64 %}integrity="sha384-{{ js }}" {% endif %} crossorigin="anonymous"></script>
+
+      <!-- Social Media Common -->
+    {% if page.type == "chapter" %}
+      <meta
+        property="og:title" name="twitter:title"
+        content="{{ site.title }} {{ page.book.number }}-{{ page.chapter }}: {{ page.title }}">
+    {% else %}
+      <meta
+        property="og:title" name="twitter:title"
+        content="{{ page.title }} | {{ site.title }}">
+    {% endif %}
+    <link rel="shortcut icon" href="{{ "/favicon.ico" | absolute_url }}">
+    <link rel="apple-touch-icon" href="{{ "/assets/images/site-icon.png" | absolute_url }}">
+    <!-- Social Networks -->
+    <meta
+      property="og:image"
+      content="{{ "/assets/images/site-og.png" | absolute_url }}">
+    <meta
+      name="twitter:image"
+      content="{{ "/assets/images/site-card.png" | absolute_url }}">
+    {% capture description %}
+      {{ page.excerpt | markdownify | strip_html }}
+      {% unless page.excerpt %}{{ page.content | markdownify | strip_html }}{% endunless %}
+    {% endcapture %}
+    {% assign description_social_words = description | truncate: 200 | split: " " | size %}
+    {% assign description_google_words = description | truncate: 160 | split: " " | size %}
+    <meta
+      property="og:description"
+      name="twitter:description"
+      content="{{ description | truncatewords: description_social_words, "…" }}">
+    <meta
+      name="description"
+      content="{{ description | truncatewords: description_google_words, "…" }}">
+    <!-- Twitter -->
+    {% if site.twitter %}
+    <meta name="twitter:card" content="{{ site.twitter.card }}">
+    {% if site.twitter.creator %}
+    <meta name="twitter:creator" content="@{{ site.twitter.creator }}">
+    {% endif %}
+    <meta name="twitter:site" content="@{{ site.twitter.username }}">
+    {% endif %}
+    {% if site.facebook %}
+    <!-- Facebook -->
+    <meta property="article:publisher" content="{{ site.facebook.publisher }}">
+    <meta property="fb:app_id" content="{{ site.facebook.app_id }}">
+    {% endif %}
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:type" content="article">
+    <!-- Search Engine Verification -->
+    {% for pair in site.webmaster_verifications %}
+    <meta 
+      name="{{ pair.name }}"
+      content="{{ pair.key }}">
+    {% endfor %}
+    <link
+      rel="canonical"
+      href="{{ page.url | absolute_url }}">
+    {% if page.shortlink %}
+      <link rel="shortlink" href="{% if site.shorturl %}{{ site.shorturl }}{{ page.shortlink }}{% else %}{{ page.shortlink | absolute_url }}{% endif %}">
+    {% endif %}
+    <link
+      rel="home alternate"
+      type="application/rss+xml"
+      title="{{ site.name }}"
+      href="{{ "/feeds/chapters.xml" | absolute_url }}">
+    {% if page.robots %}
+      <meta name="robots" content="{{page.robots}}">
+    {% endif %}
+  </head>
+  <body class="light-theme" id="body">
+    <div id="fb-root"></div>
+    {% if site.about and site.about.type %}
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "{{ site.about.type }}",
+        "name": "{{ site.title }}",
+        "url": "{{ site.url }}"{% if site.about.links %},
+        "sameAs": [
+          {% for link in site.about.links %}
+          "{{ link }}"{% unless forloop.last%},{% endunless %}
+          {% endfor %}
+        ]{% endif %}
+      }
+   </script>
+   {% endif %}
+    <header aria-flowto="content">
+      {% include header.html %}
+    </header>
+    
+    <nav>
+      {% include navigation.html %}
+    </nav>
+
+    <div class="controls buttons">
+      {% include controls.html %}
+    </div>
+
+    <main id="content" class="{{ page.layout }}">
+      {{ content }}
+    </main>
+    
+    <footer id="footer">
+      {% include footer.html %}
+    </footer>
+
+    <div class="policy-banner" id="policy-banner" data-nosnippet>
+      {% include policy-banner.html %}
+    </div>
+
+    {% if page.comments %}
+      {% include comments.html %}
+    {% endif %}
+
+    <script type="text/javascript">
+      window['pageType'] = '{{ page.type }}';
+      window['analytics'] = '{{ site.google_analytics }}';
+    </script>
+  </body>
+</html>

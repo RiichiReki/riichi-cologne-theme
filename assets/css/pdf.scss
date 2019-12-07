@@ -1,0 +1,99 @@
+---
+---
+body {
+  font-family: "Source Serif Pro";
+}
+
+h1, h2, h3, h4 {
+  font-family: "Marcellus SC";
+}
+
+[type=title] {
+  .series-title {
+    text-align: center;
+    font-size: 5cm;
+    font-family: "Marcellus";
+  }
+
+  .series-title + p {
+    text-align: center;
+    font-size: 200%;
+    font-family: Marcellus;
+  }
+
+  .volume-number {
+    text-align: center;
+    font-size: 400%;
+    font-family: Marcellus;
+  }
+
+  .volume-number + p {
+    text-align: center;
+    font-size: 200%;
+    font-family: "Source Serif Pro";
+  }
+}
+
+[type=imprint] {
+  p:last-child {
+    display: none;
+  }
+}
+
+.footnotes .reversefootnote {
+  display: none;
+}
+
+blockquote {
+  font-family: "Marcellus SC";
+  font-size: 100%;
+
+  > p:first-child {
+    font-weight: bold;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.calibre-pdf-toc {
+  .level-0 {
+    &:first-of-type {
+      display: none;
+    } 
+  }
+}
+
+.pdf-break-before {
+  break-before: always;
+  page-break-before: always;
+}
+
+.pdf-only {
+  display: block;
+}
+
+.series-title, #series-title {
+  text-align: center !important;
+  font-size: 400% !important;
+  font-family: Marcellus !important;
+}
+
+.volume-number, #volume-number {
+  text-align: center !important;
+  font-size: 400% !important;
+  font-family: Marcellus !important;
+}
+
+.volume-title, #volume-title {
+  text-align: center !important;;
+  font-size: 200% !important;
+  font-family: Marcellus !important;
+}
+
+.author, #author {
+  text-align: center !important;;
+  font-size: 200% !important;
+  font-family: "Source Serif Pro" !important;
+}

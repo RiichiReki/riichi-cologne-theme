@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "Marcellus";
+  font-style: normal;
+  font-weight: 400;
+  src: local('Marcellus Regular'),
+       local('Marcellus-Regular'),
+       url(/assets/fonts/Marcellus.woff2) format('woff2'),
+       url(/assets/fonts/Marcellus.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro Regular'),
+       local('SourceSansPro-Regular'),
+       url(/assets/fonts/Source-Sans-Pro.woff2) format('woff2'),
+       url(/assets/fonts/Source-Sans-Pro.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Sans Pro Bold'),
+       local('SourceSansPro-Bold'),
+       url(/assets/fonts/Source-Sans-Pro-Bold.woff2) format('woff2'),
+       url(/assets/fonts/Source-Sans-Pro-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "Source Serif Pro";
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Serif Pro Bold'),
+       local('SourceSerifPro-Bold'),
+       url(/assets/fonts/Source-Serif-Pro-Bold.woff2) format('woff2'),
+       url(/assets/fonts/Source-Serif-Pro-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: emoji;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+
+  src: local("Apple Color Emoji"),
+       local("Segoe UI Emoji"),
+       local("Segoe UI Symbol"),
+       local("Noto Color Emoji"),
+       local("EmojiOne Android");
+}

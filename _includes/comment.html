@@ -1,0 +1,22 @@
+<blockquote id="{{ comment.id }}" class="interface" itemscope itemtype="http://schema.org/Comment">
+  <p>
+    <span 
+      itemprop="author" itemscope itemtype="http://schema.org/Person">
+      {% if comment.url %}<a href="{{ comment.url }}" rel="nofollow ugc">{% endif %}
+      <span itemprop="name">{{ comment.name | xml_escape }}</span>
+      {% if comment.url %}</a>
+      <meta itemprop="url" content="{{ comment.url }}">{% endif %}</span>
+    on
+      <span itemprop="dateCreated">{{ comment.date | date: '%Y-%m-%d' }}</span>
+  </p>
+  <meta itemprop="about" content="{{ page.url | absolute_url }}">
+  <img
+    alt="Gravatar for {{ comment.name | xml_escape }}" 
+    src="https://secure.gravatar.com/avatar/{{ comment.gravatar }}?s=64&amp;d=retro&amp;r=pg"
+    srcset="https://secure.gravatar.com/avatar/{{ comment.gravatar }}?s=128&amp;d=retro&amp;r=pg 2x"
+    height="64" width="64"
+    crossorigin = "anonymous"
+    onerror="this.style.display='none'">
+  <div class="comment-body" itemprop="text">{{ comment.message | markdownify }}</div>
+  <div class="clearfix"></div>
+</blockquote>

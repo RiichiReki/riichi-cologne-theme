@@ -1,0 +1,28 @@
+.pagination {
+    ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+
+        li {
+            display: flex;
+            border: 1px solid;
+
+            &:first-child {
+                border-top-left-radius: .5em;
+                border-bottom-left-radius: .5em;
+                border-right: 0;
+            }
+
+            &:last-child {
+                border-top-right-radius: .5em;
+                border-bottom-right-radius: .5em;
+                border-left: 0;
+            }
+
+            span, a {
+                padding: .1em .5em .2em;
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+---
+layout: base
+---
+<style>
+footer nav a {
+  line-height: 250%;
+}
+
+footer nav a::after {
+  top: initial !important;
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 0,
+    "name": "{{ site.title }}",
+    "item": "{{ "/" | absolute_url }}"
+  },{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "{{ page.title }}",
+    "item": "{{ page.url | absolute_url }}"
+  }]
+}
+</script>
+<div itemscope itemtype="http://schema.org/{% if page.schema_type %}{{ page.schema_type }}{% else %}DefinedTerm{% endif %}">
+  <header>
+    <h1 itemprop="name">Glossary: {{ page.title }}</h1>
+    <meta itemprop="mainEntityOfPage" content="{{ page.url | absolute_url }}">
+    <meta itemprop="url" content="{{ page.url | absolute_url }}">
+    <div class="clearfix"></div>
+  </header>
+  <div itemprop="description">
+    {% include linkify content=content %}
+  </div>
+</div>
+<footer>
+  <nav>
+    <span class="block-left button" id="previous">
+      <a title="{{ page.title }}" onclick="history.back()" rel="prev">Go Back</a>
+    </span>
+    <span class="block-right button">
+      <link rel="prerender" href="{{ "/glossary/" | absolute_url }}">
+      <a title="Glossary" href="{{ "/glossary/" | absolute_url }}" rel="next">Go to Glossary</a>
+    </span>
+  </nav>
+</footer>
+<script>
+  var Hyphenopoly = {
+    require: {
+      "en-ca": "Supercalifragilisticexpialidocious"
+    }
+  };
+</script>
+<script src="{{ "/assets/vendor/hyphenopoly/Hyphenopoly_Loader.js" | absolute_url }}" defer></script>

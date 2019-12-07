@@ -1,0 +1,41 @@
+{% assign character = site.data.characters[include.character]%}
+
+{:class="interface {{ include.class }}"}
+> Character Info
+>
+> |---------+----------------------------------------------------------|
+> |:--------|:---------------------------------------------------------|
+> | Name:   | {{ character.name }}                                     |
+> | Age:    | {{ character.age }}                                      |
+> | Race:   | {% for race in character.races %}{{ race }} {% endfor %} |
+>
+> {:class="interface"}
+> > Titles
+> > {:onclick="toggleAccordion(this)"}
+> >
+> > {% for title in character.titles %}
+> > - {{ title.name }} {% if title.requirements %}({{ title.requirements | array_to_sentence_string }}){% endif %}{% endfor %}
+> >
+>
+> {% unless include.titles_only %}{:class="interface"}
+> > Traits
+> > {:onclick="toggleAccordion(this)"}
+> >
+> > {% for trait in character.traits %}
+> > - {{ trait.name }} ({{trait.type}}){% endfor %}
+> >
+>
+> {:class="interface"}
+> > Skills
+> > {:onclick="toggleAccordion(this)"}
+> >
+> > {% for skill in character.skills %}
+> > {:class="interface"}
+> > > {{ skill.name }} {% if skill.level %} <span class="block-right">Level {% include ruby number=skill.level %}</span>{% endif %}
+> > > {:onclick="toggleAccordion(this)"}
+> > >
+> > > {% for subskill in skill.subskills %}
+> > > - {{ subskill.name }} <span class="block-right">Level {% include ruby number=subskill.level %}</span>{% endfor %}
+> > >
+> > {% endfor %}
+> {% else %}⋮{% endunless %}

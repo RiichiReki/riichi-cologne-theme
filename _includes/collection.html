@@ -1,0 +1,11 @@
+{% if include.collection and include.depth > 0 %}
+  {% assign pages = site.pages | where: "type", "glossary" | where: "book", false | where: "collection", include.collection %}
+  {% assign depth = include.depth | minus: 1 %}
+  <ul data-depth="{{ depth }}">{% for current_page in pages %}
+    <li data-subcollection="{{ current_page.subcollection }}">
+      <a href="{{ current_page.url }}">{{ current_page.title }}</a>
+      {% include collection.html collection=current_page.subcollection depth=depth %}
+    </li>{% endfor %}
+  </ul>
+  {% assign depth = depth | plus: 1 %}
+{% endif %}

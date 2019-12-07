@@ -1,0 +1,13 @@
+{% for item in site.data.navigation %}
+<p>
+  <a
+    {% if item.class %}class="{{ item.class }}"{% endif %}
+    title="{{ item.text }}"
+    href="{{ item.url | absolute_url }}"
+    {% if item.onclick %}onclick="{{ item.onclick }}"{% endif %}
+    {% if item.type %}type="{{ item.type }}"{% endif %}
+    {% if item.target %}target="{{ item.target }}"{% endif %}
+    {% if item.rel %}rel="{{ item.rel }}"{% endif %}>
+    <span class="unicode-icon">{{ item.unicode_icon }}</span> {{ item.text }}
+  </a>
+</p>{% endfor %}

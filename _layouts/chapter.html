@@ -1,0 +1,243 @@
+---
+layout: base
+---
+{% assign previous_chapter_number = page.chapter | plus: -1 %}
+{% assign next_chapter_number = page.chapter | plus: 1 %}
+{% assign pages = site.pages | where: "type", "chapter" %}
+{% assign previous_pages = pages | where: "chapter", previous_chapter_number %}
+{% assign next_pages = pages | where: "chapter", next_chapter_number %}
+<style>
+h1::before {
+  content: 'Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
+  display: block;
+}
+
+{% for page in previous_pages %}
+.previous a::before {
+  content: 'Previous Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
+  display: block;
+}
+
+{% endfor %}
+
+{% for page in next_pages %}
+.next a::before {
+  content: 'Next Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
+  display: block;
+}
+{% endfor %}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 0,
+    "name": "{{ site.title }}",
+    "item": "{{ "/" | absolute_url }}"
+  }, {
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Volume {{ page.book.number }}: {{ page.book.title }}",
+    "item": "{{ page.book.url | absolute_url }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Chapter {{ page.chapter }}: {{ page.title }}",
+    "item": "{{ page.url | absolute_url }}"
+  }]
+}
+</script>
+<div itemscope itemtype="http://schema.org/Chapter">
+  <header>
+    <div itemprop="isPartOf" itemscope itemtype="http://schema.org/Book">
+      <meta itemprop="url" content="{{ page.book.url | absolute_url }}">
+      <meta itemprop="name" content="{{ site.title }} {{ page.book.number }}: {{ page.book.title }}">
+      <meta itemprop="position" content="{{ page.book.number }}">
+      <meta itemprop="copyrightYear" content="{{ page.book.copyrightYear }}">
+      {%if page.book.sameAs %}
+        <meta itemprop="sameAs" content="{{ page.book.sameAs }}">
+      {% endif %}
+      <meta itemprop="inLanguage" content="{{ page.lang }}">
+      {% if page.author %}
+      {% assign author = site.data.authors[page.author] %}
+      <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="{{ author.name }}">
+        <meta itemprop="url" content="{{ author.url }}">
+      </div>
+      {% endif %}
+      {% if page.publisher %}
+      {% assign author = site.data.authors[page.author] %}
+      <div itemprop="publisher" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="{{ author.name }}">
+        <meta itemprop="url" content="{{ author.url }}">
+      </div>
+      {% endif %}
+    </div>
+    <h1 aria-label="Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: {{ page.title }}">{{ page.title }}</h1>
+    <meta itemprop="name" content="{{ page.book.number }}-{{ page.chapter }}: {{ page.title }}">
+    <meta itemprop="url" content="{{ page.url | absolute_url }}">
+    <meta itemprop="additionalType" content="http://schema.org/WebPage">
+    <div itemprop="speakable" itemscope itemtype="http://schema.org/SpeakableSpecification">
+      <meta itemprop="xpath" content="/html/body/main/div/header/h1">
+      <meta itemprop="xpath" content="/html/body/main/div/section">
+    </div>
+    {% if page.date %}
+      <small class="block-left">
+        published on <span itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</span>
+      </small>
+    {% endif %}
+    {% if page.author %}
+    {% assign author = site.data.authors[page.author] %}
+      <small class="block-right" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      written by  <span itemprop="name">{{ author.name }}</span>
+        <meta itemprop="url" content="{{ author.url }}">
+      </small>
+    {% endif %}
+    <div class="clearfix"></div>
+    {% capture characters_string %}{{ page.characters.main }}, {{ page.characters.secondary | join: ", "}}{% endcapture %}
+    {% assign characters = characters_string | split: ", " %}
+    {% for character in characters %}
+    <div itemprop="character" itemscope itemtype="http://schema.org/Person">
+      {% assign db_character = site.data.characters[character] %}
+      <meta itemprop="name" content="{{ db_character.name }}">
+      <meta itemprop="gender" content="{{ db_character.gender }}">
+    </div>
+    {% endfor %}
+    {% for location in page.location %}
+    <div itemprop="contentLocation" itemscope itemtype="http://schema.org/Place">
+      <meta itemprop="name" content="{{ site.data.locations[location].name }}">
+    </div>
+    {% endfor %}
+    <div class="clearfix"></div>
+    {% assign words = content | markdownify | strip_html | split: " " | size %}
+    {% if words > 200 %}
+    <nav>
+      {% for page in previous_pages %}
+      <span class="block-left button previous">
+        <link rel="prerender" href="{{ page.url }}">
+        <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+      </span>
+      {% endfor %}
+      
+      {% for page in next_pages %}
+      <span class="block-right button next{% if page.published == "sponsors" %} early-acess{% endif %}">
+        {% if page.published == "sponsors" %}
+        <a title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
+          <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}" class="invert-on-dark"></a>
+        {% else %}
+        <link rel="prerender" href="{{ page.url }}">
+        <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+        {% endif %}
+      </span>
+      {% endfor %}
+    </nav>
+    {% endif %}
+    <div class="clearfix"></div>
+  </header>
+  <section class="hyphenate" itemprop="text" aria-flowto="navigation">
+    <!--sse-->
+    {% include linkify content=content %}
+    <!--/sse-->
+  </section>
+</div>
+
+<footer>
+  <nav id="navigation" aria-flowto="comments">
+  {% for page in previous_pages %}
+  <span class="block-left button previous" id="previous">
+    <link rel="prerender" href="{{ page.url }}">
+    <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+  </span>
+  {% endfor %}
+
+  {% for page in next_pages %}
+  <span class="block-right button next{% if page.published == "sponsors" %} early-acess{% endif %}" id="next">
+    {% if page.published == "sponsors" %}
+    <a title="{{ page.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
+        <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}" class="invert-on-dark"></a>
+    {% else %}
+    <link rel="prerender" href="{{ page.url }}">
+    <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+    {% endif %}
+  </span>
+  {% endfor %}
+  </nav>
+  <div class="clearfix"></div>
+  <hr>
+
+<aside class="social">
+  <p>
+     Share this page on
+  </p>
+  <div class="icons">
+    <a
+      title="Share Chapter on Facebook"
+      href="http://www.facebook.com/sharer.php?src=bm&u={{ page.url | absolute_url }}&t={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}"
+      target="_blank"
+      rel="noopener nofollow">
+        <img src="/assets/images/facebook.png" alt="Share Chapter on Facebook">
+      </a>
+      <a
+        title="Share Chapter on Twitter"
+        href="http://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ site.title | url_encode }}%20{{ page.title | url_encode }}&via={{ site.twitter.username }}&hashtags=Fantasy,WebFiction,WebNovel,WebSerial"
+        target="_blank"
+        rel="noopener nofollow">
+        <img src="/assets/images/twitter.png" alt="Share Chapter on Twitter">
+      </a>
+      <a
+        title="Share Chapter on Tumblr"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl={{ page.url | absolute_url }}&title=Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}&tags={{ site.title | replace: " ", "" }},WebFiction,WebNovel,WebSerial,Fantasy"
+        target="_blank"
+        rel="noopener nofollow">
+        <img src="/assets/images/tumblr.png" alt="Share Chapter on Tumblr">
+      </a>
+      <a
+        title="Share Chapter on Pocket"
+        href="https://getpocket.com/edit?url={{ page.url | absolute_url }}"
+        target="_blank"
+        rel="noopener nofollow">
+        <img src="/assets/images/pocket.png" alt="Share Chapter on Pocket">
+      </a>
+      <a
+        title="Share Chapter on Mix"
+        href="https://mix.com/mixit?su=submit&url={{ page.url | absolute_url }}"
+        target="_blank"
+        rel="noopener nofollow">
+        <img src="/assets/images/mix.png" alt="Share Chapter on Mix">
+      </a>
+      <a
+        title="Share Chapter on Pinterest"
+        href="https://pinterest.com/pin/create/button/?url={{ page.url | absolute_url }}&description={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}&media={{ "/assets/images/site-card.png" | absolute_url }}"
+        target="_blank"
+        rel="noopener nofollow">
+        <img src="/assets/images/pinterest.png" alt="Share Chapter on Pinterest">
+      </a>
+      <a
+        title="Share Chapter on reddit"
+        href="https://reddit.com/submit?url={{ page.url | absolute_url }}&title={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}"
+        target="_blank"
+        rel="noopener nofollow">
+        <img src="/assets/images/reddit.png" alt="Share Chapter on reddit">
+      </a>
+      <a
+        title="Share Chapter on VK"
+        href="https://vk.com/share.php?url={{ page.url | absolute_url }}"
+        target="_blank"
+        rel="noopener nofollow">
+        <img src="/assets/images/vk.png" alt="Share Chapter on VK">
+      </a>
+  </div>
+</aside>
+</footer>
+<script>
+  var Hyphenopoly = {
+    require: {
+      "en-ca": "Supercalifragilisticexpialidocious"
+    }
+  };
+</script>
+<script src="{{ "/assets/vendor/hyphenopoly/Hyphenopoly_Loader.js" | absolute_url }}" defer></script>
+
+<div id="player-and-voices" style="display:none;"></div>

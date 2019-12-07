@@ -1,0 +1,25 @@
+body,
+a,
+header, header *,
+footer, footer * {
+  color: rgb(0, 0, 0);
+  background-color: $white;
+}
+
+hr {
+  background-color: rgb(0, 0, 0);
+}
+
+blockquote {
+  background-color: $white;
+
+  > p:first-child {
+    background-color: mix($white, $secondary-light, 70%);
+    color: rgb(0, 0, 0);
+
+    a {
+      background-color: mix($white, $secondary-light, 70%);
+      color: rgb(0, 0, 0);
+    }
+  }
+}

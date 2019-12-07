@@ -1,0 +1,13 @@
+{%
+if include.number
+%}{%
+  if site.data.numbers[include.number]
+%}{% assign text = site.data.numbers[include.number].text %}{% include ruby base=include.number text=text %}{% 
+  else
+%}{{include.number}}{%
+  endif
+%}{%
+else
+%}<ruby>{% if include.base.first %}<rbc aria-hidden="true">{% for b in include.base %}<rb>{{ b }}</rb>{% endfor %}</rbc><rp> (</rp><rtc>{% for t in include.text %}<rt>{{ t }}</rt>{% endfor %}</rtc><rp>)</rp>{% else %}<rb aria-hidden="true">{{ include.base }}</rb><rp> (</rp><rt>{{ include.text }}</rt><rp>)</rp>{% endif %}</ruby>{%
+endif
+%}

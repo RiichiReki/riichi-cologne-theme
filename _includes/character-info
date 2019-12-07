@@ -1,0 +1,36 @@
+{% assign character = site.data.characters[include.character] %}
+
+<table>
+  <tr>
+    <td>Name:</td>
+    <td>{{ character.name }}</td>
+  </tr>
+  <tr>
+    <td>Age:</td>
+    <td>{{ character.age }}</td>
+  </tr>
+  <tr>
+    <td>Gender:</td>
+    <td>{{ character.gender | replace: "http://schema.org/", ""}}</td>
+  </tr>
+  <tr>
+    <td>Race:</td>
+    <td>{{ character.races | join: " " }} </td>
+  </tr>
+  <tr>
+    <td>Height:</td>
+    <td>{{ character.appearance.height }}</td>
+  </tr>
+  <tr>
+    <td>Hair:</td>
+    <td>{{ character.appearance.hair | join: ", " }}</td>
+  </tr>
+  <tr>
+    <td>Eyes:</td>
+    <td>{{ character.appearance.eyes | join: " and " }}</td>
+  </tr>{% for p in appearance.sig_clothes %}
+  <tr>
+    <td>{{ p.type }}:</td>
+    <td>{{ p.item }}</td>
+  </tr>{% endfor %}
+</table>

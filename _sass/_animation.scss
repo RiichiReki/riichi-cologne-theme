@@ -1,0 +1,56 @@
+.animated nav,
+.animated nav p,
+.animated .interface, .animated .interface p,
+.animated .interface table,
+.animated .interface td,
+.animated .interface ul,
+.animated .interface li, .animated .interface li span,
+.animated header, .animated footer {
+  transition-property: background-color, color;
+  transition-duration: 1s;
+  transition-delay: 0s;
+}
+
+.animated body {
+  transition-property: background-color, color,font-size;
+  transition-duration: 1s;
+  transition-delay: 0s;
+}
+
+.animated .policy-banner {
+  transition-property: all;
+  transition-duration: 1s;
+  transition-delay: 0s;
+}
+
+.interface input {
+  display: none;
+}
+
+  .interface .interface > p:first-child ~ * {
+    display: none;
+  }
+
+  .interface .interface > p:first-child::before {
+    display: inline-block;
+    content: "▼";
+    width: 1.5em;
+    text-align: left;
+    font-family: emoji;
+  }
+
+  .interface .interface > p:first-child.active ~ * {
+    display: block;
+  }
+
+  .interface .interface > p:first-child.active::before {
+    display: inline-block;
+    content: "▲";
+    width: 1.5em;
+    text-align: left;
+    font-family: emoji;
+  }
+
+  .interface > p:only-child::before {
+    content: " " !important;
+  }

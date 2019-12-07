@@ -1,0 +1,42 @@
+@function sqrt($r) {
+  $x0: .5;
+  $x1: $x0;
+
+  @for $i from 1 through 10 {
+    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+    $x0: $x1;
+  }
+
+  @return $x1;
+}
+
+@function sq($x) {
+  @return $x * $x;
+}
+
+@function normalize($value, $upper-bound) {
+  @return 100% * $value / $upper-bound;
+}
+
+@function luminance($color) {
+  $luminance-red: .199;
+  $luminance-green: .587;
+  $luminance-blue: .114;
+
+  $rgb-red: red($color);
+  $rbg-green: green($color);
+  $rgb-blue: blue($color);
+
+  $luminance: sqrt(sq($rgb-red) * $luminance-red + sq($rbg-green) * $luminance-green + sq($rgb-blue) * $luminance-blue);
+
+  @return normalize($luminance, 255);
+}
+
+@mixin contrast-color-to-background($color, $importance: '') {
+  background: $color;
+  @if (luminance($color) <= 50%) {
+    color: $white #{$importance};
+  } @else {
+    color: $black #{$importance};
+  }
+}

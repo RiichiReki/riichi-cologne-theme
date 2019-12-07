@@ -1,0 +1,20 @@
+* {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (min-width: 1025px) {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+body {
+  font-family: "Source Sans Pro", "Noto Sans", Roboto, "Segoe UI", sans-serif;
+}
+
+.unicode-icon, .button a span {
+  font-family: emoji;
+}
+
+h1, .h1, h2, .h2, h3 {
+  font-family: "Marcellus", "Source Serif Pro", "Noto Serif", serif;
+}

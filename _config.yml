@@ -1,0 +1,55 @@
+## Basic Configuration
+title: "Grid Theme"
+description: ""
+excerpt_separator: "<!--more-->"
+exclude:
+  - "LICENSE.md"
+permalink: pretty
+copyright:
+  license: Copyright © 2019
+  name: Thai “0xReki” Chung
+  url: https://0xreki.de
+
+
+### SASS
+sass:
+  style: compressed
+  cache: false
+
+### Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+
+about:
+  type: Thing
+
+# Syntax
+markdown: kramdown
+highlighter: rouge
+
+# Paginate
+paginate: 5
+paginate_path: "/page/:num/"
+
+## Defaults
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      lang: "en-CA"
+      author: reki
+      publisher: reki
+      comments: true
+  -
+    scope:
+      path: "_posts"
+    values:
+      layout: post
+      type: post
+      lang: "en-CA"
+      author: reki
+      publisher: reki
+      categories: ["blog"]
+      comments: true

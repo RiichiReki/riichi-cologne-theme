@@ -1,0 +1,43 @@
+ruby {
+  display: inline-table;
+  vertical-align: text-bottom;
+  line-height: initial;
+
+  rb, rt {
+    display: table-cell;
+    text-align: center;
+  }
+  
+  rbc, >rb {
+    display: table-row;
+  }
+
+  rtc, >rt {
+    display: table-header-group;
+    line-height: 0;
+  }
+
+  rt {
+    font-size: 70%;
+    margin-inline-start: .8em;
+    margin-inline-end: .8em;
+    background: transparent;
+  }
+
+  rp {
+    display: none;
+  }
+}
+
+main {
+  p, table, li {
+    line-height: 200%;
+  }
+
+  p {
+    margin-block-start: 1.7em;
+    margin-block-end: 1.7em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+}
