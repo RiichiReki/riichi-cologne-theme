@@ -6,6 +6,16 @@ layout: base
 {% assign pages = site.pages | where: "type", "chapter" %}
 {% assign previous_pages = pages | where: "chapter", previous_chapter_number %}
 {% assign next_pages = pages | where: "chapter", next_chapter_number %}
+
+{% for page in previous_pages %}
+<link rel="prerender" href="{{ page.url }}">
+{% endfor %}
+
+{% for page in next_pages %}
+{% if jekyll.environment != "unpublished" and page.published == "sponsors" %}{% break %}{% endif %}
+<link rel="prerender" href="{{ page.url }}">
+{% endfor %}
+
 <style>
 h1::before {
   content: 'Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
@@ -115,7 +125,6 @@ h1::before {
     <nav>
       {% for page in previous_pages %}
       <span class="block-left button previous">
-        <link rel="prerender" href="{{ page.url }}">
         <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
       </span>
       {% endfor %}
@@ -126,7 +135,6 @@ h1::before {
         <a title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
           <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}" class="invert-on-dark"></a>
         {% else %}
-        <link rel="prerender" href="{{ page.url }}">
         <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
         {% endif %}
       </span>
@@ -146,7 +154,6 @@ h1::before {
   <nav id="navigation" aria-flowto="comments">
   {% for page in previous_pages %}
   <span class="block-left button previous" id="previous">
-    <link rel="prerender" href="{{ page.url }}">
     <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
   </span>
   {% endfor %}
@@ -157,7 +164,6 @@ h1::before {
     <a title="{{ page.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
         <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}" class="invert-on-dark"></a>
     {% else %}
-    <link rel="prerender" href="{{ page.url }}">
     <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
     {% endif %}
   </span>
