@@ -27,7 +27,6 @@ h1::before {
   content: 'Previous Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
   display: block;
 }
-
 {% endfor %}
 
 {% for page in next_pages %}
@@ -108,9 +107,9 @@ h1::before {
     {% capture characters_string %}{{ page.characters.main }}, {{ page.characters.secondary | join: ", "}}{% endcapture %}
     {% assign characters = characters_string | split: ", " %}
     {% for character in characters %}
-    {% assign character = character | append: "-latest" %}
+    {% assign character_string = character | append: "-latest" %}
     <div property="character" typeof="Person">
-      {% assign db_character = site.data.characters[character] %}
+      {% assign db_character = site.data.characters[character_string] %}
       <meta property="name" content="{{ db_character.name }}">
       <meta property="gender" content="{{ db_character.gender }}">
     </div>
