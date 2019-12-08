@@ -108,6 +108,7 @@ h1::before {
     {% capture characters_string %}{{ page.characters.main }}, {{ page.characters.secondary | join: ", "}}{% endcapture %}
     {% assign characters = characters_string | split: ", " %}
     {% for character in characters %}
+    {% assign character = character | append: "-latest" %}
     <div property="character" typeof="Person">
       {% assign db_character = site.data.characters[character] %}
       <meta property="name" content="{{ db_character.name }}">
