@@ -27,14 +27,14 @@ footer nav a::after {
   }]
 }
 </script>
-<div itemscope itemtype="http://schema.org/{% if page.schema_type %}{{ page.schema_type }}{% else %}DefinedTerm{% endif %}">
+<div vocab="http://schema.org/" typeof="{% if page.schema_type %}{{ page.schema_type }}{% else %}DefinedTerm{% endif %}">
   <header>
-    <h1 itemprop="name">Glossary: {{ page.title }}</h1>
-    <meta itemprop="mainEntityOfPage" content="{{ page.url | absolute_url }}">
-    <meta itemprop="url" content="{{ page.url | absolute_url }}">
+    <h1 property="name">Glossary: {{ page.title }}</h1>
+    <meta property="mainEntityOfPage" content="{{ page.url | absolute_url }}">
+    <meta property="url" content="{{ page.url | absolute_url }}">
     <div class="clearfix"></div>
   </header>
-  <div itemprop="description">
+  <div property="description">
     {% include linkify content=content %}
   </div>
 </div>

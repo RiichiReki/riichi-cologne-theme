@@ -32,33 +32,33 @@ layout: base
   }]
 }
 </script>
-<div itemscope itemtype="http://schema.org/BlogPosting">
+<div vocab="http://schema.org/" typeof="BlogPosting">
   <header>
-    <h1 itemprop="name">{{ page.title }}</h1>
-    <meta itemprop="headline" content="{{ page.title }}">
-    <meta itemprop="mainEntityOfPage" content="{{ page.url | absolute_url }}">
-    <meta itemprop="url" content="{{ page.url | absolute_url }}">
+    <h1 property="name">{{ page.title }}</h1>
+    <meta property="headline" content="{{ page.title }}">
+    <meta property="mainEntityOfPage" content="{{ page.url | absolute_url }}">
+    <meta property="url" content="{{ page.url | absolute_url }}">
     <small class="block-left">
-      published on <span itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</span>
+      published on <span property="datePublished" content="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</span>
     </small>
-    <meta itemprop="dateModified" content="{{ page.last_modified_at | date_to_xmlschema }}">
+    <meta property="dateModified" content="{{ page.last_modified_at | date_to_xmlschema }}">
     {% if page.author %}
       {% assign author = site.data.authors[page.author] %}
-      <small class="block-right" itemprop="author" itemscope itemtype="http://schema.org/Person" itemid="{{ author.url }}">
-      written by <span itemprop="name">{{ author.name }}</span>
-        <meta itemprop="url" content="{{ author.url }}">
+      <small class="block-right" property="author" typeof="Person" itemid="{{ author.url }}">
+      written by <span property="name">{{ author.name }}</span>
+        <meta property="url" content="{{ author.url }}">
       </small>
-      <div itemprop="publisher" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="{{ author.name }}">
-        <meta itemprop="url" content="{{ author.url }}">
+      <div property="publisher" typeof="Person">
+        <meta property="name" content="{{ author.name }}">
+        <meta property="url" content="{{ author.url }}">
       </div>
     {% endif %}
     {% if post.image %}
       <meta
-        itemprop="image" itemscope itemtype="http://schema.org/URL"
+        property="image" typeof="URL"
         content="{% if post.image contains "://" %}{{ post.image }}{% else %}{{ post.image | absolute_url }}{% endif %}">
     {% else %}
-      <meta itemprop="image" itemscope itemtype="http://schema.org/URL"
+      <meta property="image" typeof="URL"
         content="{{ "/assets/images/site-card.png" | absolute_url }}">
     {% endif %}
     <div class="clearfix"></div>
@@ -81,7 +81,7 @@ layout: base
       </nav>
     {% endif %}
   </header>
-  <div class="blog-post" itemprop="text">
+  <div class="blog-post" property="text">
     {{content}}
   </div>
 </div>

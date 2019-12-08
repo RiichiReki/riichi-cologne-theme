@@ -49,65 +49,64 @@ h1::before {
   }]
 }
 </script>
-<div itemscope itemtype="http://schema.org/Chapter">
+<div vocab="http://schema.org/" typeof="Chapter WebPage">
   <header>
-    <div itemprop="isPartOf" itemscope itemtype="http://schema.org/Book">
-      <meta itemprop="url" content="{{ page.book.url | absolute_url }}">
-      <meta itemprop="name" content="{{ site.title }} {{ page.book.number }}: {{ page.book.title }}">
-      <meta itemprop="position" content="{{ page.book.number }}">
-      <meta itemprop="copyrightYear" content="{{ page.book.copyrightYear }}">
+    <div property="isPartOf" typeof="Book">
+      <meta property="url" content="{{ page.book.url | absolute_url }}">
+      <meta property="name" content="{{ site.title }} {{ page.book.number }}: {{ page.book.title }}">
+      <meta property="position" content="{{ page.book.number }}">
+      <meta property="copyrightYear" content="{{ page.book.copyrightYear }}">
       {%if page.book.sameAs %}
-        <meta itemprop="sameAs" content="{{ page.book.sameAs }}">
+        <meta property="sameAs" content="{{ page.book.sameAs }}">
       {% endif %}
-      <meta itemprop="inLanguage" content="{{ page.lang }}">
+      <meta property="inLanguage" content="{{ page.lang }}">
       {% if page.author %}
       {% assign author = site.data.authors[page.author] %}
-      <div itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="{{ author.name }}">
-        <meta itemprop="url" content="{{ author.url }}">
+      <div property="author" typeof="Person">
+        <meta property="name" content="{{ author.name }}">
+        <meta property="url" content="{{ author.url }}">
       </div>
       {% endif %}
       {% if page.publisher %}
       {% assign author = site.data.authors[page.author] %}
-      <div itemprop="publisher" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="{{ author.name }}">
-        <meta itemprop="url" content="{{ author.url }}">
+      <div property="publisher" typeof="Person">
+        <meta property="name" content="{{ author.name }}">
+        <meta property="url" content="{{ author.url }}">
       </div>
       {% endif %}
     </div>
     <h1 aria-label="Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: {{ page.title }}">{{ page.title }}</h1>
-    <meta itemprop="name" content="{{ page.book.number }}-{{ page.chapter }}: {{ page.title }}">
-    <meta itemprop="url" content="{{ page.url | absolute_url }}">
-    <meta itemprop="additionalType" content="http://schema.org/WebPage">
-    <div itemprop="speakable" itemscope itemtype="http://schema.org/SpeakableSpecification">
-      <meta itemprop="xpath" content="/html/body/main/div/header/h1">
-      <meta itemprop="xpath" content="/html/body/main/div/section">
+    <meta property="name" content="{{ page.book.number }}-{{ page.chapter }}: {{ page.title }}">
+    <meta property="url" content="{{ page.url | absolute_url }}">
+    <div property="speakable" typeof="SpeakableSpecification">
+      <meta property="xpath" content="/html/body/main/div/header/h1">
+      <meta property="xpath" content="/html/body/main/div/section">
     </div>
     {% if page.date %}
       <small class="block-left">
-        published on <span itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</span>
+        published on <span property="datePublished">{{ page.date | date: "%Y-%m-%d" }}</span>
       </small>
     {% endif %}
     {% if page.author %}
     {% assign author = site.data.authors[page.author] %}
-      <small class="block-right" itemprop="author" itemscope itemtype="http://schema.org/Person">
-      written by  <span itemprop="name">{{ author.name }}</span>
-        <meta itemprop="url" content="{{ author.url }}">
+      <small class="block-right" property="author" typeof="Person">
+      written by  <span property="name">{{ author.name }}</span>
+        <meta property="url" content="{{ author.url }}">
       </small>
     {% endif %}
     <div class="clearfix"></div>
     {% capture characters_string %}{{ page.characters.main }}, {{ page.characters.secondary | join: ", "}}{% endcapture %}
     {% assign characters = characters_string | split: ", " %}
     {% for character in characters %}
-    <div itemprop="character" itemscope itemtype="http://schema.org/Person">
+    <div property="character" typeof="Person">
       {% assign db_character = site.data.characters[character] %}
-      <meta itemprop="name" content="{{ db_character.name }}">
-      <meta itemprop="gender" content="{{ db_character.gender }}">
+      <meta property="name" content="{{ db_character.name }}">
+      <meta property="gender" content="{{ db_character.gender }}">
     </div>
     {% endfor %}
     {% for location in page.location %}
-    <div itemprop="contentLocation" itemscope itemtype="http://schema.org/Place">
-      <meta itemprop="name" content="{{ site.data.locations[location].name }}">
+    <div property="contentLocation" typeof="Place">
+      <meta property="name" content="{{ site.data.locations[location].name }}">
     </div>
     {% endfor %}
     <div class="clearfix"></div>
@@ -123,7 +122,7 @@ h1::before {
       
       {% for page in next_pages %}
       <span class="block-right button next{% if page.published == "sponsors" %} early-acess{% endif %}">
-        {% if page.published == "sponsors" %}
+        {% if jekyll.environment != "unpublished" and page.published == "sponsors" %}
         <a title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
           <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}" class="invert-on-dark"></a>
         {% else %}
@@ -136,7 +135,7 @@ h1::before {
     {% endif %}
     <div class="clearfix"></div>
   </header>
-  <section class="hyphenate" itemprop="text" aria-flowto="navigation">
+  <section class="hyphenate" property="text" aria-flowto="navigation">
     <!--sse-->
     {% include linkify content=content %}
     <!--/sse-->
@@ -154,7 +153,7 @@ h1::before {
 
   {% for page in next_pages %}
   <span class="block-right button next{% if page.published == "sponsors" %} early-acess{% endif %}" id="next">
-    {% if page.published == "sponsors" %}
+    {% if jekyll.environment != "unpublished" and page.published == "sponsors" %}
     <a title="{{ page.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
         <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}" class="invert-on-dark"></a>
     {% else %}
