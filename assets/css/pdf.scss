@@ -8,12 +8,6 @@ h1, h2, h3, h4 {
   font-family: "Marcellus SC";
 }
 
-[type=imprint] {
-  p:last-child {
-    display: block;
-  }
-}
-
 .footnotes .reversefootnote {
   display: none;
 }
@@ -60,13 +54,13 @@ a {
   font-family: Marcellus !important;
 }
 
-.volume-title, #volume-title {
+.series-title + p {
   text-align: center !important;
   font-size: 200% !important;
   font-family: Marcellus !important;
 }
 
-.author, #author {
+.volume-number + p {
   text-align: center !important;
   font-size: 200% !important;
   font-family: "Source Serif Pro" !important;
