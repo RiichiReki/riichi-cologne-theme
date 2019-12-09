@@ -12,9 +12,8 @@ ruby, .ruby {
     display: table-row;
   }
 
-  rtc, >rt, .rbc, .rt {
+  rtc, >rt, .rbc, >.rt {
     display: table-header-group;
-    line-height: 0;
   }
 
   rbc rb, .rbc .rb {
@@ -43,8 +42,10 @@ ruby, .ruby {
 
   rt, .rt {
     font-size: 70%;
+    margin: 0;
     margin-inline-start: .8em;
     margin-inline-end: .8em;
+    line-height: 0;
     background: transparent;
   }
 
