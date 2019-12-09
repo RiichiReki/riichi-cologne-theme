@@ -130,6 +130,9 @@ h1::before {
       {% endfor %}
       
       {% for page in next_pages %}
+      {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
+      {% break %}
+      {% endif %}
       <span class="block-right button next{% if page.published == "sponsors" %} early-acess{% endif %}">
         {% if jekyll.environment != "unpublished" and page.published == "sponsors" %}
         <a title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
@@ -159,6 +162,9 @@ h1::before {
   {% endfor %}
 
   {% for page in next_pages %}
+  {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
+  {% break %}
+  {% endif %}
   <span class="block-right button next{% if page.published == "sponsors" %} early-acess{% endif %}" id="next">
     {% if jekyll.environment != "unpublished" and page.published == "sponsors" %}
     <a title="{{ page.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
