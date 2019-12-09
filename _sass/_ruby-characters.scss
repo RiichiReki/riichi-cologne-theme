@@ -3,21 +3,21 @@ ruby {
   vertical-align: text-bottom;
   line-height: initial;
 
-  rb, rt {
+  rb, rt, .rb, .rt {
     display: table-cell;
     text-align: center;
   }
   
-  rbc, >rb {
+  rbc, >rb, .rbc, >.rb {
     display: table-row;
   }
 
-  rtc, >rt {
+  rtc, >rt, .rbc, .rt {
     display: table-header-group;
     line-height: 0;
   }
 
-  rbc rb {
+  rbc rb, .rbc .rb {
     text-align: center;
     
     &:first-child {
@@ -29,7 +29,7 @@ ruby {
     }
   }
 
-  rtc rt {
+  rtc rt, .rtc .rt {
     text-align: center;
     
     &:first-child {
@@ -41,14 +41,14 @@ ruby {
     }
   }
 
-  rt {
+  rt, .rt {
     font-size: 70%;
     margin-inline-start: .8em;
     margin-inline-end: .8em;
     background: transparent;
   }
 
-  rp {
+  rp, .rp {
     display: none;
   }
 }
