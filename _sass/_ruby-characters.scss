@@ -4,6 +4,11 @@ rt {
 }
 
 rb {
+  display: block;
+  text-align: center;
+  padding-top: -1em;
+  line-height: 0.9;
+
   &.first {
     text-align: right;
   }
