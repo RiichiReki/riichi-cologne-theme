@@ -17,6 +17,30 @@ ruby {
     line-height: 0;
   }
 
+  rbc rb {
+    text-align: center;
+    
+    &:first-child {
+      text-align: right;
+    }
+    
+    &:last-child {
+      text-align: left;
+    }
+  }
+
+  rtc rt {
+    text-align: center;
+    
+    &:first-child {
+      text-align: right;
+    }
+
+    &:last-child {
+      text-align: left;
+    }
+  }
+
   rt {
     font-size: 70%;
     margin-inline-start: .8em;
