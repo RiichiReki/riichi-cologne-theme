@@ -17,6 +17,6 @@
     height="64" width="64"
     crossorigin = "anonymous"
     onerror="this.style.display='none'">
-  <div class="comment-body" itemprop="text">{{ comment.message | markdownify }}</div>
+  <div class="comment-body" itemprop="text">{{ comment.message | markdownify | replace: '<a ', '<a target="_blank" rel="nofollow ugc" '}}</div>
   <div class="clearfix"></div>
 </blockquote>
