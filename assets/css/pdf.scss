@@ -9,32 +9,6 @@ h1, h2, h3, h4 {
 }
 
 [type=imprint] {
-  .series-title {
-    text-align: center;
-    font-size: 5cm;
-    font-family: "Marcellus";
-  }
-
-  .series-title + p {
-    text-align: center;
-    font-size: 200%;
-    font-family: Marcellus;
-  }
-
-  .volume-number {
-    text-align: center;
-    font-size: 400%;
-    font-family: Marcellus;
-  }
-
-  .volume-number + p {
-    text-align: center;
-    font-size: 200%;
-    font-family: "Source Serif Pro";
-  }
-}
-
-[type=imprint] {
   p:last-child {
     display: block;
   }
@@ -71,7 +45,7 @@ a {
 }
 
 .pdf-only {
-  display: block!important;
+  display: block !important;
 }
 
 .series-title, #series-title {
@@ -87,13 +61,13 @@ a {
 }
 
 .volume-title, #volume-title {
-  text-align: center !important;;
+  text-align: center !important;
   font-size: 200% !important;
   font-family: Marcellus !important;
 }
 
 .author, #author {
-  text-align: center !important;;
+  text-align: center !important;
   font-size: 200% !important;
   font-family: "Source Serif Pro" !important;
 }
