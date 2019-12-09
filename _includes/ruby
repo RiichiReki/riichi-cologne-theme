@@ -12,7 +12,7 @@ else
   if include.base.first
 %}{% 
     for b in include.base
-%}<rb>{{ b }}</rb><rp> (</rp><rt>{{ include.text[forloop.index0] }}</rt><rp>)</rp>{% 
+%}<rb{% if forloop.first %} class="first"{% endif %}{% if forloop.last %} class="last"{% endif %}>{{ b }}</rb><rp> (</rp><rt>{{ include.text[forloop.index0] }}</rt><rp>)</rp>{% 
     endfor
 %}{%
   else

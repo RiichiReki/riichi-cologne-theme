@@ -3,6 +3,16 @@ rt {
   line-height: initial;
 }
 
+rb {
+  &.first {
+    text-align: right;
+  }
+
+  &.last {
+    text-align: left;
+  }
+}
+
 main {
   p, table, li {
     line-height: 200%;
