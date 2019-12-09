@@ -184,31 +184,28 @@ table {
   page-break-before: always;
 }
 
-[type=title] {
-  .series-title {
-    text-align: center;
-    font-size: 400%;
-    font-family: Marcellus;
-  }
+.series-title {
+  text-align: center;
+  font-size: 400%;
+  font-family: Marcellus;
+}
 
-  .series-title + p {
-    text-align: center;
-    font-size: 200%;
-    font-family: Marcellus;
-  }
+.series-title + p {
+  text-align: center;
+  font-size: 200%;
+  font-family: Marcellus;
+}
 
-  .volume-number {
-    text-align: center;
-    font-size: 400%;
-    font-family: Marcellus;
-  }
+.volume-number {
+  text-align: center;
+  font-size: 400%;
+  font-family: Marcellus;
+}
 
-  .volume-number + p {
-    text-align: center;
-    font-size: 200%;
-    font-family: "Source Serif Pro";
-  }
-
+.volume-number + p {
+  text-align: center;
+  font-size: 200%;
+  font-family: "Source Serif Pro";
 }
 
 [type=imprint] {
