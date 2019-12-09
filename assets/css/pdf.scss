@@ -66,12 +66,12 @@ a {
 }
 
 .pdf-break-before {
-  break-before: always;
-  page-break-before: always;
+  break-before: always!important;
+  page-break-before: always!important;
 }
 
 .pdf-only {
-  display: block;
+  display: block!important;
 }
 
 .series-title, #series-title {
