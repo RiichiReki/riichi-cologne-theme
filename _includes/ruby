@@ -8,10 +8,16 @@ if include.number
   endif
 %}{%
 else
-%}<ruby>{% 
-  for b in include.base
-%}<rb>{{ b }}</rb><rp> (</rp><rt>{{ include.text[forloop.index] }}</rt><rp>)</rp>{% 
-  endfor
+%}<ruby>{%
+  if include.base.frist
+%}{% 
+    for b in include.base
+%}<rb>{{ b }}</rb><rp> (</rp><rt>{{ include.text[forloop.index0] }}</rt><rp>)</rp>{% 
+    endfor
+%}{%
+  else
+%}<rb>{{ include.base }}</rb><rp> (</rp><rt>{{ include.text }}</rt><rp>)</rp>{%
+  endif
 %}</ruby>{%
 endif
 %}
