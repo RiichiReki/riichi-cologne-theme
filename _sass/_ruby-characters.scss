@@ -2,10 +2,19 @@ ruby, .ruby {
   display: inline-table;
   vertical-align: text-bottom;
   line-height: initial;
-
+  margin: 0;
+  padding: 0;
+  
   rb, rt, .rb, .rt {
     display: table-cell;
     text-align: center;
+    font-size: 70%;
+    margin: 0;
+    padding: 0;
+    margin-inline-start: .8em;
+    margin-inline-end: .8em;
+    line-height: 0;
+    background: transparent;
   }
   
   rbc, >rb, .rbc, >.rb {
@@ -38,15 +47,6 @@ ruby, .ruby {
     &:last-child {
       text-align: left;
     }
-  }
-
-  rt, .rt {
-    font-size: 70%;
-    margin: 0;
-    margin-inline-start: .8em;
-    margin-inline-end: .8em;
-    line-height: 0;
-    background: transparent;
   }
 
   rp, .rp {
