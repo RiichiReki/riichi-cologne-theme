@@ -12,6 +12,7 @@ body {
   }
 
   a {
+
     &,
     &:focus,
     &:hover,
@@ -37,6 +38,7 @@ body {
     }
 
     a {
+
       &,
       &:focus,
       &:hover,
@@ -54,11 +56,12 @@ body {
       background-color: $tertiary-lightest;
     }
 
-    > p:first-child, >h3 {
+    >p:first-child,
+    >h3 {
       background-color: $secondary;
       color: $white;
 
-      label, span, a {
+      * {
         color: $white !important;
         background-color: $secondary;
       }
@@ -73,6 +76,7 @@ body {
     }
 
     a {
+
       &,
       &:focus,
       &:hover,
@@ -104,7 +108,7 @@ body {
     background: -moz-linear-gradient(right, mix(red, black), mix(orange, black), mix(yellow, black), mix(green, black), mix(cyan, black), mix(blue, black), mix(black, violet));
     background: linear-gradient(to right, mix(red, black), mix(orange, black), mix(yellow, black), mix(green, black), mix(cyan, black), mix(blue, black), mix(black, violet));
     -webkit-background-clip: text;
-            background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 }
@@ -123,6 +127,7 @@ body {
   }
 
   a {
+
     &,
     &:focus,
     &:hover,
@@ -149,6 +154,7 @@ body {
     }
 
     a {
+
       &,
       &:focus,
       &:hover,
@@ -167,11 +173,14 @@ body {
       background-color: $tertiary-darkest;
     }
 
-    > p, >h3 {
+    >p,
+    >h3 {
       &:first-child {
         background-color: $secondary-dark;
 
-        label, span, a {
+        label,
+        span,
+        a {
           background-color: $secondary-dark;
         }
       }
@@ -185,12 +194,12 @@ body {
 
   .rainbow {
     background: red;
-    background: -webkit-linear-gradient(left, red, orange , yellow, green, cyan, #44f, violet);
+    background: -webkit-linear-gradient(left, red, orange, yellow, green, cyan, #44f, violet);
     background: -o-linear-gradient(right, red, orange, yellow, green, cyan, #44f, violet);
     background: -moz-linear-gradient(right, red, orange, yellow, green, cyan, #44f, violet);
-    background: linear-gradient(to right, red, orange , yellow, green, cyan, #44f, violet);
+    background: linear-gradient(to right, red, orange, yellow, green, cyan, #44f, violet);
     -webkit-background-clip: text;
-            background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 }

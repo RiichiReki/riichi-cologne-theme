@@ -1,7 +1,9 @@
 body,
 a,
-header, header *,
-footer, footer * {
+header,
+header *,
+footer,
+footer * {
   color: rgb(0, 0, 0);
   background-color: $white;
 }
@@ -13,7 +15,7 @@ hr {
 blockquote {
   background-color: $white;
 
-  > p:first-child {
+  >p:first-child {
     background-color: mix($white, $secondary-light, 70%);
     color: rgb(0, 0, 0);
 
