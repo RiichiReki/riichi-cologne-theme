@@ -122,8 +122,8 @@ body {
   }
 
   .button {
-    background-color: mix($buttonface, $black, 70);
-    border-color: mix($buttonface, $black, 70);
+    background-color: mix($buttonface, $black, 90%);
+    border-color: mix($buttonface, $black, 90%);
   }
 
   hr {
@@ -170,15 +170,15 @@ body {
   }
 
   .interface {
-    background-color: mix($buttonface, $black, 70);
-    border-color: mix($buttonface, $black, 70);
+    background-color: mix($buttonface, $black, 90%);
+    border-color: mix($buttonface, $black, 90%);
 
     * {
-      background-color: mix($buttonface, $black, 70);
+      background-color: mix($buttonface, $black, 90%);
     }
     
     .button {
-      background-color: mix($buttonface, $black, 70);
+      background-color: mix($buttonface, $black, 90%);
     }
 
     >p,
