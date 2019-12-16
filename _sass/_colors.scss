@@ -51,6 +51,9 @@ body {
 
   .interface {
     background-color: $buttonface;
+    border-color: $buttonface;
+    border-top-color: #f8f8f8;
+    border-left-color: #f8f8f8;
 
     * {
       background-color: $buttonface;
@@ -175,6 +178,8 @@ body {
   .interface {
     background-color: mix($buttonface, $black, 10%);
     border-color: mix($buttonface, $black, 10%);
+    border-top-color: mix($buttonface, $black, 20%);
+    border-left-color: mix($buttonface, $black, 20%);
 
     * {
       background-color: mix($buttonface, $black, 10%);
