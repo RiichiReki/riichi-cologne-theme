@@ -52,6 +52,8 @@ body,
 
       @media (max-width: 575px) {
         border: 2px outset $buttonface;
+        border-top-color: #f8f8f8;
+        border-left-color: #f8f8f8;
         background-color: $buttonface;
         display: block;
         flex-grow: 1;

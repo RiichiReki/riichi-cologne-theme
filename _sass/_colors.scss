@@ -121,7 +121,8 @@ body {
     background-color: transparent;
   }
 
-  .button {
+  .button,
+  main > nav p {
     background-color: mix($buttonface, $black, 10%);
     border-color: mix($buttonface, $black, 10%);
     border-top-color: mix($buttonface, $black, 20%);
