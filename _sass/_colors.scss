@@ -142,18 +142,18 @@ body {
   }
 
   footer,
-  header {
+  header,
+  nav {
     color: rgb(191, 191, 191);
     background-color: transparent;
 
-    nav,
     p,
     span {
       background-color: transparent;
     }
 
     .h1 {
-      color: $primary-light;
+      color: $primary;
     }
 
     a {
@@ -163,7 +163,7 @@ body {
       &:hover,
       &:link,
       &:visited {
-        color: $primary-light;
+        color: $primary;
       }
     }
   }

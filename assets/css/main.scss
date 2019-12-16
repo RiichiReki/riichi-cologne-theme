@@ -328,8 +328,7 @@ img {
   margin: 1em 0 1em 0;
   padding: 0em;
   font-style: normal;
-  border: 1px solid;
-  border-radius: .3em;
+  border: 2px outset;
   break-inside: avoid;
 
   .interface {
@@ -343,10 +342,7 @@ img {
       position: relative;
       display: block;
       border: 0;
-      border-radius: .3em;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      padding: .5em 1em;
+      padding: .3em 1em;
       margin: 0 0 1em;
       font-weight: bold;
       break-after: avoid;
