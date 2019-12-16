@@ -484,3 +484,7 @@ li:empty {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
+
+.back::after {
+  bottom: 0 !important;
+}
