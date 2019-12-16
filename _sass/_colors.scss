@@ -50,10 +50,10 @@ body {
   }
 
   .interface {
-    background-color: $tertiary-lightest;
+    background-color: buttonface;
 
     * {
-      background-color: $tertiary-lightest;
+      background-color: buttonface;
     }
 
     .button {
@@ -122,7 +122,8 @@ body {
   }
 
   .button {
-    background-color: $black;
+    background-color: mix(buttonface, $black);
+    border-color: mix(buttonface, $black);
   }
 
   hr {
@@ -169,15 +170,15 @@ body {
   }
 
   .interface {
-    background-color: $tertiary-darkest;
-    border-color: $secondary-dark;
+    background-color: mix(buttonface, $black);
+    border-color: mix(buttonface, $black);
 
     * {
-      background-color: $tertiary-darkest;
+      background-color: mix(buttonface, $black);
     }
     
     .button {
-      background-color: $black;
+      background-color: mix(buttonface, $black);
     }
 
     >p,
