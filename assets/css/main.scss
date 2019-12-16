@@ -51,8 +51,8 @@ body,
       margin-top: 0px;
 
       @media (max-width: 575px) {
-        border: 2px outset buttonface;
-        background-color: buttonface;
+        border: 2px outset $buttonface;
+        background-color: $buttonface;
         display: block;
         flex-grow: 1;
         flex-basis: 0;
@@ -307,8 +307,8 @@ img {
 }
 
 .button {
-  border: 2px outset buttonface;
-  background-color: buttonface;
+  border: 2px outset $buttonface;
+  background-color: $buttonface;
   display: block;
   flex-grow: 1;
   flex-basis: 0;
