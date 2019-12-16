@@ -1,5 +1,7 @@
 .animated nav,
 .animated nav p,
+.animated nav span,
+.animated .controls span,
 .animated .interface,
 .animated .interface p,
 .animated .interface table,
@@ -9,7 +11,7 @@
 .animated .interface li span,
 .animated header,
 .animated footer {
-  transition-property: background-color, color;
+  transition-property: background-color, color, border;
   transition-duration: 1s;
   transition-delay: 0s;
 }

@@ -124,6 +124,8 @@ body {
   .button {
     background-color: mix($buttonface, $black, 10%);
     border-color: mix($buttonface, $black, 10%);
+    border-top-color: mix($buttonface, $black, 20%);
+    border-left-color: mix($buttonface, $black, 20%);
   }
 
   hr {
