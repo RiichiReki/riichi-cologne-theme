@@ -34,7 +34,7 @@ body {
     }
 
     .h1 {
-      color: $primary;
+      color: $primary-dark;
     }
 
     a {
@@ -44,7 +44,7 @@ body {
       &:hover,
       &:link,
       &:visited {
-        color: $primary;
+        color: $primary-dark;
       }
     }
   }
