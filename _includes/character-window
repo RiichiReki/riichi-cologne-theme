@@ -10,7 +10,7 @@
 > | Race:   | {% for race in character.races %}{{ race }} {% endfor %} |
 >
 > {:class="interface"}
-> > Titles
+> > Titles & Blessings
 > > {:onclick="toggleAccordion(this)"}
 > >
 > > {% for title in character.titles %}
