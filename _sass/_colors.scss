@@ -56,6 +56,10 @@ body {
       background-color: $tertiary-lightest;
     }
 
+    button {
+      background-color: buttonface;
+    }
+
     >p:first-child,
     >h3 {
       background-color: $secondary;
@@ -171,6 +175,10 @@ body {
 
     * {
       background-color: $tertiary-darkest;
+    }
+    
+    button {
+      background-color: buttonface;
     }
 
     >p,

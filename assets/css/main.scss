@@ -51,11 +51,8 @@ body,
       margin-top: 0px;
 
       @media (max-width: 575px) {
-        border: 1px solid;
-        border-radius: .5em;
-        -webkit-appearance: button;
-        -moz-appearance: button;
-        appearance: button;
+        border: 2px outset buttonface;
+        background-color: buttonface;
         display: block;
         flex-grow: 1;
         flex-basis: 0;
@@ -181,13 +178,16 @@ body,
     display: none;
     grid-area: policy-banner;
     
-    p,
+    p {
+      margin: 1em;
+    }
+    
     .policy-button,
     .policy-button-all {
       display: block;
       padding: .5em;
       margin: 1em;
-      border-radius: 0.9em;
+      border: 2px outset;
     }
   }
   
@@ -307,16 +307,13 @@ img {
 }
 
 .button {
-  border: 1px solid;
-  border-radius: .5em;
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
+  border: 2px outset buttonface;
+  background-color: buttonface;
   display: block;
   flex-grow: 1;
   flex-basis: 0;
   text-align: center;
-  margin: 0 .5em;
+  margin-inline-end: .5em;
   margin-block-start: .5em;
   margin-block-end: .5em;
 
