@@ -10,6 +10,20 @@ layout: compress
     {% assign title = page.title | append: " | " | append: site.title %}
     <title>{{ title | truncate: 67, "…" }}</title>
     <meta name="generator" content="Jekyll v{{ jekyll.version }}">
+    <!-- PWA -->
+    <script type="text/javascript">
+      var swsource = "/pwa.js";
+      if("serviceWorker" in navigator) {
+        navigator.serviceWorker.register(swsource)
+          .then(function(reg){
+            console.log('SW scope: ', reg.scope);
+          })
+          .catch(function(err) {
+            console.log('SW registration failed: ', err);
+          });
+      };
+    </script>
+    <link rel="manifest" href="/manifest.json">
     <!-- Load Optimization -->
     {% for font in site.preload.fonts %}
     <link rel="preload" href="{{ font | absolute_url }}" as="font" crossorigin="anonymous">
