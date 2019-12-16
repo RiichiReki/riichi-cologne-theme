@@ -135,6 +135,7 @@ body,
             float: right;
             position: relative;
             right: 1em;
+            bottom: 0.2em;
             margin: -1em;
             clear: both;
           }
@@ -151,7 +152,7 @@ body,
         height: 1px;
         position: relative;
         font-size: 200%;
-        bottom: .7em;
+        bottom: .65em;
         width: 0;
         clear: both;
         color: $primary-dark;
