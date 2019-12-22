@@ -11,6 +11,7 @@ layout: compress
     <title>{{ title | truncate: 67, "…" }}</title>
     <meta name="generator" content="Jekyll v{{ jekyll.version }}">
     <!-- PWA -->
+    {% if jekyll.environment != "unpublished" %}
     <script type="text/javascript">
       if("serviceWorker" in navigator) {
         window.addEventListener('load', () => {
@@ -24,6 +25,7 @@ layout: compress
         });
       };
     </script>
+    {% endif %}
     <link rel="manifest" href="/manifest.json">
     <!-- Load Optimization -->
     {% for font in site.preload.fonts %}
