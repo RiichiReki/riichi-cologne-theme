@@ -83,6 +83,9 @@ h1::before {
         <meta property="url" content="{{ author.url }}">
       </div>
       {% endif %}
+      {% for genre in page.book.genres %}
+        <meta property="genre" content="{{ genre }}">
+      {% endfor %}
     </div>
     <h1 aria-label="Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: {{ page.title }}">{{ page.title }}</h1>
     <meta property="name" content="{{ page.book.number }}-{{ page.chapter }}: {{ page.title }}">
