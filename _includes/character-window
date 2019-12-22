@@ -9,7 +9,7 @@
 > | Age:    | {{ character.age }}                                      |
 > | Race:   | {% for race in character.races %}{{ race }} {% endfor %} |
 >
-> {:class="interface"}
+> {:.interface}
 > > Titles & Blessings
 > > {:onclick="toggleAccordion(this)"}
 > >
@@ -17,7 +17,7 @@
 > > - {{ title.name }} {% if title.requirements %}({{ title.requirements | array_to_sentence_string }}){% endif %}{% endfor %}
 > >
 >
-> {% unless include.titles_only %}{:class="interface"}
+> {% unless include.titles_only %}{:.interface}
 > > Traits
 > > {:onclick="toggleAccordion(this)"}
 > >
@@ -25,12 +25,12 @@
 > > - {{ trait.name }} ({{trait.type}}){% endfor %}
 > >
 >
-> {:class="interface"}
+> {:.interface}
 > > Skills
 > > {:onclick="toggleAccordion(this)"}
 > >
 > > {% for skill in character.skills %}
-> > {:class="interface"}
+> > {:.interface}
 > > > {{ skill.name }} {% if skill.level %} <span class="block-right">Level {% include ruby number=skill.level %}</span>{% endif %}
 > > > {:onclick="toggleAccordion(this)"}
 > > >
