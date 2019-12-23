@@ -194,9 +194,7 @@ body {
       &:first-child {
         background-color: $secondary-dark;
 
-        label,
-        span,
-        a {
+        * {
           background-color: $secondary-dark;
         }
       }
