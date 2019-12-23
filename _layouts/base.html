@@ -10,26 +10,12 @@ layout: compress
     {% assign title = page.title | append: " | " | append: site.title %}
     <title>{{ title | truncate: 67, "…" }}</title>
     <meta name="generator" content="Jekyll v{{ jekyll.version }}">
-    <!-- PWA -->
-    {% if jekyll.environment != "unpublished" %}
-    <script type="text/javascript">
-      if("serviceWorker" in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/pwa.js')
-            .then(function(reg){
-              console.log('SW scope: ', reg.scope);
-            })
-            .catch(function(err) {
-              console.log('SW registration failed: ', err);
-            });
-        });
-      };
-    </script>
-    {% endif %}
-    <link rel="manifest" href="/manifest.json">
     <!-- Load Optimization -->
     {% for font in site.preload.fonts %}
     <link rel="preload" href="{{ font | absolute_url }}" as="font" crossorigin="anonymous">
+    {% endfor %}
+    {% if jekyll.environment != "unpublished" %}
+    <link rel="preload" href="{{ '/manifest.json' | absolute_url }}" as="manifest">
     {% endfor %}
     {% if page.type == "post" or page.type == "chapter" %}
       <link rel="preload" href="{{ '/assets/images/facebook.png' | absolute_url }}" as="image">
@@ -118,6 +104,23 @@ layout: compress
       href="{{ "/feeds/chapters.xml" | absolute_url }}">
     {% if page.robots %}
       <meta name="robots" content="{{page.robots}}">
+    {% endif %}
+    <!-- PWA -->
+    {% if jekyll.environment != "unpublished" %}
+    <script type="text/javascript">
+      if("serviceWorker" in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/pwa.js')
+            .then(function(reg){
+              console.log('SW scope: ', reg.scope);
+            })
+            .catch(function(err) {
+              console.log('SW registration failed: ', err);
+            });
+        });
+      };
+    </script>
+    <link rel="manifest" href="{{ '/manifest.json' | absolute_url }}">
     {% endif %}
   </head>
   <body class="light-theme" id="body">
