@@ -16,7 +16,7 @@ layout: compress
     {% endfor %}
     {% if jekyll.environment != "unpublished" %}
     <link rel="preload" href="{{ '/manifest.json' | absolute_url }}" as="manifest">
-    {% endfor %}
+    {% endif %}
     {% if page.type == "post" or page.type == "chapter" %}
       <link rel="preload" href="{{ '/assets/images/facebook.png' | absolute_url }}" as="image">
       <link rel="preload" href="{{ '/assets/images/twitter.png' | absolute_url }}" as="image">
