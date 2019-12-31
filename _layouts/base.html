@@ -24,14 +24,14 @@ layout: compress
       <link rel="preload" href="{{ '/assets/images/pinterest.png' | absolute_url }}" as="image">
       <link rel="preload" href="{{ '/assets/images/reddit.png' | absolute_url }}" as="image">
     {% endif %}
-    {% assign csss = "bootstrap.min.css,bootstrap-toggle.min.css,main.css" | split: "," %}
-    {% for css in csss %}
-      {% asset '{{css}}' %}
-    {% endfor %}
-    {% assign scripts = "jquery-3.2.1.slim.min.js,bootstrap.min.js,bootstrap-toggle.min.js,scripts.js" | split: "," %}
-    {% for script in scripts %}
-      {% asset '{{script}}' defer %}
-    {% endfor %}
+
+    <link rel="stylesheet" href="{{ '/assets/vendor/bootstrap/css/bootstrap.min.css' | absolute_url }}">
+    <link rel="stylesheet" href="{{ '/assets/vendor/bootstrap/css/bootstrap-toggle.min.css' | absolute_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | absolute_url }}">
+    <script defer src="{{ '/assets/vendor/jquery/jquery-3.2.1.slim.min.js' | absolute_url }}" crossorigin="annonymous"></script>
+    <script defer src="{{ '/assets/vendor/bootstrap/js/bootstrap.min.js' | absolute_url }}" crossorigin="annonymous"></script>
+    <script defer src="{{ '/assets/vendor/bootstrap/js/bootstrap-toggle.min.js' | absolute_url }}" crossorigin="annonymous"></script>
+    <script defer src="{{ '/assets/scripts/scripts.js' | absolute_url }}" crossorigin="annonymous"></script>
       <!-- Social Media Common -->
     {% if page.type == "chapter" %}
       <meta
@@ -129,7 +129,7 @@ layout: compress
           console.log('SW updated finished.');
         });
       };
-    </script>
+    </script></script>>
     <link rel="manifest" href="{{ '/manifest.json' | absolute_url }}">
     {% endif %}
 
