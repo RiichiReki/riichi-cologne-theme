@@ -106,7 +106,7 @@ layout: compress
       <meta name="robots" content="{{page.robots}}">
     {% endif %}
     <!-- PWA -->
-    {% if jekyll.environment != "unpublished" %}
+    {% if jekyll.environment != "unpublished" and false %}
     <script type="text/javascript">
       if("serviceWorker" in navigator) {
         window.addEventListener('load', () => {
@@ -138,7 +138,7 @@ layout: compress
     <link rel="manifest" href="{{ '/manifest.json' | absolute_url }}">
     {% endif %}
   </head>
-  <body class="light-theme" id="body">
+  <body class="dark-theme" id="body">
     <div id="fb-root"></div>
     {% if site.about and site.about.type %}
     <script type="application/ld+json">
