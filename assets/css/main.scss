@@ -98,6 +98,10 @@ body,
     margin: 0 -.5em;
     flex-wrap: wrap;
 
+    > .toggle {
+      top: 1px;
+    }
+
     > * {
       flex-grow: 1;
       flex-basis: 0;
