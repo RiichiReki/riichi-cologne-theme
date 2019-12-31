@@ -28,16 +28,20 @@ layout: compress
       <link rel="preload" href="{{ '/assets/images/reddit.png' | absolute_url }}" as="image">
     {% endif %}
 
-    {% capture js %}{% include scripts.min.js %}{% endcapture %}
+
     {% assign css = site.pages | where: 'url', '/assets/css/main.css' | last | map: "content" | join: '' | sha384_64 %}
-    {% assign js = js | sha384_64 %}{% assign size = js | size %}
+
     {% if size > 64 %}{% assign js = site.time | date: '%Y%m%d%H' %}{% assign css = site.time | date: '%Y%m%d%H' %}{% endif %}
     <link rel="stylesheet" 
+      href="{{ "/assets/vendor/bootstrap/css/bootstrap.min.css" | absolute_url }}">
+    <link rel="stylesheet" 
+      href="{{ "/assets/vendor/bootstrap/css/bootstrap-toggle.min.css" | absolute_url }}">
+    <link rel="stylesheet" 
       href="{{ "/assets/css/main.css" | absolute_url }}?{{css}}">
-    <script defer
-      src="{{ "/assets/scripts/scripts.min.js" | absolute_url }}?{{ js }}"
-    {% if size == 64 %}integrity="sha384-{{ js }}" {% endif %} crossorigin="anonymous"></script>
-
+    {% assign scripts = "/assets/vendor/jquery/js/jquery-3.2.1.slim.min.js,/assets/vendor/bootstrap/js/bootstrap.min.js,/assets/vendor/bootstrap/js/bootstrap-toogle.min.js,/assets/scripts/scripts.min.js" | split: ','%}
+    {% for script in scripts %}
+      {% asset '{{script}}' %}
+    {% endfor %}
       <!-- Social Media Common -->
     {% if page.type == "chapter" %}
       <meta

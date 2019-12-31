@@ -95,7 +95,7 @@ function restoreSettingsFromCookie() {
     return;
   }
 
-  if (null != getCookie().match(/darkTheme=true/)) toggleTheme();
+  if (null != getCookie().match(/darkTheme=false/)) toggleTheme();
   if (null != getCookie().match(/fontSize/)) zoom((getCookie().match(/(^| )fontSize=([^;]+)/))[2] - 12);
   if (null != getCookie().match(/activateGoogleAnalytics=true/)) loadGoogleAnalytics();
   acceptPolicy();
