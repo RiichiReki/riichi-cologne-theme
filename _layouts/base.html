@@ -14,9 +14,6 @@ layout: compress
     {% for font in site.preload.fonts %}
     <link rel="preload" href="{{ font | absolute_url }}" as="font" crossorigin="anonymous">
     {% endfor %}
-    {% if jekyll.environment != "unpublished" %}
-    <link rel="preload" href="{{ '/manifest.json' | absolute_url }}" as="manifest">
-    {% endif %}
     {% if page.type == "post" or page.type == "chapter" %}
       <link rel="preload" href="{{ '/assets/images/facebook.png' | absolute_url }}" as="image">
       <link rel="preload" href="{{ '/assets/images/twitter.png' | absolute_url }}" as="image">
@@ -27,20 +24,13 @@ layout: compress
       <link rel="preload" href="{{ '/assets/images/pinterest.png' | absolute_url }}" as="image">
       <link rel="preload" href="{{ '/assets/images/reddit.png' | absolute_url }}" as="image">
     {% endif %}
-
-
-    {% assign css = site.pages | where: 'url', '/assets/css/main.css' | last | map: "content" | join: '' | sha384_64 %}
-
-    {% if size > 64 %}{% assign js = site.time | date: '%Y%m%d%H' %}{% assign css = site.time | date: '%Y%m%d%H' %}{% endif %}
-    <link rel="stylesheet" 
-      href="{{ "/assets/vendor/bootstrap/css/bootstrap.min.css" | absolute_url }}">
-    <link rel="stylesheet" 
-      href="{{ "/assets/vendor/bootstrap/css/bootstrap-toggle.min.css" | absolute_url }}">
-    <link rel="stylesheet" 
-      href="{{ "/assets/css/main.css" | absolute_url }}?{{css}}">
-    {% assign scripts = "/assets/vendor/jquery/js/jquery-3.2.1.slim.min.js,/assets/vendor/bootstrap/js/bootstrap.min.js,/assets/vendor/bootstrap/js/bootstrap-toogle.min.js,/assets/scripts/scripts.min.js" | split: ','%}
+    {% assign csss = "bootstrap.min.css,bootstrap-toggle.min.css,main.css" | split: "," %}
+    {% for css in csss %}
+      {% asset '{{css}}' %}
+    {% endfor %}
+    {% assign scripts = "jquery-3.2.1.slim.min.js,bootstrap.min.js,bootstrap-toggle.min.js,scripts.js" | split: "," %}
     {% for script in scripts %}
-      {% asset '{{script}}' %}
+      {% asset '{{script}}' defer %}
     {% endfor %}
       <!-- Social Media Common -->
     {% if page.type == "chapter" %}
@@ -109,8 +99,9 @@ layout: compress
     {% if page.robots %}
       <meta name="robots" content="{{page.robots}}">
     {% endif %}
-    <!-- PWA -->
+
     {% if jekyll.environment != "unpublished" and false %}
+    <!-- PWA -->
     <script type="text/javascript">
       if("serviceWorker" in navigator) {
         window.addEventListener('load', () => {
@@ -141,6 +132,7 @@ layout: compress
     </script>
     <link rel="manifest" href="{{ '/manifest.json' | absolute_url }}">
     {% endif %}
+
   </head>
   <body class="dark-theme" id="body">
     <div id="fb-root"></div>
@@ -174,9 +166,15 @@ layout: compress
     <main id="content" class="{{ page.layout }}">
       {{ content }}
     </main>
-    
+
+
     <footer id="footer">
-      {% include footer.html %}
+      <div id="support">
+        {% include support.html %}
+      </div>
+      <div id="footer">
+        {% include footer.html %}
+      </div>
     </footer>
 
     <div class="policy-banner" id="policy-banner" data-nosnippet>

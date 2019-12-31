@@ -23,14 +23,14 @@ h1::before {
 }
 
 {% for page in previous_pages %}
-.previous a::before {
+.previous::before {
   content: 'Previous Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
   display: block;
 }
 {% endfor %}
 
 {% for page in next_pages %}
-.next a::before {
+.next::before {
   content: 'Next Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
   display: block;
 }
@@ -125,23 +125,17 @@ h1::before {
     <div class="clearfix"></div>
     {% assign words = content | markdownify | strip_html | split: " " | size %}
     {% if words > 200 %}
-    <nav>
+    <nav class="d-flex">
       {% for page in previous_pages %}
-      <span class="block-left button previous">
-        <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
-      </span>
+        <a class="btn btn-lg btn-primary previous"title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
       {% endfor %}
       
       {% for page in next_pages %}
-      {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
-      {% break %}
-      {% endif %}
-      <span class="block-right button next{% if page.published == "sponsors" %} early-acess{% endif %}">
         {% if jekyll.environment != "unpublished" and page.published == "sponsors" %}
-        <a title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
-          <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}" class="invert-on-dark"></a>
+        <a class="btn btn-lg btn-primary next early-acess" title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
+          <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}"></a>
         {% else %}
-        <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+        <a class="btn btn-lg btn-primary next" title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
         {% endif %}
       </span>
       {% endfor %}
@@ -157,27 +151,21 @@ h1::before {
 </div>
 
 <footer>
-  <nav id="navigation" aria-flowto="comments">
-  {% for page in previous_pages %}
-  <span class="block-left button previous" id="previous">
-    <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
-  </span>
-  {% endfor %}
-
-  {% for page in next_pages %}
-  {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
-  {% break %}
-  {% endif %}
-  <span class="block-right button next{% if page.published == "sponsors" %} early-acess{% endif %}" id="next">
-    {% if jekyll.environment != "unpublished" and page.published == "sponsors" %}
-    <a title="{{ page.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
-        <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}" class="invert-on-dark"></a>
-    {% else %}
-    <a title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
-    {% endif %}
-  </span>
-  {% endfor %}
-  </nav>
+  <nav class="d-flex" id="navigation" aria-flowto="comments">
+    {% for page in previous_pages %}
+      <a class="btn btn-lg btn-primary previous"title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+    {% endfor %}
+    
+    {% for page in next_pages %}
+      {% if jekyll.environment != "unpublished" and page.published == "sponsors" %}
+      <a class="btn btn-lg btn-primary next early-acess" title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
+        <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}"></a>
+      {% else %}
+      <a class="btn btn-lg btn-primary next" title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+      {% endif %}
+    </span>
+    {% endfor %}
+    </nav>
   <div class="clearfix"></div>
   <hr>
 

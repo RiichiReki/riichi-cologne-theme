@@ -1,117 +1,21 @@
-body {
+.light-theme {
   color: rgb(77, 77, 77);
   background-color: $white;
-
-  * {
-    color: rgb(77, 77, 77);
-    background-color: transparent;
-  }
 
   hr {
     background-color: rgb(77, 77, 77);
   }
 
-  a {
-
-    &,
-    &:focus,
-    &:hover,
-    &:link,
-    &:visited {
-      color: mix($secondary, $secondary-light, 80%);
-      background-color: transparent;
-    }
-  }
-
   header,
   nav,
   footer {
-    background-color: transparent;
-
-    p,
-    span {
-      background-color: transparent;
-    }
-
     .h1 {
       color: $primary-dark;
-    }
-
-    a {
-
-      &,
-      &:focus,
-      &:hover,
-      &:link,
-      &:visited {
-        color: $primary-dark;
-      }
     }
   }
 
   .interface {
     background-color: $buttonface;
-    border-color: $buttonface;
-    border-top-color: #f4f4f4;
-    border-left-color: #f4f4f4;
-
-    * {
-      background-color: $buttonface;
-    }
-
-    .button {
-      background-color: $buttonface;
-    }
-
-    >p:first-child,
-    >h3 {
-      background-color: $secondary;
-      color: $white;
-
-      * {
-        color: $white !important;
-        background-color: $secondary;
-      }
-    }
-  }
-
-  .policy-banner {
-    background-color: $secondary-darkest;
-
-    p {
-      color: #fff !important;
-    }
-
-    a {
-
-      &,
-      &:focus,
-      &:hover,
-      &:link,
-      &:visited {
-        color: mix($secondary-lightest, $secondary-light);
-      }
-    }
-
-    .policy-button-all {
-      background-color: $primary-dark !important;
-      color: $white !important;
-
-      span {
-        color: $white !important;
-      }
-    }
-  }
-
-  .rainbow {
-    background: red;
-    background: -webkit-linear-gradient(left, mix(red, black), mix(orange, black), mix(yellow, black), mix(green, black), mix(cyan, black), mix(blue, black), mix(black, violet));
-    background: -o-linear-gradient(right, mix(red, black), mix(orange, black), mix(yellow, black), mix(green, black), mix(cyan, black), mix(blue, black), mix(black, violet));
-    background: -moz-linear-gradient(right, mix(red, black), mix(orange, black), mix(yellow, black), mix(green, black), mix(cyan, black), mix(blue, black), mix(black, violet));
-    background: linear-gradient(to right, mix(red, black), mix(orange, black), mix(yellow, black), mix(green, black), mix(cyan, black), mix(blue, black), mix(black, violet));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 }
 
@@ -119,101 +23,54 @@ body {
   color: rgb(191, 191, 191);
   background-color: $black;
 
-  * {
-    color: rgb(191, 191, 191);
-    background-color: transparent;
-  }
-
-  .button,
-  main > nav p {
-    background-color: mix($buttonface, $black, 10%);
-    border-color: mix($buttonface, $black, 10%);
-    border-top-color: mix($buttonface, $black, 20%);
-    border-left-color: mix($buttonface, $black, 20%);
-  }
-
   hr {
     background-color: rgb(191, 191, 191);
-  }
-
-  a {
-
-    &,
-    &:focus,
-    &:hover,
-    &:link,
-    &:visited {
-      color: mix($secondary-light, $secondary-lightest, 50%);
-      background-color: transparent;
-    }
   }
 
   footer,
   header,
   nav {
     color: rgb(191, 191, 191);
-    background-color: transparent;
-
-    p,
-    span {
-      background-color: transparent;
-    }
 
     .h1 {
       color: $primary;
-    }
-
-    a {
-
-      &,
-      &:focus,
-      &:hover,
-      &:link,
-      &:visited {
-        color: $primary;
-      }
     }
   }
 
   .interface {
     background-color: mix($buttonface, $black, 10%);
-    border-color: mix($buttonface, $black, 10%);
-    border-top-color: mix($buttonface, $black, 20%);
-    border-left-color: mix($buttonface, $black, 20%);
-
-    * {
-      background-color: mix($buttonface, $black, 10%);
-    }
-    
-    .button {
-      background-color: mix($buttonface, $black, 10%);
-    }
-
-    >p,
-    >h3 {
-      &:first-child {
-        background-color: $secondary-dark;
-
-        * {
-          background-color: $secondary-dark;
-        }
-      }
-    }
+    border-color: mix($buttonface, $black, 20%);
   }
 
   .invert-on-dark {
     filter: invert(100%);
     background: transparent;
   }
+}
 
-  .rainbow {
-    background: red;
-    background: -webkit-linear-gradient(left, red, orange, yellow, green, cyan, #44f, violet);
-    background: -o-linear-gradient(right, red, orange, yellow, green, cyan, #44f, violet);
-    background: -moz-linear-gradient(right, red, orange, yellow, green, cyan, #44f, violet);
-    background: linear-gradient(to right, red, orange, yellow, green, cyan, #44f, violet);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.policy-banner {
+  background-color: $secondary-darkest;
+
+  p {
+    color: #fff !important;
+  }
+
+  .policy-button-all {
+    background-color: $primary-dark !important;
+    color: $white !important;
+
+    span {
+      color: $white !important;
+    }
+  }
+}
+
+.interface {
+  >p,
+  >h3 {
+    &:first-child {
+      background-color: var(--blue);
+      color: $white;
+    }
   }
 }

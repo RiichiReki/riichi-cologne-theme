@@ -36,49 +36,6 @@ function toggleTheme() {
 }
 window['toggleTheme'] = toggleTheme;
 
-async function loadGoogleAnalytics() {
-  if (!isHasAcceptedPolicy()) {
-    return;
-  }
-  if (d.getElementById('google-analytics')) return;
-
-  (function(i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function() {
-      (i[r].q = i[r].q || []).push(arguments)
-    };
-    i[r].l = 1 * new Date();
-    a = s.createElement(o);
-    m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.id = 'google-analytics';
-    a.src = g;
-    m.parentNode.insertBefore(a, m);
-  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-  while ('undefined' == typeof ga ) {
-    await sleep(100);
-  }
-
-  ga('create', window['analytics'], 'auto');
-  ga('send', 'pageview');
-
-  writeCookie("activateGoogleAnalytics", true);
-}
-window['loadGoogleAnalytics'] = loadGoogleAnalytics;
-
-function disableGoogleAnalytics() {
-  if (!isHasAcceptedPolicy()) {
-    return;
-  }
-
-  writeCookie("activateGoogleAnalytics", false);
-  document.cookie = '_ga=; Path=/; Domain=.0xreki.de; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-  document.cookie = '_gid=; Path=/; Domain=.0xreki.de; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-  document.cookie = '_gat=; Path=/; Domain=.0xreki.de; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
-window['disableGoogleAnalytics'] = disableGoogleAnalytics;
-
 function loadYouTube() {
   var videos = d.getElementsByClassName('youtube');
   for (var i = 0; i < videos.length; i++) {
@@ -97,7 +54,6 @@ function restoreSettingsFromCookie() {
 
   if (null != getCookie().match(/darkTheme=false/)) toggleTheme();
   if (null != getCookie().match(/fontSize/)) zoom((getCookie().match(/(^| )fontSize=([^;]+)/))[2] - 12);
-  if (null != getCookie().match(/activateGoogleAnalytics=true/)) loadGoogleAnalytics();
   acceptPolicy();
 }
 
@@ -187,6 +143,9 @@ async function setUpPageForUsers() {
   }
 
   d.getElementsByTagName("html")[0].className = "animated";
+
+  $('#dark-mode').change(toggleTheme);
+  $('#tts').change(toggleTTS);
 }
 
 async function storeLastReadChapterURL() {

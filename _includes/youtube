@@ -1,14 +1,11 @@
 <div class="youtube" data-videoid="youtube-{{ include.videoid }}">
-  <p class="button">
-    <a href="https://youtu.be/{{ include.videoid }}" target="_blank" rel="noopener">
-      Watch “{{ include.videotitle }}” on YouTube
-    </a>
-  </p>
-  <p class="button">
-    <a href="javascript:loadYouTube();">
-      Load YouTube Video (3rd party script)
-    </a>
-  </p>
+  <a class="btn btn-lg btn-block btn-primary" href="https://youtu.be/{{ include.videoid }}" target="_blank" rel="noopener">
+    Watch “{{ include.videotitle }}” on YouTube
+  </a>
+  <a class="btn btn-lg btn-block btn-primary" 
+      href="javascript:loadYouTube();">
+    Load YouTube Video (3rd party script)
+  </a>
 </div>
 <script id="youtube-{{ include.videoid }}" type="text/html">
   <div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">

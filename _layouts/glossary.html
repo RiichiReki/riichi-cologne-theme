@@ -2,12 +2,9 @@
 layout: base
 ---
 <style>
-footer nav a {
-  line-height: 250%;
-}
-
 footer nav a::after {
   top: initial !important;
+  font-size: 100%;
 }
 </style>
 <script type="application/ld+json">
@@ -39,14 +36,11 @@ footer nav a::after {
   </div>
 </div>
 <footer>
-  <nav>
-    <span class="block-left button previous back" id="previous">
-      <a title="{{ page.title }}" onclick="history.back()" rel="prev">Go Back</a>
-    </span>
-    <span class="block-right button">
-      <link rel="prerender" href="{{ "/glossary/" | absolute_url }}">
-      <a title="Glossary" href="{{ "/glossary/" | absolute_url }}" rel="next">Go to Glossary</a>
-    </span>
+  <nav class="btn-lg-block d-flex">
+      <a class="btn btn-primary previous back" 
+         title="{{ page.title }}" onclick="history.back()" rel="prev">Go Back</a>
+      <a  class="btn btn-primary"
+         title="Glossary" href="{{ "/glossary/" | absolute_url }}" rel="next">Go to Glossary</a>
   </nav>
 </footer>
 <script>

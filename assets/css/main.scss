@@ -17,20 +17,33 @@ body,
 
   display: grid;
   grid-template-columns: 5vmin 1fr 5vmin;
-  gap: 0 0;
+  gap: 0 1vmin;
   grid-template-rows: repeat(auto-fill, auto);
   grid-template-areas:
     "policy-banner policy-banner policy-banner"
-    ". title ."
+    "title title title"
     ". navigation ."
     ". controls ."
     ". content ."
     ". fb-comments ."
-    ". footer ."
-    ". social-icons .";
+    "footer footer footer";
 
   > header {
     grid-area: title;
+    padding: 1em;
+    background: var(--blue);
+
+    @media(min-width: 768px) {
+      margin-top: -5vmin;
+    }
+
+    @media(min-width: 992px) {
+      margin-top: -1vmin;
+    }
+
+    a {
+      color: $white !important;
+    }
   }
 
   > nav {
@@ -77,6 +90,13 @@ body,
     display: flex;
     margin: 0 -.5em;
     flex-wrap: wrap;
+
+    > * {
+      flex-grow: 1;
+      flex-basis: 0;
+      margin-inline-start: .5em;
+      margin-inline-end: .5em;
+    }
   }
 
   > main {
@@ -105,43 +125,36 @@ body,
       }
 
       .previous {
-        a {
-          margin-left: 2.5em;
-        }
+        margin-left: 2.5em;
 
-        a::after {
+        &::after {
           float: left;
           content: '◀';
-          left: -1em;
         }
       }
 
       .next {
-        a {
-          margin-right: 2.2em;
-        }
+        margin-right: 2.2em;
 
-        a::after {
+        &::after {
           float: right;
           content: '▶';
+          right: 2rem;
         }
       }
 
       .early-acess {
-        a {
-          margin-right: .5em;
+        margin-right: .5em;
 
-          img {
-            float: right;
-            position: relative;
-            right: 1em;
-            bottom: 0.2em;
-            margin: -1em;
-            clear: both;
-          }
+        img {
+          float: right;
+          position: relative;
+          right: 1em;
+          margin: -1em;
+          clear: both;
         }
 
-        a::after {
+        &::after {
           content: '';
         }
       }
@@ -152,14 +165,9 @@ body,
         height: 1px;
         position: relative;
         font-size: 200%;
-        bottom: .65em;
+        bottom: 2rem;
         width: 0;
         clear: both;
-        color: $primary-dark;
-      }
-
-      .button {
-        margin: .5em .5em;
       }
 
       a {
@@ -174,7 +182,32 @@ body,
 
   > footer {
     grid-area: footer;
-    
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1em;
+    background: var(--blue);
+
+    a {
+      color: $white !important;
+    }
+
+    #support {
+      grid-area: support;
+      display: flex;
+      flex-wrap: wrap;
+
+      div {
+        flex-basis: 300px;
+        margin-inline-end: 1em;
+      }
+    }
+
+    #footer {
+      align-self: flex-end;
+      flex-basis: 250px;
+      flex-grow: 1;
+    }
   }
 
   > .policy-banner {
@@ -213,48 +246,28 @@ body,
     grid-template-rows: auto;
     grid-template-areas: 
       "policy-banner policy-banner policy-banner policy-banner"
-      ". title title ."
+      "title title title title"
       ". navigation navigation ."
       ". controls controls ."
       ". content content ."
       ". fb-comments fb-comments . "
-      ". social-icons footer .";
+      "footer footer footer footer";
   }
 
   @media (min-width: 992px) {
     font-size: 14pt;
 
-    grid-template-columns: 0 16em 1fr 0;
-    gap: 1vmin 10vmin;
+    grid-template-columns: 0 16em 1fr 1fr 0;
+    gap: 1vmin 1em;
     grid-template-rows: auto;
     grid-template-areas:
-      "policy-banner policy-banner policy-banner policy-banner"
-      ". title content ."
-      ". navigation content ."
-      ". controls content ."
-      ". . content ."
-      ". . content ."
-      ". social-icons fb-comments ."
-      ". footer fb-comments ."
-      ". . . .";
-  }
-}
-
-h1, .h1 {
-  font-size: 200%;
-  font-weight: 600;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-h2, .h2 {
-  font-size: 150%;
-  font-weight: 600;
-}
-
-h1, h2 {
-  + p {
-    margin-top: 0;
+      "policy-banner policy-banner policy-banner policy-banner policy-banner"
+      "title title title title title"
+      ". navigation content content ."
+      ". controls content content ."
+      ". . content content ."
+      ". . fb-comments fb-comments ."
+      "footer footer footer footer footer";
   }
 }
 
@@ -309,32 +322,15 @@ img {
   display: block; 
 }
 
-.button {
-  border: 2px outset $buttonface;
-  border-top-color: #f8f8f8;
-  border-left-color: #f8f8f8;
-  background-color: $buttonface;
-  display: block;
-  flex-grow: 1;
-  flex-basis: 0;
-  text-align: center;
-  margin-inline-end: .5em;
-  margin-block-start: .5em;
-  margin-block-end: .5em;
-
-  a {
-    display: block;
-    margin: .4em .5em .5em;
-  }
-}
-
 .interface {
   display: block;
   margin: 1em 0 1em 0;
   padding: 0em;
   font-style: normal;
-  border: 2px outset;
   break-inside: avoid;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: .3rem;
+  outline: 0;
 
   .interface {
     margin: 0 1em 1em;
@@ -344,17 +340,23 @@ img {
     margin: 0 1em 1em;
 
     &:first-child {
-      position: relative;
       display: block;
-      border: 0;
-      padding: .3em 1em;
-      margin: 0 0 1em;
+      margin: 0;
+
+      border-top-left-radius: .3rem;
+      border-top-right-radius: .3rem;
+    
+      padding: 1rem;
       font-weight: bold;
       break-after: avoid;
+
+      &.active {
+        margin: 0 0 1em;
+      }
     }
   }
 
-  > table {
+  > table, > div {
     margin: 0 1em 1em;
   }
 
@@ -385,16 +387,6 @@ img {
   }
 }
 
-.fb-comments {
-  text-align: center;
-  min-height: 2em;
-}
-
-.clearfix {
-  content: "";
-  clear: both;
-}
-
 a {
   text-decoration: none;
 }
@@ -406,14 +398,6 @@ a {
   text-align: right;
   margin-right: .5em;
   font-family: emoji;
-}
-
-.lg-up {
-  display: none;
-  
-  @media (min-width: 992px) {
-    display: initial;
-  }
 }
 
 .pdf-only {
@@ -496,4 +480,12 @@ li:empty {
   @media (min-width: 768px) {
     display: none;
   }
+}
+
+.d-flex .btn {
+  margin-block-start: .5em;
+  margin-block-end: .5em;
+  margin-inline-start: .5em;
+  margin-inline-end: .5em;
+  flex-grow: 1;
 }

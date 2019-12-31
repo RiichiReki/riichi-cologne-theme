@@ -1,20 +1,14 @@
-<span class="button">
-  <a title="Toggle Dark Theme" href="#" onclick="toggleTheme();" aria-label="Toogle Dark Theme">
-    <span>💡</span>
-  </a>
-</span>
-<span class="button sm-down">
-  <a title="Increase Font Size" href="#" onclick="zoom(2);" aria-label="Increase Font Size">
+<input 
+  id="dark-mode" aria-label="Toggle Dark Mode"
+  type="checkbox" checked data-toggle="toggle" data-on="💡" data-off="💡" data-onstyle="success" data-offstyle="danger" data-size="lg" data-width="100%">
+<input 
+  id="tts" aria-label="Toggle TTS"
+  type="checkbox" data-toggle="toggle" data-on="💬" data-off="💬" data-onstyle="success" data-offstyle="danger" data-size="lg" data-width="100%">
+<a class="btn btn-primary btn-lg d-block d-lg-none d-xl-none" 
+  title="Increase Font Size" href="#" onclick="zoom(2);" aria-label="Increase Font Size">
     <span>🔍+</span>
-  </a>
-</span>
-<span class="button sm-down">
-  <a title="Decrease Font Size" href="#" onclick="zoom(-2);" aria-label="Decrease Font Size">
+</a>
+<a class="btn btn-primary btn-lg d-block d-lg-none d-xl-none"
+  title="Decrease Font Size" href="#" onclick="zoom(-2);" aria-label="Decrease Font Size">
     <span>🔍−</span>
-  </a>
-</span>
-<span class="button">
-  <a title="Toggle TTS" href="#" onclick="toggleTTS()" aria-label="Toggle TTS">
-    <span>💬</span>
-  </a>
-</span>
+</a>
