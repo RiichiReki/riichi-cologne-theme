@@ -124,25 +124,6 @@ body,
         margin: 0;
       }
 
-      .previous {
-        margin-left: 2.5em;
-
-        &::after {
-          float: left;
-          content: '◀';
-        }
-      }
-
-      .next {
-        margin-right: 2.2em;
-
-        &::after {
-          float: right;
-          content: '▶';
-          right: 2rem;
-        }
-      }
-
       .early-acess {
         margin-right: .5em;
 
@@ -154,20 +135,6 @@ body,
           clear: both;
         }
 
-        &::after {
-          content: '';
-        }
-      }
-
-      a::after {
-        display: block;
-        overflow: visible;
-        height: 1px;
-        position: relative;
-        font-size: 200%;
-        bottom: 2rem;
-        width: 0;
-        clear: both;
       }
 
       a {
