@@ -1,8 +1,11 @@
-  {{ site.copyright.license }}
+<div class="block-right">
+{{ site.copyright.license }}
   {% if site.copyright.url %}
   <a 
     title="{{ site.copyright.name }}"
     href="{{ site.copyright.url | absolute_url }}"
     target="_blank"
-    rel="author noopener">{% endif %}{{ site.copyright.name }}{% if site.copyright.url %}</a>{% endif %}<br>
-  <small class="block-right"><a title="Privacy Statement" href="{{ "/privacy/" | absolute_url }}">Privacy</a></small>
+    rel="author noopener">{% endif %}{{ site.copyright.name }}{% if site.copyright.url %}</a>{% endif %}
+</div>
+<br>
+<div class="block-right"><small><a title="Privacy Statement" href="{{ "/privacy/" | absolute_url }}">Privacy</a></small></div>

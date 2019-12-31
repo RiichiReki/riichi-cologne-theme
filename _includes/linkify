@@ -9,7 +9,7 @@
   {% unless page.keywords %} {% continue %} {% endunless %}
   {% assign keywords = page.keywords | compact | join: '|' | prepend: '(' | append: ')' %}
   {% assign from = keywords | prepend: start_delimiters | append: end_delimiters %}
-  {% assign to = page.url | prepend: '\1<a href="' | append: '">\2</a>\3' %}
+  {% assign to = page.url | absolute_url | prepend: '\1<a href="' | append: '">\2</a>\3' %}
   {% assign content = content | regex_replace: from, to %}
 {% endfor %}
 {{ content }}
