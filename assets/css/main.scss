@@ -117,8 +117,8 @@ body,
     > * {
       flex-grow: 1;
       flex-basis: 0;
-      margin-inline-start: .5em;
-      margin-inline-end: .5em;
+      margin-left: .5em;
+      margin-right: .5em;
     }
   }
 
@@ -189,7 +189,7 @@ body,
 
       div {
         flex-basis: 300px;
-        margin-inline-end: 1em;
+        margin-right: 1em;
       }
     }
 
@@ -473,9 +473,6 @@ li:empty {
 }
 
 .d-flex .btn {
-  margin-block-start: .5em;
-  margin-block-end: .5em;
-  margin-inline-start: .5em;
-  margin-inline-end: .5em;
+  margin: .5em;
   flex-grow: 1;
 }
