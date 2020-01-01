@@ -127,7 +127,7 @@ body,
 
     p {
       -webkit-hyphens: auto;
-      -ms-hyphens:auto;
+      -ms-hyphens: auto;
       hyphens: auto;
       text-align: left;
     }
@@ -176,7 +176,7 @@ body,
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 1em;
-    background: var(--blue);
+    background: var(--dark);
 
     a {
       color: $white !important;
