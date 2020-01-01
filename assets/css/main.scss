@@ -157,7 +157,6 @@ body,
           margin: -1em;
           clear: both;
         }
-
       }
 
       a {
@@ -223,11 +222,6 @@ body,
   
   > #comments {
     grid-area: fb-comments;
-  }
-  
-  > .fb-comments {
-    grid-area: fb-comments;
-    margin: 0 -.5em;
   }
 
   @media (min-width: 768px) {
@@ -478,4 +472,8 @@ li:empty {
 
 .ko-fi {
   align-self: center;
+}
+
+.disabled {
+  cursor: default !important;
 }
