@@ -130,15 +130,13 @@ function sleep(ms) {
 }
 
 async function setUpPageForUsers() {
-  if (isHasAcceptedPolicy()) {
-    document.getElementById('content').scrollIntoView(true);
-  }
   await sleep(100);
   var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 
   if (isMobile) {
     d.addEventListener('touchstart', touchStart, false);
     d.addEventListener('touchmove', touchMove, false);
+    document.getElementById('content').scrollIntoView(true);
     toggleAllAccordions();
   }
 
