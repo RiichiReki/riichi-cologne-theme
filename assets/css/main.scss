@@ -331,7 +331,6 @@ img {
 
     &:first-child {
       display: block;
-      margin: 0;
 
       border-top-left-radius: .3rem;
       border-top-right-radius: .3rem;
@@ -340,8 +339,8 @@ img {
       font-weight: bold;
       break-after: avoid;
 
-      &.active {
-        margin: 0 0 1em;
+      &.inactive {
+        margin: 0;
       }
     }
   }
@@ -475,4 +474,8 @@ li:empty {
 .d-flex .btn {
   margin: .5em;
   flex-grow: 1;
+}
+
+.ko-fi {
+  align-self: center;
 }

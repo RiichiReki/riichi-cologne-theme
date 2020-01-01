@@ -11,7 +11,7 @@
 >
 > {:.interface}
 > > Titles & Blessings
-> > {:onclick="toggleAccordion(this)"}
+> > {:onclick="toggleAccordion(this)" .inactive}
 > >
 > > {% for title in character.titles %}
 > > - {{ title.name }} {% if title.requirements %}({{ title.requirements | array_to_sentence_string }}){% endif %}{% endfor %}
@@ -19,7 +19,7 @@
 >
 > {% unless include.titles_only %}{:.interface}
 > > Traits
-> > {:onclick="toggleAccordion(this)"}
+> > {:onclick="toggleAccordion(this)" .inactive}
 > >
 > > {% for trait in character.traits %}
 > > - {{ trait.name }} ({{trait.type}}){% endfor %}
@@ -27,12 +27,12 @@
 >
 > {:.interface}
 > > Skills
-> > {:onclick="toggleAccordion(this)"}
+> > {:onclick="toggleAccordion(this)" .inactive}
 > >
 > > {% for skill in character.skills %}
 > > {:.interface}
 > > > {{ skill.name }} {% if skill.level %} <span class="block-right">Level {% include ruby number=skill.level %}</span>{% endif %}
-> > > {:onclick="toggleAccordion(this)"}
+> > > {:onclick="toggleAccordion(this)" .inactive}
 > > >
 > > > {% for subskill in skill.subskills %}
 > > > - {{ subskill.name }} <span class="block-right">Level {% include ruby number=subskill.level %}</span>{% endfor %}

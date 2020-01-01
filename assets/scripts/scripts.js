@@ -162,6 +162,7 @@ function loadLastReadChapterURL() {
 window['loadLastReadChapterURL'] = loadLastReadChapterURL;
 
 function toggleAccordion(e) {
+  e.classList.toggle("inactive");
   e.classList.toggle("active");
 }
 window['toggleAccordion'] = toggleAccordion;
