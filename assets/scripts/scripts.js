@@ -119,10 +119,6 @@ function clearCookies() {
   writeCookie("activateGoogleAnalytics", '', -1);
   writeCookie("fontSize", '', -1);
   writeCookie("darkTheme", '', -1);
-  document.cookie = '_ga=; Path=/; Domain=.0xreki.de; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-  document.cookie = '_gid=; Path=/; Domain=.0xreki.de; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-  document.cookie = '_gat=; Path=/; Domain=.0xreki.de; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
 window['clearCookies'] = clearCookies;
 
 function sleep(ms) {
