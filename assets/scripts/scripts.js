@@ -7,7 +7,7 @@ function getCookie() {
 }
 
 function isHasAcceptedPolicy() {
-  return (null != getCookie().match(/acceptedPolicy=true/))
+  return (null != getCookie().match(/acceptedPolicy=true/));
 }
 
 async function acceptPolicy() {
@@ -82,7 +82,7 @@ function touchMove(evt) {
     if (xd > 0) {
       loadPage("next");
     } else {
-      loadPage("previous")
+      loadPage("previous");
     }
   }
 
@@ -104,7 +104,7 @@ function zoom(points) {
   if (!isHasAcceptedPolicy()) {
     return;
   }
-  var c = d.getElementById('body')
+  var c = d.getElementById('body');
 
   var fontSize = (parseInt(c.style.fontSize, 10) || 12) + points;
   if (fontSize > 20) fontSize = 22;
@@ -119,6 +119,7 @@ function clearCookies() {
   writeCookie("activateGoogleAnalytics", '', -1);
   writeCookie("fontSize", '', -1);
   writeCookie("darkTheme", '', -1);
+}
 window['clearCookies'] = clearCookies;
 
 function sleep(ms) {
@@ -165,7 +166,7 @@ function toggleAllAccordions() {
   document
     .querySelectorAll('.interface .interface p:first-child')
     .forEach(e => {
-      toggleAccordion(e)
+      toggleAccordion(e);
     });
 }
 
@@ -178,7 +179,9 @@ function loadTalkify() {
   var html = d.getElementsByTagName("html")[0];
   var i = "talkify";
 
-  if (d.getElementById(i)) return;
+  if (d.getElementById(i)) {
+    return;
+  }
 
   js = d.createElement("script");
   js.id = i;
@@ -233,7 +236,6 @@ async function toggleTTS() {
 
   if (window['isReading']) {
     player.pause();
-
   } else {
     player.play();
   }
