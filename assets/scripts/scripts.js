@@ -11,7 +11,7 @@ function isHasAcceptedPolicy() {
 }
 
 async function acceptPolicy() {
-  var banner = $('#policy-banner');
+  var banner = $('#policy-banner')[0];
   banner.style.opacity = 0;
   writeCookie("acceptedPolicy", true);
   await sleep(1000);
