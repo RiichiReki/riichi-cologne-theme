@@ -1,6 +1,6 @@
 var x, y = null;
 var d = document;
-var b = d.getElementById("body");
+var b = $('body');
 
 function getCookie() {
   return d.cookie;
@@ -11,10 +11,11 @@ function isHasAcceptedPolicy() {
 }
 
 async function acceptPolicy() {
-  d.getElementById("policy-banner").style.opacity = 0;
+  var banner = $('#policy-banner');
+  banner.style.opacity = 0;
   writeCookie("acceptedPolicy", true);
   await sleep(1000);
-  d.getElementById("policy-banner").style.display = "none";
+  banner.style.display = "none";
 }
 window['acceptPolicy'] = acceptPolicy;
 
@@ -46,7 +47,7 @@ window['loadYouTube']=loadYouTube;
 
 function restoreSettingsFromCookie() {
   if (!isHasAcceptedPolicy()) {
-    var bannerClass = d.getElementsByClassName("policy-banner");
+    var bannerClass = $('.policy-banner');
     for(var i = 0; i < bannerClass.length; i++)
       bannerClass[i].style.display = "block";
     return;
@@ -104,12 +105,11 @@ function zoom(points) {
   if (!isHasAcceptedPolicy()) {
     return;
   }
-  var c = d.getElementById('body');
 
   var fontSize = (parseInt(c.style.fontSize, 10) || 12) + points;
   if (fontSize > 20) fontSize = 22;
   if (fontSize < 12) fontSize = 10;
-  c.style.fontSize = fontSize + 'pt';
+  b.style.fontSize = fontSize + 'pt';
   writeCookie("fontSize", fontSize);
 }
 window['zoom'] = zoom;
