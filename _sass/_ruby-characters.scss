@@ -10,7 +10,7 @@ rt {
 rb {
   display: block;
   text-align: center;
-  padding-top: -1em;
+  padding-top: -1rem;
   line-height: 0.9;
 
   &.first {
@@ -31,9 +31,9 @@ main {
   }
 
   p {
-    margin-block-start: 1.7em;
-    margin-block-end: 1.7em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    margin-block-start: 1.7rem;
+    margin-block-end: 1.7rem;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
   }
 }
