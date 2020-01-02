@@ -30,7 +30,7 @@ body,
 
   > header {
     grid-area: title;
-    padding: 1em;
+    padding: 1rem;
     background: var(--blue);
 
     @media(min-width: 768px) {
@@ -70,11 +70,11 @@ body,
         text-align: center;
 
         &:first-child {
-          margin-top: 1em;
+          margin-top: 1rem;
         }
 
         &:last-child {
-          margin-bottom: 1em;
+          margin-bottom: 1rem;
         }
 
         a {
@@ -107,7 +107,7 @@ body,
   > .controls {
     grid-area: controls;
     display: flex;
-    margin: 0 -.5em;
+    margin: 0 -.5rem;
     flex-wrap: wrap;
 
     > .toggle {
@@ -117,8 +117,8 @@ body,
     > * {
       flex-grow: 1;
       flex-basis: 0;
-      margin-left: .5em;
-      margin-right: .5em;
+      margin-left: .5rem;
+      margin-right: .5rem;
     }
   }
 
@@ -140,7 +140,7 @@ body,
       align-content: stretch;
 
       @media (min-width: 576px) {
-        margin: 0 -.5em;
+        margin: 0 -.5rem;
       }
 
       span {
@@ -148,13 +148,13 @@ body,
       }
 
       .early-acess {
-        margin-right: .5em;
+        margin-right: .5rem;
 
         img {
           float: right;
           position: relative;
-          right: 1em;
-          margin: -1em;
+          right: 1rem;
+          margin: -1rem;
           clear: both;
         }
       }
@@ -174,7 +174,7 @@ body,
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 1em;
+    padding: 1rem;
     background: var(--dark);
 
     a {
@@ -188,7 +188,7 @@ body,
 
       div {
         flex-basis: 300px;
-        margin-right: 1em;
+        margin-right: 1rem;
       }
     }
 
@@ -204,14 +204,14 @@ body,
     grid-area: policy-banner;
     
     p {
-      margin: 1em;
+      margin: 1rem;
     }
     
     .policy-button,
     .policy-button-all {
       display: block;
-      padding: .5em;
-      margin: 1em;
+      padding: .5rem;
+      margin: 1rem;
       border: 2px outset;
     }
   }
@@ -225,7 +225,7 @@ body,
   }
 
   @media (min-width: 768px) {
-    grid-template-columns: 0 1fr 16em 0;
+    grid-template-columns: 0 1fr 16rem 0;
     gap: 5vmin 5vmin;
     grid-template-rows: auto;
     grid-template-areas: 
@@ -241,8 +241,8 @@ body,
   @media (min-width: 992px) {
     font-size: 14pt;
 
-    grid-template-columns: 0 16em 1fr 1fr 0;
-    gap: 1vmin 1em;
+    grid-template-columns: 0 16rem 1fr 1fr 0;
+    gap: 1vmin 1rem;
     grid-template-rows: auto;
     grid-template-areas:
       "policy-banner policy-banner policy-banner policy-banner policy-banner"
@@ -259,7 +259,7 @@ body,
   display: flex;
 
   a {
-    margin-left: .5em;
+    margin-left: .5rem;
     max-width: 96px;
 
     &:first-child {
@@ -308,7 +308,7 @@ img {
 
 .interface {
   display: block;
-  margin: 1em 0 1em 0;
+  margin: 1rem 0 1rem 0;
   padding: 0em;
   font-style: normal;
   break-inside: avoid;
@@ -317,11 +317,11 @@ img {
   outline: 0;
 
   .interface {
-    margin: 0 1em 1em;
+    margin: 0 1rem 1rem;
   }
 
   > p, > h3 {
-    margin: 0 1em 1em;
+    margin: 0 1rem 1rem;
 
     &:first-child {
       display: block;
@@ -329,7 +329,7 @@ img {
       border-top-left-radius: .3rem;
       border-top-right-radius: .3rem;
 
-      margin: 0 0 1em;
+      margin: 0 0 1rem;
     
       padding: 1rem;
       font-weight: bold;
@@ -342,12 +342,12 @@ img {
   }
 
   > table, > div {
-    margin: 0 1em 1em;
+    margin: 0 1rem 1rem;
   }
 
   ul {
-    margin: 0 1em 1em;
-    padding-left: 1.5em;
+    margin: 0 1rem 1rem;
+    padding-left: 1.5rem;
 
     li {
       margin: 3pt 0;
@@ -381,7 +381,7 @@ a {
   width: 1.5em;
   float: left;
   text-align: right;
-  margin-right: .5em;
+  margin-right: .5rem;
   font-family: emoji;
 }
 
@@ -422,7 +422,7 @@ li:empty {
   }
 
   > div {
-    margin: 0.5em;
+    margin: 0.5rem;
   }
 }
 
@@ -434,7 +434,7 @@ li:empty {
 
   img {
     float: left;
-    margin: 0 .5em 1em 1em;
+    margin: 0 .5rem 1rem 1rem;
   }
 }
 
@@ -468,7 +468,7 @@ li:empty {
 }
 
 .d-flex .btn {
-  margin: .5em;
+  margin: .5rem;
   flex-grow: 1;
 }
 
