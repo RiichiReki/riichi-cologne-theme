@@ -133,7 +133,7 @@ h1::before {
       {% for page in next_pages %}
         {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
           {% break %}
-        {% elif jekyll.environment != "unpublished" and page.published == "sponsors" %}
+        {% elsif jekyll.environment != "unpublished" and page.published == "sponsors" %}
         <a class="btn btn-lg btn-primary next early-acess" title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
           <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}"></a>
         {% else %}
@@ -161,7 +161,7 @@ h1::before {
     {% for page in next_pages %}
     {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
       {% break %}
-    {% elif jekyll.environment != "unpublished" and page.published == "sponsors" %}
+    {% elsif jekyll.environment != "unpublished" and page.published == "sponsors" %}
       <a class="btn btn-lg btn-primary next early-acess" title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
         <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}"></a>
       {% else %}
