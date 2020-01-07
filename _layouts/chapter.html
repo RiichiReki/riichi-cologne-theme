@@ -127,7 +127,7 @@ h1::before {
     {% if words > 200 %}
     <nav class="d-flex">
       {% for page in previous_pages %}
-        <a class="btn btn-lg btn-primary previous"title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+        <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
       {% endfor %}
       
       {% for page in next_pages %}

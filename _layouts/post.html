@@ -3,13 +3,13 @@ layout: base
 ---
 <style>
 {% if page.previous.url %}
-.previous a::before {
+.previous::before {
   content: 'Previous Post:';
   display: block;
 }
 {% endif %}
 {% if page.next.url %}
-.next a::before {
+.next::before {
   content: 'Next Post: ';
   display: block;
 }
@@ -64,19 +64,15 @@ layout: base
     <div class="clearfix"></div>
     {% assign words = content | markdownify | strip_html | split: " " | size %}
     {% if words > 200 %}
-    <nav>
+    <nav class="d-flex">
       {% if page.previous.url %}
-      <span class="block-left button previous">
         <link rel="prerender" href="{{ page.previous.url }}">
-        <a title="{{ page.previous.title }}" href="{{ page.previous.url }}">{{ page.previous.title }}</a>
-      </span>
+        <a class="btn btn-lg btn-primary previous" title="{{ page.previous.title }}" href="{{ page.previous.url }}">{{ page.previous.title }}</a>
       {% endif %}
       
       {% if page.next.url %}
-      <span class="block-right button next">
         <link rel="prerender" href="{{ page.next.url }}">
-        <a title="{{ page.next.title }}" href="{{ page.next.url }}">{{ page.next.title }}</a>
-      </span>
+        <a class="btn btn-lg btn-primary next" title="{{ page.next.title }}" href="{{ page.next.url }}">{{ page.next.title }}</a>
       {% endif %}
       </nav>
     {% endif %}
@@ -87,21 +83,15 @@ layout: base
 </div>
 
 <footer>
-<nav>
-{% if page.previous.url %}
-<span class="block-left button previous" id="previous">
-  <link rel="prerender" href="{{ page.previous.url }}">
-  <a title="{{ page.previous.title }}" href="{{ page.previous.url }}">{{ page.previous.title }}</a>
-</span>
-{% endif %}
-
-{% if page.next.url %}
-<span class="block-right button next" id="next">
-  <link rel="prerender" href="{{ page.next.url }}">
-  <a title="{{ page.next.title }}" href="{{ page.next.url }}">{{ page.next.title }}</a>
-</span>
-{% endif %}
-</nav>
+  <nav class="d-flex">
+    {% if page.previous.url %}
+      <a class="btn btn-lg btn-primary previous" title="{{ page.previous.title }}" href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+    {% endif %}
+    
+    {% if page.next.url %}
+      <a class="btn btn-lg btn-primary next" title="{{ page.next.title }}" href="{{ page.next.url }}">{{ page.next.title }}</a>
+    {% endif %}
+  </nav>
 <div class="clearfix"></div>
 <hr>
 
