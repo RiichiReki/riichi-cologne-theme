@@ -38,7 +38,7 @@ body,
     }
 
     @media(min-width: 992px) {
-      margin-top: -1vmin;
+      margin-top: -2rem;
     }
 
     a {
@@ -241,8 +241,8 @@ body,
   @media (min-width: 992px) {
     font-size: 14pt;
 
-    grid-template-columns: 0 16rem 1fr 1fr 0;
-    gap: 1vmin 1rem;
+    grid-template-columns: 0 18rem 1fr 1fr 0;
+    gap: 2rem 2rem;
     grid-template-rows: auto;
     grid-template-areas:
       "policy-banner policy-banner policy-banner policy-banner policy-banner"
