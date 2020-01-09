@@ -1,6 +1,6 @@
 var x, y = null;
 var d = document;
-var b = $('body');
+var b = $('body')[0];
 
 function getCookie() {
   return d.cookie;
@@ -92,10 +92,7 @@ function touchMove(evt) {
 };
 
 function loadPage(partId) {
-  var urlParagraph = d.getElementById(partId);
-  if (null == urlParagraph) return;
-
-  var href = urlParagraph.getElementsByTagName("a")[0].href;
+  var href = $('#' + partId)[0].href;
   if ("" == href) return;
 
   window.location.href = href;
