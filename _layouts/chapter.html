@@ -3,7 +3,7 @@ layout: base
 ---
 {% assign previous_chapter_number = page.chapter | plus: -1 %}
 {% assign next_chapter_number = page.chapter | plus: 1 %}
-{% assign pages = site.pages | where: "type", "chapter" %}
+{% assign pages = site.pages | where: "type", "chapter" | where: "book.series", page.book.series %}
 {% assign previous_pages = pages | where: "chapter", previous_chapter_number %}
 {% assign next_pages = pages | where: "chapter", next_chapter_number %}
 
