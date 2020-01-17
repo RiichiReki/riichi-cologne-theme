@@ -52,7 +52,7 @@ layout: compress
       name="twitter:image"
       content="{{ "/assets/images/site-card.png" | absolute_url }}">
     {% capture description %}
-      {{ page.excerpt | markdownify | strip_html }}
+      {{ page.excerpt | liquify | markdownify | strip_html }}
       {% unless page.excerpt %}{{ page.content | markdownify | strip_html }}{% endunless %}
     {% endcapture %}
     {% assign description_social_words = description | truncate: 200 | split: " " | size %}
