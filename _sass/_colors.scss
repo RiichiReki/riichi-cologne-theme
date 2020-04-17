@@ -68,7 +68,8 @@
 .interface {
   >p,
   >h3 {
-    &:first-child {
+    &:first-child,
+    span * {
       background-color: var(--blue);
       color: $white;
     }
