@@ -50,7 +50,7 @@ layout: compress
       content="{{ page.image | absolute_url }}">
     <meta
       name="twitter:image"
-      content="{{ page.image | replace: "og", "card" }}" | absolute_url }}">
+      content="{{ page.image | replace: "og", "card" | absolute_url }}">
     {% capture description %}
       {{ page.excerpt | markdownify | strip_html }}
       {% unless page.excerpt %}{{ page.content | liquify | markdownify | strip_html }}{% endunless %}
