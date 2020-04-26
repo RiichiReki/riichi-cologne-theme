@@ -47,10 +47,10 @@ layout: compress
     <!-- Social Networks -->
     <meta
       property="og:image"
-      content="{{ "/assets/images/site-og.png" | absolute_url }}">
+      content="{{ page.image | absolute_url }}">
     <meta
       name="twitter:image"
-      content="{{ "/assets/images/site-card.png" | absolute_url }}">
+      content="{{ page.image | replace: "og", "card" }}" | absolute_url }}">
     {% capture description %}
       {{ page.excerpt | markdownify | strip_html }}
       {% unless page.excerpt %}{{ page.content | liquify | markdownify | strip_html }}{% endunless %}
