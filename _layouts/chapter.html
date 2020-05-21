@@ -96,7 +96,8 @@ h1::before {
     </div>
     {% if page.date %}
       <small class="block-left">
-        published on <span property="datePublished">{{ page.date | date: "%Y-%m-%d" }}</span>
+        published on <span property="datePublished">{{ page.date | date: "%Y-%m-%d" }}</span>,
+        last updated on <span property="dateModified">{% last_modified_at %Y-%m-%d %}</span>
       </small>
     {% endif %}
     {% if page.author %}
