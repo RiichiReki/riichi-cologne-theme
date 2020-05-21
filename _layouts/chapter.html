@@ -107,6 +107,14 @@ h1::before {
         <meta property="url" content="{{ author.url }}">
       </small>
     {% endif %}
+    {% if page.sponsors %}
+      <small class="block-right">
+        sponsored by
+        {% for sponsor in page.sponsors %}
+        <span property="sponsor" typeof="Person"><span property="name">{{ sponsor }}</span></span>
+        {% endfor %}
+      </small>
+    {% endif %}
     <div class="clearfix"></div>
     {% capture characters_string %}{{ page.characters.main }}, {{ page.characters.secondary | join: ", "}}{% endcapture %}
     {% assign characters = characters_string | split: ", " %}
