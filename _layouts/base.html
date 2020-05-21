@@ -96,40 +96,6 @@ layout: compress
     {% if page.robots %}
       <meta name="robots" content="{{page.robots}}">
     {% endif %}
-
-    {% if jekyll.environment != "unpublished" and false %}
-    <!-- PWA -->
-    <script type="text/javascript">
-      if("serviceWorker" in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/pwa.js').then(function(reg){
-            console.log('SW scope: ', reg.scope);
-            reg.onupdatefound = function() {
-              var installingWorker = reg.installing;
-              installingWorker.onstatechange = function() {
-                switch (installingWorker.state) {
-                  case 'installed':
-                    if (navigator.serviceWorker.controller) {
-                      var event = document.createEvent('Event');
-                      event.initEvent('sw.update', true, true);
-                      window.dispatchEvent(event);
-                    }
-                    break;
-                }
-              };
-            };
-          }).catch(function(err) {
-            console.log('SW registration failed: ', err);
-          });
-        });
-        window.addEventListener('sw.update', () => {
-          console.log('SW updated finished.');
-        });
-      };
-    </script></script>>
-    <link rel="manifest" href="{{ '/manifest.json' | absolute_url }}">
-    {% endif %}
-
   </head>
   <body class="dark-theme" id="body">
     <div id="fb-root"></div>
