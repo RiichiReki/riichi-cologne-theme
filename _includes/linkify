@@ -1,5 +1,5 @@
-{% assign start_delimiters = '(<em>| |“|<p>|<rt>|<li>|<td>)'%}
-{% assign end_delimiters = '( |!|\?|,|\.|\)|</rt>|</li>|</td>)' %}
+{% assign start_delimiters = '(<em>| |“|<p>|<rt>|<li>|<td>|<h3 id="[a-z\-]*">)'%}
+{% assign end_delimiters = '( |!|\?|,|\.|\)|</rt>|</li>|</td>|</h3>)' %}
 {% assign content = include.content %}
 {% assign pages = site.pages
   | where: "type", "glossary"
