@@ -1,7 +1,7 @@
-<blockquote id="{{ comment.id }}" class="interface" itemscope itemtype="http://schema.org/Comment">
+<blockquote id="{{ comment.id }}" class="interface" itemscope itemtype="https://schema.org/Comment">
   <p>
     <span 
-      itemprop="author" itemscope itemtype="http://schema.org/Person">
+      itemprop="author" itemscope itemtype="https://schema.org/Person">
       {% if comment.url %}<a href="{{ comment.url }}#{{ comment.id }}" rel="nofollow ugc">{% endif %}
       <span itemprop="name">{{ comment.name | xml_escape }}</span>
       {% if comment.url %}</a>

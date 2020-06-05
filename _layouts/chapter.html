@@ -58,7 +58,7 @@ h1::before {
   }]
 }
 </script>
-<div vocab="http://schema.org/" typeof="Chapter WebPage">
+<div vocab="https://schema.org/" typeof="Chapter WebPage">
   <header>
     <div property="isPartOf" typeof="Book">
       <meta property="url" content="{{ page.book.url | absolute_url }}">
@@ -187,14 +187,14 @@ h1::before {
   <div class="icons">
     <a
       title="Share Chapter on Facebook"
-      href="http://www.facebook.com/sharer.php?src=bm&u={{ page.url | absolute_url }}&t={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}"
+      href="https://www.facebook.com/sharer.php?src=bm&u={{ page.url | absolute_url }}&t={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}"
       target="_blank"
       rel="noopener nofollow">
         <img src="/assets/images/facebook.png" alt="Share Chapter on Facebook">
       </a>
       <a
         title="Share Chapter on Twitter"
-        href="http://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ site.title | url_encode }}%20{{ page.title | url_encode }}&via={{ site.twitter.username }}&hashtags=Fantasy,WebFiction,WebNovel,WebSerial"
+        href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ site.title | url_encode }}%20{{ page.title | url_encode }}&via={{ site.twitter.username }}&hashtags=Fantasy,WebFiction,WebNovel,WebSerial"
         target="_blank"
         rel="noopener nofollow">
         <img src="/assets/images/twitter.png" alt="Share Chapter on Twitter">
