@@ -69,10 +69,14 @@
   >p,
   >h3 {
     &:first-child,
-    span *,
-    a {
+    span * {
       background-color: var(--blue);
       color: $white;
     }
+  }
+
+  > h3 a {
+    background-color: var(--blue);
+    color: $white;
   }
 }
