@@ -69,7 +69,8 @@
   >p,
   >h3 {
     &:first-child,
-    span * {
+    span *,
+    a {
       background-color: var(--blue);
       color: $white;
     }
