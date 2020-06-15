@@ -115,13 +115,17 @@ layout: base
       last updated on <span property="dateModified">{% last_modified_at %Y-%m-%d %}</span>
     </small>
     {% endif %}
+    <small class="block-right">
     {% if page.author %}
     {% assign author = site.data.authors[page.author] %}
-    <small class="block-right" property="author" typeof="Person">
+    <span property="author" typeof="Person">
       written by <span property="name">{{ author.name }}</span>
       <meta property="url" content="{{ author.url }}">
-    </small>{% endif %}{% if page.editor %}{% assign editor = site.data.authors[page.editor] %}<small class="block-right" property="editor" typeof="Person">, edited by <span property="name">{{ editor.name }}</span>
+    </span>{% endif %}{%
+      if page.editor %}{% assign editor = site.data.authors[page.editor] 
+    %}<span property="editor" typeof="Person">, edited by <span property="name">{{ editor.name }}</span>
      {% if editor.url %}<meta property="url" content="{{ editor.url }}">{% endif %}
+    </span>
     </small>
     {% endif %}
     {% if page.sponsors %}
