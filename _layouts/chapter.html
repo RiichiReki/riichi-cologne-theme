@@ -17,46 +17,60 @@ layout: base
 {% endfor %}
 
 <style>
-h1::before {
-  content: 'Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
-  display: block;
-}
+  h1::before {
+    content: 'Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
+    display: block;
+  }
 
-{% for page in previous_pages %}
-.previous::before {
-  content: 'Previous Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
-  display: block;
-}
-{% endfor %}
+    {
+    % for page in previous_pages %
+  }
 
-{% for page in next_pages %}
-.next::before {
-  content: 'Next Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
-  display: block;
-}
-{% endfor %}
+  .previous::before {
+    content: 'Previous Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
+    display: block;
+  }
+
+    {
+    % endfor %
+  }
+
+    {
+    % for page in next_pages %
+  }
+
+  .next::before {
+    content: 'Next Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
+    display: block;
+  }
+
+    {
+    % endfor %
+  }
+
 </style>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 0,
-    "name": "{{ site.title }}",
-    "item": "{{ "/" | absolute_url }}"
-  }, {
-    "@type": "ListItem",
-    "position": 1,
-    "name": "Volume {{ page.book.number }}: {{ page.book.title }}",
-    "item": "{{ page.book.url | absolute_url }}"
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "Chapter {{ page.chapter }}: {{ page.title }}",
-    "item": "{{ page.url | absolute_url }}"
-  }]
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 0,
+      "name": "{{ site.title }}",
+      "item": "{{ " / " | absolute_url }}"
+    }, {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Volume {{ page.book.number }}: {{ page.book.title }}",
+      "item": "{{ page.book.url | absolute_url }}"
+    }, {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Chapter {{ page.chapter }}: {{ page.title }}",
+      "item": "{{ page.url | absolute_url }}"
+    }]
+  }
+
 </script>
 <div vocab="https://schema.org/" typeof="Chapter WebPage">
   <header>
@@ -66,7 +80,7 @@ h1::before {
       <meta property="position" content="{{ page.book.number }}">
       <meta property="copyrightYear" content="{{ page.book.copyrightYear }}">
       {%if page.book.sameAs %}
-        <meta property="sameAs" content="{{ page.book.sameAs }}">
+      <meta property="sameAs" content="{{ page.book.sameAs }}">
       {% endif %}
       <meta property="inLanguage" content="{{ page.lang }}">
       {% if page.author %}
@@ -84,10 +98,11 @@ h1::before {
       </div>
       {% endif %}
       {% for genre in page.book.genres %}
-        <meta property="genre" content="{{ genre }}">
+      <meta property="genre" content="{{ genre }}">
       {% endfor %}
     </div>
-    <h1 aria-label="Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: {{ page.title }}">{{ page.title }}</h1>
+    <h1 aria-label="Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: {{ page.title }}">
+      {{ page.title }}</h1>
     <meta property="name" content="{{ page.book.number }}-{{ page.chapter }}: {{ page.title }}">
     <meta property="url" content="{{ page.url | absolute_url }}">
     <div property="speakable" typeof="SpeakableSpecification">
@@ -95,28 +110,29 @@ h1::before {
       <meta property="xpath" content="/html/body/main/div/section">
     </div>
     {% if page.date %}
-      <small class="block-left">
-        published on <span property="datePublished">{{ page.date | date: "%Y-%m-%d" }}</span>,
-        last updated on <span property="dateModified">{% last_modified_at %Y-%m-%d %}</span>
-      </small>
+    <small class="block-left">
+      published on <span property="datePublished">{{ page.date | date: "%Y-%m-%d" }}</span>,
+      last updated on <span property="dateModified">{% last_modified_at %Y-%m-%d %}</span>
+    </small>
     {% endif %}
     {% if page.author %}
     {% assign author = site.data.authors[page.author] %}
-      <small class="block-right" property="author" typeof="Person">
-      written by  <span property="name">{{ author.name }}</span>
-        <meta property="url" content="{{ author.url }}">
-      </small>
+    <small class="block-right" property="author" typeof="Person">
+      written by <span property="name">{{ author.name }}</span>
+      <meta property="url" content="{{ author.url }}">
+    </small>
     {% endif %}
     {% if page.sponsors %}
-      <small class="block-right">
-        sponsored by
-        {% for sponsor in page.sponsors %}
-        <span property="sponsor" typeof="Person"><span property="name">{{ sponsor }}</span></span>
-        {% endfor %}
-      </small>
+    <small class="block-right">
+      sponsored by
+      {% for sponsor in page.sponsors %}
+      <span property="sponsor" typeof="Person"><span property="name">{{ sponsor }}</span></span>
+      {% endfor %}
+    </small>
     {% endif %}
     <div class="clearfix"></div>
-    {% capture characters_string %}{{ page.characters.main }}, {{ page.characters.secondary | join: ", "}}{% endcapture %}
+    {% capture characters_string %}{{ page.characters.main }},
+    {{ page.characters.secondary | join: ", "}}{% endcapture %}
     {% assign characters = characters_string | split: ", " %}
     {% for character in characters %}
     {% assign character_string = character | append: "-latest" %}
@@ -136,18 +152,19 @@ h1::before {
     {% if words > 200 %}
     <nav class="d-flex">
       {% for page in previous_pages %}
-        <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+      <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
       {% endfor %}
-      
+
       {% for page in next_pages %}
-        {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
-          {% break %}
-        {% elsif jekyll.environment != "unpublished" and page.published == "sponsors" %}
-        <a class="btn btn-lg btn-primary next early-acess" title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
-          <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}"></a>
-        {% else %}
-        <a class="btn btn-lg btn-primary next" title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
-        {% endif %}
+      {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
+      {% break %}
+      {% elsif jekyll.environment != "unpublished" and page.published == "sponsors" %}
+      <a class="btn btn-lg btn-primary next early-acess" title="{{ site.patreon.title }}"
+        href="{{ site.patreon.url }}">{{ site.patreon.title }}
+        <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}"></a>
+      {% else %}
+      <a class="btn btn-lg btn-primary next" title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+      {% endif %}
       {% endfor %}
     </nav>
     {% endif %}
@@ -163,86 +180,78 @@ h1::before {
 <footer>
   <nav class="d-flex" id="navigation" aria-flowto="comments">
     {% for page in previous_pages %}
-      <a class="btn btn-lg btn-primary previous"title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+    <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
     {% endfor %}
-    
+
     {% for page in next_pages %}
     {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
-      {% break %}
+    {% break %}
     {% elsif jekyll.environment != "unpublished" and page.published == "sponsors" %}
-      <a class="btn btn-lg btn-primary next early-acess" title="{{ site.patreon.title }}" href="{{ site.patreon.url }}">{{ site.patreon.title }}
-        <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}"></a>
-      {% else %}
-      <a class="btn btn-lg btn-primary next" title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
-      {% endif %}
+    <a class="btn btn-lg btn-primary next early-acess" title="{{ site.patreon.title }}"
+      href="{{ site.patreon.url }}">{{ site.patreon.title }}
+      <img src="{{"/assets/images/patreon.png" | absolute_url }}" alt="{{ site.patreon.title }}"></a>
+    {% else %}
+    <a class="btn btn-lg btn-primary next" title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+    {% endif %}
     {% endfor %}
-    </nav>
+  </nav>
   <div class="clearfix"></div>
   <hr>
 
-<aside class="social">
-  <p>
-     Share this page on
-  </p>
-  <div class="icons">
-    <a
-      title="Share Chapter on Facebook"
-      href="https://www.facebook.com/sharer.php?src=bm&u={{ page.url | absolute_url }}&t={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}"
-      target="_blank"
-      rel="noopener nofollow">
+  <aside class="social">
+    <p>
+      Share this page on
+    </p>
+    <div class="icons">
+      <a title="Share Chapter on Facebook"
+        href="https://www.facebook.com/sharer.php?src=bm&u={{ page.url | absolute_url }}&t={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}"
+        target="_blank" rel="noopener nofollow">
         <img src="/assets/images/facebook.png" alt="Share Chapter on Facebook">
       </a>
-      <a
-        title="Share Chapter on Twitter"
+      <a title="Share Chapter on Twitter"
         href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ site.title | url_encode }}%20{{ page.title | url_encode }}&via={{ site.twitter.username }}&hashtags=Fantasy,WebFiction,WebNovel,WebSerial"
-        target="_blank"
-        rel="noopener nofollow">
+        target="_blank" rel="noopener nofollow">
         <img src="/assets/images/twitter.png" alt="Share Chapter on Twitter">
       </a>
-      <a
-        title="Share Chapter on Tumblr"
-        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl={{ page.url | absolute_url }}&title=Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}&tags={{ site.title | replace: " ", "" }},WebFiction,WebNovel,WebSerial,Fantasy"
-        target="_blank"
-        rel="noopener nofollow">
-        <img src="/assets/images/tumblr.png" alt="Share Chapter on Tumblr">
-      </a>
-      <a
-        title="Share Chapter on Pocket"
-        href="https://getpocket.com/edit?url={{ page.url | absolute_url }}"
-        target="_blank"
-        rel="noopener nofollow">
-        <img src="/assets/images/pocket.png" alt="Share Chapter on Pocket">
-      </a>
-      <a
-        title="Share Chapter on Mix"
-        href="https://mix.com/mixit?su=submit&url={{ page.url | absolute_url }}"
-        target="_blank"
-        rel="noopener nofollow">
-        <img src="/assets/images/mix.png" alt="Share Chapter on Mix">
-      </a>
-      <a
-        title="Share Chapter on Pinterest"
-        href="https://pinterest.com/pin/create/button/?url={{ page.url | absolute_url }}&description={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}&media={{ "/assets/images/site-card.png" | absolute_url }}"
-        target="_blank"
-        rel="noopener nofollow">
-        <img src="/assets/images/pinterest.png" alt="Share Chapter on Pinterest">
-      </a>
-      <a
-        title="Share Chapter on reddit"
+      <a title="Share Chapter on reddit"
         href="https://reddit.com/submit?url={{ page.url | absolute_url }}&title={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}"
-        target="_blank"
-        rel="noopener nofollow">
+        target="_blank" rel="noopener nofollow">
         <img src="/assets/images/reddit.png" alt="Share Chapter on reddit">
       </a>
-      <a
-        title="Share Chapter on VK"
-        href="https://vk.com/share.php?url={{ page.url | absolute_url }}"
-        target="_blank"
+      <a title="Share Chapter on Pinterest"
+        href="https://pinterest.com/pin/create/button/?url={{ page.url | absolute_url }}&description={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}&media={{ "/assets/images/site-card.png" | absolute_url }}"
+        target="_blank" rel="noopener nofollow">
+        <img src="/assets/images/pinterest.png" alt="Share Chapter on Pinterest">
+      </a>
+      <a title="Share Chapter on Telegram"
+        href="https://telegram.me/share/url?url={{ page.url | absolute_url }}&text={{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}"
+        target="_blank" rel="noopener nofollow">
+        <img src="/assets/images/telegram.png" alt="Share Chapter on Telegram">
+      </a>
+      <a title="Share Chapter on WhatsApp"
+        href="https://api.whatsapp.com/send?text=Checkout%20{{ site.title | url_encode }}%20Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}.%20{{ page.url | absolute_url }}"
+        target="_blank" rel="noopener nofollow">
+        <img src="/assets/images/whatsapp.png" alt="Share Chapter on WhatsApp">
+      </a>
+      <a title="Share Chapter on Tumblr"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl={{ page.url | absolute_url }}&title=Chapter%20{{ page.book.number }}-{{ page.chapter }}%3A%20{{ page.title | url_encode }}&tags={{ site.title | replace: " ", "" }},WebFiction,WebNovel,WebSerial,Fantasy"
+        target="_blank" rel="noopener nofollow">
+        <img src="/assets/images/tumblr.png" alt="Share Chapter on Tumblr">
+      </a>
+      <a title="Share Chapter on VK" href="https://vk.com/share.php?url={{ page.url | absolute_url }}" target="_blank"
         rel="noopener nofollow">
         <img src="/assets/images/vk.png" alt="Share Chapter on VK">
       </a>
-  </div>
-</aside>
+      <a title="Share Chapter on Pocket" href="https://getpocket.com/edit?url={{ page.url | absolute_url }}"
+        target="_blank" rel="noopener nofollow">
+        <img src="/assets/images/pocket.png" alt="Share Chapter on Pocket">
+      </a>
+      <a title="Share Chapter on Mix" href="https://mix.com/mixit?su=submit&url={{ page.url | absolute_url }}"
+        target="_blank" rel="noopener nofollow">
+        <img src="/assets/images/mix.png" alt="Share Chapter on Mix">
+      </a>
+    </div>
+  </aside>
 </footer>
 <script>
   var Hyphenopoly = {
@@ -250,6 +259,7 @@ h1::before {
       "en-ca": "Supercalifragilisticexpialidocious"
     }
   };
+
 </script>
 <script src="{{ "/assets/vendor/hyphenopoly/Hyphenopoly_Loader.js" | absolute_url }}" defer></script>
 
