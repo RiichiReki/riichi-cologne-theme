@@ -120,6 +120,8 @@ layout: base
     <small class="block-right" property="author" typeof="Person">
       written by <span property="name">{{ author.name }}</span>
       <meta property="url" content="{{ author.url }}">
+    </small>{% endif %}{% if page.editor %}{% assign editor = site.data.authors[page.editor] %}<small class="block-right" property="editor" typeof="Person">, edited by <span property="name">{{ editor.name }}</span>
+     {% if editor.url %}<meta property="url" content="{{ editor.url }}">{% endif %}
     </small>
     {% endif %}
     {% if page.sponsors %}
