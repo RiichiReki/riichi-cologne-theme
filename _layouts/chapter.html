@@ -22,31 +22,23 @@ layout: base
     display: block;
   }
 
-    {
-    % for page in previous_pages %
-  }
+  {% for page in previous_pages %}
 
   .previous::before {
     content: 'Previous Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
     display: block;
   }
 
-    {
-    % endfor %
-  }
+  {% endfor %}
 
-    {
-    % for page in next_pages %
-  }
+  {% for page in next_pages %}
 
   .next::before {
     content: 'Next Chapter: {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
     display: block;
   }
 
-    {
-    % endfor %
-  }
+  {% endfor %}
 
 </style>
 <script type="application/ld+json">
