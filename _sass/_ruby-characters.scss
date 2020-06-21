@@ -4,14 +4,14 @@ ruby {
 
 rt {
   font-size: 70%;
-  line-height: initial;
+  line-height: 0;
+  margin-top: -1.5rem;
 }
 
 rb {
   display: block;
   text-align: center;
-  padding-top: -1rem;
-  line-height: 0.9;
+  line-height: 0.8;
 
   &.first {
     text-align: right;

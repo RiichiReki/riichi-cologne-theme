@@ -59,7 +59,7 @@ hr {
   justify-content: center;
 }
 
-.button {
+.btn {
   border: 1px solid;
   border-radius: .5em;
   display: block;
@@ -72,8 +72,8 @@ blockquote {
   margin: 1em 0 1em 0;
   padding: 0em;
   font-style: normal;
-  border: 1px solid;
-  border-radius: .3rem;
+  border: 2px solid;
+  border-radius: 10px;
   break-inside: avoid;
   box-decoration-break: slice;
 

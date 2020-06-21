@@ -1,5 +1,6 @@
 ---
 ---
+
 body {
   font-family: "Source Serif Pro";
 }
@@ -15,9 +16,14 @@ h1, h2, h3, h4 {
 blockquote {
   font-family: "Marcellus SC";
   font-size: 100%;
+  line-height: 3 !important;
 
   > p:first-child {
     font-weight: bold;
+  }
+
+  p, li {
+    line-height: 3 !important;
   }
 }
 
@@ -34,8 +40,8 @@ a {
 }
 
 .pdf-break-before {
-  break-before: always!important;
-  page-break-before: always!important;
+  break-before: always !important;
+  page-break-before: always !important;
 }
 
 .pdf-only {
@@ -63,5 +69,5 @@ a {
 .volume-number + p {
   text-align: center !important;
   font-size: 200% !important;
-  font-family: "Source Serif Pro" !important;
+  font-family: serif !important;
 }
