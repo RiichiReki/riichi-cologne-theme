@@ -72,7 +72,8 @@ blockquote {
   margin: 1em 0 1em 0;
   padding: 0em;
   font-style: normal;
-  border: 2px outset;
+  border: 1px solid;
+  border-radius: .3rem;
   break-inside: avoid;
   box-decoration-break: slice;
 
@@ -86,6 +87,7 @@ blockquote {
     &:first-child {
       display: block;
       border: 0;
+      border-bottom: 1px solid;
       padding: .5em 1em;
       margin: 0 0 1em;
       font-weight: bold;

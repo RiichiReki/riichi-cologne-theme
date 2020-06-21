@@ -14,13 +14,14 @@ hr {
 
 blockquote {
   background-color: $white;
+  border-color: rgb(0, 0, 0);
 
   >p:first-child {
-    background-color: mix($white, $secondary-light, 70%);
+    background-color: $white;
     color: rgb(0, 0, 0);
 
     a {
-      background-color: mix($white, $secondary-light, 70%);
+      background-color: $white;
       color: rgb(0, 0, 0);
     }
   }
