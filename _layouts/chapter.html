@@ -26,7 +26,11 @@ layout: base
 
 <style>
   h1::before {
-    content: 'Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
+{% if page.current_chapters %}
+  content: 'Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.current_chapters }}: ';
+{% else %}
+  content: 'Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
+{% endif %}
     display: block;
   }
 
