@@ -480,3 +480,7 @@ li:empty {
 .disabled {
   cursor: default !important;
 }
+
+[typeof=Question] h2 {
+  margin-top: 1em;
+}
