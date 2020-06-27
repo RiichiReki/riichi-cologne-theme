@@ -139,6 +139,7 @@ layout: base
     {% assign characters = characters_string | split: ", " %}
     {% for character in characters %}
     {% assign character_string = character | append: "-latest" %}
+    <!-- {{character_string}} -->
     <div property="character" typeof="Person">
       {% assign db_character = site.data.characters[character_string] %}
       <meta property="name" content="{{ db_character.name }}">
