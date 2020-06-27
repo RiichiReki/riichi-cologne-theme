@@ -8,15 +8,15 @@ if include.number
   endif
 %}{%
 else
-%}<ruby aria-label="{{ include.text | join: " "}}">{%
+%}<ruby>{%
   if include.base.first
 %}{% 
     for b in include.base
-%}<rb{% if forloop.first %} class="first"{% endif %}{% if forloop.last %} class="last"{% endif %}>{{ b }}</rb><rp> (</rp><rt>{{ include.text[forloop.index0] }}</rt><rp>)</rp>{% 
+%}<rb{% if forloop.first %} class="first"{% endif %}{% if forloop.last %} class="last"{% endif %} aria-hidden="true">{{ b }}</rb><rp> (</rp><rt>{{ include.text[forloop.index0] }}</rt><rp>)</rp>{% 
     endfor
 %}{%
   else
-%}<rb>{{ include.base }}</rb><rp> (</rp><rt>{{ include.text }}</rt><rp>)</rp>{%
+%}<rb aria-hidden="true">{{ include.base }}</rb><rp> (</rp><rt>{{ include.text }}</rt><rp>)</rp>{%
   endif
 %}</ruby>{%
 endif
