@@ -142,15 +142,14 @@ layout: base
     {% assign characters = characters_string | split: "," %}
     {% for character in characters %}
     {% assign character_string = character | strip | append: "-latest" %}
-    <!-- {{character_string}} -->
-    <div property="character" typeof="Person">
+    <div property="character" typeof="Person"><!--{{character_string}}-->
       {% assign db_character = site.data.characters[character_string] %}
       <meta property="name" content="{{ db_character.name }}">
       <meta property="gender" content="{{ db_character.gender }}">
     </div>
     {% endfor %}
     {% for location in page.location %}
-    <div property="contentLocation" typeof="Place">
+    <div property="contentLocation" typeof="Place"><!--{{ location }}-->
       <meta property="name" content="{{ site.data.locations[location].name }}">
     </div>
     {% endfor %}
