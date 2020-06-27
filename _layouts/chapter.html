@@ -134,11 +134,14 @@ layout: base
     {% endif %}
     </small>
     <div class="clearfix"></div>
-    {% capture characters_string %}{{ page.characters.main }},
-    {{ page.characters.secondary | join: ", "}}{% endcapture %}
-    {% assign characters = characters_string | split: ", " %}
+    {% capture characters_string %}
+      {{ page.characters.main }}
+      {% if page.characters.secondary %}, {{ page.characters.secondary | join: ", "}}{% endif %}
+      {% if page.characters.teritary %}, {{ page.characters.teritary | join: ", "}}{% endif %}
+    {% endcapture %}
+    {% assign characters = characters_string | split: "," %}
     {% for character in characters %}
-    {% assign character_string = character | append: "-latest" %}
+    {% assign character_string = character | strip | append: "-latest" %}
     <!-- {{character_string}} -->
     <div property="character" typeof="Person">
       {% assign db_character = site.data.characters[character_string] %}
