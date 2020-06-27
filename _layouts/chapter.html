@@ -100,7 +100,7 @@ layout: base
       <meta property="genre" content="{{ genre }}">
       {% endfor %}
     </div>
-    <h1 aria-label="Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: {{ page.title }}">
+    <h1 aria-label="Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: {{ page.title }}" aria-flowto="chapter-content">
       {{ page.title }}</h1>
     <meta property="name" content="{{ page.book.number }}-{{ page.chapter }}: {{ page.title }}">
     <meta property="url" content="{{ page.url | absolute_url }}">
@@ -173,7 +173,7 @@ layout: base
     {% endif %}
     <div class="clearfix"></div>
   </header>
-  <section class="hyphenate" property="text" aria-flowto="navigation">
+  <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content">
     <!--sse-->
     {% include linkify content=content %}
     <!--/sse-->

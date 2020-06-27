@@ -8,7 +8,7 @@ if include.number
   endif
 %}{%
 else
-%}<ruby>{%
+%}<ruby aria-label="{{ include.text | join: " "}}">{%
   if include.base.first
 %}{% 
     for b in include.base
