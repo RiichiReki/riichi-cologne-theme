@@ -1,5 +1,5 @@
 <h2>Leave a Comment</h2>
-<form name="Comments" method="POST" action="{{ site.comments.action }}" id="commentform" class="form-horizontal" data-netlify="true">
+<form name="Comments" method="POST" action="{{ site.comments.action }}" id="commentform" class="form-horizontal" data-netlify="true" data-netlify-recaptcha="true">
   <fieldset id="commentfields">
     <input name="slug" type="hidden" value="{{ slug }}">
     <div>
@@ -14,6 +14,7 @@
       <label for="url">Website</label>
       <input type="text" name="url" id="url" placeholder="https://domain.tld" />
     </div>
+    <div data-netlify-recaptcha="true"></div>
     <div>
       <button type="sumbit" id="commentbutton" class="btn btn-primary btn-block">Submit Comment</button>
     </div>
