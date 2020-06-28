@@ -83,14 +83,14 @@ layout: base
       {% endif %}
       <meta property="inLanguage" content="{{ page.lang }}">
       {% if page.author %}
-      {% assign author = site.data.authors[page.author] %}
+      {% assign author = site.data.staff[page.author] %}
       <div property="author" typeof="Person">
         <meta property="name" content="{{ author.name }}">
         <meta property="url" content="{{ author.url }}">
       </div>
       {% endif %}
       {% if page.publisher %}
-      {% assign author = site.data.authors[page.author] %}
+      {% assign author = site.data.staff[page.author] %}
       <div property="publisher" typeof="Person">
         <meta property="name" content="{{ author.name }}">
         <meta property="url" content="{{ author.url }}">
@@ -116,12 +116,12 @@ layout: base
     {% endif %}
     <small class="block-right">
       {% if page.author %}
-      {% assign author = site.data.authors[page.author] %}
+      {% assign author = site.data.staff[page.author] %}
       <span property="author" typeof="Person">
         written by <span property="name">{{ author.name }}</span>
         <meta property="url" content="{{ author.url }}">
       </span>{% endif %}{%
-      if page.editor %}{% assign editor = site.data.authors[page.editor] 
+      if page.editor %}{% assign editor = site.data.staff[page.editor] 
     %}<span property="editor" typeof="Person">, edited by <span property="name">{{ editor.name }}</span>
         {% if editor.url %}
         <meta property="url" content="{{ editor.url }}">{% endif %}
