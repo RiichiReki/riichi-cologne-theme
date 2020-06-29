@@ -9,32 +9,14 @@ layout: base
 {% endif %}
 
 <style>
-  {
-    % if page.previous.url %
-  }
-
   .previous::before {
     content: 'Previous Post:';
     display: block;
   }
-
-    {
-    % endif %
-  }
-
-    {
-    % if page.next.url %
-  }
-
   .next::before {
     content: 'Next Post: ';
     display: block;
   }
-
-    {
-    % endif %
-  }
-
 </style>
 <script type="application/ld+json">
   {
@@ -172,7 +154,6 @@ layout: base
         target="_blank" rel="noopener nofollow">
         <img src="/assets/images/mix.png" alt="Share Post on Mix">
       </a>
-
     </div>
   </aside>
 </footer>
