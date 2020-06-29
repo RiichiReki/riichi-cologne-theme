@@ -74,7 +74,7 @@ layout: compress
     <meta property="article:publisher" content="{{ site.facebook.publisher }}">
     <meta property="fb:app_id" content="{{ site.facebook.app_id }}">
     {% endif %}
-    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:url" content="{% if page.shortlink %}{{ page.shortlink }}{% else %}{{ page.url | absolute_url }}{% endif %}">
     <meta property="og:type" content="article">
     <!-- Search Engine Verification -->
     {% for pair in site.webmaster_verifications %}
@@ -82,9 +82,11 @@ layout: compress
       name="{{ pair.name }}"
       content="{{ pair.key }}">
     {% endfor %}
+    {% if page.published == true %}
     <link
       rel="canonical"
       href="{{ page.url | absolute_url }}">
+    {% endif %}
     {% if page.shortlink %}
       <link rel="shortlink" href="{% if site.shorturl %}{{ site.shorturl }}{{ page.shortlink }}{% else %}{{ page.shortlink | absolute_url }}{% endif %}">
     {% endif %}
