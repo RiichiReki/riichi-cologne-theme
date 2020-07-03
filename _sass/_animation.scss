@@ -8,11 +8,13 @@
   display: none;
 }
 
-.interface .interface>p:first-child~* {
+.interface .interface > p:first-child ~ *,
+.top-drowdown > p:first-child ~ * {
   display: none;
 }
 
-.interface .interface>p:first-child::before {
+.interface .interface > p:first-child::before,
+.top-toggle > p:first-child::before {
   display: inline-block;
   content: "▼";
   width: 1.5em;
@@ -20,11 +22,13 @@
   font-family: emoji;
 }
 
-.interface .interface>p:first-child.active~* {
+.interface .interface > p:first-child.active ~ *,
+.top-toggle > p:first-child.active ~ * {
   display: block;
 }
 
-.interface .interface>p:first-child.active::before {
+.interface .interface > p:first-child.active::before,
+.top-toggle > p:first-child.active::before {
   display: inline-block;
   content: "▲";
   width: 1.5em;
