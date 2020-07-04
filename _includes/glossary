@@ -7,9 +7,8 @@
   {% unless include.id == "" %}
     {% assign id = id | prepend: '-' | prepend: include.id %}
   {% endunless %}
-
   <blockquote 
-    class="interface{% if include.top %} top-toggle{% endif %}"
+    class="interface{% if include.top %} top-toggle{% endif %}{% if hay[1].priority %} style="order: {{ hay[1].priority }}"{% endif %}
     {% if hay[1].schema-type %}vocab="https://schema.org/" typeof="{{ hay[1].schema-type | absolute_url }}"{% endif %}>
     <p class="inactive" onclick="toggleAccordion(this)" id="{{ id }}">
       {{ hay[0] | replace: "_", " "}}
@@ -29,7 +28,6 @@
       {{ hay[1].text | markdownify }}
     </div>
     {% assign stack = hay[1] %}
-    {% if stack[1].priority %}{% assign stack = hay[1] | sort: priority %}{% endif %}
     {% include glossary data=stack top=false id=id %}
   </blockquote>
 {% else %}
