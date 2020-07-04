@@ -27,7 +27,7 @@ footer nav a::after {
 <div vocab="https://schema.org/" typeof="{% if page.schema_type %}{{ page.schema_type }}{% else %}DefinedTerm{% endif %}">
   <header>
     <h1 property="name">Glossary: {{ page.title }}</h1>
-    <meta property="mainEntityOfPage" content="{{ page.url | absolute_url }}">
+    <meta property="mainEntityOfPage" typeof="Url" content="{{ page.url | absolute_url }}">
     <meta property="url" content="{{ page.url | absolute_url }}">
     <div class="clearfix"></div>
   </header>
