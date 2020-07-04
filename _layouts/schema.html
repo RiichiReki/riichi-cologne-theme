@@ -10,7 +10,7 @@ layout: base
       {% endfor %}
       <link property="rdfs:subClassOf" href="{{ page.subclass-of.url | absolute_url }}">
       <a href="{{ page.subclass-of | absolute_url }}">{{ page.subclass-of | split: '/' | last }}</a>
-      {% unless page.finalEnumeration %} &gt; {% else %} :: {% endunless %}
+      {% unless page.enumeration-member %} &gt; {% else %} :: {% endunless %}
       <a href="{{ page.url | absolute_url }}">{{ page.title }}</a>
     </div>
     <div property="rdfs:comment">
