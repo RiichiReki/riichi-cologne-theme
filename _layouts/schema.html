@@ -7,7 +7,7 @@ h1::before {
   display: block;
 }
 </style>
-<div vocab="https://schema.org/" typeof="rdfs:{{ page.type }}" resource="{{ page.url | absolute_url }}">
+<div vocab="{{ '/' | absolute_url }}" typeof="rdfs:{{ page.type }}" resource="{{ page.url | absolute_url }}">
   <header>
     <h1 property="rdfs:label">{{ page.title }}</h1>
     <div class="breadcrumb">
