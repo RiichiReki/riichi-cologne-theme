@@ -13,7 +13,9 @@
       {% if hay[1].subtitle %}<br><small>{{ hay[1].subtitle }}</small>{% endif %}
       {% if hay[1].schema-type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
     </p>
-    <p>{{ hay[1].text | markdownify }}</p>
+    <p{% if hay[1].schema-type %} typeof="description"{% endif %}>
+      {{ hay[1].text | markdownify }}
+    </p>
     {% assign stack = hay[1] %}
     {% include glossary data=stack top=false id=id %}
   </blockquote>

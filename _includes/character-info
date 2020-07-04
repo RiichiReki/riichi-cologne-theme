@@ -3,7 +3,7 @@
 <table>
   <tr>
     <td>Name:</td>
-    <td>{{ character.name }}</td>
+    <td property="name">{{ character.name }}</td>
   </tr>
   <tr>
     <td>Age:</td>
