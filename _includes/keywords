@@ -1,0 +1,23 @@
+{% 
+for hay in include.data 
+%}{% 
+  assign id = hay[0] | replace: "_", " " | slugify 
+%}{% 
+  unless include.id == "" 
+%}{% 
+    assign id = id | prepend: '-' | prepend: include.id 
+%}{% 
+  endunless
+%}{% 
+  if hay[1].keywords 
+%}{% 
+    assign keywords = hay[1].keywords | join: '|' | prepend: '(' | append: ')' 
+%}{% 
+    assign pair = keywords | append: '#' | append: id 
+%}{{ pair }}@{% 
+  endif
+%}{% 
+  assign stack = hay[1]
+%}{% 
+  include keywords data=stack top=false id=id 
+%}{% endfor %}

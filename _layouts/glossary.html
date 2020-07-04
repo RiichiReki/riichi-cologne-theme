@@ -24,24 +24,16 @@ footer nav a::after {
   }]
 }
 </script>
-<div vocab="https://schema.org/" typeof="{% if page.schema_type %}{{ page.schema_type }}{% else %}DefinedTerm{% endif %}">
+<div>
   <header>
-    <h1 property="name">Glossary: {{ page.title }}</h1>
+    <h1>{{ page.title }}</h1>
     <meta property="url" content="{{ page.url | absolute_url }}">
     <div class="clearfix"></div>
   </header>
-  <div property="description">
+  <section class="hyphenate">
     {% include linkify content=content %}
-  </div>
+  </section>
 </div>
-<footer>
-  <nav class="btn-lg-block d-flex">
-      <a class="btn btn-primary previous back" 
-         title="{{ page.title }}" onclick="history.back()" rel="prev">Go Back</a>
-      <a  class="btn btn-primary"
-         title="Glossary" href="{{ "/glossary/" | absolute_url }}" rel="next">Go to Glossary</a>
-  </nav>
-</footer>
 <script>
   var Hyphenopoly = {
     require: {
