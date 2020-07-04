@@ -10,20 +10,20 @@
 
   <blockquote 
     class="interface{% if include.top %} top-toggle{% endif %}"
-    {% if hay[1].schema-type %}vocab="https://schema.org" typeof="{{ hay[1].schema-type | absolute_url }}"{% endif %}>
+    {% if hay[1].schema-type %}vocab="https://schema.org/" typeof="{{ hay[1].schema-type | absolute_url }}"{% endif %}>
     <p class="inactive" onclick="toggleAccordion(this)" id="{{ id }}">
       {{ hay[0] | replace: "_", " "}}
       {% if hay[1].subtitle %}<br><small>{{ hay[1].subtitle }}</small>{% endif %}
       {% if hay[1].schema-type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
     </p>
     {% for e in hay[1].element %}
-    <link vocab="{{ '/' | absolute_url }}" property="element" typeof="{{e}}">
+    <link property="element" typeof="{{ e | absolute_url }}">
     {% endfor %}
     {% for e in hay[1].effect %}
-    <link vocab="{{ '/' | absolute_url }}" property="effect" typeof="{{e}}">
+    <link property="effect" typeof="{{ e | absolute_url }}">
     {% endfor %}
     {% for e in hay[1].elementalWeakness %}
-    <link vocab="{{ '/' | absolute_url }}" property="elementalWeakness" typeof="{{e}}">
+    <link property="elementalWeakness" typeof="{{ e | absolute_url }}">
     {% endfor %}
     <div{% if hay[1].schema-type %} property="description"{% endif %}>
       {{ hay[1].text | markdownify }}
