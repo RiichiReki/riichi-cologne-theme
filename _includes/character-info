@@ -11,7 +11,7 @@
   </tr>
   <tr>
     <td>Gender:</td>
-    <td>{{ character.gender | replace: "http://schema.org/", ""}}</td>
+    <td>{{ character.gender | replace: "https://schema.org/", ""}}</td>
   </tr>
   <tr>
     <td>Race:</td>
