@@ -179,10 +179,11 @@ layout: base
   <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content">
     <!--sse-->
     {% include linkify content=content %}
-    
-    <script type="text/html">
-      {{ content }}
-    </script>
+    <!--/sse-->
+  </section>
+  <section class="hyphenate" id="chapter-export" style="display:none;">
+    <!--sse-->
+    {{ content }}
     <!--/sse-->
   </section>
   <footer>
