@@ -10,7 +10,7 @@
 
   <blockquote 
     class="interface{% if include.top %} top-toggle{% endif %}"
-    {% if hay[1].schema-type %}vocab="https://schema.org" typeof="{{ hay[1].schema-type }}"{% endif %}>
+    {% if hay[1].schema-type %}vocab="https://schema.org" typeof="{{ hay[1].schema-type | join: "  " }}"{% endif %}>
     <p class="inactive" onclick="toggleAccordion(this)" id="{{ id }}">
       {{ hay[0] | replace: "_", " "}}
       {% if hay[1].subtitle %}<br><small>{{ hay[1].subtitle }}</small>{% endif %}
@@ -22,7 +22,7 @@
     {% for e in hay[1].effect %}
     <link property="effect" typeof="{{e}}">
     {% endfor %}
-    <p{% if hay[1].schema-type %} typeof="description"{% endif %}>
+    <p{% if hay[1].schema-type %} property="description"{% endif %}>
       {{ hay[1].text | markdownify }}
     </p>
     {% assign stack = hay[1] %}
