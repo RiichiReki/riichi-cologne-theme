@@ -1,0 +1,33 @@
+{% for hay in include.data %}
+{% unless hay[0] == "subtitle" or hay[0] == "keywords" or hay[0] == "text" or hay[0]=="character-profile" or hay[0]=="character-window" %}
+  {% assign id = hay[0] | replace: "_", " " | slugify %}
+  {% unless include.id == "" %}
+    {% assign id = id | prepend: '-' | prepend: include.id %}
+  {% endunless %}
+
+  <blockquote class="interface {% if include.top %}top-toggle{% endif %}">
+    <p class="inactive" onclick="toggleAccordion(this)" id="{{ id }}">
+      {{ hay[0] | replace: "_", " "}}
+      {% if hay[1].subtitle %}<br><small>{{ hay[1].subtitle }}</small>{% endif %}
+    </p>
+    <p>{{ hay[1].text | markdownify }}</p>
+    {% assign stack = hay[1] %}
+    {% include glossary data=stack top=false id=id %}
+  </blockquote>
+{% else %}
+  {% assign stack = hay[1] %}
+  {% if hay[0]=="character-profile" %}
+    <blockquote class="interface">
+    <p class="inactive" onclick="toggleAccordion(this)">Profile</p>
+    {% include character-info character=stack %}
+    </blockquote>
+   {% endif %}
+  {% if hay[0]=="character-window" %}
+    <blockquote class="interface">
+    <p class="inactive" onclick="toggleAccordion(this)">Current Character Window</p>
+    {% capture window %}{% include character-window character=stack %}{% endcapture %}
+    {{ window | markdownify }}
+    </blockquote>
+  {% endif %}
+{% endunless %}
+{% endfor %}
