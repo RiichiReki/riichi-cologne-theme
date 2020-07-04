@@ -14,7 +14,7 @@ h1::before {
       {% for class in page.subclass-chain %}
       <a href="{{ class | absolute_url }}">{{ class | split: '/' | last }}</a>&nbsp;&gt;&nbsp;
       {% endfor %}
-      <link property="rdfs:subClassOf" href="{{ page.subclass-of.url | absolute_url }}">
+      <link property="rdfs:subClassOf" href="{{ page.subclass-of | absolute_url }}">
       <a href="{{ page.subclass-of | absolute_url }}">{{ page.subclass-of | split: '/' | last }}</a>
       {% unless page.enumeration-member %}&nbsp;&gt;&nbsp;{% else %}&nbsp;::&nbsp;{% endunless %}
       <a href="{{ page.url | absolute_url }}">{{ page.title }}</a>
