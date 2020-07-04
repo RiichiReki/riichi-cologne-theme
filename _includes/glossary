@@ -17,13 +17,13 @@
       {% if hay[1].schema-type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
     </p>
     {% for e in hay[1].element %}
-    <link property="element" typeof="{{ e | absolute_url }}">
+    <meta property="element" typeof="{{ e | absolute_url }}" content="">
     {% endfor %}
     {% for e in hay[1].effect %}
-    <link property="effect" typeof="{{ e | absolute_url }}">
+    <meta property="effect" typeof="{{ e | absolute_url }}" content="">
     {% endfor %}
     {% for e in hay[1].elementalWeakness %}
-    <link property="elementalWeakness" typeof="{{ e | absolute_url }}">
+    <meta property="elementalWeakness" typeof="{{ e | absolute_url }}" content="">
     {% endfor %}
     <div{% if hay[1].schema-type %} property="description"{% endif %}>
       {{ hay[1].text | markdownify }}
