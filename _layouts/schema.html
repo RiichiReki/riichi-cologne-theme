@@ -91,7 +91,7 @@ h1::before {
     {% endif %}
   </table>
     {% if page.members %}
-    <div>
+    <blockquote class="interface">
       <p>Enumeration Members</p>
       <ul>
         {% for member in page.members %}
@@ -100,7 +100,7 @@ h1::before {
         </li>
         {% endfor %}
       </ul>
-    </div>
+    </blockquote>
     {% endif %}
   </section>
   <a href="{{ "/schema/" | absolute_url }}">Go to Custom Schema Overview</a>
