@@ -19,7 +19,7 @@
   <tr>
     <td>Race:</td>
     <td>
-      {% for r in character.races %}<meta property="{{"/race" | absolute_url }}" typeof="https://schema.org/Text" value="{{r}}">{% endfor %}
+      {% for r in character.races %}<meta property="{{ "/race" | absolute_url }}" typeof="https://schema.org/Text" value="{{r}}">{% endfor %}
       {{ character.races | join: " " }}
     </td>
   </tr>
