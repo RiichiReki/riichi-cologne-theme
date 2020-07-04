@@ -17,10 +17,10 @@
       {% if hay[1].schema-type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
     </p>
     {% for e in hay[1].element %}
-    <link property="element" typeof="{{e}}">
+    <link vocab="{{ '/' | absolute_url }}" property="element" typeof="{{e}}">
     {% endfor %}
     {% for e in hay[1].effect %}
-    <link property="effect" typeof="{{e}}">
+    <link vocab="{{ '/' | absolute_url }}" property="effect" typeof="{{e}}">
     {% endfor %}
     <div{% if hay[1].schema-type %} property="description"{% endif %}>
       {{ hay[1].text | markdownify }}
