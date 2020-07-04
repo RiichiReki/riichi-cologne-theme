@@ -1,6 +1,12 @@
 ---
 layout: base
 ---
+<style>
+h1::before {
+  content: 'Custom Schema: ';
+  display: block;
+}
+</style>
 <div vocab="https://schema.org/" typeof="rdfs:{{ page.type }}" resource="{{ page.url | absolute_url }}">
   <header>
     <h1 property="rdfs:label">{{ page.title }}</h1>
@@ -97,4 +103,5 @@ layout: base
     </div>
     {% endif %}
   </section>
+  <a href="{{ "/schema/" | absolute_url }}">Go to Custom Schema Overview</a>
 </div>
