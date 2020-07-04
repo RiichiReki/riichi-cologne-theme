@@ -23,11 +23,8 @@
     </blockquote>
    {% endif %}
   {% if hay[0]=="character-window" %}
-    <blockquote class="interface">
-    <p class="inactive" onclick="toggleAccordion(this)">Current Character Window</p>
     {% capture window %}{% include character-window character=stack %}{% endcapture %}
     {{ window | markdownify }}
-    </blockquote>
   {% endif %}
 {% endunless %}
 {% endfor %}
