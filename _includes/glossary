@@ -7,11 +7,11 @@
 
   <blockquote 
     class="interface{% if include.top %} top-toggle{% endif %}"
-    {% if hay[1].schema-type %}vocab="https://schema.org" typeof="{{ hay[1].schema-typ }}"{% endif %}>
-    {% if hay[1].schema-type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
+    {% if hay[1].schema-type %}vocab="https://schema.org" typeof="{{ hay[1].schema-type }}"{% endif %}>
     <p class="inactive" onclick="toggleAccordion(this)" id="{{ id }}">
       {{ hay[0] | replace: "_", " "}}
       {% if hay[1].subtitle %}<br><small>{{ hay[1].subtitle }}</small>{% endif %}
+      {% if hay[1].schema-type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
     </p>
     <p>{{ hay[1].text | markdownify }}</p>
     {% assign stack = hay[1] %}
