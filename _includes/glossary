@@ -22,9 +22,9 @@
     {% for e in hay[1].effect %}
     <link property="effect" typeof="{{e}}">
     {% endfor %}
-    <p{% if hay[1].schema-type %} property="description"{% endif %}>
+    <div{% if hay[1].schema-type %} property="description"{% endif %}>
       {{ hay[1].text | markdownify }}
-    </p>
+    </div>
     {% assign stack = hay[1] %}
     {% include glossary data=stack top=false id=id %}
   </blockquote>
