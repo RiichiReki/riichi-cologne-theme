@@ -118,11 +118,11 @@ layout: base
       {% if page.author %}
       {% assign author = site.data.staff[page.author] %}
       <span property="author" typeof="Person">
-        written by <span property="name">{{ author.name }}</span>
+        written by {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener nofollow">{% endif %}<span property="name">{ author.name }}</span>{% if author.url %}</a>{% endif %}
         <meta property="url" content="{{ author.url }}">
       </span>{% endif %}{%
       if page.editor %}{% assign editor = site.data.staff[page.editor] 
-    %}<span property="editor" typeof="Person">, edited by {% if editor.url %}<a href="" target="_blank" ref="noopener nofollow" >{% endif %}<span property="name">{{ editor.name }}</span>{% if editor.url %}</a>{% endif %}
+    %}<span property="editor" typeof="Person">, edited by {% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener nofollow">{% endif %}<span property="name">{{ editor.name }}</span>{% if editor.url %}</a>{% endif %}
         {% if editor.url %}
         <meta property="url" content="{{ editor.url }}">{% endif %}
       </span>{% endif %}{% if page.sponsors %}, sponsored by
