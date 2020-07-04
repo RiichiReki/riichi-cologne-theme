@@ -28,7 +28,8 @@
     <div{% if hay[1].schema-type %} property="description"{% endif %}>
       {{ hay[1].text | markdownify }}
     </div>
-    {% assign stack = hay[1] | sort: priority %}
+    {% assign stack = hay[1] %}
+    {% if stack[1].priority %}{% assign stack = hay[1] | sort: priority %}{% endif %}
     {% include glossary data=stack top=false id=id %}
   </blockquote>
 {% else %}
