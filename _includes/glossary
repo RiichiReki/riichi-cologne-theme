@@ -22,6 +22,9 @@
     {% for e in hay[1].effect %}
     <link vocab="{{ '/' | absolute_url }}" property="effect" typeof="{{e}}">
     {% endfor %}
+    {% for e in hay[1].elementalWeakness %}
+    <link vocab="{{ '/' | absolute_url }}" property="elementalWeakness" typeof="{{e}}">
+    {% endfor %}
     <div{% if hay[1].schema-type %} property="description"{% endif %}>
       {{ hay[1].text | markdownify }}
     </div>
