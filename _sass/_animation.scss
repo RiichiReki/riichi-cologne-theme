@@ -4,10 +4,6 @@
   transition-delay: 0s;
 }
 
-.interface input {
-  display: none;
-}
-
 .interface .interface > p:first-child ~ *,
 .top-toggle > p:first-child ~ * {
   display: none;
