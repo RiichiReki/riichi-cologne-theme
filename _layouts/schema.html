@@ -1,0 +1,60 @@
+---
+layout: base
+---
+<div vocab="https://schema.org/" typeof="rdfs:{{ page.type }}" resource="{{ page.url | absolute_url }}">
+  <header>
+    <h1 property="rdfs:label">{{ page.title }}</h1>
+    <div class="breadcrumb">
+      {% for class in page.subclass-chain %}
+      <a href="{{ class | absolute_url }}">{{ class | split: '/' | last }}</a> &gt;
+      {% endfor %}
+      <link property="rdfs:subClassOf" href="{{ page.subclass-of.url | absolute_url }}">
+      <a href="{{ page.subclass-of | absolute_url }}">{{ page.subclass-of | split: '/' | last }}</a>
+      {% unless page.finalEnumeration %} &gt; {% else %} :: {% endunless %}
+      <a href="{{ page.url | absolute_url }}">{{ page.title }}</a>
+    </div>
+    <div property="rdfs:comment">
+        {{ page.class-comment }}
+    </div>
+  </header>
+  <section id="definitions">
+    <table>
+      {{ for property in page.properties }}
+      <tr typeof="rdfs:Property" resource="{{ property.property | absolute_url }}">
+        <th>
+          <code property="rdfs:label"><a href="{{ property.property | absolute_url }}">{{ property.property | split: '/' | last }}</a></code>
+        </th>
+        <td>
+          {% for type in property.rangeIncludes %}
+          <link property="rangeIncludes" href="{{ type | absolute_url }}"><a href="{{ type | absolute_url }}">"{{ type | split: '/' | last }}"</a>
+          {% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+          <link property="domainIncludes" href="{{ page.url | absolute_url }}">
+        </td>
+        <td property="rdfs:comment">
+          {{ property.comment }}
+        </td>
+      </tr>
+    {% endfor %}
+    {% if page.rangeIncludes %}
+    <tr>
+      <th>Values expected to be one of these types</th>
+    </tr>
+    <tr>
+      <td>
+        {% for include in page.rangeIncludes %}
+        <code>
+            <link property="rangeIncludes" href="{{ include | absolute_url }}">
+            <a 
+              href="{{ include | absolute_url }}" 
+              title="The '{{ page.title}}' property has values that include instances of the '{{ include | split:'/' | last }}' type.">
+                {{ include | split:'/' | last }}
+            </a>
+        </code>
+        {% unless forloop.last %}, {% endunless %}
+        {% endfor%}
+       </td>
+    </tr>
+    </table>
+  </section>
+</div>
