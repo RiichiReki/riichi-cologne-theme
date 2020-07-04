@@ -1,6 +1,6 @@
 {% for hay in include.data %}
 {% unless 
-   hay[0] == "subtitle" or hay[0] == "keywords" or hay[0] == "text" or 
+   hay[0] == "subtitle" or hay[0] == "keywords" or hay[0] == "text" or hay[0] == "priority" or 
    hay[0] == "character-profile" or hay[0] == "character-window" or 
    hay[0] == "schema-type" or hay[0] == "element" or hay[0] == "effect" %}
   {% assign id = hay[0] | replace: "_", " " | slugify %}
@@ -28,7 +28,7 @@
     <div{% if hay[1].schema-type %} property="description"{% endif %}>
       {{ hay[1].text | markdownify }}
     </div>
-    {% assign stack = hay[1] %}
+    {% assign stack = hay[1] | sort: priority %}
     {% include glossary data=stack top=false id=id %}
   </blockquote>
 {% else %}
