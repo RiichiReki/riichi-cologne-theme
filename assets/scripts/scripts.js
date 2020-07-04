@@ -161,7 +161,7 @@ window['toggleAccordion'] = toggleAccordion;
 
 function toggleAllAccordions() {
   document
-    .querySelectorAll('.interface .interface p:first-child')
+    .querySelectorAll('.inactive')
     .forEach(e => {
       toggleAccordion(e);
     });
