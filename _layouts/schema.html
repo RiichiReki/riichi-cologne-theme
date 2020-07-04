@@ -19,7 +19,7 @@ layout: base
   </header>
   <section id="definitions">
     <table>
-      {{ for property in page.properties }}
+      {% for property in page.properties %}
       <tr typeof="rdfs:Property" resource="{{ property.property | absolute_url }}">
         <th>
           <code property="rdfs:label"><a href="{{ property.property | absolute_url }}">{{ property.property | split: '/' | last }}</a></code>
