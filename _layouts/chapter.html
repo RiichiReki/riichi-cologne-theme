@@ -176,14 +176,14 @@ layout: base
     {% endif %}
     <div class="clearfix"></div>
   </header>
-  <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content">
-    <!--sse-->
-    {% include linkify content=content %}
-    <!--/sse-->
-  </section>
   <section class="hyphenate" id="chapter-export" style="display:none;">
     <!--sse-->
     {{ content }}
+    <!--/sse-->
+  </section>
+  <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content">
+    <!--sse-->
+    {% include linkify content=content %}
     <!--/sse-->
   </section>
   <footer>
