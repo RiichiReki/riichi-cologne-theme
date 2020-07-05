@@ -518,4 +518,8 @@ form {
     display: flex;
     flex-direction: column;
   }
+  
+  div:empty {
+    display: none;
+  }
 }
