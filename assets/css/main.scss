@@ -515,10 +515,10 @@ form {
 
 .glossary {
   section, .interface {
-    display: flex;
+    display: flex! important;
     flex-direction: column;
   }
-  
+
   div:empty {
     display: none;
   }
