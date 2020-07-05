@@ -19,7 +19,7 @@ for hay in include.data
     {% if hay[1].schema-type %}vocab="https://schema.org/" typeof="{{ hay[1].schema-type | absolute_url }}"{% endif %}>
     <p class="inactive" onclick="toggleAccordion(this)" id="{{ id }}">
       {{ hay[0] | replace: "_", " "}}
-      {% if hay[1].subtitle %}<br><small>{{ hay[1].subtitle }}</small>{% endif %}
+      {% if hay[1].subtitle %}<small>{{ hay[1].subtitle }}</small>{% endif %}
       {% if hay[1].schema-type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
     </p>
     {% for e in hay[1].element %}

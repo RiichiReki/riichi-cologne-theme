@@ -519,12 +519,24 @@ form {
     flex-direction: column;
   }
 
+  .interface>p:first-child small {
+    display: none;
+  }
+
+  .interface>p:first-child.active small {
+    display: block;
+  }
+
   .interface>p:first-child.active ~ *, .top-toggle>p:first-child.active ~ * {
     display: flex;
     flex-direction: column;
   }
 
+  .top-toggle {
+    margin-top: 0;
+  }
+
   div:empty {
-    display: none;
+    display: none !important;
   }
 }
