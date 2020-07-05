@@ -32,11 +32,11 @@
   </tr>
   <tr>
     <td>Height:</td>
-    <td>{{ character.appearance.height }}</td>
+    <td property="height" typeof="https://schema.org/Distance">{{ character.appearance.height }}</td>
   </tr>
   <tr>
     <td>Hair:</td>
-    <td property="height">{{ character.appearance.hair | join: ", " }}</td>
+    <td>{{ character.appearance.hair | join: ", " }}</td>
   </tr>
   <tr>
     <td>Eyes:</td>

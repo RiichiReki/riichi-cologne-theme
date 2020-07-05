@@ -85,8 +85,7 @@ h1::before {
               title="The '{{ page.title}}' property has values that include instances of the '{{ include | split:'/' | last }}' type.">
                 {{ include | split:'/' | last }}
             </a>
-          </code>
-          {% unless forloop.last %}, {% endunless %}
+          </code>{% unless forloop.last %},&nbsp;{% endunless %}
         </td>
       </tr>
       {% endfor %}
