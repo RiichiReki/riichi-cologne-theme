@@ -512,3 +512,10 @@ form {
 [typeof=Question] h2 {
   margin-top: 1em;
 }
+
+.glossary {
+  section, .interface {
+    display: flex;
+    flex-direction: column;
+  }
+}
