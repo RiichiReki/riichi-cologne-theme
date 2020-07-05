@@ -519,11 +519,11 @@ form {
     flex-direction: column;
   }
 
-  .interface>p:first-child small {
+  .interface>p:first-child > small {
     display: none;
   }
 
-  .interface>p:first-child.active small {
+  .interface>p:first-child.active > small {
     display: block;
   }
 

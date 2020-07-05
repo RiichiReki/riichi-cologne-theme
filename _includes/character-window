@@ -1,6 +1,6 @@
 {% assign character = site.data.characters[include.character]%}
 
-{:class="interface {{ include.class }}"}
+{:class="interface {{ include.class }}" style="order: 20"}
 > Character Info
 > {:onclick="toggleAccordion(this)" .inactive}
 >

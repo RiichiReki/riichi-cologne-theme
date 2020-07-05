@@ -40,7 +40,7 @@ for hay in include.data
 {% else %}
   {% assign stack = hay[1] %}
   {% if hay[0]=="character-profile" %}
-  <blockquote class="interface">
+  <blockquote class="interface" style="order: 10">
   <p class="inactive" onclick="toggleAccordion(this)">Profile</p>
   {% include character-info character=stack %}
   </blockquote>
