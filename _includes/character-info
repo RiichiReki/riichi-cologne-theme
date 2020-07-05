@@ -18,8 +18,16 @@
   <tr>
     <td>Race:</td>
     <td>
-      {% for r in character.races %}<meta property="{{ "/race" | absolute_url }}" typeof="https://schema.org/Text" content="{{r}}">{% endfor %}
-      {{ character.races | join: " " }}
+{% 
+  for r in character.races 
+%}{% 
+    assign t = r | slugify
+%}<meta 
+    property="{{ "/race" | absolute_url }}"
+    typeof="https://schema.org/Text"
+    content="{{ "/glossary/" | absolute_url | append: "#races-" | append: t }}">{% 
+  endfor
+%}{{ character.races | join: " " }}
     </td>
   </tr>
   <tr>
@@ -28,7 +36,7 @@
   </tr>
   <tr>
     <td>Hair:</td>
-    <td>{{ character.appearance.hair | join: ", " }}</td>
+    <td property="height">{{ character.appearance.hair | join: ", " }}</td>
   </tr>
   <tr>
     <td>Eyes:</td>
