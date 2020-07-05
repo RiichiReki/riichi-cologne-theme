@@ -17,7 +17,7 @@ for hay in include.data
     class="interface{% if include.top %} top-toggle{% endif %}"
     {% if hay[1].priority %} style="order: {{ hay[1].priority }}"{% endif %}
     {% if hay[1].schema-type %}vocab="https://schema.org/" typeof="{{ hay[1].schema-type | absolute_url }}"{% endif %}>
-    <p class="inactive" onclick="toggleAccordion(this)" id="{{ id }}">
+    <p class="inactive" onclick="toggleAccordion(this)" id="{{ id }}" style="order: -1">
       {{ hay[0] | replace: "_", " "}}
       {% if hay[1].subtitle %}<small>{{ hay[1].subtitle }}</small>{% endif %}
       {% if hay[1].schema-type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
@@ -31,7 +31,7 @@ for hay in include.data
     {% for e in hay[1].elementalWeakness %}
     <meta property="elementalWeakness" typeof="{{ e | absolute_url }}" content="{{ e | absolute_url }}">
     {% endfor %}
-    <div{% if hay[1].schema-type %} property="description"{% endif %} style="order: -1">
+    <div{% if hay[1].schema-type %} property="description"{% endif %} style="order: 1">
       {{ hay[1].text | markdownify }}
     </div>
     {% assign stack = hay[1] %}
