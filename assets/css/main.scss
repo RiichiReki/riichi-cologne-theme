@@ -515,7 +515,12 @@ form {
 
 .glossary {
   section, .interface {
-    display: flex! important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .interface>p:first-child.active ~ *, .top-toggle>p:first-child.active ~ * {
+    display: flex;
     flex-direction: column;
   }
 
