@@ -519,15 +519,16 @@ form {
     flex-direction: column;
   }
 
-  .interface>p:first-child > small {
+  .interface > p:first-child > small {
     display: none;
   }
 
-  .interface>p:first-child.active > small {
+  .interface > p:first-child.active > small {
     display: block;
   }
 
-  .interface>p:first-child.active ~ *, .top-toggle>p:first-child.active ~ * {
+  .interface > p:first-child.active ~ *,
+  .top-toggle > p:first-child.active ~ * {
     display: flex;
     flex-direction: column;
   }
@@ -536,7 +537,8 @@ form {
     margin-top: 0;
   }
 
-  .link > p:first-child a {
+  .interface > p:first-child.link a ,
+  .interface > p:first-child.link.active a {
     color: white;
     display: inline-block;
     width: calc(100% - 2.5em);
