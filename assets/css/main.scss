@@ -537,12 +537,18 @@ form {
     margin-top: 0;
   }
 
-  .interface > p:first-child.link a ,
-  .interface > p:first-child.link.active a {
+  .interface > p:first-child.link a  {
     color: white;
     display: inline-block;
     width: calc(100% - 2.5em);
 
+    &::before {
+      content: '🔗';
+    }
+  }
+
+  .interface > p:first-child.link,
+  .interface > p:first-child.link.active {
     &::before {
       content: '🔗';
     }

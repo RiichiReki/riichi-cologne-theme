@@ -1,7 +1,7 @@
 {% 
 for hay in include.data
 %}{% 
-   assign id = hay.text | replace: "_", " " | slugify
+   assign id = hay.title | replace: "_", " " | slugify
 %}{% 
    unless include.id == ""
 %}{%
