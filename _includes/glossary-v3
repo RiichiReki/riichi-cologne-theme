@@ -38,7 +38,7 @@ for hay in include.data
     <blockquote class="interface" style="order: 10"><p class="inactive" onclick="toggleAccordion(this)">Profile</p>
       {% include character-info character=char %}
     </blockquote>
-    {% capture window %}{% include character-window character=stack %}{% endcapture %}
+    {% capture window %}{% include character-window character=char %}{% endcapture %}
     {{ window | markdownify }}
   {% endif %}
   

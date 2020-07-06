@@ -536,7 +536,13 @@ form {
     margin-top: 0;
   }
 
-  div:empty {
-    display: none !important;
+  .link > p:first-child a {
+    color: white;
+    display: inline-block;
+    width: calc(100% - 2.5em);
+
+    &::before {
+      content: '🔗';
+    }
   }
 }
