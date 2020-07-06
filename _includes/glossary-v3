@@ -25,7 +25,7 @@ for hay in include.data
   {% for e in hay.effect %}
     <meta property="effect" typeof="{{ e | absolute_url }}" content="{{ e | split: '/'| last }}">
   {% endfor %}
-  {% for e in hay[1].weakness %}
+  {% for e in hay.weakness %}
     <meta property="elementalWeakness" typeof="{{ e | absolute_url }}" content="{{ e | split: '/'| last }}">
   {% endfor %}
   {% if hay.description %}
