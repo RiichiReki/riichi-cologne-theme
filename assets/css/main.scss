@@ -542,7 +542,7 @@ form {
     display: inline-block;
     width: calc(100% - 2.5em);
 
-    &::before {
+    &::before {ii
       content: '🔗';
     }
   }
