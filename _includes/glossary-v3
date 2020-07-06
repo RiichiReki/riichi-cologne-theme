@@ -1,0 +1,50 @@
+{% 
+for hay in include.data
+%}{% 
+   assign id = hay.text | replace: "_", " " | slugify
+%}{% 
+   unless include.id == ""
+%}{%
+      assign id = id | prepend: '-' | prepend: include.id
+%}{% 
+   endunless
+%}<blockquote
+    class="interface{% if include.top %} top-toggle{% endif %}"
+    style="order: {{ hay.order }}" 
+{% if hay.schema-type %}
+    vocab="https://schema.org/" typeof="{{ hay.schema_type | absolute_url }}"{% 
+   endif %}>
+    <p class="inactive{% if hay.link %} link{% endif %}" onclick="toggleAccordion(this)" id="{{ id }}" style="order: -1">
+      {% if hay.link %}<a href="{{ "/glossary/" | append: '#' |append: hay.link }}">{% endif %}{{ hay.title }}{% if hay.link %}</a>{% endif %}
+      {% if hay.subtitle %}<small>{{ hay.subtitle }}</small>{% endif %}
+      {% if hay.schema_type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
+    </p>
+  {% for e in hay.element %}
+    <meta property="element" typeof="{{ e | absolute_url }}" content="{{ e | split: '/'| last }}">
+  {% endfor %}
+  {% for e in hay.effect %}
+    <meta property="effect" typeof="{{ e | absolute_url }}" content="{{ e | split: '/'| last }}">
+  {% endfor %}
+  {% for e in hay[1].weakness %}
+    <meta property="elementalWeakness" typeof="{{ e | absolute_url }}" content="{{ e | split: '/'| last }}">
+  {% endfor %}
+  {% if hay.description %}
+    <div{% if hay.schema_type %} property="description"{% endif %} style="order: 1">
+      {{ hay.description | markdownify }}
+    </div>
+  {% endif %}
+  {% if hay.character %}
+    {% assign char = hay.character | append: '-latest' %}
+    <blockquote class="interface" style="order: 10"><p class="inactive" onclick="toggleAccordion(this)">Profile</p>
+      {% include character-info character=char %}
+    </blockquote>
+    {% capture window %}{% include character-window character=stack %}{% endcapture %}
+    {{ window | markdownify }}
+  {% endif %}
+  
+  {% assign stack = hay.children %}
+  {% include glossary-v3 data=stack top=false id=id %}
+</blockquote>
+{% 
+endfor
+%}
