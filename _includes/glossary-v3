@@ -14,7 +14,7 @@ for hay in include.data
 {% if hay.schema-type %}
     vocab="https://schema.org/" typeof="{{ hay.schema_type | absolute_url }}"{% 
    endif %}>
-    <p class="inactive{% if hay.link %} link{% endif %}" {% unless hay.link or hay.children %}onclick="toggleAccordion(this)"{% endunless %} id="{{ id }}" style="order: -1">
+    <p class="inactive{% if hay.link %} link{% endif %}" {% if hay.children %}onclick="toggleAccordion(this)"{% endif %} id="{{ id }}" style="order: -1">
       {% if hay.link %}<a href="{{ "/glossary/" | append: '#' |append: hay.link }}">{% endif %}{{ hay.title }}{% if hay.link %}</a>{% endif %}
       {% if hay.subtitle %}<small>{{ hay.subtitle }}</small>{% endif %}
       {% if hay.schema_type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
