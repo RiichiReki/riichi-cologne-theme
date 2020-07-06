@@ -541,10 +541,6 @@ form {
     color: white;
     display: inline-block;
     width: calc(100% - 2.5em);
-
-    &::before {ii
-      content: '🔗';
-    }
   }
 
   .interface > p:first-child.link,
