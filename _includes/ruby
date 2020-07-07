@@ -2,7 +2,7 @@
 if include.number
 %}{%
   if include.number
-%}{% assign text = site.data.numbers | where: base, include.number | last  %}{% include ruby base=include.number text=text %}{% 
+%}{% assign text = site.data.numbers | where: "base", include.number | last  %}{% include ruby base=include.number text=text %}{% 
   else
 %}{{include.number}}{%
   endif
