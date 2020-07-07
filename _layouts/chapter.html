@@ -1,6 +1,28 @@
 ---
 layout: base
 ---
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 0,
+      "name": "{{ site.title }}",
+      "item": "{{ "/" | absolute_url }}"
+    }, {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Volume {{ page.book.number }}: {{ page.book.title }}",
+      "item": "{{ page.book.url | absolute_url }}"
+    }, {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Chapter {{ page.chapter }}: {{ page.title }}",
+      "item": "{{ page.url | absolute_url }}"
+    }]
+  }
+</script>
 {% if page.previous_chapter %}
   {% assign previous_chapter_number = page.previous_chapter%}
 {% else %}
@@ -48,117 +70,141 @@ layout: base
   }
 {% endfor %}
 </style>
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-      "@type": "ListItem",
-      "position": 0,
-      "name": "{{ site.title }}",
-      "item": "{{ "/" | absolute_url }}"
-    }, {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Volume {{ page.book.number }}: {{ page.book.title }}",
-      "item": "{{ page.book.url | absolute_url }}"
-    }, {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Chapter {{ page.chapter }}: {{ page.title }}",
-      "item": "{{ page.url | absolute_url }}"
-    }]
-  }
 
-</script>
-<div vocab="https://schema.org/" typeof="Chapter WebPage">
+<div>
   <header>
-    <div property="isPartOf" typeof="Book">
-      <meta property="url" content="{{ page.book.url | absolute_url }}">
-      <meta property="name" content="{{ site.title }} {{ page.book.number }}: {{ page.book.title }}">
-      <meta property="position" content="{{ page.book.number }}">
-      <meta property="copyrightYear" content="{{ page.book.copyrightYear }}">
-      {%if page.book.sameAs %}
-      <meta property="sameAs" content="{{ page.book.sameAs }}">
-      {% endif %}
-      <meta property="inLanguage" content="{{ page.lang }}">
-      {% if page.author %}
-      {% assign author = site.data.staff | where: "id", page.author | last %}
-      <div property="author" typeof="Person">
-        <meta property="name" content="{{ author.name }}">
-        <meta property="url" content="{{ author.url }}">
-      </div>
-      {% endif %}
-      {% if page.publisher %}
-      {% assign author = site.data.staff | where: "id", page.author | last %}
-      <div property="publisher" typeof="Person">
-        <meta property="name" content="{{ author.name }}">
-        <meta property="url" content="{{ author.url }}">
-      </div>
-      {% endif %}
-      {% for genre in page.book.genres %}
-      <meta property="genre" content="{{ genre }}">
-      {% endfor %}
-    </div>
+    <script type="application/ld+json">
+    {
+      "@context": {
+        "rdfa": "http://www.w3.org/ns/rdfa#",
+        "schema": "http://schema.org/",
+        "cd": "{{ "/" | absolute_url }}"
+      },
+      "@graph": [
+        {% if page.author %}{% 
+          assign author = site.data.staff | where: "id", page.author | last %}
+        {
+          "@id": "{{ author.url }}",
+          "@type": "schema:Person",
+          "schema:name": "{{ author.name }}",
+          "schema:url": "{{ author.url }}"
+        },{% endif %}
+        {% if page.editor %}{% 
+          for editor in page.editor %}{% 
+            assign editor = site.data.staff | where: "id", page.editor | last %}
+        {
+          "@id": "{{ editor.url }}",
+          "@type": "schema:Person",
+          "schema:name": "{{ editor.name }}",
+          "schema:url": "{{ editor.url }}"
+        },{% endfor %}{% endif %}
+        {
+          "@id": "{{ page.book.url | absolute_url }}",
+          "@type": "schema:Book",
+          "schema:url": "{{ page.book.url | absolute_url }}",
+          "schema:name": "{{ site.title }} {{ page.book.number }}: {{ page.book.title }}",
+          "schema:position": "{{ page.book.number }}",
+          "schema:copyrightYear": "{{ page.book.copyrightYear }}",
+          "schema:inLanguage": "{{ page.lang }}"{% if page.author %}{% 
+            assign author = site.data.staff | where: "id", page.author | last %},
+          "schema:author": {
+            "@id": "{{ author.url }}"
+          },
+          "schema:publisher": {
+            "@id": "{{ author.url }}"
+          }{% endif %}{% if page.book.genres %},
+          "schema:genre": [{% for genre in page.book.genres %}
+            "{{ genre }}"{% unless forloop.last %},{% endunless %}{% endfor %}
+          ]{% endif %}
+        },{% assign characters = page.characters.main %}{% 
+          if page.characters.secondary %}{% 
+            assign characters = characters | concat: page.characters.secondary %}{%
+          endif %}{% if page.characters.tertitary %}{%
+            assign characters = characters | concat: page.characters.tertitary %}{%
+          endif %}{%
+          for character in characters %}{% 
+            assign character_string = character | strip | append: "-latest" %}{% 
+            assign db_character = site.data.characters[character_string] %}{% unless db_character%}{% continue %}{% endunless %}
+        {
+          "@id": "{% if db_character.url %}{{ db_character.url }}{% else %}character:{{ character_string}}{% endif %}",
+          "@type": "schema:Person",
+          "additionalType": "cd:Character",
+          "schema:name": "{{ db_character.name }}",
+          "schema:gender": {
+            "@type": "{{ db_character.gender | absolute_url }}",
+            "@value": "{{ db_character.gender | split: "/" | last }}"
+          }{% if db_character.url %},
+          "schema:url": "{{ db_character.url }}"{% endif %}
+        },{% endfor %}
+        {
+          "@id": "{{ page.url | absolute_url }}",
+          "@type": "schema:Chapter",
+          "schema:isPartOf": { "@id": "{{ page.book.url | absolute_url }}" },
+          "schema:name": "{{ page.book.number }}-{{ page.chapter }}: {{ page.title }}",
+          "schema:url": "{{ page.url | absolute_url }}",
+          "schema:datePublished": "{{ page.date | date: "%Y-%m-%d" }}",
+          "schema:dateModified": "{% last_modified_at %Y-%m-%d %}",{% 
+            assign author = site.data.staff | where: "id", page.author | last %}
+          "schema:author": { "@id": "author.url" },{% if page.editor %}
+          "schema:editor": [{% for editor in page.editor %}{% 
+            assign editor = site.data.staff | where: "id", page.editor | last %}
+            {"@id": "{{ editor.url }}"}{% unless forloop.last %},{% endunless %}{% endfor %}
+          ],{% endif %}{%if page.sponsors %}
+          "schema:sponsor": [{% for sponsor in page.sponsors %}
+            {
+              "@type": "schema:Person",
+              "schema:name": "{{ sponsor }}
+            }{% unless forloop.last %},{% endunless %}{% endfor %}
+          ],{% endif %}
+          "schema:character": [{%
+            for character in characters %}{% 
+              assign character_string = character | strip | append: "-latest" %}{% 
+              assign db_character = site.data.characters[character_string] %}{% unless db_character%}{% continue %}{% endunless %}
+            { "@id": "{% if db_character.url %}{{ db_character.url }}{% else %}character:{{ character_string}}{% endif %}" }{% unless forloop.last %},{% endunless %}{% endfor %}
+          ]{% if page.location %},
+          "schema:location": [ {% for location in page.location %}
+            {
+              "@type": "schema:Location",
+              "name": "{{ site.data.locations[location].name }}"
+            }{% unless forloop.last%},{% endunless %}{% endfor %}
+          ]{% endif %}
+        }
+      ]
+    }
+    </script>
     <h1 aria-label="Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: {{ page.title }}" aria-flowto="chapter-content">
       {{ page.title }}</h1>
-    <meta property="name" content="{{ page.book.number }}-{{ page.chapter }}: {{ page.title }}">
-    <meta property="url" content="{{ page.url | absolute_url }}">
-    <div property="speakable" typeof="SpeakableSpecification">
-      <meta property="xpath" content="/html/body/main/div/header/h1">
-      <meta property="xpath" content="/html/body/main/div/section">
-    </div>
-    {% if page.date %}
     <small class="block-left">
-      published on <span property="datePublished">{{ page.date | date: "%Y-%m-%d" }}</span>,
-      last updated on <span property="dateModified">{% last_modified_at %Y-%m-%d %}</span>
+      published on {{ page.date | date: "%Y-%m-%d" }}, last updated on {% last_modified_at %Y-%m-%d %}
     </small>
-    {% endif %}
-    <small class="block-right">{%
-if page.author %}{% 
-  assign author = site.data.staff | where: "id", page.author | last %}<span property="author" typeof="Person">written by {%
-  if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener nofollow">{% endif %}<span property="name">{{ author.name }}</span>{% 
-  if author.url %}</a>{% endif %}<meta property="url" content="{{ author.url }}"></span>{% endif %}{% 
+    <small class="block-right">
+{% if page.author %}{% 
+  assign author = site.data.staff | where: "id", page.author | last %}
+  <span>
+    written by {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener nofollow">{% endif %}
+    {{ author.name }}
+    {% if author.url %}</a>{% endif %}
+{% endif %}{% 
 if page.editor %}, edited by {%
   for editor in page.editor %}{% 
     assign editor = site.data.staff | where: "id", page.editor | last
-%}<span property="editor" typeof="Person">{% 
-    if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener nofollow">{% endif %}<span property="name">{{ editor.name }}</span>{% 
+%}{% 
+    if editor.url
+%}<a href="{{ editor.url }}" target="_blank" ref="noopener nofollow">{% 
+    endif 
+%}{{ editor.name }}{% 
     if editor.url %}</a>{% endif %}{% 
-    if editor.url %}<meta property="url" content="{{ editor.url }}">{% endif %}</span>{% 
     unless forloop.last %} and {% endunless %}{% 
   endfor %}{% 
   if page.sponsors %}, sponsored by {% 
-    for sponsor in page.sponsors %}<span property="sponsor" typeof="Person">
-      <span property="name">{{ sponsor }}</span></span>{%
+    for sponsor in page.sponsors %}{{ sponsor }}{%
       unless forloop.last %}, {% endunless %}{% 
     endfor %}{% 
   endif %}{%
 endif %}</small>
     <div class="clearfix"></div>
-    {% assign characters = page.characters.main %}
-    {% if page.characters.secondary %}{% 
-          assign characters = characters | concat: page.characters.secondary %}{%
-        endif %}{% if page.characters.teritary %}{%
-          assign characters = characters | concat: page.characters.teritary %}{%
-        endif %}{%
-        for character in characters %}{% 
-          assign character_string = character | strip | append: "-latest" %}
-    <div property="character" typeof="Person"><!--{{character_string}}-->
-      {% assign db_character = site.data.characters[character_string] %}
-      <meta property="name" content="{{ db_character.name }}">
-      <meta property="gender" content="{{ db_character.gender }}">
-      {% if db_character.url %}<meta property="url" content="{{ db_character.url }}">{% endif %}
-    </div>
-    {% endfor %}
-    {% for location in page.location %}
-    <div property="contentLocation" typeof="Place"><!--{{ location }}-->
-      <meta property="name" content="{{ site.data.locations[location].name }}">
-    </div>
-    {% endfor %}
-    <div class="clearfix"></div>
     {% assign words = content | markdownify | strip_html | split: " " | size %}
-    {% if words > 200 %}
+{% if words > 200 %}
     <nav class="d-flex">
       {% for page in previous_pages %}
       <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
@@ -176,7 +222,7 @@ endif %}</small>
       {% endif %}
       {% endfor %}
     </nav>
-    {% endif %}
+{% endif %}
     <div class="clearfix"></div>
   </header>
   <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content">
