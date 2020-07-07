@@ -56,7 +56,7 @@ layout: base
       "@type": "ListItem",
       "position": 0,
       "name": "{{ site.title }}",
-      "item": "{{ " / " | absolute_url }}"
+      "item": "{{ "/" | absolute_url }}"
     }, {
       "@type": "ListItem",
       "position": 1,
@@ -83,14 +83,14 @@ layout: base
       {% endif %}
       <meta property="inLanguage" content="{{ page.lang }}">
       {% if page.author %}
-      {% assign author = site.data.staff[page.author] %}
+      {% assign author = site.data.staff | where: "id", page.author | last %}
       <div property="author" typeof="Person">
         <meta property="name" content="{{ author.name }}">
         <meta property="url" content="{{ author.url }}">
       </div>
       {% endif %}
       {% if page.publisher %}
-      {% assign author = site.data.staff[page.author] %}
+      {% assign author = site.data.staff | where: "id", page.author | last %}
       <div property="publisher" typeof="Person">
         <meta property="name" content="{{ author.name }}">
         <meta property="url" content="{{ author.url }}">
@@ -114,38 +114,41 @@ layout: base
       last updated on <span property="dateModified">{% last_modified_at %Y-%m-%d %}</span>
     </small>
     {% endif %}
-    <small class="block-right">
-      {% if page.author %}
-      {% assign author = site.data.staff[page.author] %}
-      <span property="author" typeof="Person">
-        written by {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener nofollow">{% endif %}<span property="name">{{ author.name }}</span>{% if author.url %}</a>{% endif %}
-        <meta property="url" content="{{ author.url }}">
-      </span>{% endif %}{%
-      if page.editor %}{% assign editor = site.data.staff[page.editor] 
-    %}<span property="editor" typeof="Person">, edited by {% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener nofollow">{% endif %}<span property="name">{{ editor.name }}</span>{% if editor.url %}</a>{% endif %}
-        {% if editor.url %}
-        <meta property="url" content="{{ editor.url }}">{% endif %}
-      </span>{% endif %}{% if page.sponsors %}, sponsored by
-      {% for sponsor in page.sponsors %}
-      <span property="sponsor" typeof="Person"><span property="name">{{ sponsor }}</span></span>{%
-      unless forloop.last
-        %}, {% endunless %}
-      {% endfor %}
-    {% endif %}
-    </small>
+    <small class="block-right">{%
+if page.author %}{% 
+  assign author = site.data.staff | where: "id", page.author | last %}<span property="author" typeof="Person">written by {%
+  if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener nofollow">{% endif %}<span property="name">{{ author.name }}</span>{% 
+  if author.url %}</a>{% endif %}<meta property="url" content="{{ author.url }}"></span>{% endif %}{% 
+if page.editor %}, edited by {%
+  for editor in page.editor %}{% 
+    assign editor = site.data.staff | where: "id", page.editor | last
+%}<span property="editor" typeof="Person">{% 
+    if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener nofollow">{% endif %}<span property="name">{{ editor.name }}</span>{% 
+    if editor.url %}</a>{% endif %}{% 
+    if editor.url %}<meta property="url" content="{{ editor.url }}">{% endif %}</span>{% 
+    unless forloop.last %} and {% endunless %}{% 
+  endfor %}{% 
+  if page.sponsors %}, sponsored by {% 
+    for sponsor in page.sponsors %}<span property="sponsor" typeof="Person">
+      <span property="name">{{ sponsor }}</span></span>{%
+      unless forloop.last %}, {% endunless %}{% 
+    endfor %}{% 
+  endif %}{%
+endif %}</small>
     <div class="clearfix"></div>
-    {% capture characters_string %}
-      {{ page.characters.main }}
-      {% if page.characters.secondary %}, {{ page.characters.secondary | join: ", "}}{% endif %}
-      {% if page.characters.teritary %}, {{ page.characters.teritary | join: ", "}}{% endif %}
-    {% endcapture %}
-    {% assign characters = characters_string | split: "," %}
-    {% for character in characters %}
-    {% assign character_string = character | strip | append: "-latest" %}
+    {% assign characters = page.characters.main %}
+    {% if page.characters.secondary %}{% 
+          assign characters = characters | concat: page.characters.secondary %}{%
+        endif %}{% if page.characters.teritary %}{%
+          assign characters = characters | concat: page.characters.teritary %}{%
+        endif %}{%
+        for character in characters %}{% 
+          assign character_string = character | strip | append: "-latest" %}
     <div property="character" typeof="Person"><!--{{character_string}}-->
       {% assign db_character = site.data.characters[character_string] %}
       <meta property="name" content="{{ db_character.name }}">
       <meta property="gender" content="{{ db_character.gender }}">
+      {% if db_character.url %}<meta property="url" content="{{ db_character.url }}">{% endif %}
     </div>
     {% endfor %}
     {% for location in page.location %}
@@ -201,7 +204,8 @@ layout: base
     </nav>
     <div class="clearfix"></div>
     <hr>
-
+  </footer>
+</div>
     <aside class="social">
       <p>
         Share this page on
@@ -256,8 +260,7 @@ layout: base
         </a>
       </div>
     </aside>
-  </footer>
-</div>
+
 <script>
   var Hyphenopoly = {
     require: {

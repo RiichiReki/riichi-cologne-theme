@@ -47,12 +47,11 @@ layout: base
         content="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</span>
     </small>
     <meta property="dateModified" content="{{ page.last_modified_at | date_to_xmlschema }}">
-    {% if page.author %}
-    {% assign author = site.data.staff[page.author] %}
-    <small class="block-right" property="author" typeof="Person" itemid="{{ author.url }}">
-      written by <span property="name">{{ author.name }}</span>
-      <meta property="url" content="{{ author.url }}">
-    </small>
+{% if page.author %}{% 
+    assign author = site.data.staff | where: "id", page.author | last %}<span property="author" typeof="Person">
+          written by {% 
+    if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener nofollow">{% endif %}<span property="name">{{ author.name }}</span>{% 
+    if author.url %}</a>{% endif %}<meta property="url" content="{{ author.url }}"></span>
     <div property="publisher" typeof="Person">
       <meta property="name" content="{{ author.name }}">
       <meta property="url" content="{{ author.url }}">
@@ -101,7 +100,7 @@ layout: base
   </nav>
   <div class="clearfix"></div>
   <hr>
-
+</footer>
   <aside class="social">
     <p>
       Share this page on
@@ -156,4 +155,4 @@ layout: base
       </a>
     </div>
   </aside>
-</footer>
+
