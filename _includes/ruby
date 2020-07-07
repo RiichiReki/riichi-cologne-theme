@@ -1,8 +1,8 @@
 {%
 if include.number
 %}{%
-  if site.data.numbers[include.number]
-%}{% assign text = site.data.numbers[include.number].text %}{% include ruby base=include.number text=text %}{% 
+  if include.number
+%}{% assign text = site.data.numbers | where: base, include.number | last  %}{% include ruby base=include.number text=text %}{% 
   else
 %}{{include.number}}{%
   endif
