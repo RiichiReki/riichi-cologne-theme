@@ -1,64 +1,98 @@
----
----
+@import "bootstrap/bootstrap.min";
+@import "bootstrap/bootstrap-toggle.min";
 @import "functions";
 @import "fonts-files-web";
 @import "fonts";
 @import "colors-common";
 @import "colors";
 @import "animation";
-@import "ruby-characters";
-@import "pagination";
 
-body,
-.gr__webcache_googleusercontent_com body div:last-child {
+#body {
   font-size: 12pt;
   font-weight: 400;
   margin: 0;
-
   display: grid;
-  grid-template-columns: 5vmin 1fr 5vmin;
+  grid-template: auto;
   gap: 0 1vmin;
-  grid-template-rows: repeat(auto-fill, auto);
   grid-template-areas:
-    "policy-banner policy-banner policy-banner"
-    "title title title"
-    ". navigation ."
-    ". controls ."
-    ". content ."
-    ". fb-comments ."
-    "footer footer footer";
+    "policy-banner"
+    "navigation"
+    "title"
+    "controls"
+    "breadcrumbs"
+    "content"
+    "comments"
+    "footer";
+
+  @media (min-width: 768px) {
+    grid-template: auto;
+    gap: 5vmin 5vmin;
+    grid-template-areas:
+      "policy-banner"
+      "title"
+      "breadcrumbs"
+      "navigation"
+      "controls"
+      "content content"
+      "comments"
+      "footer";
+  }
+
+  @media (min-width: 992px) {
+    font-size: 14pt;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "policy-banner policy-banner"
+      "title title"
+      "navigation breadcrumbs"
+      "navigation content"
+      "controls content"
+      ". content"
+      ". comments"
+      "footer footer";
+  }
+
+  > * {
+    margin: 1rem 1vmin;
+    max-width: calc(100vw - 2vmin);
+
+    @media(min-width: 768px) {
+      margin: 0 2rem;
+    }
+  }
 
   > header {
     grid-area: title;
     padding: 1rem;
-    background: var(--blue);
+    margin: 0;
+    max-width: 100vw;
 
     @media(min-width: 768px) {
-      margin-top: -5vmin;
+      margin: -5vmin 0 0;
     }
 
     @media(min-width: 992px) {
-      margin-top: -2rem;
       padding-left: 2rem;
-    }
-
-    a {
-      color: $white !important;
+      margin: -5vmin 0 0;
     }
   }
 
-  > nav {
+  >nav {
     grid-area: navigation;
+    display: initial;
+    margin-left: 1vmin;
 
     @media (min-width: 576px) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0 5vmin;
-      grid-template-rows: repeat(auto-fill, auto);
+      margin-left: 5vmin;
     }
 
     @media (min-width: 992px) {
       display: initial;
+      margin-left: 2rem;
     }
 
     p {
@@ -80,26 +114,11 @@ body,
 
         a {
           display: block;
-          color: #fff !important;
           text-decoration: none !important;
-          background-color: #007bff;
-          border-color: #007bff;
-
           padding: .5rem 1rem;
           font-size: 1.25rem;
           line-height: 1.5;
           border-radius: .3rem;
-
-          &:hover {
-            background-color: #0069d9;
-            border-color: #0062cc;
-          }
-
-          &:focus {
-            background-color: #0069d9;
-            border-color: #0062cc;
-            box-shadow: 0 0 0 0.2rem rgba(38,143,255,.5);
-          }
         }
       }
     }
@@ -108,10 +127,10 @@ body,
   > .controls {
     grid-area: controls;
     display: flex;
-    margin: 0 -.5rem;
     flex-wrap: wrap;
+    margin-top: 1rem;
 
-    > .toggle {
+    >.toggle {
       top: 1px;
     }
 
@@ -121,10 +140,32 @@ body,
       margin-left: .5rem;
       margin-right: .5rem;
     }
+
+    @media (min-width: 576px) {
+      margin-left: calc(5vmin - .5rem);
+      margin-right: calc(5vmin - .5rem);
+    }
+
+    @media (min-width: 992px) {
+      margin-left: 2rem;
+      margin-right: 0;
+    }
+  }
+
+  > .breadcrumbs {
+    grid-area: breadcrumbs;
   }
 
   > main {
     grid-area: content;
+
+    @media (min-width: 576px) {
+      display: initial;
+    }
+
+    @media (min-width: 992px) {
+      margin-left: 0;
+    }
 
     p {
       -webkit-hyphens: auto;
@@ -170,8 +211,10 @@ body,
     }
   }
 
-  > footer {
+  >footer {
     grid-area: footer;
+    margin: 0 !important;
+    max-width: 100vw;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -196,14 +239,14 @@ body,
     }
   }
 
-  > .policy-banner {
+  >.policy-banner {
     display: none;
     grid-area: policy-banner;
-    
+
     p {
       margin: 1rem;
     }
-    
+
     .policy-button,
     .policy-button-all {
       display: block;
@@ -212,43 +255,13 @@ body,
       border: 2px outset;
     }
   }
-  
-  > .social-icons {
+
+  >.social-icons {
     grid-area: social-icons;
   }
-  
-  > #comments {
-    grid-area: fb-comments;
-  }
 
-  @media (min-width: 768px) {
-    grid-template-columns: 0 1fr 16rem 0;
-    gap: 5vmin 5vmin;
-    grid-template-rows: auto;
-    grid-template-areas: 
-      "policy-banner policy-banner policy-banner policy-banner"
-      "title title title title"
-      ". navigation navigation ."
-      ". controls controls ."
-      ". content content ."
-      ". fb-comments fb-comments . "
-      "footer footer footer footer";
-  }
-
-  @media (min-width: 992px) {
-    font-size: 14pt;
-
-    grid-template-columns: 0 18rem 1fr 1fr 0;
-    gap: 2rem 2rem;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "policy-banner policy-banner policy-banner policy-banner policy-banner"
-      "title title title title title"
-      ". navigation content content ."
-      ". controls content content ."
-      ". . content content ."
-      ". . fb-comments fb-comments ."
-      "footer footer footer footer footer";
+  >#comments {
+    grid-area: comments;
   }
 }
 
@@ -297,67 +310,9 @@ img {
   max-width: 100%;
 }
 
-.post-image a
-{
+.post-image a {
   text-align: center;
-  display: block; 
-}
-
-.interface {
   display: block;
-  margin: 1rem 0 1rem 0;
-  padding: 0em;
-  font-style: normal;
-  break-inside: avoid;
-  border: 1px solid rgba(0,0,0,0.2);
-  border-radius: .3rem;
-  outline: 0;
-
-  .interface {
-    margin: 0 1rem 1rem;
-  }
-
-  > p, > h3 {
-    margin: 0 1rem 1rem;
-
-    &:first-child {
-      display: block;
-
-      border-top-left-radius: .3rem;
-      border-top-right-radius: .3rem;
-
-      margin: 0 0 1rem;
-    
-      padding: 1rem;
-      font-weight: bold;
-      break-after: avoid;
-
-      &.inactive {
-        margin: 0;
-      }
-      
-      small {
-        margin-left: 2.1em;
-      }
-    }
-  }
-
-  > table, > div {
-    margin: 0 1rem 1rem;
-  }
-
-  ul {
-    margin: 0 1rem 1rem;
-    padding-left: 1.5rem;
-
-    li {
-      margin: 3pt 0;
-
-      > ul  {
-        margin: 0;
-      }
-    }
-  }
 }
 
 .count {
@@ -373,10 +328,6 @@ img {
   }
 }
 
-a {
-  text-decoration: none;
-}
-
 .unicode-icon {
   display: block;
   width: 1.5em;
@@ -384,6 +335,10 @@ a {
   text-align: right;
   margin-right: .5rem;
   font-family: emoji;
+}
+
+a {
+  text-decoration: none;
 }
 
 .pdf-only {
@@ -395,34 +350,17 @@ a {
   margin-right: 0;
 }
 
-li:empty {
-  display: none;
-}
-
-.right-2 {
-  td:nth-child(2n) {
-    text-align: right;
-
-    rb {
-      text-align: right;
-    }
-  }
-}
-
-.talkify-control-center {
-  display: none;
-}
-
 form {
   border: 0;
   padding: 0;
 
-  input, textarea {
+  input,
+  textarea {
     display: block;
     width: 100%;
   }
 
-  fieldset > div {
+  fieldset>div {
     margin: .5rem;
   }
 
@@ -444,12 +382,13 @@ form {
   }
 }
 
-#support, .http-401 {
+#support,
+.http-401 {
   .patreon {
     display: block;
     flex-grow: 1;
     min-width: 80vw;
-    
+
     @media (min-width: 768px) {
       min-width: 60vw;
     }
@@ -469,8 +408,9 @@ form {
         width: 1rem;
         height: 1rem;
         background-color: transparent;
-        
-        [data-color], [data-fill] {
+
+        [data-color],
+        [data-fill] {
           fill: rgb(255, 255, 255);
         }
       }
@@ -482,7 +422,7 @@ form {
   .discord {
     border-bottom-right-radius: 0;
   }
-  
+
   .patreon {
     border-radius: 0;
   }
@@ -513,40 +453,13 @@ form {
   margin-top: 1em;
 }
 
-.glossary {
-  section, .interface {
-    display: flex;
-    flex-direction: column;
-  }
 
-  .interface > p:first-child > small {
-    display: none;
-  }
+.talkify-control-center {
+  display: none;
+}
 
-  .interface > p:first-child.active > small {
-    display: block;
-  }
-
-  .interface > p:first-child.active ~ *,
-  .top-toggle > p:first-child.active ~ * {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .top-toggle {
-    margin-top: 0;
-  }
-
-  .interface > p:first-child.link a  {
-    color: white;
-    display: inline-block;
-    width: calc(100% - 2.5em);
-  }
-
-  .interface > p:first-child.link,
-  .interface > p:first-child.link.active {
-    &::before {
-      content: '🔗';
-    }
+h1, .h1, h2, .h2, h3 {
+  @media (max-width: 595px) {
+    margin: 0 2vmin;
   }
 }

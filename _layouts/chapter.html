@@ -1,5 +1,6 @@
 ---
-layout: base
+# Layout for Novel Chapters
+layout: default
 ---
 <script type="application/ld+json">
   {
@@ -113,9 +114,7 @@ layout: base
           "schema:publisher": {
             "@id": "{{ author.url }}"
           }{% endif %}{% if page.book.genres %},
-          "schema:genre": [{% for genre in page.book.genres %}
-            "{{ genre }}"{% unless forloop.last %},{% endunless %}{% endfor %}
-          ]{% endif %}
+          "schema:genre": {{ page.book.genres | jsonify }}{% endif %}
         },{% assign characters = page.characters.main %}{% 
           if page.characters.secondary %}{% 
             assign characters = characters | concat: page.characters.secondary %}{%
@@ -186,8 +185,8 @@ layout: base
     {% if author.url %}</a>{% endif %}
 {% endif %}{% 
 if page.editor %}, edited by {%
-  for editor in page.editor %}{% 
-    assign editor = site.data.staff | where: "id", page.editor | last
+  for e in page.editor %}{% 
+    assign editor = site.data.staff | where: "id", e | last
 %}{% 
     if editor.url
 %}<a href="{{ editor.url }}" target="_blank" ref="noopener nofollow">{% 
@@ -205,7 +204,7 @@ endif %}</small>
     <div class="clearfix"></div>
     {% assign words = content | markdownify | strip_html | split: " " | size %}
 {% if words > 200 %}
-    <nav class="d-flex">
+    <nav class="d-flex w-100">
       {% for page in previous_pages %}
       <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
       {% endfor %}
@@ -231,7 +230,7 @@ endif %}</small>
     <!--/sse-->
   </section>
   <footer>
-    <nav class="d-flex" id="navigation" aria-flowto="comments">
+    <nav class="d-flex w-100" id="navigation" aria-flowto="comments">
       {% for page in previous_pages %}
       <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
       {% endfor %}
@@ -250,8 +249,7 @@ endif %}</small>
     </nav>
     <div class="clearfix"></div>
     <hr>
-  </footer>
-</div>
+
     <aside class="social">
       <p>
         Share this page on
@@ -306,15 +304,14 @@ endif %}</small>
         </a>
       </div>
     </aside>
-
+  </footer>
+</div>
 <script>
   var Hyphenopoly = {
     require: {
       "en-ca": "Supercalifragilisticexpialidocious"
     }
   };
-
 </script>
-<script src="{{ "/assets/vendor/hyphenopoly/Hyphenopoly_Loader.js" | absolute_url }}" defer></script>
 
 <div id="player-and-voices" style="display:none"></div>

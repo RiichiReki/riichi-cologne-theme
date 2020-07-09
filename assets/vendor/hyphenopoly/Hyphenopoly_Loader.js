@@ -1,11 +1,3 @@
-/*
- Hyphenopoly_Loader 3.3.0 - client side hyphenation
- ©2019  Mathias Nater, Zürich (mathiasnater at gmail dot com)
- https://github.com/mnater/Hyphenopoly
-
- Released under the MIT license
- http://mnater.github.io/Hyphenopoly/LICENSE
-*/
 (function(k,h,a,l){function m(a,d){l.keys(a).forEach(d)}function y(){if("object"===typeof n&&"function"===typeof n.Instance)try{var a=new n.Module(Uint8Array.from([0,97,115,109,1,0,0,0,1,6,1,96,1,127,1,127,3,2,1,0,5,3,1,0,1,7,5,1,1,116,0,0,10,16,1,14,0,32,0,65,1,54,2,0,32,0,40,2,0,11]));return 0!==(new n.Instance(a)).exports.t(4)}catch(d){}return!1}function v(c,d){var e=h.createElement("script");e.src=c+d;"hyphenEngine.asm.js"===d&&e.addEventListener("load",function(){a.events.dispatch("engineLoaded",
 {msg:"asm"})});h.head.appendChild(e)}function w(c,d,e,g){function b(f,b,c,d){k.fetch(f+b,{credentials:"include"}).then(function(q){if(q.ok)if("hyphenEngine"===c)a.bins.set(c,q.arrayBuffer().then(function(a){return new n.Module(a)})),a.events.dispatch("engineLoaded",{msg:d});else{var e=p.get(b);e.forEach(function(f){a.bins.set(f,1<e.length?q.clone().arrayBuffer():q.arrayBuffer());a.events.dispatch("hpbLoaded",{msg:f})})}else a.events.dispatch("loadError",{file:b,msg:d,name:c,path:f})})}function f(f,
 b,c,d){var e=new XMLHttpRequest;e.onload=function(){200===e.status?p.get(b).forEach(function(f){a.bins.set(f,e.response);a.events.dispatch("hpbLoaded",{msg:f})}):a.events.dispatch("loadError",{file:b,msg:d,name:c,path:f})};e.open("GET",f+b);e.responseType="arraybuffer";e.send()}p.has(d)?"hyphenEngine"!==e&&p.get(d).push(g):(p.set(d,[g]),a.cf.wasm?b(c,d,e,g):f(c,d,e,g))}function x(){a.setup.hide.match(/^(?:element|text)$/)&&a.toggle("off");a.events.dispatch("contentLoaded",{msg:["contentLoaded"]})}

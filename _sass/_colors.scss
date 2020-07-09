@@ -1,3 +1,37 @@
+#body {
+  >header {
+    background: var(--blue);
+
+    a {
+      color: $white !important;
+    }
+
+    >nav {
+      p {
+        @media (max-width: 575px) {
+          a {
+            color: #fff !important;
+
+            background-color: #007bff;
+            border-color: #007bff;
+
+            &:hover {
+              background-color: #0069d9;
+              border-color: #0062cc;
+            }
+
+            &:focus {
+              background-color: #0069d9;
+              border-color: #0062cc;
+              box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, .5);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .light-theme {
   color: rgb(77, 77, 77);
   background-color: $white;
@@ -66,8 +100,10 @@
 }
 
 .interface {
+
   >p,
   >h3 {
+
     &:first-child,
     span * {
       background-color: var(--blue);
@@ -75,7 +111,7 @@
     }
   }
 
-  > h3 a {
+  >h3 a {
     background-color: var(--blue);
     color: $white;
   }

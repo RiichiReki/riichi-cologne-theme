@@ -130,7 +130,7 @@ async function setUpPageForUsers() {
   if (isMobile) {
     d.addEventListener('touchstart', touchStart, false);
     d.addEventListener('touchmove', touchMove, false);
-    document.getElementById('content').scrollIntoView(true);
+    document.getElementById('mobile-top').scrollIntoView(true);
     toggleAllAccordions();
   }
 

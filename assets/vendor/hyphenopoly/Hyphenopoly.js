@@ -1,11 +1,3 @@
-/*
- Hyphenopoly 3.3.0 - client side hyphenation for webbrowsers
- ©2019  Mathias Nater, Zürich (mathiasnater at gmail dot com)
- https://github.com/mnater/Hyphenopoly
-
- Released under the MIT license
- http://mnater.github.io/Hyphenopoly/LICENSE
-*/
 (function(e){function c(b,c){return{configurable:0<(c&4),enumerable:0<(c&2),writable:0<(c&1),value:b}}function J(b){b.addEventListener("copy",function(b){b.preventDefault();var c=e.getSelection(),p=c.getRangeAt(0).cloneContents(),n=document.createElement("div");n.appendChild(p);p=n.innerHTML;b.clipboardData.setData("text/plain",c.toString().replace(new RegExp(r,"g"),""));b.clipboardData.setData("text/html",p.replace(new RegExp(r,"g"),""))},!0)}var r=String.fromCharCode(173);Math.imul=Math.imul||function(b,
 c){var k=b&65535,e=c&65535;return k*e+((b>>>16&65535)*e+k*(c>>>16&65535)<<16>>>0)|0};(function(b){var e=Object.create(null,{defaultLanguage:c("en-us",2),dontHyphenate:c(function(){var b=Object.create(null);"abbr acronym audio br button code img input kbd label math option pre samp script style sub sup svg textarea var video".split(" ").forEach(function(c){b[c]=!0});return b}(),2),dontHyphenateClass:c("donthyphenate",2),exceptions:c(Object.create(null),2),keepAlive:c(!0,2),normalize:c(!1,2),safeCopy:c(!0,
 2),timeout:c(1E3,2)}),k=Object.create(e),p=Object.create(null,{compound:c("hyphen",2),hyphen:c(r,2),leftmin:c(0,2),leftminPerLang:c(0,2),minWordLength:c(6,2),orphanControl:c(1,2),rightmin:c(0,2),rightminPerLang:c(0,2)});Object.keys(b.setup).forEach(function(n){if("selectors"===n)n=Object.keys(b.setup.selectors),Object.defineProperty(k,"selectors",c(n,2)),n.forEach(function(e){var n=Object.create(null);Object.keys(b.setup.selectors[e]).forEach(function(k){n[k]=c(b.setup.selectors[e][k],2)});Object.defineProperty(k,
