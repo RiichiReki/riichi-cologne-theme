@@ -1,9 +1,14 @@
 # crystaldown-theme
 
-Just the theme used on [crystaldown.de](crystaldown.de)
+Just the theme used on [crystaldown.de](crystaldown.de) and [0xreki.de]
 
 ## Needed Jekyll Plugins
 
 - jekyll-last-modified-at
 - jekyll-regex-replace
-- [liquid-sha2](https://github.com/0xReki/liquid-sha2)
+- jekyll-assets
+
+## How to use
+
+Not via jekyll-remote theme.
+
