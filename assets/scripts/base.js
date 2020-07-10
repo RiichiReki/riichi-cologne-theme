@@ -134,7 +134,7 @@ function zoom(points) {
     return;
   }
 
-  var fontSize = (parseInt(c.style.fontSize, 10) || 12) + points;
+  var fontSize = (parseInt(b.style.fontSize, 10) || 12) + points;
   if (fontSize > 20) fontSize = 22;
   if (fontSize < 12) fontSize = 10;
   b.style.fontSize = fontSize + 'pt';
