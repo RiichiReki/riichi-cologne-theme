@@ -77,9 +77,10 @@ layout: null
       content="{{ pair.key }}">
     {% endfor %}
     {% if page.published == true %}
-    <link
-      rel="canonical"
-      href="{{ page.url | absolute_url }}">
+        {% if page.layout == "schema" %}
+        <link rel="canonical" href="{{ site.shorturl }}{{ page.url }}">
+        {% endif %}
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
     {% endif %}
     {% if page.shortlink %}
       <link rel="shortlink" href="{% if site.shorturl %}{{ site.shorturl }}{{ page.shortlink }}{% else %}{{ page.shortlink | absolute_url }}{% endif %}">
@@ -121,11 +122,12 @@ layout: null
     <header aria-flowto="content" id="mobile-top">
       {% include base/header.html %}
     </header>
-    
+
+{% unless page.disable_sidebar %}
     <div class="breadcrumbs">
       {% include base/breadcrumbs.html %}
     </div>
-{% unless page.disable_sidebar %}
+
     <nav>
       {% include base/navigation.html %}
     </nav>
@@ -147,6 +149,7 @@ layout: null
       </div>
     </footer>
 
+{% unless page.layout == "schema" %}
     <div class="policy-banner" id="policy-banner" data-nosnippet>
       {% include base/policy-banner.html %}
     </div>
@@ -164,5 +167,6 @@ layout: null
         } };
       {% endif %}
     </script>
+{% endunless %}
   </body>
 </html>

@@ -15,9 +15,9 @@ for hay in include.data
   <script type="application/ld+json">
   {
     "@context": {
-      "rdfa": "http://www.w3.org/ns/rdfa#",
-      "schema": "http://schema.org/",
-      "cd": "{{ "/" | absolute_url }}"
+      "rdfa": "https://www.w3.org/ns/rdfa#",
+      "schema": "https://schema.org/",
+      "cd": "https://cdwn.tk/"
     },
     "@graph": [{
       "@id": "{{ page.url | absolute_url }}#{{ id }}",
