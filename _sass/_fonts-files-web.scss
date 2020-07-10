@@ -54,3 +54,25 @@
        local("Noto Color Emoji"),
        local("EmojiOne Android");
 }
+
+@font-face {
+  font-family: "OpenDyslexic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('OpenDyslexic Regular'),
+       local('OpenDyslexic-Regular'),
+       url(/assets/fonts/OpenDyslexic-Regular.woff2) format('woff2'),
+       url(/assets/fonts/OpenDyslexic-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('OpenDyslexic Italic'),
+       local('OpenDyslexic-Italic'),
+       url(/assets/fonts/OpenDyslexic-Italic.woff2) format('woff2'),
+       url(/assets/fonts/OpenDyslexic-Italic.otf) format('opentype');
+}

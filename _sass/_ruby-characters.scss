@@ -37,3 +37,11 @@ main {
     margin-inline-end: 0;
   }
 }
+
+.condensed main {
+  p,
+  table,
+  li {
+    line-height: 1.2;
+  }
+}

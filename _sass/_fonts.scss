@@ -9,6 +9,10 @@
 
 body {
   font-family: "Source Sans Pro", "Noto Sans", Roboto, "Segoe UI", sans-serif;
+
+  &.dyslexic {
+    font-family: "OpenDyslexic";
+  }
 }
 
 .unicode-icon, .button a span {
@@ -17,4 +21,8 @@ body {
 
 h1, .h1, h2, .h2, h3 {
   font-family: "Marcellus", "Source Serif Pro", "Noto Serif", serif;
+
+  @at-root .dyslexic & {
+    font-family: "OpenDyslexic";
+  }
 }

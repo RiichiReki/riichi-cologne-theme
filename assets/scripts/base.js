@@ -31,11 +31,31 @@ function toggleTheme() {
     return;
   }
 
-  b.className = (b.className == "dark-theme") ? "light-theme" : "dark-theme";
-
-  writeCookie("darkTheme", (b.className == "dark-theme"));
+  $('body').toggleClass('dark-theme').toggleClass('light-theme')
+  writeCookie("darkTheme", $('body').hasClass('dark-theme'));
 }
 window['toggleTheme'] = toggleTheme;
+
+function toggleLineHeight() {
+  if (!isHasAcceptedPolicy()) {
+    return;
+  }
+
+  $('body').toggleClass('condensed')
+
+  writeCookie("condensed", $('body').hasClass('condensed'));
+}
+window['LineHeight'] = toggleLineHeight;
+
+function toggleDyslexicFont() {
+  if (!isHasAcceptedPolicy()) {
+    return;
+  }
+
+  $('body').toggleClass('dyslexic')
+  writeCookie("dyslexic", $('body').hasClass('dyslexic'));
+}
+window['toggleDyslexicFont'] = toggleDyslexicFont;
 
 function loadYouTube() {
   var videos = d.getElementsByClassName('youtube');
@@ -53,7 +73,18 @@ function restoreSettingsFromCookie() {
     return;
   }
 
-  if (null != getCookie().match(/darkTheme=false/)) toggleTheme();
+  if (null != getCookie().match(/darkTheme=false/)) {
+    $('#dark-mode').prop('checked', true);
+    toggleTheme();
+  }
+  if (null != getCookie().match(/condensed=true/)) {
+    $('#line-height').prop('checked', true);
+    toggleLineHeight();
+  }
+  if (null != getCookie().match(/dyslexic=true/)) {
+    $('#dyslexic').prop('checked', true);
+    toggleDyslexicFont();
+  }
   if (null != getCookie().match(/fontSize/)) zoom((getCookie().match(/(^| )fontSize=([^;]+)/))[2] - 12);
   acceptPolicy();
 }
@@ -116,6 +147,8 @@ function clearCookies() {
   writeCookie("activateGoogleAnalytics", '', -1);
   writeCookie("fontSize", '', -1);
   writeCookie("darkTheme", '', -1);
+  writeCookie("condensed", '', -1);
+  writeCookie("dyslexic", '', -1);
 }
 window['clearCookies'] = clearCookies;
 
@@ -138,6 +171,8 @@ async function setUpPageForUsers() {
 
   $('#dark-mode').change(toggleTheme);
   $('#tts').change(toggleTTS);
+  $('#line-height').change(toggleLineHeight);
+  $('#dyslexic').change(toggleDyslexicFont);
 }
 
 async function storeLastReadChapterURL() {
