@@ -415,6 +415,7 @@ form {
 .d-flex .btn {
   margin: .5rem;
   flex-grow: 1;
+  flex-basis: 0;
 
   &:first-child {
     margin-left: 0;

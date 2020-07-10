@@ -1,37 +1,6 @@
-.animated .policy-banner {
+.animated .policy-banner,
+.animated .interface {
   transition-property: all;
   transition-duration: 1s;
   transition-delay: 0s;
-}
-
-.interface .interface>p:first-child~*,
-.top-toggle>p:first-child~* {
-  display: none;
-}
-
-.interface .interface>p:first-child::before,
-.top-toggle>p:first-child::before {
-  display: inline-block;
-  content: "▼";
-  width: 1.5em;
-  text-align: left;
-  font-family: emoji;
-}
-
-.interface .interface>p:first-child.active~*,
-.top-toggle>p:first-child.active~* {
-  display: block;
-}
-
-.interface .interface>p:first-child.active::before,
-.top-toggle>p:first-child.active::before {
-  display: inline-block;
-  content: "▲";
-  width: 1.5em;
-  text-align: left;
-  font-family: emoji;
-}
-
-.interface>p:only-child::before {
-  content: " " !important;
 }

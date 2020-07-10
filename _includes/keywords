@@ -1,7 +1,7 @@
 {% 
 for hay in include.data 
 %}{% 
-  assign id = hay[0] | replace: "_", " " | slugify 
+  assign id = hay.title | replace: "_", " " | slugify 
 %}{% 
   unless include.id == "" 
 %}{% 
@@ -9,15 +9,15 @@ for hay in include.data
 %}{% 
   endunless
 %}{% 
-  if hay[1].keywords 
+  if hay.keywords 
 %}{% 
-    assign keywords = hay[1].keywords | join: '|' | prepend: '(' | append: ')' 
+    assign keywords = hay.keywords | join: '|' | prepend: '(' | append: ')' 
 %}{% 
     assign pair = keywords | append: '#' | append: id 
 %}{{ pair }}@{% 
   endif
 %}{% 
-  assign stack = hay[1]
+  assign stack = hay.children
 %}{% 
   include keywords data=stack top=false id=id 
 %}{% endfor %}

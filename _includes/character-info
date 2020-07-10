@@ -3,7 +3,7 @@
 <table>
   <tr>
     <td>Name:</td>
-    <td property="name">{{ character.name }}</td>
+    <td>{{ character.name }}</td>
   </tr>
   <tr>
     <td>Age:</td>
@@ -11,28 +11,19 @@
   </tr>
   <tr>
     <td>Gender:</td>
-    <td property="gender" typeof="{{ character.gender }}">
+    <td>
       {{ character.gender | split: '/' | last }}
     </td>
   </tr>
   <tr>
     <td>Race:</td>
     <td>
-{% 
-  for r in character.races 
-%}{% 
-    assign t = r | slugify
-%}<meta 
-    property="{{ "/race" | absolute_url }}"
-    typeof="https://schema.org/Text"
-    content="{{ "/glossary/" | absolute_url | append: "#races-" | append: t }}">{% 
-  endfor
-%}{{ character.races | join: " " }}
+{{ character.races | join: " " }}
     </td>
   </tr>
   <tr>
     <td>Height:</td>
-    <td property="height" typeof="https://schema.org/Distance">{{ character.appearance.height }}</td>
+    <td>{{ character.appearance.height }}</td>
   </tr>
   <tr>
     <td>Hair:</td>

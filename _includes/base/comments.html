@@ -13,13 +13,13 @@
   {% assign sorted_comments = comments | sort: 'date' %}
   {% for comment in sorted_comments %}
     <li{% if comment.email == author.email %} class="by-author" {% endif %}>
-      {% include comment.html %}
+      {% include comments/comment.html %}
     </li>
   {% endfor %}
   </ol>
 {% endif %}
 {% if page.commenting == 'open' %}
-  {% include comment-new.html %}
+  {% include comments/comment-new.html %}
 {% endif %}
 </aside>
 

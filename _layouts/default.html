@@ -94,8 +94,8 @@ layout: null
     {% endif %}
     <noscript>
       <style>
-        .interface .interface > p:first-child ~ *,
-        .top-toggle > p:first-child ~ * {
+        .interface .interface > p:first-of-type ~ *,
+        .top-toggle > p:first-of-type ~ * {
           display: block !important;
         }
       </style>
@@ -119,46 +119,50 @@ layout: null
    </script>
    {% endif %}
     <header aria-flowto="content" id="mobile-top">
-      {% include header.html %}
+      {% include base/header.html %}
     </header>
     
     <div class="breadcrumbs">
-      {% include breadcrumbs.html %}
+      {% include base/breadcrumbs.html %}
     </div>
 {% unless page.disable_sidebar %}
     <nav>
-      {% include navigation.html %}
+      {% include base/navigation.html %}
     </nav>
 
     <div class="controls buttons">
-      {% include controls.html %}
+      {% include base/controls.html %}
     </div>
 {% endunless %}
     <main id="content" class="{{ page.layout }}">
       {{ content }}
     </main>
 
-
     <footer>
       <div id="support">
-        {% include support.html %}
+        {% include base/support.html %}
       </div>
       <div id="footer">
-        {% include footer.html %}
+        {% include base/footer.html %}
       </div>
     </footer>
 
     <div class="policy-banner" id="policy-banner" data-nosnippet>
-      {% include policy-banner.html %}
+      {% include base/policy-banner.html %}
     </div>
 
     {% if page.comments %}
-      {% include comments.html %}
+      {% include base/comments.html %}
     {% endif %}
 
     <script>
       window['pageType'] = '{{ page.type }}';
       window['analytics'] = '{{ site.google_analytics }}';
+      {% if page.additional_js == "hyphenate" %}
+      var Hyphenopoly = { require: { 
+         "en-ca": "Supercalifragilisticexpialidocious"
+        } };
+      {% endif %}
     </script>
   </body>
 </html>

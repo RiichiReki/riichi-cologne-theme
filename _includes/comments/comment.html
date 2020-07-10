@@ -1,0 +1,33 @@
+<blockquote id="{{ comment.id }}" class="interface">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org/",
+      "@type": "Comment",
+      "author": {
+        "@type": "Person",
+        "name": {{ comment.name | jsonify }},
+        "url": {{ comment.url | jsonify }},
+        "dateCreated": {{ comment.date | date: '%Y-%m-%d' | jsonify }}
+      }
+      "about": {{ page.url | absolute_url | jsonify }},
+      "message": {{ comment.message | markdownify | strip_html | jsonify }}
+    }
+  </script>
+  <p>
+    <span>
+      {% if comment.url %}<a href="{{ comment.url }}#{{ comment.id }}" rel="nofollow ugc">{% endif %}
+      <span>{{ comment.name | xml_escape }}</span>
+      {% if comment.url %}</a>{% endif %}</span>
+    on
+      <span>{{ comment.date | date: '%Y-%m-%d' }}</span>
+  </p>
+  <img
+    alt="Gravatar for {{ comment.name | xml_escape }}" 
+    src="https://secure.gravatar.com/avatar/{{ comment.gravatar }}?s=64&amp;d=retro&amp;r=pg"
+    srcset="https://secure.gravatar.com/avatar/{{ comment.gravatar }}?s=128&amp;d=retro&amp;r=pg 2x"
+    height="64" width="64"
+    crossorigin = "anonymous"
+    onerror="this.style.display='none'">
+  <div class="comment-body">{{ comment.message | markdownify | replace: '<a ', '<a target="_blank" rel="nofollow ugc" '}}</div>
+  <div class="clearfix"></div>
+</blockquote>

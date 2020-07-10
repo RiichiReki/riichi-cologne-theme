@@ -100,14 +100,18 @@
 }
 
 .interface {
-
-  >p,
-  >h3 {
-
-    &:first-child,
+  >p:first-child,
+  >h3:first-child,
+  >script:first-child + p,
+  >script:first-child + h3 {
+    &,
     span * {
       background-color: var(--blue);
       color: $white;
+
+      a {
+        color: $white;
+      }
     }
   }
 

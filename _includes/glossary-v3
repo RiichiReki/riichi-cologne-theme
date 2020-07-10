@@ -10,26 +10,57 @@ for hay in include.data
    endunless
 %}<blockquote
     class="interface{% if include.top %} top-toggle{% endif %}"
-    style="order: {{ hay.order }}" 
-{% if hay.schema-type %}
-    vocab="https://schema.org/" typeof="{{ hay.schema_type | absolute_url }}"{% 
-   endif %}>
+    style="order: {{ hay.order }}">
+{% if hay.schema_type %}
+  <script type="application/ld+json">
+  {
+    "@context": {
+      "rdfa": "http://www.w3.org/ns/rdfa#",
+      "schema": "http://schema.org/",
+      "cd": "{{ "/" | absolute_url }}"
+    },
+    "@graph": [{
+      "@id": "{{ page.url | absolute_url }}#{{ id }}",
+      "@type": "{% if hay.schema_type == "cd:Character" %}schema:Person{% elsif hay_schema_type == "schema:Location" %}{% else %}schema:Thing{% endif %}",
+      "schema:additionalType:": "{{ hay.schema_type }}",
+      "schema:name": "{{ hay.title }}",
+      "schema:url": "{{ page.url | absolute_url }}#{{ id }}",
+      {% if hay.element %}
+        "cd:element": {{ hay.element | jsonify }},
+      {% endif %}
+      {% if hay.effect %}
+        "cd:effect": {{ hay.effect | jsonify }},
+      {% endif %}
+      {% if hay.resistance %}
+        "cd:elementalResistance": {{ hay.resistance | jsonify }},
+      {% endif %}
+      {% if hay.weakness %}
+        "cd:elementalWeakness": {{ hay.weakness | jsonify }},
+      {% endif %}
+      {% if hay.character %}
+      {% assign char = hay.character | append: '-latest' %}
+      {% assign character = site.data.characters[char] %}
+      "schema:gender": { 
+        "@type": "{{ character.gender }}", 
+        "@value": "{{ character.gender | split: '/' | last }}"
+      },
+      "cd:races": {{ character.races | jsonify }},
+      "schema:height": {
+        "@type": "schema:Distance",
+        "@value": "{{ character.appearance.height }}"
+      },
+      {% endif %}
+      "schema:description": "{{ hay.description | markdownify | strip_html }}"
+    }
+  }
+  </script>
+  {% endif %}
     <p class="inactive{% if hay.link %} link{% endif %}" {% if hay.children or hay.description or hay.character %}onclick="toggleAccordion(this)"{% endif %} id="{{ id }}" style="order: -1">
-      {% if hay.link %}<a href="{{ "/glossary/" | append: '#' |append: hay.link }}">{% endif %}{{ hay.title }}{% if hay.link %}</a>{% endif %}
+      {% if hay.link %}<a href="{{ "/glossary/" | append: '#' | append: hay.link }}" onclick="openHash('{{ hay.link }}')">{% endif %}{{ hay.title }}{% if hay.link %}</a>{% endif %}
       {% if hay.subtitle %}<small>{{ hay.subtitle }}</small>{% endif %}
-      {% if hay.schema_type %}<meta property="url" content="{{ page.url | absolute_url }}#{{ id }}">{% endif %}
     </p>
-  {% for e in hay.element %}
-    <meta property="element" typeof="{{ e | absolute_url }}" content="{{ e | split: '/'| last }}">
-  {% endfor %}
-  {% for e in hay.effect %}
-    <meta property="effect" typeof="{{ e | absolute_url }}" content="{{ e | split: '/'| last }}">
-  {% endfor %}
-  {% for e in hay.weakness %}
-    <meta property="elementalWeakness" typeof="{{ e | absolute_url }}" content="{{ e | split: '/'| last }}">
-  {% endfor %}
   {% if hay.description %}
-    <div{% if hay.schema_type %} property="description"{% endif %} style="order: 1">
+    <div style="order: 1">
       {{ hay.description | markdownify }}
     </div>
   {% endif %}
