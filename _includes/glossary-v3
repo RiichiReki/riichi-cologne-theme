@@ -50,8 +50,8 @@ for hay in include.data
         "@value": "{{ character.appearance.height }}"
       },
       {% endif %}
-      "schema:description": "{{ hay.description | markdownify | strip_html | }}"
-    }
+      "schema:description": "{{ hay.description | markdownify | strip_html |  }}"
+    }]
   }
   </script>
   {% endif %}
