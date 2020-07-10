@@ -3,12 +3,6 @@
 layout: default
 disable_sidebar: true
 ---
-<style>
-h1::before {
-  content: 'Custom Schema: ';
-  display: block;
-}
-</style>
 <div vocab="{{ '/' | absolute_url }}" typeof="rdfs:{{ page.type }}" resource="{{ page.url | absolute_url }}">
   <header>
     <h1 property="rdfs:label">{{ page.title }}</h1>
