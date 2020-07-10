@@ -19,7 +19,6 @@
     "navigation"
     "title"
     "controls"
-    "breadcrumbs"
     "content"
     "comments"
     "footer";
@@ -30,7 +29,6 @@
     grid-template-areas:
       "policy-banner"
       "title"
-      "breadcrumbs"
       "navigation"
       "controls"
       "content content"
@@ -45,7 +43,6 @@
     grid-template-areas:
       "policy-banner policy-banner"
       "title title"
-      "navigation breadcrumbs"
       "navigation content"
       "controls content"
       ". content"
