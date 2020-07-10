@@ -32,11 +32,11 @@
 > >
 > > {% for skill in character.skills %}
 > > {:.interface}
-> > > {{ skill.name }} {% if skill.level %} <span class="block-right">Level {% include ruby number=skill.level %}</span>{% endif %}
+> > > {{ skill.name }} {% if skill.level %} <span class="float-right">Level {% include ruby number=skill.level %}</span>{% endif %}
 > > > {:onclick="toggleAccordion(this)" .inactive}
 > > >
 > > > {% for subskill in skill.subskills %}
-> > > - {{ subskill.name }} <span class="block-right">Level {% include ruby number=subskill.level %}</span>{% endfor %}
+> > > - {{ subskill.name }} <span class="float-right">Level {% include ruby number=subskill.level %}</span>{% endfor %}
 > > >
 > > {% endfor %}
 > {% else %}⋮{% endunless %}

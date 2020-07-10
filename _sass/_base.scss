@@ -181,24 +181,8 @@
       align-items: stretch;
       align-content: stretch;
 
-      @media (min-width: 576px) {
-        margin: 0 -.5rem;
-      }
-
       span {
         margin: 0;
-      }
-
-      .early-acess {
-        margin-right: .5rem;
-
-        img {
-          float: right;
-          position: relative;
-          right: 1rem;
-          margin: -1rem;
-          clear: both;
-        }
       }
 
       a {
@@ -206,6 +190,11 @@
 
         @media (min-width: 768px) {
           min-width: 350px;
+        }
+
+        &.early-access {
+          background-color: rgb(232, 91, 70);
+          border-color: rgb(232, 91, 70);
         }
       }
     }
@@ -262,6 +251,10 @@
 
   >#comments {
     grid-area: comments;
+
+    @media (min-width: 768px) {
+      margin-left: 0;
+    }
   }
 }
 
@@ -287,16 +280,6 @@
 .cover-image {
   width: 100%;
   max-width: 500px;
-}
-
-.block-right {
-  display: block;
-  float: right;
-}
-
-.block-left {
-  display: block;
-  float: left;
 }
 
 figure {
@@ -403,17 +386,6 @@ form {
       @media (min-width: 768px) {
         display: inline-block;
       }
-
-      svg {
-        width: 1rem;
-        height: 1rem;
-        background-color: transparent;
-
-        [data-color],
-        [data-fill] {
-          fill: rgb(255, 255, 255);
-        }
-      }
     }
   }
 }
@@ -443,6 +415,14 @@ form {
 .d-flex .btn {
   margin: .5rem;
   flex-grow: 1;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .disabled {
@@ -461,5 +441,16 @@ form {
 h1, .h1, h2, .h2, h3 {
   @media (max-width: 595px) {
     margin: 0 2vmin;
+  }
+}
+
+.patreon-logo {
+  width: 1rem;
+  height: 1rem;
+  background-color: transparent;
+
+  [data-color],
+  [data-fill] {
+    fill: rgb(255, 255, 255);
   }
 }
