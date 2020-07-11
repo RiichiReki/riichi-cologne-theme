@@ -22,7 +22,9 @@ for hay in include.data
     "@graph": [{
       "@id": "{{ page.url | absolute_url }}#{{ id }}",
       "@type": "{% if hay.schema_type == "cd:Character" %}schema:Person{% elsif hay.schema_type == "schema: Place" %}{{ hay.schema_type }}{% else %}schema:Thing{% endif %}",
-      {% unless hay.schema_type == "schema: Place" %}"schema:additionalType": "{{ hay.schema_type }}",{% endunless %}
+      {% unless hay.schema_type == "schema: Place" %}
+        "schema:additionalType": "{{ hay.schema_type }}",
+      {% endunless %}
       "schema:name": "{{ hay.title }}",
       "schema:url": "{{ page.url | absolute_url }}#{{ id }}",
       {% if hay.element %}
@@ -37,20 +39,34 @@ for hay in include.data
       {% if hay.weakness %}
         "cd:elementalWeakness": {{ hay.weakness | jsonify }},
       {% endif %}
-      {% if hay.character %}
-      {% assign char = hay.character | append: '-latest' %}
-      {% assign character = site.data.characters[char] %}
-      "schema:gender": { 
-        "@type": "{{ character.gender }}", 
-        "@value": "{{ character.gender | split: '/' | last }}"
-      },
-      "cd:races": {{ character.races | jsonify }},
-      "schema:height": {
-        "@type": "schema:Distance",
-        "@value": "{{ character.appearance.height }}"
-      },
+      {% if hay.rarity %}
+        "cd:rarity": {{ hay.rarity | jsonify }},
       {% endif %}
-      "schema:description": "{{ hay.description | markdownify | strip_html |  }}"
+      {% if hay.threat_level %}
+        "cd:treatLevel": {{ hay.threat_level | jsonify }},
+      {% endif %}
+      {% if hay.habitat %}
+        "cd:habitat": [ {% for h in hay.habitat %} 
+          {
+            "@type": "schema:Place",
+            "id": "{{ h }}"
+          }{% unless forloop.last %},{% endunless %}{% endfor %}
+        ],
+      {% endif %}
+      {% if hay.character %}
+        {% assign char = hay.character | append: '-latest' %}
+        {% assign character = site.data.characters[char] %}
+        "schema:gender": { 
+          "@type": "{{ character.gender }}", 
+          "@value": "{{ character.gender | split: '/' | last }}"
+        },
+        "cd:races": {{ character.races | jsonify }},
+        "schema:height": {
+          "@type": "schema:Distance",
+          "@value": "{{ character.appearance.height }}"
+        },
+      {% endif %}
+      "schema:description": "{{ hay.description | markdownify | strip_html }}"
     }]
   }
   </script>
