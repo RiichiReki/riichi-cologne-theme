@@ -21,8 +21,8 @@ for hay in include.data
     },
     "@graph": [{
       "@id": "{{ page.url | absolute_url }}#{{ id }}",
-      "@type": "{% if hay.schema_type == "cd:Character" %}schema:Person{% elsif hay_schema_type == "schema:Location" %}{% else %}schema:Thing{% endif %}",
-      "schema:additionalType:": "{{ hay.schema_type }}",
+      "@type": "{% if hay.schema_type == "cd:Character" %}schema:Person{% elsif hay.schema_type == "schema: Place" %}{{ hay.schema_type }}{% else %}schema:Thing{% endif %}",
+      {% unless hay.schema_type == "schema: Place" %}"schema:additionalType": "{{ hay.schema_type }}",{% endunless %}
       "schema:name": "{{ hay.title }}",
       "schema:url": "{{ page.url | absolute_url }}#{{ id }}",
       {% if hay.element %}
