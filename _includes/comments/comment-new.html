@@ -1,18 +1,22 @@
 <h2>Leave a Comment</h2>
-<form name="Comments" method="POST" action="{{ site.comments.action }}" id="commentform" class="form-horizontal" data-netlify="true">
+<form name="Comments" method="POST" action="{{ site.comments.action }}" id="commentform" class="form-horizontal" data-netlify="true" netlify-honeypot="captcha">
   <fieldset id="commentfields">
-    <input name="slug" type="hidden" value="{{ slug }}">
     <div>
-      <label for="name">Name </label>
-      <input type="text" name="name" id="name" placeholder="Name" class="w-100" />
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" placeholder="Name" class="w-100">
       <label for="email">Email <span>(not shown)</span></label>
-      <input type="email" name="email" id="email" placeholder="name@domain.tld" class="w-100" />
+      <input type="email" name="email" id="email" placeholder="name@domain.tld" class="w-100">
       <label for="url">Website</label>
-      <input type="text" name="url" id="url" placeholder="https://domain.tld" class="w-100" />
+      <input type="text" name="url" id="url" placeholder="https://domain.tld" class="w-100">
     </div>
     <div>
       <label for="message">Comment*</label>
       <textarea name="message" id="message" placeholder="Leave a comment." class="w-100"></textarea>
+    </div>
+    <div class="d-none">
+      <input name="slug" type="hidden" value="{{ slug }}">
+      <label for="captcha">Captcha</label>
+      <input name="captcha" type="text">
     </div>
     <div>
       <button type="sumbit" id="commentbutton" class="btn btn-primary btn-block">Submit Comment</button>
