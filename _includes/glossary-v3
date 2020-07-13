@@ -72,7 +72,7 @@ for hay in include.data
   </script>
   {% endif %}
     <p class="inactive{% if hay.link %} link{% endif %}" {% if hay.children or hay.description or hay.character %}onclick="toggleAccordion(this)"{% endif %} id="{{ id }}" style="order: -1">
-      {% if hay.link %}<a href="{{ "/glossary/" | append: '#' | append: hay.link }}" onclick="openHash('{{ hay.link }}')">{% endif %}{{ hay.title }}{% if hay.link %}</a>{% endif %}
+      {% if hay.link %}<a href="{{ "/glossary/" | append: '#' | append: hay.link }}" onclick="openHash('#{{ hay.link }}')">{% endif %}{{ hay.title }}{% if hay.link %}</a>{% endif %}
       {% if hay.subtitle %}<small>{{ hay.subtitle }}</small>{% endif %}
     </p>
   {% if hay.description %}
