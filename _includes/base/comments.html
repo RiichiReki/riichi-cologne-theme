@@ -1,4 +1,4 @@
-<aside id="comments" aria-hidden="true">
+<aside id="comments" aria-hidden="true" data-nosnippet>
 {% assign slug = page.url | slugify | downcase | replace: '.', '-' | replace: '_' : '-' %}
 {% assign comments_map = site.data.comments[slug] %}
 {% assign comments = "" | split: "," %}
