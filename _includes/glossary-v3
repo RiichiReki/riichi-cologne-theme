@@ -77,7 +77,8 @@ for hay in include.data
     </p>
   {% if hay.description %}
     <div style="order: 1">
-      {{ hay.description | markdownify }}
+      {% capture description %}{{ hay.description | markdownify }}{% endcapture %}
+      {% include linkify content="description" %}
     </div>
   {% endif %}
   {% if hay.character %}

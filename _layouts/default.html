@@ -21,7 +21,7 @@ layout: compress
       {% assign js_page = site.pages | where: 'url', js | last %}
     <script defer src="{{ js }}?{{ js_page.content | sha256_64 | slice: 0, 5 }}" crossorigin="anonymous"></script>
     {% if page.additional_js == "hyphenate" %}
-    <script defer src="/assets/vendor/hyphenopoly/Hyphenopoly_Loader.js" crossorigin="anonymous"></script>
+    <script defer src="/assets/scripts/hyphenopoly/Hyphenopoly_Loader.js" crossorigin="anonymous"></script>
     {% endif %}
       <!-- Social Media Common -->
     {% if page.type == "chapter" %}

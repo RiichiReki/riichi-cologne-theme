@@ -45,7 +45,7 @@ function toggleLineHeight() {
 
   writeCookie("condensed", $('body').hasClass('condensed'));
 }
-window['LineHeight'] = toggleLineHeight;
+window['toggleLineHeight'] = toggleLineHeight;
 
 function toggleDyslexicFont() {
   if (!isHasAcceptedPolicy()) {
@@ -217,7 +217,7 @@ function loadTalkify() {
 
   js = d.createElement("script");
   js.id = i;
-  js.src = '/assets/vendor/talkify/talkify.min.js';
+  js.src = '/assets/script/talkify/talkify.min.js';
 
   fjs.parentNode.insertBefore(js, fjs);
 }
