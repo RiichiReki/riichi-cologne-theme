@@ -9,6 +9,6 @@
   {% assign from = keywords | prepend: start_delimiters | append: end_delimiters %}
   {% assign to = "/glossary/" | absolute_url | prepend: '\1<a href="'| append: "#" | append: pair[1] | 
      append: '" target="_blank" rel="noopener">\2</a>\3' %}
-  {% assign content = content | regex_replace: from, to %}
+  {% assign content = content | regex_replace_once: from, to %}
 {% endfor %}
 {{ content }}

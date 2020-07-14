@@ -68,8 +68,11 @@ for hay in include.data
           "schema:familyName": "{{ character.familyName }}",
           "schema:givenName": "{{ character.givenName }}",
         {% endif %}
-        "schema:name": "{{ hay.title }}",
       {% endif %}
+      {% if hay.extra_schema %}{% for s in hay.extra_schema %}
+        "{{ s.key }}": {{ s.value | jsonify }},
+      {% endfor %}{% endif %}
+      "schema:name": "{{ hay.title }}",
       "schema:description": "{{ hay.description | markdownify | strip_html }}"
     }]
   }
