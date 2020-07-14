@@ -21,11 +21,10 @@ for hay in include.data
     },
     "@graph": [{
       "@id": "{{ page.url | absolute_url }}#{{ id }}",
-      "@type": "{% if hay.schema_type == "cd:Character" %}schema:Person{% elsif hay.schema_type == "schema:Place" %}{{ hay.schema_type }}{% else %}schema:Thing{% endif %}",
+      "@type": "{% if hay.schema_type == "cd:Person" %}schema:Person{% elsif hay.schema_type == "schema:Place" %}{{ hay.schema_type }}{% else %}schema:Thing{% endif %}",
       {% unless hay.schema_type == "schema:Place" %}
         "schema:additionalType": "{{ hay.schema_type }}",
       {% endunless %}
-      "schema:name": "{{ hay.title }}",
       "schema:url": "{{ page.url | absolute_url }}#{{ id }}",
       {% if hay.element %}
         "cd:element": {{ hay.element | jsonify }},
@@ -58,13 +57,18 @@ for hay in include.data
         {% assign character = site.data.characters[char] %}
         "schema:gender": { 
           "@type": "{{ character.gender }}", 
-          "@value": "{{ character.gender | split: '/' | last }}"
+          "@value": "{{ character.gender | split: ':' | last }}"
         },
-        "cd:races": {{ character.races | jsonify }},
+        "cd:race": {{ character.race | jsonify }},
         "schema:height": {
           "@type": "schema:Distance",
           "@value": "{{ character.appearance.height }}"
         },
+        {% if hay.schema_type == "cd:Person" %}
+          "schema:familyName": "{{ character.familyName }}",
+          "schema:givenName": "{{ character.givenName }}",
+        {% endif %}
+        "schema:name": "{{ hay.title }}",
       {% endif %}
       "schema:description": "{{ hay.description | markdownify | strip_html }}"
     }]

@@ -12,13 +12,13 @@
   <tr>
     <td>Gender:</td>
     <td>
-      {{ character.gender | split: '/' | last }}
+{{ character.gender | split: ':' | last }}
     </td>
   </tr>
   <tr>
     <td>Race:</td>
     <td>
-{{ character.races | join: " " }}
+{{ character.race | join: " " }}
     </td>
   </tr>
   <tr>

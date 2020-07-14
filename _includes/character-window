@@ -4,11 +4,11 @@
 > Character Info
 > {:onclick="toggleAccordion(this)" .inactive}
 >
-> |---------+----------------------------------------------------------|
-> |:--------|:---------------------------------------------------------|
-> | Name:   | {{ character.name }}                                     |
-> | Age:    | {{ character.age }}                                      |
-> | Race:   | {% for race in character.races %}{{ race }} {% endfor %} |
+> |---------+--------------------------------------|
+> |:--------|:-------------------------------------|
+> | Name:   | {{ character.name }}                 |
+> | Age:    | {{ character.age }}                  |
+> | Race:   | {{ character.race | join: ' ' }}     |
 >
 > {:.interface}
 > > Titles & Blessings

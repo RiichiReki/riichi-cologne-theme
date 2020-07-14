@@ -127,7 +127,7 @@ layout: default
         {
           "@id": "{% if db_character.url %}{{ db_character.url }}{% else %}_:{{ character_string}}{% endif %}",
           "@type": "schema:Person",
-          "additionalType": "cd:Character",
+          "additionalType": "cd:Person",
           "schema:name": "{{ db_character.name }}",
           "schema:gender": {
             "@type": "{{ db_character.gender | absolute_url }}",
