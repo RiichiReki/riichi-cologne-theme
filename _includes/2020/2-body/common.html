@@ -1,0 +1,12 @@
+{% if site.about and site.about.type %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "{{ site.about.type }}",
+    "name": "{{ site.title }}",
+    "url": "{{ site.url }}"{% if site.about.links %},
+    "sameAs": {{ site.about.links | jsonify }}{% endif %}
+  }
+</script>
+{% endif %}
+<div id="player-and-voices" style="display:none"></div>

@@ -1,0 +1,31 @@
+<!-- Social Networks Common -->
+<meta property="og:title" name="twitter:title" content="{{ page.title }} | {{ site.title }}">
+<meta property="og:image" content="{{ page.image | absolute_url }}">
+<meta name="twitter:image" content="{{ page.image | replace: "og", "card" | absolute_url }}">
+{% capture description %}
+{{ page.excerpt | markdownify | strip_html }}
+{% unless page.excerpt %}{{ page.content | liquify | markdownify | strip_html }}{% endunless %}
+{% endcapture %}
+{% assign description_social_words = description | truncate: 200 | split: " " | size %}
+{% assign description_google_words = description | truncate: 160 | split: " " | size %}
+<meta property="og:description" name="twitter:description"
+    content="{{ description | truncatewords: description_social_words, "…" }}">
+<meta name="description" content="{{ description | truncatewords: description_google_words, "…" }}">
+
+<!-- Twitter -->
+{% if site.twitter %}
+<meta name="twitter:card" content="{{ site.twitter.card }}">
+{% if site.twitter.creator %}
+<meta name="twitter:creator" content="@{{ site.twitter.creator }}">
+{% endif %}
+<meta name="twitter:site" content="@{{ site.twitter.username }}">
+{% endif %}
+{% if site.facebook %}
+
+<!-- Facebook -->
+<meta property="article:publisher" content="{{ site.facebook.publisher }}">
+<meta property="fb:app_id" content="{{ site.facebook.app_id }}">
+{% endif %}
+<meta property="og:url"
+    content="{% if page.shortlink %}{{ page.shortlink }}{% else %}{{ page.url | absolute_url }}{% endif %}">
+<meta property="og:type" content="article">

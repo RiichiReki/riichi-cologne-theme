@@ -1,0 +1,83 @@
+---
+# Layout Rewrite 2020: Chapter Layout
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+
+<head>
+  {% include 2020/1-head/common.html %}
+  {% include 2020/1-head/social-chapter.html %}
+  {% include 2020/1-head/extra-chapter.html %}
+  {% include 2020/1-head/noscript.html %}
+
+<body id="body" class="dark-theme">
+  {% include 2020/2-body/common.html %}
+  <header aria-flowto="content" id="mobile-top">
+    {% include 2020/2-body/header.html %}
+  </header>
+
+  <ol class="breadcrumb" aria-label="breadcrumb">
+    {% include 2020/2-body/1-breadcrumbs/chapter.html %}
+  </ol>
+
+  <nav>
+    {% include 2020/2-body/navigation.html %}
+  </nav>
+
+  <div class="controls buttons" data-nosnippet>
+    {% include 2020/2-body/controls.html %}
+  </div>
+
+  <main id="content" class="chapter">
+    <header>
+      {% include 2020/2-body/2-main/structured-data-chapter.html %}
+      {% include 2020/2-body/2-main/header-chapter.html %}
+      {% assign words = content | markdownify | strip_html | split: " " | size %}
+      {% if words > 200 %}
+      <nav class="d-flex w-100 clearfix">
+        {% include 2020/2-body/2-main/navigation-chapter.html %}
+      <nav>
+      {% endif %}
+    </header>
+    <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content">
+      <!--sse-->
+      {% include linkify content=content %}
+      <!--/sse-->
+    </section>
+    <footer>
+      <nav class="d-flex w-100 clearfix" id="navigation" aria-flowto="comments">
+        {% include 2020/2-body/2-main/navigation-chapter.html %}
+      </nav>
+
+      <hr>
+
+      <aside class="social">
+        {% include 2020/2-body/2-main/sharing-chapter.html %}
+      </aside>
+    </footer>
+  </main>
+
+  <footer>
+    <div id="support">
+      {% include 2020/3-footer/support.html %}
+    </div>
+    <div id="copyright" class="float-right">
+      {% include 2020/3-footer/copyright.html %}
+    </div>
+  </footer>
+
+  <div class="policy-banner" id="policy-banner" data-nosnippet>
+    {% include 2020/policy-banner.html %}
+  </div>
+
+  {% if page.comments %}
+    {% include 2020/2-body/comments.html %}
+  {% endif %}
+
+  <!-- hash: 'sha256-jt0fluv+2kfDRP7lqettjyHx8MocFVb7Knqy4uxo7Ps=' -->
+  <script>window['pageType']='chapter'</script>
+  <!-- hash: 'sha256-4Amo8MXCWfkrOHD6HrolTcZjIyciljwHajQRyeNI9II=' -->
+  {% if page.additional_js == "hyphenate" %}
+  <script>var Hyphenopoly={require:{"en-ca":"Supercalifragilisticexpialidocious"}}</script>
+  {% endif %}

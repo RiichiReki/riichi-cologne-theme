@@ -1,0 +1,98 @@
+
+<script type="application/ld+json">
+{
+    "@context": {
+    "rdfa": "https://www.w3.org/ns/rdfa#",
+    "schema": "https://schema.org/",
+    "cd": "https://cdwn.tk/"
+    },
+    "@graph": [
+    {% if page.author %}{% 
+        assign author = site.data.staff | where: "id", page.author | last %}
+    {
+        "@id": "{{ author.url }}",
+        "@type": "schema:Person",
+        "schema:name": "{{ author.name }}",
+        "schema:url": "{{ author.url }}"
+    },{% endif %}
+    {% if page.editor %}{% 
+        for editor in page.editor %}{% 
+        assign editor = site.data.staff | where: "id", page.editor | last %}
+    {
+        "@id": "{{ editor.url }}",
+        "@type": "schema:Person",
+        "schema:name": "{{ editor.name }}",
+        "schema:url": "{{ editor.url }}"
+    },{% endfor %}{% endif %}
+    {
+        "@id": "{{ page.book.url | absolute_url }}",
+        "@type": "schema:Book",
+        "schema:url": "{{ page.book.url | absolute_url }}",
+        "schema:name": "{{ site.title }} {{ page.book.number }}: {{ page.book.title }}",
+        "schema:position": "{{ page.book.number }}",
+        "schema:copyrightYear": "{{ page.book.copyrightYear }}",
+        "schema:inLanguage": "{{ page.lang }}"{% if page.author %}{% 
+        assign author = site.data.staff | where: "id", page.author | last %},
+        "schema:author": {
+        "@id": "{{ author.url }}"
+        },
+        "schema:publisher": {
+        "@id": "{{ author.url }}"
+        }{% endif %}{% if page.book.genres %},
+        "schema:genre": {{ page.book.genres | jsonify }}{% endif %}
+    },{% assign characters = page.characters.main %}{% 
+        if page.characters.secondary %}{% 
+        assign characters = characters | concat: page.characters.secondary %}{%
+        endif %}{% if page.characters.tertitary %}{%
+        assign characters = characters | concat: page.characters.tertitary %}{%
+        endif %}{%
+        for character in characters %}{% 
+        assign character_string = character | strip | append: "-latest" %}{% 
+        assign db_character = site.data.characters[character_string] %}{% unless db_character%}{% continue %}{% endunless %}
+    {
+        "@id": "{% if db_character.url %}{{ db_character.url }}{% else %}_:{{ character_string}}{% endif %}",
+        "@type": "schema:Person",
+        "additionalType": "cd:Person",
+        "schema:name": "{{ db_character.name }}",
+        "schema:gender": {
+        "@type": "{{ db_character.gender | absolute_url }}",
+        "@value": "{{ db_character.gender | split: "/" | last }}"
+        }{% if db_character.url %},
+        "schema:url": "{{ db_character.url }}"{% endif %}
+    },{% endfor %}
+    {
+        "@id": "{{ page.url | absolute_url }}",
+        "@type": "schema:Chapter",
+        "schema:isPartOf": { "@id": "{{ page.book.url | absolute_url }}" },
+        "schema:name": "{{ page.book.number }}-{{ page.chapter }}: {{ page.title }}",
+        "schema:datePublished": "{{ page.date | date: "%Y-%m-%d" }}",
+        "schema:dateModified": "{% last_modified_at %Y-%m-%d %}",{% 
+        assign author = site.data.staff | where: "id", page.author | last %}
+        "schema:author": { "@id": "author.url" },{% if page.editor %}
+        "schema:editor": [{% for editor in page.editor %}{% 
+            assign editor = site.data.staff | where: "id", page.editor | last %}
+            {"@id": "{{ editor.url }}"}{% unless forloop.last %},{% endunless %}{% endfor %}
+            ],{% endif %}{%if page.sponsors %}
+            "schema:sponsor": [{% for sponsor in page.sponsors %}
+            {
+            "@type": "schema:Person",
+            "schema:name": "{{ sponsor }}
+            }{% unless forloop.last %},{% endunless %}{% endfor %}
+            ],{% endif %}
+            "schema:character": [{%
+            for character in characters %}{% 
+                assign character_string = character | strip | append: "-latest" %}{% 
+                assign db_character = site.data.characters[character_string] %}{% unless db_character%}{% continue %}{% endunless %}
+                { "@id": "{% if db_character.url %}{{ db_character.url }}{% else %}_:{{ character_string}}{% endif %}" }{% unless forloop.last %},{% endunless %}{% endfor %}
+        ],{% if page.location %}
+        "schema:contentLocation": [ {% for location in page.location %}
+        {
+        "@type": "schema:Place",
+        "name": "{{ site.data.locations[location].name }}"
+        }{% unless forloop.last%},{% endunless %}{% endfor %}
+        ],{% endif %}
+        "schema:url": "{{ page.url | absolute_url }}"
+    }
+    ]
+}
+</script>

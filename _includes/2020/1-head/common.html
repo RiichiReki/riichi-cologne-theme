@@ -1,0 +1,37 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#007bff">
+{% assign title = page.title | append: " | " | append: site.title %}
+<title>{{ title | truncate: 67, "…" }}</title>
+<meta name="generator" content="Jekyll v{{ jekyll.version }}">
+
+{% if page.robots %}
+<meta name="robots" content="{{ page.robots }}">
+{% endif %}
+
+<link rel="shortcut icon" href="{{ "/favicon.ico" | absolute_url }}">
+<link rel="apple-touch-icon" href="{{ "/assets/2020/images/site-icon.png" | absolute_url }}">
+
+<!-- CSS & JS -->
+{% capture css %}/assets/2020/css/default{% if page.additional_css %}+{{ page.additional_css | join: '+'}}{% endif %}.css{% endcapture %}
+{% assign css_page = site.pages | where: 'url', css | last %}
+<link rel="stylesheet" type="text/css" href="{{ css }}?{{ css_page.content | sha256_64 | slice: 0, 5 }}">
+{% capture js %}/assets/2020/scripts/default.js{% endcapture %}
+{% assign js_page = site.pages | where: 'url', js | last %}
+<script defer src="{{ js }}?{{ js_page.content | sha256_64 | slice: 0, 5 }}" crossorigin="anonymous"></script>
+{% if page.additional_js == "hyphenate" %}
+<script defer src="/assets/2020/scripts/hyphenopoly/Hyphenopoly_Loader.js" crossorigin="anonymous"></script>
+{% endif %}
+
+<!-- Search Engine Verification -->
+{% for pair in site.webmaster_verifications %}
+<meta name="{{ pair.name }}" content="{{ pair.key }}">
+{% endfor %}
+{% unless page.pushished == "sponsors" or page.pushished == "pre-sponsors"%}
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+{% endunless %}
+{% if page.shortlink %}
+<link rel="shortlink"
+  href="{% if site.shorturl %}{{ site.shorturl }}{{ page.shortlink }}{% else %}{{ page.shortlink | absolute_url }}{% endif %}">
+{% endif %}
+<link rel="home alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.feed | absolute_url }}">

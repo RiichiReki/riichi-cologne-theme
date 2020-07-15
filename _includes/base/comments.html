@@ -7,7 +7,7 @@
 {% endfor %}
 {% assign comment_count = comments | size %}
 {% if comment_count > 0 %}
-  {% assign author = site.data.staff[page.author] %}
+  {% assign author = site.data.staff | where: 'id', page.author| last %}
   <h2>{% if comment_count == 1 %}One Comment{% else %}{{ comment_count }} Comments{% endif %}</h2>
   <ol>
   {% assign sorted_comments = comments | sort: 'date' %}

@@ -217,7 +217,7 @@ function loadTalkify() {
 
   js = d.createElement("script");
   js.id = i;
-  js.src = '/assets/script/talkify/talkify.min.js';
+  js.src = '/assets/scripts/talkify/talkify.min.js';
 
   fjs.parentNode.insertBefore(js, fjs);
 }

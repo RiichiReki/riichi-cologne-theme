@@ -1,0 +1,31 @@
+---
+# Layout Rewrite 2020: Schema Layout
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+<head>
+{% include 2020/head/common.html %}
+{% include 2020/head/social-common.html %}
+<body id="body" class="dark-theme">
+{% include 2020/body/common.html %}
+  <header aria-flowto="content" id="mobile-top">
+    {% include 2020/body/header.html %}
+  </header>
+
+  <ol class="breadcrumb" aria-label="breadcrumb">
+    {% include 2020/body/breadcrumbs.html %}
+  </ol>
+
+  <main id="content" class="schema">
+    {{ content }}
+  </main>
+
+  <footer>
+    <div id="support">
+      {% include 2020/footer/support.html %}
+    </div>
+    <div id="copyright" class="float-right">
+      {% include 2020/footer/copyright.html %}
+    </div>
+  </footer>
