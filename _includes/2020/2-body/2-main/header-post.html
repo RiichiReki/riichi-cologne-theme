@@ -1,0 +1,13 @@
+<h1 aria-label="{{ page.title }}"
+    aria-flowto="post-content">
+    {{ page.title }}
+</h1>
+<small class="float-left">
+    published on {{ page.date | date: "%Y-%m-%d" }}, last updated on {% last_modified_at %Y-%m-%d %}
+</small>
+<small class="float-right">
+{% if page.author %}
+{% assign author = site.data.staff | where: "id", page.author | last %}
+    written by {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener nofollow">{% endif %}{{ author.name }}{% if author.url %}</a>{% endif %}{% endif %}
+</small>
+<div class="clearfix"></div>

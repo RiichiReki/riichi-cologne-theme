@@ -1,5 +1,5 @@
 ---
-# Layout Rewrite 2020: Chapter Layout
+# Layout Rewrite 2020: Post Layout
 layout: compress
 ---
 <!DOCTYPE html>
@@ -7,7 +7,7 @@ layout: compress
 
 <head>
   {% include 2020/1-head/common.html %}
-  {% include 2020/1-head/social-chapter.html %}
+  {% include 2020/1-head/social-common.html %}
   {% include 2020/1-head/extra-chapter.html %}
   {% include 2020/1-head/noscript.html %}
 
@@ -29,31 +29,31 @@ layout: compress
     {% include 2020/2-body/controls.html %}
   </div>
 
-  <main id="content" class="chapter">
+  <main id="content" class="post">
     <header>
-      {% include 2020/2-body/2-main/structured-data-chapter.html %}
-      {% include 2020/2-body/2-main/header-chapter.html %}
+      {% include 2020/2-body/2-main/structured-data-post.html %}
+      {% include 2020/2-body/2-main/header-post.html %}
       {% assign words = content | markdownify | strip_html | split: " " | size %}
       {% if words > 300 %}
       <nav class="d-flex w-100 clearfix">
-        {% include 2020/2-body/2-main/navigation-chapter.html %}
+        {% include 2020/2-body/2-main/navigation-post.html %}
       <nav>
       {% endif %}
     </header>
-    <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content">
+    <section class="hyphenate" property="text" aria-flowto="navigation" id="post-content">
       <!--sse-->
-      {% include linkify content=content %}
+      {{ content }}
       <!--/sse-->
     </section>
     <footer>
       <nav class="d-flex w-100 clearfix" id="navigation" aria-flowto="comments">
-        {% include 2020/2-body/2-main/navigation-chapter.html %}
+        {% include 2020/2-body/2-main/navigation-post.html %}
       </nav>
 
       <hr>
 
       <aside class="social">
-        {% include 2020/2-body/2-main/sharing-chapter.html %}
+        {% include 2020/2-body/2-main/sharing-post.html %}
       </aside>
     </footer>
   </main>

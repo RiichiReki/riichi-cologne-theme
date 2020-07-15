@@ -91,7 +91,8 @@
         "name": "{{ site.data.locations[location].name }}"
         }{% unless forloop.last%},{% endunless %}{% endfor %}
         ],{% endif %}
-        "schema:url": "{{ page.url | absolute_url }}"
+        "schema:url": "{{ page.url | absolute_url }}",
+        "schema:text": "{{ content | strip_html }}"
     }
     ]
 }

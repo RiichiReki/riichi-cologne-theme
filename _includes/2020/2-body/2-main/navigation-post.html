@@ -1,0 +1,24 @@
+{% for page in previous_pages %}
+  <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+{% endfor %}
+  
+{% for page in next_pages %}
+  {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
+    {% break %}
+  {% elsif jekyll.environment != "unpublished" and page.published == "sponsors" %}
+    <a class="btn btn-lg btn-primary next early-access" title="{{ site.patreon.title }}"
+       href="{{ site.patreon.url }}" rel="payment">
+        <span>
+         <svg viewBox="0 0 569 546" xmlns="http://www.w3.org/2000/svg" class="patreon-logo">
+          <g>
+           <circle cx="362.589996" cy="204.589996" data-fill="1" id="Oval" r="204.589996"></circle>
+           <rect data-fill="2" height="545.799988" id="Rectangle" width="100" x="0" y="0"></rect>
+          </g>
+         </svg>
+        </span>
+        <span>{{ site.patreon.title }}</span>
+    </a>
+  {% else %}
+    <a class="btn btn-lg btn-primary next" title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+  {% endif %}
+{% endfor %}

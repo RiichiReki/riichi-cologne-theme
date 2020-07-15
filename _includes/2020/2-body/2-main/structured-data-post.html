@@ -1,0 +1,33 @@
+
+<script type="application/ld+json">
+{
+    "@context": {
+    "rdfa": "https://www.w3.org/ns/rdfa#",
+    "schema": "https://schema.org/",
+    "cd": "https://cdwn.tk/"
+    },
+    "@graph": [
+    {% assign author = site.data.staff | where: "id", page.author | last %}
+    {
+        "@id": "{{ author.url }}",
+        "@type": "schema:Person",
+        "schema:name": "{{ author.name }}",
+        "schema:url": "{{ author.url }}"
+    },
+    {
+        "@id": "{{ page.url | absolute_url }}",
+        "@type": "schema:BlogPost",
+        "schema:name": "{{ page.title }}",
+        "schema:datePublished": "{{ page.date | date: "%Y-%m-%d" }}",
+        "schema:dateModified": "{% last_modified_at %Y-%m-%d %}",{% 
+        assign author = site.data.staff | where: "id", page.author | last %}
+        "schema:author": { "@id": "author.url" },
+        "schema:image": { 
+            "@type": "schema:URL",
+            "@value": "{% if post.image %}{{ post.image | absolute_url }}{% else %}{{ "/assets/images/site-card.png" | absolute_url }}{% endif %}"
+        },
+        "schema:url": "{{ page.url | absolute_url }}",
+        "schema:text": "{{ content | strip_html }}"
+    }
+}
+</script>
