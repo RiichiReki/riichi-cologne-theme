@@ -6,6 +6,9 @@
 @import "colors-common";
 @import "colors";
 @import "animation";
+@import "ruby-characters";
+@import "option-dyslexic";
+@import "option-condensed";
 
 #body {
   font-size: 12pt;
@@ -38,8 +41,7 @@
 
   @media (min-width: 992px) {
     font-size: 14pt;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto;
+    grid-template: auto / 20em 1fr;
     grid-template-areas:
       "policy-banner policy-banner"
       "title title"
@@ -136,6 +138,7 @@
       flex-basis: 0;
       margin-left: .5rem;
       margin-right: .5rem;
+      margin-top: 1rem;
     }
 
     @media (min-width: 576px) {

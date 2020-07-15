@@ -1,0 +1,11 @@
+#body.dyslexic {
+  &,
+  h1, .h1, h2, .h2, h3 {
+    font-family: "OpenDyslexic";
+  }
+
+  @media (min-width: 992px) {
+    font-size: 14pt;
+    grid-template: auto / 22em 1fr;
+  }
+}
