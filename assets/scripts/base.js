@@ -163,11 +163,13 @@ async function setUpPageForUsers() {
   if (isMobile) {
     d.addEventListener('touchstart', touchStart, false);
     d.addEventListener('touchmove', touchMove, false);
-    document.getElementById('mobile-top').scrollIntoView(true);
     toggleAllAccordions();
+    if (window.location.hash== "")
+      document.getElementById('mobile-top').scrollIntoView(true);
   }
-
-  d.getElementsByTagName("html")[0].className = "animated";
+  
+  $('.controls').toggleClass('d-none');
+  $('html').toggleClass('animated');
 
   $('#dark-mode').change(toggleTheme);
   $('#tts').change(toggleTTS);
