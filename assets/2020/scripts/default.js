@@ -1,5 +1,5 @@
 ---
-layout: compressed
+layout: compress
 ---
 {% include_relative jquery/jquery-3.2.1.slim.min.js %}
 {% include_relative bootstrap/bootstrap.min.js %}

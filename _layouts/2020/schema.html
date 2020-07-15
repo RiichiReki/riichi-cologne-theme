@@ -4,28 +4,32 @@ layout: compress
 ---
 <!DOCTYPE html>
 <html lang="{{ page.lang }}">
+
 <head>
-{% include 2020/head/common.html %}
-{% include 2020/head/social-common.html %}
-<body id="body" class="dark-theme">
-{% include 2020/body/common.html %}
+  {% include 2020/1-head/common.html %}
+  {% include 2020/1-head/social-common.html %}
+  {% include 2020/1-head/extra-schema.html %}
+
+<body id="body" class="dark-theme schema">
+  {% include 2020/2-body/common.html %}
   <header aria-flowto="content" id="mobile-top">
-    {% include 2020/body/header.html %}
+    {% include 2020/2-body/header.html %}
   </header>
 
   <ol class="breadcrumb" aria-label="breadcrumb">
-    {% include 2020/body/breadcrumbs.html %}
+    {% include 2020/2-body/1-breadcrumbs/schema.html %}
   </ol>
 
-  <main id="content" class="schema">
-    {{ content }}
+  <main id="content" class="schema" 
+    vocab="{{ '/' | absolute_url }}" typeof="rdfs:{{ page.type }}" resource="{{ page.url | absolute_url }}">
+    {% include 2020/2-body/2-main/schema.html %}
   </main>
 
   <footer>
     <div id="support">
-      {% include 2020/footer/support.html %}
+      {% include 2020/3-footer/support.html %}
     </div>
     <div id="copyright" class="float-right">
-      {% include 2020/footer/copyright.html %}
+      {% include 2020/3-footer/copyright.html %}
     </div>
   </footer>

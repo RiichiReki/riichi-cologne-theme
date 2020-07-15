@@ -16,13 +16,14 @@
 {% capture css %}/assets/2020/css/default{% if page.additional_css %}+{{ page.additional_css | join: '+'}}{% endif %}.css{% endcapture %}
 {% assign css_page = site.pages | where: 'url', css | last %}
 <link rel="stylesheet" type="text/css" href="{{ css }}?{{ css_page.content | sha256_64 | slice: 0, 5 }}">
+{% unless page.layout == "2020/schema" %}
 {% capture js %}/assets/2020/scripts/default.js{% endcapture %}
 {% assign js_page = site.pages | where: 'url', js | last %}
 <script defer src="{{ js }}?{{ js_page.content | sha256_64 | slice: 0, 5 }}" crossorigin="anonymous"></script>
 {% if page.additional_js == "hyphenate" %}
 <script defer src="/assets/2020/scripts/hyphenopoly/Hyphenopoly_Loader.js" crossorigin="anonymous"></script>
 {% endif %}
-
+{% endunless %}
 <!-- Search Engine Verification -->
 {% for pair in site.webmaster_verifications %}
 <meta name="{{ pair.name }}" content="{{ pair.key }}">
