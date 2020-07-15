@@ -34,7 +34,7 @@
     }
   }
 
-  > p, > h3 {
+  > p, > h2, > h3 {
     margin: 0 2vmin 1rem;
 
     @media (min-width: 576px) {
@@ -43,8 +43,10 @@
   }
 
   > p:first-child,
+  > h2:first-child,
   > h3:first-child,
   > script:first-child + p,
+  > script:first-child + h2,
   > script:first-child + h3 {
     display: block;
     border-top-left-radius: .3rem;
@@ -57,8 +59,10 @@
 
   .interface {
     > p:first-child,
+    > h2:first-child,
     > h3:first-child,
     > script:first-child + p,
+    > script:first-child + h2,
     > script:first-child + h3 {
       &::before {
         display: inline-block;
@@ -116,8 +120,10 @@
 .top-toggle {
   margin-top: 0;
   > p:first-child,
+  > h2:first-child,
   > h3:first-child,
   > script:first-child + p,
+  > script:first-child + h2,
   > script:first-child + h3 {
     &::before {
       display: inline-block;
