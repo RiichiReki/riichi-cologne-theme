@@ -24,6 +24,9 @@
     }]
 }
 </script>
+<li>
+  <a title="Crystal Down Schema" href="https://cdwn.tk/">Crystal Down Schema</a>
+</li>
 {% for class in page.subclass-chain %}
 <li class="breadcrumb-item">
     <a href="{{ class | absolute_url }}" class="context-{% if class contains 'schema' %}schema{% else %}cd{% endif %}">{{ class | split: '/' | last }}</a>
