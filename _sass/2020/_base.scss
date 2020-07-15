@@ -209,9 +209,6 @@
     }
 
     p {
-      -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-      hyphens: auto;
       text-align: left;
     }
 
@@ -505,4 +502,10 @@ h1, .h1, h2, .h2, h3 {
   [data-fill] {
     fill: rgb(255, 255, 255);
   }
+}
+
+.hyphenate {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
