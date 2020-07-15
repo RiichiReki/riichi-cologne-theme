@@ -17,6 +17,9 @@
       <tr>
         <th colspan="3">Properties from <span class="context-cd">{{ page.title }}</span></th>
       </tr>
+      <tr>
+        <th>Property</th><th>Expected Type</th><th>Description</th>               
+      </tr>
       {% for property in page.properties %}
       <tr typeof="rdfs:Property" resource="{{ property.property | absolute_url }}">
         <th>
@@ -43,6 +46,8 @@
         <th colspan="3">Properties from <a
             href="{{ e.class }}">{{ e.class | replace: 'https://schema.org/', 'schema:' | replace: '/', 'cd:' }}</a>
           (selected few)</th>
+      </tr>
+      <tr><th>Property</th><th>Expected Type</th><th>Description</th>               
       </tr>
       {% for property in e.properties %}
       <tr typeof="rdfs:Property" resource="{{ property.property | absolute_url }}">
@@ -78,7 +83,7 @@
             <a href="{{ include | absolute_url }}"
               title="The '{{ page.title }}' property has values that include instances of the '{{ include | replace: 'https://schema.org/', 'schema:' | replace: '/', 'cd:' }}' type."
               class="context-{% if include contains 'schema' %}schema{% else %}cd{% endif %}">
-              {{ include  }}
+              {{ include | split: '/' | last }}
             </a>
           </code>{% unless forloop.last %},&nbsp;{% endunless %}
         </td>

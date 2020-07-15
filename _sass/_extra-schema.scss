@@ -18,3 +18,24 @@
     }
   }
 }
+
+table {
+  border-spacing: 3px;
+  border-collapse: separate;
+}
+
+th {
+  background-color: #000;
+}
+
+th, td {
+  padding: .5rem
+}
+
+.context-schema::before {
+  content: 'schema:'
+}
+
+.context-cd::before {
+  content: 'cd:'
+}
