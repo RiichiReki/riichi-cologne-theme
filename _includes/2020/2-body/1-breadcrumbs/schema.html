@@ -1,31 +1,5 @@
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org/",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-    {% for e in page.subclass-chain %}
-    {
-      "@type": "ListItem",
-      "position": forloop.index,
-      "name": "{{ e | split: '/' | last }}",
-      "item": "{{ e | absolute_url }}"
-    },{% endfor%}
-    {
-    "@type": "ListItem",
-    "position": {{ page.subclass-chain | size }},
-    "name": "{{ page.subclass | split: '/' | last }}",
-    "item": "{{ page.subclass | absolute_url }}"
-    },
-    {
-        "@type": "ListItem",
-        "position": {{ page.subclass-chain | size | plus: 1 }},
-        "name": "{{ page.title }}",
-        "item": "{{ page.url | absolute_url }}"
-    }]
-}
-</script>
 <li>
-  <a title="Crystal Down Schema" href="https://cdwn.tk/">Crystal Down Schema</a>
+  <a title="Crystal Down Schema" href="https://cdwn.tk/">Crystal Down Schema</a>&nbsp;&gt;&nbsp;
 </li>
 {% for class in page.subclass-chain %}
 <li class="breadcrumb-item">
