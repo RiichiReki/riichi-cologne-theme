@@ -17,45 +17,45 @@ async function acceptPolicy() {
   await sleep(1000);
   banner.style.display = "none";
 }
-window['acceptPolicy'] = acceptPolicy;
+
 
 function writeCookie(cookieName, cookieValue, ttl = 14) {
   var date = new Date();
   date.setTime(date.getTime() + ttl * 24 * 3600 * 1000);
   d.cookie = cookieName + "=" + cookieValue + "; expires=" + date.toUTCString() + "; " + "path=/";
 }
-window['writeCookie'] = writeCookie;
+
 
 function toggleTheme() {
   if (!isHasAcceptedPolicy()) {
     return;
   }
 
-  $('body').toggleClass('dark-theme').toggleClass('light-theme')
+  $('body').toggleClass('dark-theme').toggleClass('light-theme');
   writeCookie("darkTheme", $('body').hasClass('dark-theme'));
 }
-window['toggleTheme'] = toggleTheme;
+
 
 function toggleLineHeight() {
   if (!isHasAcceptedPolicy()) {
     return;
   }
 
-  $('body').toggleClass('condensed')
+  $('#body').toggleClass('condensed');
 
-  writeCookie("condensed", $('body').hasClass('condensed'));
+  writeCookie("condensed", $('#body').hasClass('condensed'));
 }
-window['toggleLineHeight'] = toggleLineHeight;
+
 
 function toggleDyslexicFont() {
   if (!isHasAcceptedPolicy()) {
     return;
   }
 
-  $('body').toggleClass('dyslexic')
+  $('body').toggleClass('dyslexic');
   writeCookie("dyslexic", $('body').hasClass('dyslexic'));
 }
-window['toggleDyslexicFont'] = toggleDyslexicFont;
+
 
 function loadYouTube() {
   var videos = d.getElementsByClassName('youtube');
@@ -140,7 +140,7 @@ function zoom(points) {
   b.style.fontSize = fontSize + 'pt';
   writeCookie("fontSize", fontSize);
 }
-window['zoom'] = zoom;
+
 
 function clearCookies() {
   writeCookie("acceptedPolicy", '', -1);
@@ -150,14 +150,14 @@ function clearCookies() {
   writeCookie("condensed", '', -1);
   writeCookie("dyslexic", '', -1);
 }
-window['clearCookies'] = clearCookies;
+
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function setUpPageForUsers() {
-  await sleep(100);
+  await sleep(200);
   var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 
   if (isMobile) {
@@ -186,13 +186,13 @@ function loadLastReadChapterURL() {
   if (isHasAcceptedPolicy())
     window.location.href = (getCookie().match(/(^| )lastReadChapterURL=([^;]+)/))[2];
 }
-window['loadLastReadChapterURL'] = loadLastReadChapterURL;
+
 
 function toggleAccordion(e) {
   e.classList.toggle("inactive");
   e.classList.toggle("active");
 }
-window['toggleAccordion'] = toggleAccordion;
+
 
 function toggleAllAccordions() {
   document
@@ -249,7 +249,7 @@ async function setUpTalkify() {
     .excludeElements('[aria-hidden=true]')
     .build();
 }
-window['setUpTalkify'] = setUpTalkify;
+
 
 async function toggleTTS() {
   if ('undefined' == typeof window['isReading']) {
@@ -273,7 +273,7 @@ async function toggleTTS() {
   }
   window['isReading'] = !window['isReading'];
 }
-window['toggleTTS'] = toggleTTS;
+
 
 restoreSettingsFromCookie();
 setUpPageForUsers();
