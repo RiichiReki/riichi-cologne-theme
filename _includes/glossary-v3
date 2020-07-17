@@ -78,7 +78,7 @@ for hay in include.data
   }
   </script>
   {% endif %}
-    <p class="inactive{% if hay.link %} link{% endif %}" {% if hay.children or hay.description or hay.character %}onclick="toggleAccordion(this)"{% endif %} id="{{ id }}" style="order: -1">
+    <p class="inactive{% if hay.link %} link btn btn-lg{% endif %}" {% if hay.children or hay.description or hay.character %}onclick="toggleAccordion(this)"{% endif %} id="{{ id }}" style="order: -1">
       {% if hay.link %}<a href="{{ "/glossary/" | append: '#' | append: hay.link }}" onclick="openHash('#{{ hay.link }}')">{% endif %}{{ hay.title }}{% if hay.link %}</a>{% endif %}
       {% if hay.subtitle %}<small>{{ hay.subtitle }}</small>{% endif %}
     </p>
@@ -93,7 +93,7 @@ for hay in include.data
     <blockquote class="interface" style="order: 10"><p class="inactive" onclick="toggleAccordion(this)">Profile</p>
       {% include character-info character=char %}
     </blockquote>
-    {% capture window %}{% include character-window character=char %}{% endcapture %}
+    {% capture window %}{% include character-window character=char titles_only=hay.character_titles_only %}{% endcapture %}
     {{ window | markdownify }}
   {% endif %}
   
