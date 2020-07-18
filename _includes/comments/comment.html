@@ -23,8 +23,8 @@
   </p>
   <img
     alt="Gravatar for {{ comment.name | xml_escape }}" 
-    src="https://secure.gravatar.com/avatar/{{ comment.gravatar }}?s=64&amp;d=retro&amp;r=pg"
-    srcset="https://secure.gravatar.com/avatar/{{ comment.gravatar }}?s=128&amp;d=retro&amp;r=pg 2x"
+    src="/proxy/gravatar/{{ comment.gravatar }}?s=64&amp;d=retro&amp;r=pg"
+    srcset="/proxy/gravatar/{{ comment.gravatar }}?s=128&amp;d=retro&amp;r=pg 2x"
     height="64" width="64"
     crossorigin = "anonymous"
     onerror="this.style.display='none'">
