@@ -9,7 +9,7 @@
 {% unless page.excerpt %}{{ page.content | liquify | markdownify | strip_html }}{% endunless %}
 {% endcapture %}
 {% assign description_social_words = description | truncate: 200 | split: " " | size %}
-{% assign description_google_words = description | truncate: 160 | split: " " | size %}
+{% assign description_google_words = description | truncate: 155 | split: " " | size %}
 <meta property="og:description" name="twitter:description"
     content="{{ description | truncatewords: description_social_words, "…" }}">
 <meta name="description" content="{{ description | truncatewords: description_google_words, "…" }}">
