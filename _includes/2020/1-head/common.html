@@ -28,7 +28,7 @@
 {% for pair in site.webmaster_verifications %}
 <meta name="{{ pair.name }}" content="{{ pair.key }}">
 {% endfor %}
-{% unless page.pushished == "sponsors" or page.pushished == "pre-sponsors"%}
+{% unless page.published == "sponsors" or page.published == "pre-sponsors"%}
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 {% endunless %}
 {% if page.shortlink %}
