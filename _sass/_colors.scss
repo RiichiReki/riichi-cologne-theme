@@ -101,8 +101,10 @@
 
 .interface {
   >p:first-child,
+  >h2:first-child,
   >h3:first-child,
   >script:first-child + p,
+  >script:first-child + h2,
   >script:first-child + h3 {
     &,
     span * {
