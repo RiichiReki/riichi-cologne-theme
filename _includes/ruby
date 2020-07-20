@@ -8,7 +8,7 @@ if include.number
   endif
 %}{%
 else
-%}<ruby>{%
+%}<ruby class="text-nowrap">{%
   if include.base.first
 %}{% 
     for b in include.base
