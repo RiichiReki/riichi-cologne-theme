@@ -95,6 +95,15 @@ for hay in include.data
   {% endif %}
   
   {% assign stack = hay.children %}
+  {% 
+   assign id = hay.title | replace: "_", " " | slugify
+%}{% 
+   unless include.id == ""
+%}{%
+      assign id = id | prepend: '-' | prepend: include.id
+%}{% 
+   endunless
+%}
   {% include glossary-v3 data=stack top=false id=id %}
 </blockquote>
 {% 
