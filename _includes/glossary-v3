@@ -33,16 +33,16 @@ for hay in include.data
         "cd:effect": {{ hay.effect | jsonify }},
       {% endif %}
       {% if hay.resistance %}
-        "cd:elementalResistance": {{ hay.resistance | jsonify }},
+        "cd:elemental": {{ hay.resistance | jsonify }},
       {% endif %}
       {% if hay.weakness %}
-        "cd:elementalWeakness": {{ hay.weakness | jsonify }},
+        "cd:elemental": {{ hay.weakness | jsonify }},
       {% endif %}
       {% if hay.rarity %}
         "cd:rarity": {{ hay.rarity | jsonify }},
       {% endif %}
       {% if hay.threat_level %}
-        "cd:treatLevel": {{ hay.threat_level | jsonify }},
+        "cd:threatLevel": {{ hay.threat_level | jsonify }},
       {% endif %}
       {% if hay.habitat %}
         "cd:habitat": [ {% for h in hay.habitat %} 
@@ -55,10 +55,7 @@ for hay in include.data
       {% if hay.character %}
         {% assign char = hay.character | append: '-latest' %}
         {% assign character = site.data.characters[char] %}
-        "schema:gender": { 
-          "@type": "{{ character.gender }}", 
-          "@value": "{{ character.gender | split: ':' | last }}"
-        },
+        "schema:gender": "{{ character.gender }}",
         "cd:race": {{ character.race | jsonify }},
         "schema:height": {
           "@type": "schema:Distance",
