@@ -1,9 +1,3 @@
-{% if page.previous.redirect_to %}
-{% assign page.previous = page.previous.previous %}
-{% endif %}
-{% if page.next.redirect_to %}
-{% assign page.next = page.next.next %}
-{% endif %}
 <style>
   .previous::before {
     content: 'Previous Post:';

@@ -1,7 +1,7 @@
 {% assign start_delimiters = '(<em>| |“|<p>|<rt>|<li>|<td>|<h3 id="[a-z\-]*">)'%}
 {% assign end_delimiters = '( |!|\?|,|\.|\)|</rt>|</li>|</td>|</h3>)' %}
 {% assign content = include.content %}
-{% capture linkedpairstring %}{% include keywords data=site.data.glossary id="" %}{% endcapture %}
+{% capture linkedpairstring %}{% include_cached keywords data=site.data.glossary id="" %}{% endcapture %}
 {% assign linkpairs = linkedpairstring | split: '@' %}
 {% for pairstring in linkpairs %}
   {% assign pair = pairstring | split: '#' %}
