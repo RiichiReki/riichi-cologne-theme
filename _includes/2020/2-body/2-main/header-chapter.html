@@ -3,7 +3,9 @@
     {{ page.title }}
 </h1>
 <small class="float-left">
-    published on {{ page.date | date: "%Y-%m-%d" }}, last updated on {% last_modified_at %Y-%m-%d %}
+    {% assign published = page.date | date: '%s' %}
+    {% assign modified = page.last_modified_at | date: '%s' %}
+    published on {{ page.date | date: "%Y-%m-%d" }}{% unless modified < published %}, last updated on {% last_modified_at %Y-%m-%d %}{% endunless %}
 </small>
 <small class="float-right">
 {% if page.author %}

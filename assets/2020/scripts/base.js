@@ -247,6 +247,7 @@ async function setUpTalkify() {
     .begin()
     .usingPlayer(window['player'])
     .excludeElements('[aria-hidden=true]')
+    .excludeElements('.breadcrumb')
     .build();
 }
 

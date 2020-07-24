@@ -66,8 +66,12 @@
         "schema:isPartOf": { "@id": "{{ page.book.url | absolute_url }}" },
         "schema:name": "{{ page.book.number }}-{{ page.chapter }}: {{ page.title }}",
         "schema:datePublished": "{{ page.date | date: "%Y-%m-%d" }}",
-        "schema:dateModified": "{% last_modified_at %Y-%m-%d %}",{% 
-        assign author = site.data.staff | where: "id", page.author | last %}
+        {% assign published = page.date | date: '%s' %}
+        {% assign modified = page.last_modified_at | date: '%s' %}
+        {% unless modified < published %}
+        "schema:dateModified": "{% last_modified_at %Y-%m-%d %}",
+        {% endunless %}
+        {% assign author = site.data.staff | where: "id", page.author | last %}
         "schema:author": { "@id": "author.url" },{% if page.editor %}
         "schema:editor": [{% for editor in page.editor %}{% 
             assign editor = site.data.staff | where: "id", page.editor | last %}
