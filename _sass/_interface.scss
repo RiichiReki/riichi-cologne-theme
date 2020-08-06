@@ -43,6 +43,10 @@
     }
   }
 
+  meta + * {
+    margin-top: 0
+  }
+
   > p:first-child,
   > h2:first-child,
   > h3:first-child,
