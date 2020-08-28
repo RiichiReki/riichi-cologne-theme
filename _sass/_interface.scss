@@ -225,3 +225,17 @@
     }
   }
 }
+
+.handwriting {
+  padding: 1em;
+  font-size: 130%;
+  width: fit-content;
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}

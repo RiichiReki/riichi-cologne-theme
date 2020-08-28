@@ -76,3 +76,14 @@
        url(/assets/fonts/OpenDyslexic-Italic.woff2) format('woff2'),
        url(/assets/fonts/OpenDyslexic-Italic.otf) format('opentype');
 }
+
+@font-face {
+  font-family: "Gunny Rewritten";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Gunny Rewritten Regular'),
+       local('GunnyRewritten-Regular'),
+       url(/assets/fonts/GunnyRewritten-Regular.woff2) format('woff2'),
+       url(/assets/fonts/GunnyRewritten-Regular.ttf) format('truetype');
+}
