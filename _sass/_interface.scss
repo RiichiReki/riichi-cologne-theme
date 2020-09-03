@@ -154,6 +154,10 @@
       ~ * {
         display: block;
       }
+      
+      ~ .map {
+        display: grid;
+      }
     }
 
     &:only-child {
@@ -180,6 +184,10 @@
     ~ * {     
       display: flex;
       flex-direction: column;
+    }
+
+    ~ .map {
+      display: grid;
     }
   }
 
@@ -238,4 +246,27 @@
   > *:last-child {
     margin-bottom: 0;
   }
+}
+
+.map {
+  display: grid;
+  grid-template: auto / repeat(auto-fit, 1fr 1fr);
+  gap: 1px;
+  
+  div {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.map-12 {
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.map-24 {
+  grid-template-columns: repeat(24, 1fr);
 }

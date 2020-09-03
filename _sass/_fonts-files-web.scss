@@ -78,12 +78,12 @@
 }
 
 @font-face {
-  font-family: "Gunny Rewritten";
+  font-family: "Alexa";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Gunny Rewritten Regular'),
-       local('GunnyRewritten-Regular'),
-       url(/assets/fonts/GunnyRewritten-Regular.woff2) format('woff2'),
-       url(/assets/fonts/GunnyRewritten-Regular.ttf) format('truetype');
+  src: local('Alexa'),
+       local('alexa-std'),
+       url(/assets/fonts/Alexa.woff2) format('woff2'),
+       url(/assets/fonts/Alexa.ttf) format('truetype');
 }
