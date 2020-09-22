@@ -2,6 +2,12 @@
 # Layout Rewrite 2020: Post Layout
 layout: compress
 ---
+{% if page.previous.redirect_to %}
+{% assign page.previous = page.previous.previous %}
+{% endif %}
+{% if page.next.redirect_to %}
+{% assign page.next = page.next.next %}
+{% endif %}
 <!DOCTYPE html>
 <html lang="{{ page.lang }}">
 
