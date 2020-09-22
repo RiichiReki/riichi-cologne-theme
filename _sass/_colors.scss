@@ -9,21 +9,21 @@
 
   >nav {
     p {
-      a {
+      border-color: #007bff;
+
+      &:hover,
+      &:focus {
+        border-color: #0062cc;
+        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, .5);
+      }
+
+      &, a {
         color: #fff !important;
-
         background-color: #007bff;
-        border-color: #007bff;
 
-        &:hover {
-          background-color: #0069d9;
-          border-color: #0062cc;
-        }
-
+        &:hover,
         &:focus {
           background-color: #0069d9;
-          border-color: #0062cc;
-          box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, .5);
         }
       }
     }
