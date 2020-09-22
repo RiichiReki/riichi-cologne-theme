@@ -3,17 +3,4 @@
   h1, .h1, h2, .h2, h3 {
     font-family: "OpenDyslexic";
   }
-
-  @media (min-width: 992px) {
-    grid-template: auto / 22em 1fr;
-    grid-template-areas:
-      "policy-banner policy-banner"
-      "title title"
-      "navigation breadcrumbs"
-      "navigation content"
-      "controls content"
-      ". content"
-      ". comments"
-      "footer footer";
-  }
 }

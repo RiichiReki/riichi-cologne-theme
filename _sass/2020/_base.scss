@@ -44,16 +44,13 @@
 
   @media (min-width: 992px) {
     font-size: 14pt;
-    grid-template: auto / 20em 1fr;
+    grid-template: auto / 1fr 1000px 1fr;
     grid-template-areas:
-      "policy-banner policy-banner"
-      "title title"
-      "navigation breadcrumbs"
-      "navigation content"
-      "controls content"
-      ". content"
-      ". comments"
-      "footer footer";
+      "title title title"
+      ". breadcrumbs ."
+      ". content ."
+      ". comments . "
+      "footer footer footer";
   }
 
   > * {
@@ -78,8 +75,11 @@
 
     @media(min-width: 992px) {
       padding-left: 2rem;
-      margin: -5vmin 0 0;
+      margin: 0;
       height: 5em;
+    
+      grid-column: 1 / span 3;
+      grid-row: 1;
     }
 
     p {
@@ -100,8 +100,11 @@
     }
 
     @media (min-width: 992px) {
-      display: initial;
+      display: flex;
       margin-left: 2rem;
+      margin-right: 2rem;
+      grid-column: 1 / span 3;
+      grid-row: 2
     }
 
     p {
@@ -114,12 +117,25 @@
         text-align: center;
       }
 
+      @media (min-width: 992px) {
+        display: block;
+        flex-basis: initial;
+      }
+
       &:first-child {
         margin-top: 1rem;
+
+        @media (min-width: 992px) {
+          margin-top: 0;
+        }
       }
 
       &:last-child {
         margin-bottom: 1rem;
+        
+        @media (min-width: 992px) {
+          margin-bottom: 0;
+        }
       }
 
       a {
@@ -174,7 +190,9 @@
     }
 
     @media (min-width: 992px) {
-      margin-left: 2rem;
+      grid-column: 2;
+      grid-row: 3;
+      margin-left: 0;
       margin-right: 0;
       
       .d-inline-flex { 
@@ -194,6 +212,9 @@
 
     @media (min-width: 992px) {
       margin-left: 0;
+      margin-right: 0;
+      grid-column: 2;
+      grid-row: 4;
     }
   }
 
@@ -204,6 +225,9 @@
 
     @media (min-width: 992px) {
       margin-left: 0;
+      margin-right: 0;
+      grid-column: 2;
+      grid-row: 5;
     }
 
     p {
@@ -245,6 +269,12 @@
     flex-wrap: wrap;
     padding: 1rem;
     background: var(--dark);
+    
+    @media (min-width: 992px) {
+      margin-left: 0;
+      grid-column: 1 / span 3;
+      grid-row: 7;
+    }
 
     a {
       color: $white !important;
@@ -274,6 +304,14 @@
     display: none;
     grid-area: policy-banner;
 
+    @media (min-width: 992px) {
+      margin-left: 0;
+      margin-right: 0;
+      grid-column: 1 / span 3;
+      grid-row: 3;
+      z-index: 1000;
+    }
+
     p {
       margin: 1rem;
     }
@@ -296,6 +334,12 @@
 
     @media (min-width: 768px) {
       margin-left: 0;
+    }
+
+    @media (min-width: 992px) {
+      margin-left: 0;
+      grid-column: 2;
+      grid-row: 6;
     }
   }
 }
