@@ -3,10 +3,14 @@
 layout: compress
 ---
 {% if page.previous.redirect_to %}
-{% assign page.previous = page.previous.previous %}
+{% assign previous_pages = page.previous.previous %}
+{% else %}
+{% assign previous_pages = page.previous %}
 {% endif %}
 {% if page.next.redirect_to %}
-{% assign page.next = page.next.next %}
+{% assign next_pages = page.next.next %}
+{% else %}
+{% assign next_pages = page.next %}
 {% endif %}
 <!DOCTYPE html>
 <html lang="{{ page.lang }}">
