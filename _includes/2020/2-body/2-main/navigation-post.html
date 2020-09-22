@@ -1,8 +1,8 @@
-{% for page in previous_pages %}
+{% if page in previous_pages %}
   <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
-{% endfor %}
+{% endif %}
   
-{% for page in next_pages %}
+{% if page in next_pages %}
   {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
     {% break %}
   {% elsif jekyll.environment != "unpublished" and page.published == "sponsors" %}
@@ -21,4 +21,4 @@
   {% else %}
     <a class="btn btn-lg btn-primary next" title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
   {% endif %}
-{% endfor %}
+{% endif %}
