@@ -1,11 +1,11 @@
-{% if page in previous_pages %}
-  <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+{% if p in previous_pages %}
+  <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ p.title }}</a>
 {% endif %}
   
-{% if page in next_pages %}
-  {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
+{% if p in next_pages %}
+  {% if jekyll.environment != "unpublished" and p.published == "pre-sponsors" %}
     {% break %}
-  {% elsif jekyll.environment != "unpublished" and page.published == "sponsors" %}
+  {% elsif jekyll.environment != "unpublished" and papublished == "sponsors" %}
     <a class="btn btn-lg btn-primary next early-access" title="{{ site.patreon.title }}"
        href="{{ site.patreon.url }}" rel="payment">
         <span>
@@ -19,6 +19,6 @@
         <span>{{ site.patreon.title }}</span>
     </a>
   {% else %}
-    <a class="btn btn-lg btn-primary next" title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+    <a class="btn btn-lg btn-primary next" title="{{ p.title }}" href="{{ p.url }}">{{ p.title }}</a>
   {% endif %}
 {% endif %}
