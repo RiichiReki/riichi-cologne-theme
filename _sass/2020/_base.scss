@@ -133,10 +133,6 @@
 
       &:last-child {
         margin-bottom: 1rem;
-        
-        @media (min-width: 992px) {
-          margin-bottom: 0;
-        }
       }
 
       a {
