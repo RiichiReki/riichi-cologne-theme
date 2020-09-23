@@ -106,8 +106,7 @@
 
     @media (min-width: 992px) {
       display: flex;
-      margin-left: 1rem;
-      margin-right: 1rem;
+      margin: 0 1rem;
       grid-column: 1 / span 3;
       grid-row: 2;
       align-items: stretch;
@@ -199,8 +198,7 @@
     @media (min-width: 992px) {
       grid-column: 2;
       grid-row: 3;
-      margin-left: 0;
-      margin-right: 0;
+      margin: 0;
       
       .d-inline-flex { 
         min-width: unset;
