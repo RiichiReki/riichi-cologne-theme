@@ -51,6 +51,7 @@
       ". content ."
       ". comments . "
       "footer footer footer";
+    gap: 1rem;
   }
 
   > * {
@@ -109,6 +110,7 @@
       margin: 0 1rem;
       grid-column: 1 / span 3;
       grid-row: 2;
+      gap: 1rem;
       align-items: stretch;
     }
 
@@ -202,6 +204,7 @@
       
       .d-inline-flex { 
         min-width: unset;
+        margin: 0;
 
         > *:last-child {
           margin-right: .5rem;
