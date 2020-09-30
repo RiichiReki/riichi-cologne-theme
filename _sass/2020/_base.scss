@@ -263,7 +263,11 @@
         min-width: 60vw;
 
         @media (min-width: 768px) {
-          min-width: 350px;
+          min-width: 300px;
+
+          &:first-child {
+            margin-right: .5rem;
+          }
         }
 
         &.early-access {
