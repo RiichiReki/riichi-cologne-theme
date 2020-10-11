@@ -42,13 +42,12 @@ layout: compress
     </header>
     {% if jekyll.environment != "unpublished" %}
     <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content">
+    {% else %}
+    <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content" contenteditable="true">
+    {% endif %}
       <!--sse-->
       {% include linkify content=content %}
       <!--/sse-->
-    {% else %}
-    <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content" contenteditable="true">
-      {% include linkify content=content %}
-    {% endif %}
     </section>
     <footer>
       <nav class="d-flex w-100 clearfix" id="navigation" aria-flowto="comments">

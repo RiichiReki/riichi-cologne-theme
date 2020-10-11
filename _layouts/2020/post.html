@@ -50,7 +50,12 @@ layout: compress
       <nav>
       {% endif %}
     </header>
+    {% if jekyll.environment != "unpublished" %}
+    {% if jekyll.environment != "unpublished" %}
     <section class="hyphenate" property="text" aria-flowto="navigation" id="post-content">
+    {% else %}
+    <section class="hyphenate" property="text" aria-flowto="navigation" id="post-content" contenteditable="true">
+    {% endif %}
       <!--sse-->
       {{ content }}
       <!--/sse-->
@@ -88,6 +93,6 @@ layout: compress
   <!-- hash: 'sha256-0x8+KctX5w3DwyXg14J1w5wIgB1Asxhd0pasYrI9TKg=' -->
   <script>window['pageType']='post'</script>
   <!-- hash: 'sha256-4Amo8MXCWfkrOHD6HrolTcZjIyciljwHajQRyeNI9II=' -->
-  {% if page.additional_js == "hyphenate" %}
+  {% if jekyll.environment != "unpublished" %}
   <script>var Hyphenopoly={require:{"en-ca":"Supercalifragilisticexpialidocious"}}</script>
   {% endif %}
