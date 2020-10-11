@@ -29,3 +29,10 @@ main {
     margin-inline-end: 0;
   }
 }
+
+.interface {
+  p:first-child,
+  ul {
+    line-height: 250%;
+  }
+}
