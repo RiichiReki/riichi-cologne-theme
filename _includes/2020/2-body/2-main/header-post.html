@@ -8,6 +8,7 @@
 <small class="float-right">
 {% if page.author %}
 {% assign author = site.data.staff | where: "id", page.author | last %}
-    written by {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener nofollow">{% endif %}{{ author.name }}{% if author.url %}</a>{% endif %}{% endif %}
+    written by {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener nofollow">{% endif %}{{ author.name }}{% if author.url %}</a>{% endif %}{% endif %}{% if page.checker %}, checked with
+{% for e in page.checker %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener nofollow">{% endif %}{{ editor.name }}{%  if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}{% endif %}
 </small>
 <div class="clearfix"></div>
