@@ -12,3 +12,6 @@
 {% for e in page.checker %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener nofollow">{% endif %}{{ editor.name }}{%  if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}{% endif %}
 </small>
 <div class="clearfix"></div>
+<small class="float-left">
+    tagged with {% for t in post.tags %}<a href="{{ "/tags/" | absolute_url }}#{{ t | cgi_escape }}">{{ t }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+</small>

@@ -16,7 +16,7 @@
     },
     {
         "@id": "{{ page.url | absolute_url }}",
-        "@type": "schema:BlogPost",
+        "@type": "schema:BlogPosting",
         "schema:name": "{{ page.title }}",
         "schema:datePublished": "{{ page.date | date: "%Y-%m-%d" }}",
         "schema:dateModified": "{% last_modified_at %Y-%m-%d %}",{% 
@@ -27,6 +27,7 @@
             "@value": "{% if post.image %}{{ post.image | absolute_url }}{% else %}{{ "/assets/images/site-card.png" | absolute_url }}{% endif %}"
         },
         "schema:url": "{{ page.url | absolute_url }}",
+        "schema:keywords": "{{ post.tags | join: ", " }}",
         "schema:text": "{{ content | strip_html }}"
     }
     ]
