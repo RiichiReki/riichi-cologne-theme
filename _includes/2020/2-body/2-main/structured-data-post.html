@@ -27,7 +27,7 @@
             "@value": "{% if post.image %}{{ post.image | absolute_url }}{% else %}{{ "/assets/images/site-card.png" | absolute_url }}{% endif %}"
         },
         "schema:url": "{{ page.url | absolute_url }}",
-        "schema:keywords": "{{ post.tags | join: ", " }}",
+        "schema:keywords": "{{ page.tags | join: ", " }}",
         "schema:text": "{{ content | strip_html }}"
     }
     ]
