@@ -21,13 +21,14 @@
     on
       <span>{{ comment.date | date: '%Y-%m-%d' }}</span>
   </p>
-  <img
+  <div class="comment-body">
+    <img
     alt="Gravatar for {{ comment.name | xml_escape }}" 
     src="/proxy/gravatar/{{ comment.gravatar }}?s=64&amp;d=retro&amp;r=pg"
     srcset="/proxy/gravatar/{{ comment.gravatar }}?s=128&amp;d=retro&amp;r=pg 2x"
     height="64" width="64"
     crossorigin = "anonymous"
     onerror="this.style.display='none'">
-  <div class="comment-body">{{ comment.message | markdownify | replace: '<a ', '<a target="_blank" rel="nofollow ugc" '}}</div>
+    {{ comment.message | markdownify | replace: '<a ', '<a target="_blank" rel="nofollow ugc" '}}</div>
   <div class="clearfix"></div>
 </blockquote>
