@@ -1,13 +1,15 @@
 {% assign start_delimiters = '(<em>| |“|<p>|<rt>|<li>|<td>|<h3 id="[a-z\-]*">)'%}
 {% assign end_delimiters = '( |!|\?|,|\.|\)|</rt>|</li>|</td>|</h3>)' %}
 {% assign content = include.content %}
-{% capture linkedpairstring %}{% include_cached keywords data=site.data.glossary id="" %}{% endcapture %}
+{% if page.termbase == "/crystaldown" %}
+{% capture linkedpairstring %}{% include_cached keywords data=site.data.cd.glossary id="" %}{% endcapture %}
+{% endif %}
 {% assign linkpairs = linkedpairstring | split: '@' %}
 {% for pairstring in linkpairs %}
   {% assign pair = pairstring | split: '#' %}
   {% assign keywords = pair[0] %}
   {% assign from = keywords | prepend: start_delimiters | append: end_delimiters %}
-  {% assign to = "/glossary/" | absolute_url | prepend: '\1<a href="'| append: "#" | append: pair[1] | 
+  {% assign to = "/glossary/" | prepend: page.termbase | absolute_url | prepend: '\1<a href="'| append: "#" | append: pair[1] | 
      append: '" target="_blank" rel="noopener">\2</a>\3' %}
   {% assign content = content | regex_replace_once: from, to %}
 {% endfor %}
