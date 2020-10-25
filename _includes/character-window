@@ -1,6 +1,6 @@
-{% if termbase == "/crystaldown" %}
+{% if page.termbase == "/crystaldown" %}
 {% assign character = site.data.cd.characters[include.character] %}
-{% elsif termbase == "/amauga" %}
+{% elsif page.termbase == "/amauga" %}
 {% assign character = site.data.amauga.characters[include.character] %}
 {% endif %}
 
