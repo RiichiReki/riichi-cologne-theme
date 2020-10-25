@@ -1,4 +1,8 @@
-{% assign character = site.data.characters[include.character]%}
+{% if termbase == "/crystaldown" %}
+{% assign character = site.data.cd.characters[include.character] %}
+{% elsif termbase == "/amauga" %}
+{% assign character = site.data.amauga.characters[include.character] %}
+{% endif %}
 
 {:class="interface {{ include.class }}" style="order: 20"}
 > Character Info

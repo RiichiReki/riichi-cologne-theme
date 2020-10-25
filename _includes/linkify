@@ -3,6 +3,8 @@
 {% assign content = include.content %}
 {% if page.termbase == "/crystaldown" %}
 {% capture linkedpairstring %}{% include_cached keywords data=site.data.cd.glossary id="" %}{% endcapture %}
+{% elsif page.termbase == "/amauga" %}
+{% capture linkedpairstring %}{% include_cached keywords data=site.data.amauga.glossary id="" %}{% endcapture %}
 {% endif %}
 {% assign linkpairs = linkedpairstring | split: '@' %}
 {% for pairstring in linkpairs %}
