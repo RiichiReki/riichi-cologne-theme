@@ -32,7 +32,10 @@
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 {% endunless %}
 {% if page.shortlink %}
-<link rel="shortlink"
-  href="{% if site.shorturl %}{{ site.shorturl }}{{ page.shortlink }}{% else %}{{ page.shortlink | absolute_url }}{% endif %}">
+{% assign s = page.shortlink %}
+{% for i in site.shorturl %}
+{% assign s = s | replace : i.prefix, i.url %}
+{% endfor %}
+<link rel="shortlink" href="{{ s | absolute_url }}">
 {% endif %}
 <link rel="home alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.feed | absolute_url }}">
