@@ -27,9 +27,9 @@
 <style>
 h1::before {
 {% if page.current_chapters %}
-content: 'Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.current_chapters }}: ';
+content: '{% endif %}Chapter {{ page.current_chapters }}: ';
 {% else %}
-content: 'Chapter {% if page.book %}{{ page.book.number }}-{% endif %}{{ page.chapter }}: ';
+content: '{% endif %}Chapter {{ page.chapter }}: ';
 {% endif %}
   display: block;
 }
