@@ -5,8 +5,10 @@
 {% if page.book %}
 {% assign title = title | append: " | " | append: page.book.series %}
 {% endif %}
+{% unless page.title contains "Homepage" %}
 {% assign title = title | append: " | " | append: site.title %}
-<title>{{ title | truncate: 61, "…" }}</title>
+{% endunless %}
+<title>{{ title | truncate: 60, "…" }}</title>
 <meta name="generator" content="Jekyll v{{ jekyll.version }}">
 
 {% if page.robots %}
