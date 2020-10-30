@@ -34,11 +34,9 @@ layout: compress
       {% include 2020/2-body/2-main/structured-data-chapter.html %}
       {% include 2020/2-body/2-main/header-chapter.html %}
       {% assign words = content | markdownify | strip_html | split: " " | size %}
-      {% if words > 300 %}
       <nav class="d-flex w-100 clearfix">
         {% include 2020/2-body/2-main/navigation-chapter.html %}
       <nav>
-      {% endif %}
     </header>
     {% if jekyll.environment != "unpublished" %}
     <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content">
@@ -50,12 +48,12 @@ layout: compress
       <!--/sse-->
     </section>
     <footer>
+      {% if words > 300 %}
       <nav class="d-flex w-100 clearfix" id="navigation" aria-flowto="comments">
         {% include 2020/2-body/2-main/navigation-chapter.html %}
       </nav>
-
       <hr>
-
+      {% endif %}
       <aside class="social">
         {% include 2020/2-body/2-main/sharing-chapter.html %}
       </aside>
