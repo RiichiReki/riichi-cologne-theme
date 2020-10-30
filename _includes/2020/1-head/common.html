@@ -1,7 +1,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#007bff">
-{% assign title = page.title | append: " | " | append: site.title %}
+{% assign title = page.title %}
+{% if page.book %}
+{% assign title = title | append: " | " | append: page.book.series %}
+{% endif %}
+{% assign title = title | append: " | " | append: site.title %}
 <title>{{ title | truncate: 61, "…" }}</title>
 <meta name="generator" content="Jekyll v{{ jekyll.version }}">
 
