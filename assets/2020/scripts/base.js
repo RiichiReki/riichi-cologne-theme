@@ -22,7 +22,7 @@ async function acceptPolicy() {
 function writeCookie(cookieName, cookieValue, ttl = 14) {
   var date = new Date();
   date.setTime(date.getTime() + ttl * 24 * 3600 * 1000);
-  d.cookie = cookieName + "=" + cookieValue + "; expires=" + date.toUTCString() + "; " + "path=/";
+  d.cookie = cookieName + "=" + cookieValue + "; expires=" + date.toUTCString() + "; " + "domain=crystaldown.de; path=/";
 }
 
 
@@ -33,17 +33,6 @@ function toggleTheme() {
 
   $('body').toggleClass('dark-theme').toggleClass('light-theme');
   writeCookie("darkTheme", $('body').hasClass('dark-theme'));
-}
-
-
-function toggleLineHeight() {
-  if (!isHasAcceptedPolicy()) {
-    return;
-  }
-
-  $('#body').toggleClass('condensed');
-
-  writeCookie("condensed", $('#body').hasClass('condensed'));
 }
 
 
@@ -76,10 +65,6 @@ function restoreSettingsFromCookie() {
   if (null != getCookie().match(/darkTheme=false/)) {
     $('#dark-mode').prop('checked', true);
     toggleTheme();
-  }
-  if (null != getCookie().match(/condensed=true/)) {
-    $('#line-height').prop('checked', true);
-    toggleLineHeight();
   }
   if (null != getCookie().match(/dyslexic=true/)) {
     $('#dyslexic').prop('checked', true);
@@ -175,19 +160,6 @@ async function setUpPageForUsers() {
   $('#dyslexic').change(toggleDyslexicFont);
 }
 
-async function storeLastReadChapterURL() {
-  if (isHasAcceptedPolicy() && window['pageType'] == "chapter") {
-    await sleep(10000);
-    writeCookie('lastReadChapterURL', window.location.href);
-  }
-}
-
-function loadLastReadChapterURL() {
-  if (isHasAcceptedPolicy())
-    window.location.href = (getCookie().match(/(^| )lastReadChapterURL=([^;]+)/))[2];
-}
-
-
 function toggleAccordion(e) {
   e.classList.toggle("inactive");
   e.classList.toggle("active");
@@ -279,8 +251,3 @@ async function toggleTTS() {
 restoreSettingsFromCookie();
 setUpPageForUsers();
 
-if(window['slowProfile']) {
-  acceptPolicy();
-}
-
-storeLastReadChapterURL();
