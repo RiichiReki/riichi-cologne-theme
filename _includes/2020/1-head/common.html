@@ -8,7 +8,7 @@
 {% unless page.title contains "Homepage" %}
 {% assign title = title | append: " | " | append: site.title %}
 {% endunless %}
-<title>{{ title | truncate: 60, "…" }}</title>
+<title>{{ title | truncate: 59, "…" }}</title>
 <meta name="generator" content="Jekyll v{{ jekyll.version }}">
 
 {% if page.robots %}
