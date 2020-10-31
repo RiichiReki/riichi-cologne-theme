@@ -27,9 +27,9 @@
 <style>
 h1::before {
 {% if page.current_chapters %}
-content: '{% endif %}Chapter {{ page.current_chapters }}: ';
+content: 'Chapter {{ page.current_chapters }}: ';
 {% else %}
-content: '{% endif %}Chapter {{ page.chapter }}: ';
+content: 'Chapter {{ page.chapter }}: ';
 {% endif %}
   display: block;
 }
