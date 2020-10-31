@@ -96,7 +96,7 @@
       display: grid;
 
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(4, 1fr);
+      grid-template-rows: min-content 1fr;
       gap: 0 5vmin;
       margin: calc(5vmin - .5rem) calc(5vmin - .5rem) calc(5vmin - .5rem);
     }
