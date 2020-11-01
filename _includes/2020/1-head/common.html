@@ -25,8 +25,8 @@
 {% unless page.layout == "2020/schema" %}
 {% capture js %}/assets/2020/scripts/default.js{% endcapture %}
 {% assign js_page = site.pages | where: 'url', js | last %}
-<script defer src="{{ js | prepend: site.staticUrl | absoluteUrl }}?{{ js_page.content | sha256_64 | slice: 0, 5 }}" crossorigin="anonymous"></script>
-{% if jekyll.environent != "unpublished" and page.additional_js == "hyphenate" %}
+<script defer src="{{ js | prepend: site.staticUrl | absolute_url }}?{{ js_page.content | sha256_64 | slice: 0, 5 }}" crossorigin="anonymous"></script>
+{% if page.additional_js == "hyphenate" %}
 <script defer src="{{ "/assets/2020/scripts/hyphenopoly/Hyphenopoly_Loader.js" | prepend: site.staticUrl | absolute_url }}" crossorigin="anonymous"></script>
 {% endif %}
 {% endunless %}
