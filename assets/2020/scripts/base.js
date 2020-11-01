@@ -156,7 +156,6 @@ async function setUpPageForUsers() {
 
   $('#dark-mode').change(toggleTheme);
   $('#tts').change(toggleTTS);
-  $('#line-height').change(toggleLineHeight);
   $('#dyslexic').change(toggleDyslexicFont);
 }
 
