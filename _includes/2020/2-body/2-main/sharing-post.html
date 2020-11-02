@@ -6,48 +6,48 @@
     <a title="Share Post on Facebook"
       href="https://www.facebook.com/sharer.php?src=bm&u={{ page.url | absolute_url }}&t={{ page.title | url_encode }}"
       target="_blank" rel="noopener nofollow">
-      <img src="/assets/images/facebook.png" alt="Share Post on Facebook">
+      <img src="{{ "/assets/images/facebook.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Facebook">
     </a>
     <a title="Share Post on Twitter"
       href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}&via={{ site.twitter.username }}"
       target="_blank" rel="noopener nofollow">
-      <img src="/assets/images/twitter.png" alt="Share Post on Twitter">
+      <img src="{{ "/assets/images/twitter.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Twitter">
     </a>
     <a title="Share Post on reddit"
       href="https://reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}"
       target="_blank" rel="noopener nofollow">
-      <img src="/assets/images/reddit.png" alt="Share Post on reddit">
+      <img src="{{ "/assets/images/reddit.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on reddit">
     </a>
     <a title="Share Post on Pinterest"
       href="https://pinterest.com/pin/create/button/?url={{ page.url | absolute_url }}&description={{ page.title | url_encode }}&media={{ "/assets/images/site-card.png" | absolute_url }}"
       target="_blank" rel="noopener nofollow">
-      <img src="/assets/images/pinterest.png" alt="Share Post on Pinterest">
+      <img src="{{ "/assets/images/pinterest.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Pinterest">
     </a>
     <a title="Share Post on Telegram"
       href="https://telegram.me/share/url?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}"
       target="_blank" rel="noopener nofollow">
-      <img src="/assets/images/telegram.png" alt="Share Post on Telegram">
+      <img src="{{ "/assets/images/telegram.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Telegram">
     </a>
     <a title="Share Post on WhatsApp"
       href="https://api.whatsapp.com/send?text=Checkout%20{{ site.title | url_encode }}'s%20Post%3A%20{{ page.title | url_encode }}.%20{{ page.url | absolute_url }}"
       target="_blank" rel="noopener nofollow">
-      <img src="/assets/images/whatsapp.png" alt="Share Post on WhatsApp">
+      <img src="{{ "/assets/images/whatsapp.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on WhatsApp">
     </a>
     <a title="Share Post on Tumblr"
       href="https://www.tumblr.com/widgets/share/tool?canonicalUrl={{ page.url | absolute_url }}&title={{ page.title | url_encode }}"
       target="_blank" rel="noopener nofollow">
-      <img src="/assets/images/tumblr.png" alt="Share Post on Tumblr">
+      <img src="{{ "/assets/images/tumblr.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Tumblr">
     </a>
     <a title="Share Post on VK" href="https://vk.com/share.php?url={{ page.url | absolute_url }}" target="_blank"
       rel="noopener nofollow">
-      <img src="/assets/images/vk.png" alt="Share Post on VK">
+      <img src="{{ "/assets/images/vk.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on VK">
     </a>
     <a title="Share Post on Pocket" href="https://getpocket.com/edit?url={{ page.url | absolute_url }}" target="_blank"
       rel="noopener nofollow">
-      <img src="/assets/images/pocket.png" alt="Share Post on Pocket">
+      <img src="{{ "/assets/images/pocket.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Pocket">
     </a>
     <a title="Share Post on Mix" href="https://mix.com/mixit?su=submit&url={{ page.url | absolute_url }}"
       target="_blank" rel="noopener nofollow">
-      <img src="/assets/images/mix.png" alt="Share Post on Mix">
+      <img src="{{ "/assets/images/mix.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Mix">
     </a>
   </div>
