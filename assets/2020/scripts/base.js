@@ -22,7 +22,8 @@ async function acceptPolicy() {
 function writeCookie(cookieName, cookieValue, ttl = 14) {
   var date = new Date();
   date.setTime(date.getTime() + ttl * 24 * 3600 * 1000);
-  d.cookie = cookieName + "=" + cookieValue + "; expires=" + date.toUTCString() + "; " + "domain=crystaldown.de; path=/";
+  d.cookie = cookieName + "=" + cookieValue + "; expires=" + date.toUTCString() + "; " + "domain=" + window.location.hostname
++ "; path=/";
 }
 
 
@@ -206,14 +207,14 @@ async function setUpTalkify() {
   talkify.config.ui.audioControls.container = document.getElementById("player-and-voices");
 
   window['player'] = new talkify.Html5Player();
-  
+
   while (null == player.forcedVoice) {
     await sleep(100);
     player.forceVoice(window.speechSynthesis.getVoices().find(e => e.name == "Google US English"));
     if (null == player.forcedVoice)
       player.forceVoice(window.speechSynthesis.getVoices().find(e => e.lang.match(/US/)));
   }
-  
+
   window['playlist'] = new talkify.playlist()
     .begin()
     .usingPlayer(window['player'])
@@ -229,7 +230,7 @@ async function toggleTTS() {
     toggleAllAccordions();
     loadTalkify();
     setUpTalkify();
-  
+
     while ('undefined' == typeof window['playlist']) {
       await sleep(100);
     }

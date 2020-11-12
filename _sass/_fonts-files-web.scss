@@ -1,13 +1,26 @@
 @font-face {
-  font-family: "Marcellus";
+  font-family: "Cardo";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Marcellus Regular'),
-       local('Marcellus-Regular'),
-       url(/assets/fonts/Marcellus-Regular.woff2) format('woff2'),
-       url(/assets/fonts/Marcellus-Regular.ttf) format('truetype');
+  src: local('Cardo Regular'),
+       local('Cardo-Regular'),
+       url(/assets/fonts/Cardo-Regular.woff2) format('woff2'),
+       url(/assets/fonts/Cardo-Regular.ttf) format('truetype');
 }
+
+
+@font-face {
+  font-family: "Cardo";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Cardo Bold'),
+       local('Cardo-Bold'),
+       url(/assets/fonts/Cardo-Bold.woff2) format('woff2'),
+       url(/assets/fonts/Cardo-Bold.ttf) format('truetype');
+}
+
 
 @font-face {
   font-family: "Source Sans Pro";
@@ -29,17 +42,6 @@
        local('SourceSansPro-Bold'),
        url(/assets/fonts/Source-Sans-Pro-Bold.woff2) format('woff2'),
        url(/assets/fonts/Source-Sans-Pro-Bold.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: "Source Serif Pro";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Source Serif Pro Bold'),
-       local('SourceSerifPro-Bold'),
-       url(/assets/fonts/Source-Serif-Pro-Bold.woff2) format('woff2'),
-       url(/assets/fonts/Source-Serif-Pro-Bold.ttf) format('truetype');
 }
 
 @font-face {

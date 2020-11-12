@@ -9,6 +9,8 @@
 
 body {
   font-family: "Source Sans Pro", "Noto Sans", Roboto, "Segoe UI", sans-serif;
+  // Altenative I
+  font-feature-settings: "ss04";
 }
 
 .unicode-icon, .button a span {
@@ -16,9 +18,19 @@ body {
 }
 
 h1, .h1, h2, .h2, h3 {
-  font-family: "Marcellus", "Source Serif Pro", "Noto Serif", serif;
+  font-family: "Cardo", "Source Serif Pro", "Noto Serif", serif;
 }
 
 .handwriting {
   font-family: "Alexa", cursive;
+}
+
+.inscription {
+  font-family: "Cardo", "Source Serif Pro", "Noto Serif", serif;
+  font-feature-settings: "hlig";
+  margin: 0 4rem 1rem;
+}
+
+.hist, .long-s {
+  font-feature-settings: "hist", "hlig";
 }

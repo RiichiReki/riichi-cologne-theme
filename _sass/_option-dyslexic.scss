@@ -1,6 +1,12 @@
 #body.dyslexic {
   &,
-  h1, .h1, h2, .h2, h3 {
+  h1, .h1, h2, .h2, h3,
+  .inscription,
+  .handwriting {
     font-family: "OpenDyslexic";
+  }
+
+  .handwriting {
+    font-style: italic;
   }
 }

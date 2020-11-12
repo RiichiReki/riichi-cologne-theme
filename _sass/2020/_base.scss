@@ -206,14 +206,6 @@
       .d-inline-flex {
         min-width: unset;
         margin: 0;
-
-        > *:last-child {
-          margin-right: .5rem;
-        }
-
-        &.lg-nomargin > *:last-child {
-          margin-right: 0;
-        }
       }
 
 
