@@ -78,7 +78,7 @@
       padding-left: 2rem;
       margin: 0;
       height: 5em;
-    
+
       grid-column: 1 / span 3;
       grid-row: 1;
     }
@@ -183,7 +183,7 @@
         margin: 0 .5rem 0 0;
         flex-grow: 1;
       }
- 
+
       > *:last-child {
         margin-right: 0;
       }
@@ -202,8 +202,8 @@
       grid-column: 2;
       grid-row: 3;
       margin: 0;
-      
-      .d-inline-flex { 
+
+      .d-inline-flex {
         min-width: unset;
         margin: 0;
 
@@ -269,6 +269,10 @@
           &:first-child {
             margin-right: .5rem;
           }
+
+          &:only-child {
+            margin-right: 0;
+          }
         }
 
         &.early-access {
@@ -288,7 +292,7 @@
     flex-wrap: wrap;
     padding: 1rem;
     background: var(--dark);
-    
+
     @media (min-width: 992px) {
       margin-left: 0;
       grid-column: 1 / span 3;
@@ -306,10 +310,10 @@
       flex-grow: 1;
 
       margin-bottom: 1rem;
-      
+
       @media (min-width: 768px){
         margin-bottom: 0;
-      } 
+      }
    }
 
     #footer {
@@ -521,7 +525,7 @@ form {
   margin: .5rem 0;
   flex-grow: 1;
   flex-basis: 0;
-  
+
   @media (min-width: 992px) {
     &:first-child {
       margin: .5rem;
