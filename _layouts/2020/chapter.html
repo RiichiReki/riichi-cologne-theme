@@ -36,12 +36,19 @@ layout: compress
       {% assign words = content | markdownify | strip_html | split: " " | size %}
       <nav class="d-flex w-100 clearfix">
         {% include 2020/2-body/2-main/navigation-chapter.html %}
-      <nav>
+      </nav>
+      {% if page.audio %}
+      <audio controls class="w-100">
+        <source src="{{ page.path | regex_replace: '.md', '.ogg' | prepend: site.staticUrl | absolute_url }}" type="audio/ogg">
+        <source src="{{ page.path | regex_replace: '.md', '.mp3' | prepend: site.staticUrl | absolute_url }}" type="audio/mpeg">
+            Your browser does not support the <code>audio</code> element.
+      </audio>
+      {% endif %}
     </header>
     {% if jekyll.environment != "unpublished" %}
     <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content">
     {% else %}
-    <section class="hyphenate" property="text" aria-flowto="navigation" id="chapter-content" contenteditable="true">
+    <section property="text" aria-flowto="navigation" id="chapter-content" contenteditable="true">
     {% endif %}
       <!--sse-->
       {% include linkify content=content %}
@@ -80,6 +87,5 @@ layout: compress
   <!-- hash: 'sha256-jt0fluv+2kfDRP7lqettjyHx8MocFVb7Knqy4uxo7Ps=' -->
   <script>window['pageType']='chapter'</script>
   <!-- hash: 'sha256-4Amo8MXCWfkrOHD6HrolTcZjIyciljwHajQRyeNI9II=' -->
-  {% if jekyll.environment != "unpublished" %}
   <script>var Hyphenopoly={require:{"en-ca":"Supercalifragilisticexpialidocious"}}</script>
-  {% endif %}
+
