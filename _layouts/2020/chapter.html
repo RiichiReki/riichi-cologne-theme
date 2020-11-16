@@ -39,7 +39,7 @@ layout: compress
       </nav>
     </header>
     {% if page.audio %}
-    <audio controls class="w-100" aria-describedby="chapter-content">
+    <audio controls class="w-100 mb-4" aria-describedby="chapter-content">
       <link rel="alternate" href="{{ page.path | replace: '.md', '.ogg' | prepend: '/' | absolute_url }}" type="audio/ogg">
       <source src="{{ page.path | replace: '.md', '.ogg' | prepend: '/' | absolute_url }}" type="audio/ogg">
       <link rel="alternate" href="{{ page.path | replace: '.md', '.mp3' | prepend: '/' | absolute_url }}" type="audio/mpeg">
