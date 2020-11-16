@@ -9,6 +9,6 @@
 <li class="breadcrumb-item">
   <a href="{{ page.subclass-of | absolute_url }}" class="context-{% if page.subclass-of contains 'schema' %}schema{% else %}cd{% endif %}">{{ page.subclass-of | split: '/' | last }}</a>
 </li>
-<li class="breadcrumb-item active">
+<li class="breadcrumb-item active" aria-current="page">
   <span class="context-{% if page.url contains 'schema' %}schema{% else %}cd{% endif %}">{{ page.title }}</span>
 </li>

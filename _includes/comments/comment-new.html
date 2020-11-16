@@ -3,15 +3,15 @@
   <fieldset id="commentfields">
     <div>
       <label for="name">Name</label>
-      <input type="text" name="name" id="name" placeholder="Name" class="w-100">
+      <input type="text" name="name" id="name" placeholder="Name" class="w-100" aria-required="true">
       <label for="email">Email <span>(not shown)</span></label>
-      <input type="email" name="email" id="email" placeholder="name@domain.tld" class="w-100">
+      <input type="email" name="email" id="email" placeholder="name@domain.tld" class="w-100" aria-required="true">
       <label for="url">Website</label>
       <input type="text" name="url" id="url" placeholder="https://domain.tld" class="w-100">
     </div>
     <div>
       <label for="message">Comment*</label>
-      <textarea name="message" id="message" placeholder="Leave a comment." class="w-100"></textarea>
+      <textarea name="message" id="message" placeholder="Leave a comment." class="w-100" aria-required="true"></textarea>
     </div>
     <div class="d-none">
       <input name="slug" type="hidden" value="{{ slug }}">
