@@ -48,6 +48,14 @@ layout: compress
         {% include 2020/2-body/2-main/navigation-post.html %}
       <nav>
     </header>
+    {% if page.audio %}
+    <audio controls class="w-100" aria-describedby="post-content">
+      <link rel="alternate" href="{{ page.url | regex_replace: '/$', '.ogg' | prepend: '/' | absolute_url }}" type="audio/ogg">
+      <source src="{{ page.url | regex_replace: '/$', '.ogg' | prepend: '/' | absolute_url }}" type="audio/ogg">
+      <link rel="alternate" href="{{ page.url | regex_replace: '/$', '.mp3' | prepend: '/' | absolute_url }}" type="audio/mpeg">
+      <source src="{{ page.url | regex_relace: '/$', '.mp3' | prepend: '/' | absolute_url }}" type="audio/mpeg">
+    </audio>
+    {% endif %}
     {% if jekyll.environment != "unpublished" %}
     <section class="hyphenate" property="text" aria-flowto="navigation" id="post-content">
     {% else %}
