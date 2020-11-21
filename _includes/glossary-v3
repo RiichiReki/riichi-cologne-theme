@@ -1,12 +1,12 @@
-{% 
+{%
 for hay in include.data
-%}{% 
+%}{%
    assign id = hay.title | replace: "_", " " | slugify
-%}{% 
+%}{%
    unless include.id == ""
 %}{%
       assign id = id | prepend: '-' | prepend: include.id
-%}{% 
+%}{%
    endunless
 %}<blockquote
     class="interface{% if include.top %} top-toggle{% endif %}"
@@ -45,7 +45,7 @@ for hay in include.data
         "cd:threatLevel": {{ hay.threat_level | jsonify }},
       {% endif %}
       {% if hay.habitat %}
-        "cd:habitat": [ {% for h in hay.habitat %} 
+        "cd:habitat": [ {% for h in hay.habitat %}
           {
             "@type": "schema:Place",
             "id": "{{ h }}"
@@ -76,7 +76,7 @@ for hay in include.data
   </script>
   {% endif %}
     <p class="inactive{% if hay.link %} link btn btn-lg{% endif %}" {% if hay.children or hay.description or hay.character or hay.include %}onclick="toggleAccordion(this)"{% endif %} id="{{ id }}" style="order: -1">
-      {% if hay.link %}<a href="{{ "/glossary/" | append: '#' | append: hay.link }}" onclick="openHash('#{{ hay.link }}')">{% endif %}{{ hay.title }}{% if hay.link %}</a>{% endif %}
+      {% if hay.link %}<a href="{{ page.url | append: '#' | append: hay.link }}" onclick="openHash('#{{ hay.link }}')">{% endif %}{{ hay.title }}{% if hay.link %}</a>{% endif %}
       {% if hay.subtitle %}<small>{{ hay.subtitle }}</small>{% endif %}
     </p>
   {% if hay.description %}
@@ -96,19 +96,19 @@ for hay in include.data
   {% if hay.include %}
     {% include {{ hay.include }} %}
   {% endif %}
-  
+
   {% assign stack = hay.children %}
-  {% 
+  {%
    assign id = hay.title | replace: "_", " " | slugify
-%}{% 
+%}{%
    unless include.id == ""
 %}{%
       assign id = id | prepend: '-' | prepend: include.id
-%}{% 
+%}{%
    endunless
 %}
   {% include glossary-v3 data=stack top=false id=id %}
 </blockquote>
-{% 
+{%
 endfor
 %}

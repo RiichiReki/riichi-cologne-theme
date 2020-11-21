@@ -52,8 +52,8 @@ layout: compress
     <audio controls class="w-100" aria-describedby="post-content">
       <link rel="alternate" href="{{ page.url | regex_replace: '/$', '.ogg' | prepend: '/' | absolute_url }}" type="audio/ogg">
       <source src="{{ page.url | regex_replace: '/$', '.ogg' | prepend: '/' | absolute_url }}" type="audio/ogg">
-      <link rel="alternate" href="{{ page.url | regex_replace: '/$', '.mp3' | prepend: '/' | absolute_url }}" type="audio/mpeg">
-      <source src="{{ page.url | regex_relace: '/$', '.mp3' | prepend: '/' | absolute_url }}" type="audio/mpeg">
+      <link rel="alternate" href="{{ page.url | regex_replace: '/$', '.mp4' | prepend: '/' | absolute_url }}" type="audio/mp4">
+      <source src="{{ page.url | regex_relace: '/$', '.mp4' | prepend: '/' | absolute_url }}" type="audio/mp4">
     </audio>
     {% endif %}
     {% if jekyll.environment != "unpublished" %}
