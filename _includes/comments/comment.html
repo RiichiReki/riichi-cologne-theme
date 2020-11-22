@@ -7,8 +7,8 @@
         "@type": "Person",
         "name": {{ comment.name | jsonify }},
         "url": {{ comment.url | jsonify }},
-        "dateCreated": {{ comment.date | date: '%Y-%m-%d' | jsonify }}
-      }
+      },
+      "dateCreated": {{ comment.date | date: '%Y-%m-%d' | jsonify }}
       "about": {{ page.url | absolute_url | jsonify }},
       "message": {{ comment.message | markdownify | strip_html | jsonify }}
     }
@@ -23,7 +23,7 @@
   </p>
   <div class="comment-body">
     <img
-    alt="Gravatar for {{ comment.name | xml_escape }}" 
+    alt="Gravatar for {{ comment.name | xml_escape }}"
     src="/proxy/gravatar/{{ comment.gravatar }}?s=64&amp;d=retro&amp;r=pg"
     srcset="/proxy/gravatar/{{ comment.gravatar }}?s=128&amp;d=retro&amp;r=pg 2x"
     height="64" width="64"

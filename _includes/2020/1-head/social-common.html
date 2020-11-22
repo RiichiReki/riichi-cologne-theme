@@ -27,5 +27,5 @@
 <meta property="fb:app_id" content="{{ site.facebook.app_id }}">
 {% endif %}
 <meta property="og:url"
-    content="{% if page.shortlink %}{{ page.shortlink }}{% else %}{{ page.url | absolute_url }}{% endif %}">
+    content="{% if page.shortlink %}{{ page.shortlink | absolute_url }}{% else %}{{ page.url | absolute_url }}{% endif %}">
 <meta property="og:type" content="article">
