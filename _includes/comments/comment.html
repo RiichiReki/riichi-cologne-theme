@@ -6,9 +6,9 @@
       "author": {
         "@type": "Person",
         "name": {{ comment.name | jsonify }},
-        "url": {{ comment.url | jsonify }},
+        "url": {{ comment.url | jsonify }}
       },
-      "dateCreated": {{ comment.date | date: '%Y-%m-%d' | jsonify }}
+      "dateCreated": {{ comment.date | date: '%Y-%m-%d' | jsonify }},
       "about": {{ page.url | absolute_url | jsonify }},
       "message": {{ comment.message | markdownify | strip_html | jsonify }}
     }
