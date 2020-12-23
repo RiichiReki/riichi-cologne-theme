@@ -34,6 +34,12 @@ content: 'Chapter {{ page.chapter }}: ';
   display: block;
 }
 
+{% if page.title_postfix %}
+h1::after {
+content: '({{ page.title_postfix }})';
+}
+{% endif %}
+
 .chapter-title::before {
 {% if page.current_chapters %}
 content: 'Chapter {{ page.current_chapters }}: ';
