@@ -8,16 +8,16 @@ if include.number
   endif
 %}{%
 else
-%}<ruby class="text-nowrap">{%
+%}<sub alias="{{ include.text | join: ' '}}"><ruby class="text-nowrap">{%
   if include.base.first
 %}{% 
     for b in include.base
-%}<rb{% if forloop.first %} class="first"{% endif %}{% if forloop.last %} class="last"{% endif %} aria-hidden="true">{{ b }}</rb><rp> (</rp><rt>{{ include.text[forloop.index0] }}</rt><rp>)</rp>{% 
+%}<ruby class="text-nowrap"><rb{% if forloop.first %} class="first"{% endif %}{% if forloop.last %} class="last"{% endif %}>{{ b }}</rb><rp> (</rp><rt>{{ include.text[forloop.index0] }}</rt><rp>)</rp>{% 
     endfor
 %}{%
   else
-%}<rb aria-hidden="true">{{ include.base }}</rb><rp> (</rp><rt>{{ include.text }}</rt><rp>)</rp>{%
+%}<rb>{{ include.base }}</rb><rp> (</rp><rt>{{ include.text }}</rt><rp>)</rp>{%
   endif
-%}</ruby>{%
+%}</ruby></sub>{%
 endif
 %}
