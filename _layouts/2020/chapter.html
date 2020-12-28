@@ -41,10 +41,10 @@ layout: compress
     {% if page.audio %}
     <audio controls class="w-100 mb-4" aria-describedby="chapter-content">
       {% for mirror in page.book.audio_mirror %}
-        <link rel="alternate" href="{{ page.path | replace: '.md', '.ogg' | replace: 'amauga/', mirror' }}" type="audio/ogg">
-        <source src="{{ page.path | replace: '.md', '.ogg' | replace: 'amauga/', mirror' }}" type="audio/ogg">
-        <link rel="alternate" href="{{ page.path | replace: '.md', '.mp4' | replace: 'amauga/', mirror' }}" type="audio/mp4">
-        <source src="{{ page.path | replace: '.md', '.mp4' | replace: 'amauga/', mirror' }}" type="audio/mp4">
+        <link rel="alternate" href="{{ page.path | replace: '.md', '.ogg' | replace: 'amauga/', mirror }}" type="audio/ogg">
+        <source src="{{ page.path | replace: '.md', '.ogg' | replace: 'amauga/', mirror }}" type="audio/ogg">
+        <link rel="alternate" href="{{ page.path | replace: '.md', '.mp4' | replace: 'amauga/', mirror }}" type="audio/mp4">
+        <source src="{{ page.path | replace: '.md', '.mp4' | replace: 'amauga/', mirror }}" type="audio/mp4">
       {% endfor %}
       <link rel="alternate" href="{{ page.path | replace: '.md', '.ogg' | prepend: '/' | absolute_url }}" type="audio/ogg">
       <source src="{{ page.path | replace: '.md', '.ogg' | prepend: '/' | absolute_url }}" type="audio/ogg">
