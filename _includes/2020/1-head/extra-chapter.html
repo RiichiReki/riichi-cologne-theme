@@ -16,6 +16,7 @@
 {% assign next_pages = pages | where: "chapter", next_chapter_number %}
 
 {% for page in previous_pages %}
+{% if jekyll.environment != "unpublished" and page.published == "sponsors" %}{% break %}{% endif %}
 <link rel="prerender" href="{{ page.url }}">
 {% endfor %}
 

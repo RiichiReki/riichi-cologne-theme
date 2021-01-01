@@ -1,5 +1,9 @@
-{% for page in previous_pages %}
-  <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+{% for p in previous_pages %}
+  {%if p.published == "sponsors" %}
+    <a class="btn btn-lg btn-primary previous" title="{{ p.title }}" href="{{ p.shortlink | replace: '/cd/', 'https://cd-ht.ml/' | replace: '/a/', 'https://amau.ga/'}}?p={{ site.token.max | divided_by: p.chapter | modulo: site.token.mod | plus: site.token.plus }}">{{ p.title }}</a>
+  {% else %}  
+    <a class="btn btn-lg btn-primary previous" title=" {{ p.title }}" href="{{ p.url }}">{{ p.title }}</a>
+  {% endif %}
 {% endfor %}
   
 {% for p in next_pages %}
