@@ -2,10 +2,10 @@
   <a class="btn btn-lg btn-primary previous" title=" {{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
 {% endfor %}
   
-{% for page in next_pages %}
-  {% if jekyll.environment != "unpublished" and page.published == "pre-sponsors" %}
+{% for p in next_pages %}
+  {% if jekyll.environment != "unpublished" and p.published == "pre-sponsors" %}
     {% break %}
-  {% elsif jekyll.environment != "unpublished" and page.published == "sponsors" %}
+  {% elsif jekyll.environment != "unpublished" and p.published == "sponsors" and page.published != "sponsors" %}
     <a class="btn btn-lg btn-primary next early-access" title="{{ site.patreon.title }}"
        href="{{ site.patreon.url }}" rel="payment">
         <span>
@@ -18,7 +18,9 @@
         </span>
         <span>{{ site.patreon.title }}</span>
     </a>
+  {% elsif page.published == "sponsors" %}
+    <a class="btn btn-lg btn-primary next" title="{{ p.title }}" href="{{ p.shortlink | replace: '/cd/', 'https://cd-ht.ml/' | replace: '/a/', 'https://amau.ga/'}}?p={{ site.token.max | divided_by: p.chapter | modulo: site.token.mod | plus: site.token.plus }}">{{ p.title }}</a>
   {% else %}
-    <a class="btn btn-lg btn-primary next" title="{{ page.title }}" href="{{ page.url }}">{{ page.title }}</a>
+    <a class="btn btn-lg btn-primary next" title="{{ p.title }}" href="{{ p.url }}">{{ p.title }}</a>
   {% endif %}
 {% endfor %}
