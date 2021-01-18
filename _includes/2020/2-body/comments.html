@@ -1,10 +1,6 @@
 <aside id="comments" aria-hidden="true" data-nosnippet>
 {% assign slug = page.url | slugify | downcase | replace: '.', '-' | replace: '_' : '-' %}
-{% assign comments_map = site.data.comments[slug] %}
-{% assign comments = "" | split: "," %}
-{% for comment in comments_map %}
-  {% assign comments = comments | push: comment[1] %}
-{% endfor %}
+{% assign comments = site.data.comments.[slug] %}
 {% assign comment_count = comments | size %}
 {% if comment_count > 0 %}
   {% assign author = site.data.staff | where: 'id', page.author| last %}
