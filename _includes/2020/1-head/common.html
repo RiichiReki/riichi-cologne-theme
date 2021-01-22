@@ -14,6 +14,9 @@
 {% if page.robots %}
 <meta name="robots" content="{{ page.robots }}">
 {% endif %}
+{% if page.rating %}
+<meta name="rating" content="{{ page.rating }}">
+{% endif %}
 
 <link rel="shortcut icon" href="{{ "/favicon.ico" | absolute_url }}">
 <link rel="apple-touch-icon" href="{{ "/assets/images/site-icon.png" | prepend: site.staticUrl | absolute_url }}">
