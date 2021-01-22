@@ -347,12 +347,8 @@
   >#comments {
     grid-area: comments;
 
-    @media (min-width: 768px) {
-      margin-left: 0;
-    }
-
     @media (min-width: 992px) {
-      margin-left: 0;
+      margin: 0;
       grid-column: 2;
       grid-row: 6;
     }
@@ -462,7 +458,7 @@ form {
 
   img {
     float: left;
-    margin: 0 .5rem 1rem 1rem;
+    margin: 0 .5rem 1rem 0;
   }
 }
 
