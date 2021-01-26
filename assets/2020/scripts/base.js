@@ -54,7 +54,6 @@ function loadYouTube() {
     videos[i].innerHTML = d.getElementById(videos[i].getAttribute('data-videoid')).innerHTML;
   }
 }
-window['loadYouTube']=loadYouTube;
 
 function restoreSettingsFromCookie() {
   if (!isHasAcceptedPolicy()) {
