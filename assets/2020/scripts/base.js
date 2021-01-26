@@ -11,6 +11,7 @@ function isHasAcceptedPolicy() {
 }
 
 async function acceptPolicy() {
+  loadBeacon();
   var banner = $('#policy-banner')[0];
   banner.style.opacity = 0;
   writeCookie("acceptedPolicy", true);
@@ -174,14 +175,14 @@ function toggleAllAccordions() {
     });
 }
 
-function loadTalkify() {
+function loadBeacon() {
   if (!isHasAcceptedPolicy()) {
     return;
   }
 
   var js, fjs = d.getElementsByTagName("script")[0];
   var html = d.getElementsByTagName("html")[0];
-  var i = "talkify";
+  var i = "beacon";
 
   if (d.getElementById(i)) {
     return;
@@ -189,65 +190,10 @@ function loadTalkify() {
 
   js = d.createElement("script");
   js.id = i;
-  js.src = '/assets/2020/scripts/talkify/talkify.min.js';
+  js.src = 'https://static.crystaldown.de/proxy/cloudflare/beacon.min.js';
 
   fjs.parentNode.insertBefore(js, fjs);
 }
 
-async function setUpTalkify() {
-  while ('undefined' == typeof talkify || 'undefined' == typeof talkify.config ) {
-    await sleep(100);
-  }
-
-  talkify.config.useSsml = true;
-  talkify.config.remoteService.active = false;
-  talkify.config.keyboardCommands.enabled = false;
-  talkify.config.voiceCommands.enabled = false;
-  talkify.config.ui.audioControls.enabled = true;
-  talkify.config.ui.audioControls.container = document.getElementById("player-and-voices");
-
-  window['player'] = new talkify.Html5Player();
-
-  while (null == player.forcedVoice) {
-    await sleep(100);
-    player.forceVoice(window.speechSynthesis.getVoices().find(e => e.name == "Google US English"));
-    if (null == player.forcedVoice)
-      player.forceVoice(window.speechSynthesis.getVoices().find(e => e.lang.match(/US/)));
-  }
-
-  window['playlist'] = new talkify.playlist()
-    .begin()
-    .usingPlayer(window['player'])
-    .excludeElements('[aria-hidden=true]')
-    .excludeElements('.breadcrumb')
-    .build();
-}
-
-
-async function toggleTTS() {
-  if ('undefined' == typeof window['isReading']) {
-    window['isReading'] = true;
-    toggleAllAccordions();
-    loadTalkify();
-    setUpTalkify();
-
-    while ('undefined' == typeof window['playlist']) {
-      await sleep(100);
-    }
-
-    playlist.play();
-    return;
-  }
-
-  if (window['isReading']) {
-    player.pause();
-  } else {
-    player.play();
-  }
-  window['isReading'] = !window['isReading'];
-}
-
-
 restoreSettingsFromCookie();
 setUpPageForUsers();
-

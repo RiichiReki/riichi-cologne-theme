@@ -9,6 +9,16 @@
        url(/assets/fonts/Cardo-Regular.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: "Cardo";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Cardo Regular'),
+       local('Cardo-Regular'),
+       url(/assets/fonts/Cardo-Regular.woff2) format('woff2'),
+       url(/assets/fonts/Cardo-Regular.ttf) format('truetype');
+}
 
 @font-face {
   font-family: "Cardo";
