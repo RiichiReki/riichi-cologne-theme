@@ -188,7 +188,7 @@ function loadBeacon() {
 
   js = d.createElement("script");
   js.id = i;
-  js.src = 'https://static.crystaldown.de/proxy/cloudflare/beacon.min.js';
+  js.src = '/proxy/cloudflare/beacon.min.js';
 
   fjs.parentNode.insertBefore(js, fjs);
 }
