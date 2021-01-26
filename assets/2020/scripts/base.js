@@ -156,7 +156,6 @@ async function setUpPageForUsers() {
   d.getElementsByTagName("html")[0].className = "animated";
 
   $('#dark-mode').change(toggleTheme);
-  $('#tts').change(toggleTTS);
   $('#dyslexic').change(toggleDyslexicFont);
 }
 
