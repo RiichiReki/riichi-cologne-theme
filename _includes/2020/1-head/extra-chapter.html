@@ -25,6 +25,10 @@
 <link rel="prerender" href="{{ page.url }}">
 {% endfor %}
 
+{% if page.external %}
+<link rel="alternate" href="{{ page.external }}">
+{% endif %}
+
 <style>
 h1::before {
 {% if page.current_chapters %}
