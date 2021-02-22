@@ -86,12 +86,17 @@ for hay in include.data
     </div>
   {% endif %}
   {% if hay.character %}
-    {% assign char = hay.character | append: '-latest' %}
+    {% assign char = hay.character %}
+    {% if page.termbase == "/crystaldown" %}
+    {% assign char = char | append: '-latest' %}
+    {% endif %}
     <blockquote class="interface" style="order: 10"><p class="inactive" onclick="toggleAccordion(this)">Profile</p>
       {% include character-info character=char %}
     </blockquote>
+    {% if page.termbase == "/crystaldown" %}
     {% capture window %}{% include character-window character=char titles_only=hay.character_titles_only %}{% endcapture %}
     {{ window | markdownify }}
+    {% endif %}
   {% endif %}
   {% if hay.include %}
     {% include {{ hay.include }} %}
