@@ -16,3 +16,8 @@
     {{ page.sponsors | array_to_sentence_string }}{% endif %}{% endif %}
 </small>
 <div class="clearfix"></div>
+{% unless page.sponsors %}
+<small>
+A big thanks to all Patrons for their support.
+</small>
+{% endunless %}
