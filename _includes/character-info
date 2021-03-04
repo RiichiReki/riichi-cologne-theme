@@ -2,6 +2,8 @@
 {% assign character = site.data.cd.characters[include.character] %}
 {% elsif page.termbase == "/amauga" %}
 {% assign character = site.data.amauga.characters[include.character] %}
+{% elsif page.termbase == "/bug-fixing" %}
+{% assign character = site.data.bug-fixing.characters[include.character] %}
 {% endif %}
 
 <table>
