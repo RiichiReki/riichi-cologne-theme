@@ -21,8 +21,8 @@
   <div class="comment-body">
     <img
     alt="Gravatar for {{ comment.name | xml_escape }}"
-    src="{{"/proxy/gravatar/" | prepend: site.staticUrl | absolute_url }}{{ comment.gravatar }}/64.jpg"
-    srcset="{{"/proxy/gravatar/" | prepend: site.staticUrl | absolute_url }}{{ comment.gravatar }}/128.jpg 2x"
+    src="{{"/proxy/gravatar/" | prepend: site.staticUrl | absolute_url }}{{ comment.gravatar }}/64/avatar.jpg"
+    srcset="{{"/proxy/gravatar/" | prepend: site.staticUrl | absolute_url }}{{ comment.gravatar }}/128/avatar.jpg 2x"
     height="64" width="64"
     crossorigin = "anonymous"
     onerror="this.style.display='none'">
