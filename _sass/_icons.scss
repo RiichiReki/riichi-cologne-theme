@@ -16,11 +16,15 @@
     margin: 0;
     position:relative;
     width: 101px;
-    right:4px;
+    right: 4px;
   }
 }
 
 .shields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
   a {
     display: block;
     width: 64px;
