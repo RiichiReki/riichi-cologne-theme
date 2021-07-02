@@ -117,7 +117,7 @@
     background-color: #171717;
     border-color: mix($buttonface, $black, 20%);
     h3:first-child, p:only-child {
-      &, a:link, a:hover, a:active, a:visited {
+      &, a:any-link {
         background-color: $primary !important;
       }
     }
@@ -138,6 +138,10 @@
 
   p {
     color: #fff !important;
+  }
+
+  a:any-link {
+    color: #fff;
   }
 }
 
