@@ -1,24 +1,40 @@
+{% assign intermediate_breadcrumbs_length = 0 %}
+{% if page.intermediate_breadcrumbs %}
+  {% assign intermediate_breadcrumbs_length = page.intermediate_breadcrumbs | size %}
+{% endif %}
 <script type="application/ld+json">
 {
     "@context": "https://schema.org/",
     "@type": "BreadcrumbList",
     "itemListElement": [{
-    "@type": "ListItem",
-    "position": 0,
-    "name": "{{ site.title }}",
-    "item": "{{ "/" | absolute_url }}"
+        "@type": "ListItem",
+        "position": 0,
+        "name": "{{ site.title }}",
+        "item": "{{ "/" | prepend: site.breadcrumb_domain | absolute_url }}"
+{% for crumb in page.intermediate_breadcrumbs %}
     }, {
-    "@type": "ListItem",
-    "position": 1,
-    "name": "{{ page.title }}",
-    "item": "{{ page.url | absolute_url }}"
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "name": "{{ crumb.title }}",
+        "item": "{{ crumb.url | prepend: site.breadcrumb_domain | absolute_url }}"
+{% endfor %}
+    }, {
+        "@type": "ListItem",
+        "position": {{ intermediate_breadcrumbs_length | plus: 1 }},
+        "name": "{{ page.title }}",
+        "item": "{{ page.url | prepend: site.breadcrumb_domain | absolute_url }}"
     }]
 }
 </script>
 
 <li class="breadcrumb-item">
-    <a title="{{ site.title }}" href="{{ "/" | absolute_url }}">{{ site.title }}</a>
+    <a title="{{ site.title }}" href="{{ "/" | prepend: site.breadcrumb_domain | absolute_url }}">{{ site.title }}</a>
 </li>
+{% for crumb in page.intermediate_breadcrumbs %}
+<li class="breadcrumb-item">
+    <a title="{{ crumb.title }}" href="{{ crumb.url | prepend: site.breadcrumb_domain | absolute_url }}">{{ crumb.title }}</a>
+</li>
+{% endfor %}
 <li class="breadcrumb-item active" aria-current="page">
     {{ page.title }}
 </li>

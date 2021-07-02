@@ -1,22 +1,20 @@
 #body {
   >header {
-    background: var(--blue);
+    background: $accent;
 
     &, a {
-      color: $white !important;
+      color: $white;
     }
   }
 
   >nav {
     p {
-      background-color: #007bff;
-      border-color: #007bff;
+      background-color: $blue;
+      border-color: $blue;
 
       &:hover,
       &:focus {
-        background-color: #0069d9;
-        border-color: #0062cc;
-        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, .5);
+        box-shadow: 0 0 0 0.2rem rgba($blue, .5);
       }
 
       &, a {
@@ -30,15 +28,35 @@
   color: rgb(77, 77, 77);
   background-color: $white;
 
+  .controls,
+  .tts-controls {
+    background-color: $white;
+  }
+
+  a,
+  a:any-link {
+    color: $light-blue;
+  }
+  
   hr {
     background-color: rgb(77, 77, 77);
+  }
+
+  .breadcrumb {
+    background-color: var(--dark);
+
+    &,
+    & .breadcrumb-item,
+    & .breadcrumb-item.active {
+      color: $white;
+    }
   }
 
   header,
   nav,
   footer {
     .h1 {
-      color: $primary-dark;
+      color: $primary;
     }
   }
 
@@ -52,15 +70,33 @@
 }
 
 .dark-theme {
-  color: rgb(191, 191, 191);
+  color: $white;
   background-color: $black;
-  --var-blue: #0072ed !important;
  
+  .controls,
+  .tts-controls {
+    background-color: $black;
+  }
+  
+  a,
+  a:any-link {
+    color: $light-blue;
+  }
+  
+  .breadcrumb {
+    .breadcrumb-item,
+    .breadcrumb-item.active {
+      color: $black;
+    }
 
-  > header,
-  > nav p,
-  .btn-primary {
-    background-color: #0072ed !important;
+    a,
+    a:any-link {
+      color: mix($blue, $light-blue, .3);
+    }
+  }
+
+  > header {
+    background-color: $accent;
   }
 
   hr {
@@ -82,7 +118,7 @@
     border-color: mix($buttonface, $black, 20%);
     h3:first-child, p:only-child {
       &, a:link, a:hover, a:active, a:visited {
-        background-color: #0072ed !important;
+        background-color: $primary !important;
       }
     }
   }
@@ -98,19 +134,10 @@
 }
 
 .policy-banner {
-  background-color: $secondary-darkest;
+  background-color: var(--dark);
 
   p {
     color: #fff !important;
-  }
-
-  .policy-button-all {
-    background-color: $primary-dark !important;
-    color: $white !important;
-
-    span {
-      color: $white !important;
-    }
   }
 }
 
@@ -136,4 +163,73 @@
     background-color: var(--blue);
     color: $white;
   }
+}
+
+.btn-primary,
+.btn-primary:any-link {
+  background-color: $primary;
+  border-color: $primary;
+  color: $white !important;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($primary, .5);
+    color: $white !important;
+  }
+}
+
+.btn-red {
+  background-color: $red;
+  border-color: $red;
+  color: $white;
+  
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($red, .5);
+    color: $white !important;
+  }
+}
+
+.btn-green {
+  background-color: $green;
+  border-color: $green;
+  color: $white !important;
+  
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($green, .5);
+    color: $white !important;
+  }
+}
+
+#body > footer {
+  background: var(--dark);
+  color: $white !important;
+}
+
+.btn-patreon,
+.btn-patreon:any-link {
+  background-color: $patreon !important;
+  border-color: $patreon !important;
+  color: $white !important;
+  
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($patreon, .5);
+    color: $white !important;
+  }
+}
+
+.btn-dark,
+.btn-dark:any-link {
+  background-color: var(--dark) !important;
+  border-color: var(--dark) !important;
+  color: $white !important;
+}
+
+:root {
+  --red: #{$red};
+  --danger: #{$red};
+  --green: #{$green};
+  --blue: #{$blue};
 }

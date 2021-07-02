@@ -6,12 +6,12 @@
     "@type": "ListItem",
     "position": 0,
     "name": "{{ site.title }}",
-    "item": "{{ "/" | absolute_url }}"
+    "item": "{{ "/" | prepend: site.breadcrumb_domain | absolute_url }}"
     }, {
     "@type": "ListItem",
     "position": 1,
     "name": "{{ page.title }}",
-    "item": "{{ page.url | absolute_url }}"
+    "item": "{{ page.url | prepend: site.breadcrumb_domain | absolute_url }}"
     }]
 }
 </script>

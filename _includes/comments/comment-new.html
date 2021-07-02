@@ -1,5 +1,8 @@
-<h2>Leave a Comment</h2>
-<form name="Comments" method="POST" action="{{ site.comments.action }}" id="commentform" class="form-horizontal" data-netlify="true" netlify-honeypot="captcha">
+<h2>
+  {% if page.lang == "de-DE" %}Kommentieren{% else %}Leave a Comment{% endif %}
+</h2>
+{% assign action = pages | where: 'ref', 'submit-comment' | where: 'lang', page.lang %}
+<form name="Comments" method="POST" action="{{ action }}" id="commentform" class="form-horizontal" data-netlify="true" netlify-honeypot="captcha">
   <fieldset id="commentfields">
     <div>
       <label for="name">Name</label>
@@ -10,16 +13,16 @@
       <input type="text" name="url" id="url" placeholder="https://domain.tld" class="w-100">
     </div>
     <div>
-      <label for="message">Comment*</label>
-      <textarea name="message" id="message" placeholder="Leave a comment." class="w-100" aria-required="true"></textarea>
+      <label for="message">{% if page.lang == "de-DE" %}Kommentar{% else %}Comment{% endif %}*</label>
+      <textarea name="message" id="message" placeholder="{% if page.lang == 'de-DE' %}Kommentieren{% else %}Leave a Comment{% endif %}" class="w-100" aria-required="true"></textarea>
     </div>
     <div class="d-none">
-      <input name="slug" type="hidden" value="{{ slug }}">
+      <input name="ref" type="hidden" value="{{ page.ref }}">
       <label for="captcha">Captcha</label>
       <input name="captcha" type="text">
     </div>
     <div>
-      <button type="sumbit" id="commentbutton" class="btn btn-primary btn-block">Submit Comment</button>
+      <button type="sumbit" id="commentbutton" class="btn btn-primary btn-block">{% if page.lang == "de-DE" %}Kommentar abschicken{% else %}Submit Comment{% endif %}</button>
     </div>
   </fieldset>
 </form>

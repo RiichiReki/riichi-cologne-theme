@@ -31,8 +31,8 @@ main {
 }
 
 .interface {
-  p:first-child,
-  ul {
+  > p:first-child,
+  > ul {
     line-height: 250%;
   }
 }

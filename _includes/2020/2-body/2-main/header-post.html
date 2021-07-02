@@ -3,15 +3,29 @@
     {{ page.title }}
 </h1>
 <small class="float-left">
-    published on {{ page.date | date: "%Y-%m-%d" }}, last updated on {% last_modified_at %Y-%m-%d %}
+    {% if page.lang == 'de-DE' %}
+        veröffentlicht am {{ page.date | date: "%Y-%m-%d" }}, zuletzt akutalisiert am {% last_modified_at %Y-%m-%d %}
+    {% else %}
+        published on {{ page.date | date: "%Y-%m-%d" }}, last updated on {% last_modified_at %Y-%m-%d %}
+    {% endif %}
 </small>
 <small class="float-right">
 {% if page.author %}
 {% assign author = site.data.staff | where: "id", page.author | last %}
-    written by {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener">{% endif %}{{ author.name }}{% if author.url %}</a>{% endif %}{% endif %}{% if page.checker %}, checked with
-{% for e in page.checker %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener" rel="sponsored">{% endif %}{{ editor.name }}{%  if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}{% endif %}
+{% if page.lang == 'de-DE' %}
+    geschieben von {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener">{% endif %}{{ author.name }}{% if author.url %}</a>{% endif %}{% endif %}{% if page.checker %}, {%if page.checker.size > 1 %}<br>{%endif%}geprüft mit
+    {% for e in page.checker %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener" rel="sponsored">{% endif %}{{ editor.name }}{%  if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}{% endif %}{% if page.editor %}, bearbeitet durch 
+    {% for e in page.editor %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener" rel="nofollow">{% endif %}{{ editor.name }}{%  if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}
+{% else %}    
+    written by {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener">{% endif %}{{ author.name }}{% if author.url %}</a>{% endif %}{% endif %}{% if page.checker %}, {%if page.checker.size > 1 %}<br>{%endif%}checked with
+    {% for e in page.checker %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener" rel="sponsored">{% endif %}{{ editor.name }}{%  if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}{% endif %}{% if page.editor %}, edited by 
+    {% for e in page.editor %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener" rel="nofollow">{% endif %}{{ editor.name }}{%  if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}
+{% endif %}
+{% endif %}
 </small>
 <div class="clearfix"></div>
 <small class="float-left">
-    tagged with {% for t in page.tags %}<a href="{{ "/tags/" | absolute_url }}#{{ t | cgi_escape }}">{{ t }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+    {% if page.lang == 'de-DE'%}getaggt mit
+    {% else %}tagged with
+    {% endif %} {% for t in page.tags %}<a href="{{ "/tags/" | absolute_url }}#{{ t | cgi_escape }}">{{ t }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
 </small>

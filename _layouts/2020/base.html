@@ -21,12 +21,8 @@ layout: compress
   <nav class="collapse" id="navbar-toggable">
     {% include 2020/2-body/navigation.html %}
   </nav>
-
-  <div class="controls buttons" data-nosnippet>
-    {% include 2020/2-body/controls.html %}
-  </div>
-
-  <main id="content" class="base container">
+  
+  <main id="content" class="base">
     {{ content }}
   </main>
 
@@ -42,10 +38,10 @@ layout: compress
   <div class="policy-banner" id="policy-banner" data-nosnippet>
     {% include 2020/policy-banner.html %}
   </div>
+  
+  <div class="controls buttons" data-nosnippet>
+    {% include 2020/2-body/controls.html %}
+  </div>
 
   <!-- hash: 'sha256-B75kuj4XBwqTynjEBPY0crnnQrCH3Uckwy8CeNtR5Mg=' -->
   <script>window['pageType']='base'</script>
-  <!-- hash: 'sha256-4Amo8MXCWfkrOHD6HrolTcZjIyciljwHajQRyeNI9II=' -->
-  {% if page.additional_js == "hyphenate" %}
-  <script>var Hyphenopoly={require:{"en-ca":"Supercalifragilisticexpialidocious"}}</script>
-  {% endif %}

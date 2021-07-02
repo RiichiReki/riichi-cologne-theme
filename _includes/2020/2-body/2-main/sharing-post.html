@@ -1,53 +1,66 @@
 
-  <p>
-    Share this post on
-  </p>
-  <div class="icons">
-    <a title="Share Post on Facebook"
-      href="https://www.facebook.com/sharer.php?src=bm&u={{ page.url | absolute_url }}&t={{ page.title | url_encode }}"
-      target="_blank" rel="noopener nofollow">
-      <img src="{{ "/assets/images/facebook.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Facebook">
-    </a>
-    <a title="Share Post on Twitter"
-      href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}&via={{ site.twitter.username }}"
-      target="_blank" rel="noopener nofollow">
-      <img src="{{ "/assets/images/twitter.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Twitter">
-    </a>
-    <a title="Share Post on reddit"
-      href="https://reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}"
-      target="_blank" rel="noopener nofollow">
-      <img src="{{ "/assets/images/reddit.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on reddit">
-    </a>
-    <a title="Share Post on Pinterest"
-      href="https://pinterest.com/pin/create/button/?url={{ page.url | absolute_url }}&description={{ page.title | url_encode }}&media={{ "/assets/images/site-card.png" | absolute_url }}"
-      target="_blank" rel="noopener nofollow">
-      <img src="{{ "/assets/images/pinterest.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Pinterest">
-    </a>
-    <a title="Share Post on Telegram"
-      href="https://telegram.me/share/url?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}"
-      target="_blank" rel="noopener nofollow">
-      <img src="{{ "/assets/images/telegram.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Telegram">
-    </a>
-    <a title="Share Post on WhatsApp"
-      href="https://api.whatsapp.com/send?text=Checkout%20{{ site.title | url_encode }}'s%20Post%3A%20{{ page.title | url_encode }}.%20{{ page.url | absolute_url }}"
-      target="_blank" rel="noopener nofollow">
-      <img src="{{ "/assets/images/whatsapp.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on WhatsApp">
-    </a>
-    <a title="Share Post on Tumblr"
-      href="https://www.tumblr.com/widgets/share/tool?canonicalUrl={{ page.url | absolute_url }}&title={{ page.title | url_encode }}"
-      target="_blank" rel="noopener nofollow">
-      <img src="{{ "/assets/images/tumblr.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Tumblr">
-    </a>
-    <a title="Share Post on VK" href="https://vk.com/share.php?url={{ page.url | absolute_url }}" target="_blank"
-      rel="noopener nofollow">
-      <img src="{{ "/assets/images/vk.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on VK">
-    </a>
-    <a title="Share Post on Pocket" href="https://getpocket.com/edit?url={{ page.url | absolute_url }}" target="_blank"
-      rel="noopener nofollow">
-      <img src="{{ "/assets/images/pocket.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Pocket">
-    </a>
-    <a title="Share Post on Mix" href="https://mix.com/mixit?su=submit&url={{ page.url | absolute_url }}"
-      target="_blank" rel="noopener nofollow">
-      <img src="{{ "/assets/images/mix.png"| prepend: site.staticUrl | absolute_url }}" alt="Share Post on Mix">
-    </a>
-  </div>
+{% unless canonical_url %}
+{% capture taglist %}{% for t in page.tags %}{% assign ws = t | split: ' ' %}{% for w in ws %}{{w | capitalize}}{% endfor %}{% unless forloop.last%},{% endunless %}{% endfor %}{% endcapture %}
+{% assign tagwords = page.tags | join: ' ' | split: ' ' %}
+{% assign tumblr_tags = taglist | split: ',' | concat: page.tags | concat: tagwords | uniq %}
+{% assign twitter_tags = taglist | split: ',' | concat: tagwords | uniq %}
+{% capture share_text %}Check out {{ page.title }} on {{ site.title }}!{% endcapture %}
+{% capture tumblr_caption %}{{ share_text }} <br>via <a href="https://{{ site.tumblr.url }}">{{ site.tumblr.url }}</a>{% endcapture %}
+<p>
+  Share this post on
+</p>
+<div class="icons shields">
+  <a title="Share Chapter using Web Share API"
+      onclick="navigator.share({title:'{{ page.title | replace: "'", "\\'" }}', text:'{{ share_text | replace: "'", "\\'"}}', url:'{{ s }}'})"
+      target="_blank" rel="noopener nofollow" id="share">
+      <img loading="lazy" src="{{ "/proxy/shields/-/share/shield.svg" | prepend: site.static_url | absolute_url }}" alt="Share Post using Web Share API" width="64" height="64">
+  </a>
+  <a title="Share Post on Facebook"
+    href="https://www.facebook.com/sharer.php?src=bm&u={{ page.url | absolute_url }}"
+    target="_blank" rel="noopener nofollow">
+    <img loading="lazy" src="{{ "/proxy/shields/-/facebook/shield.svg" | prepend: site.static_url | absolute_url }}" alt="Share Post on Facebook" width="64" height="64">
+  </a>
+  <a title="Share Post on Twitter"
+    href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}%0A%0A&text={{ share_text | url_encode }}%0A%0A&via={{ site.twitter.username }}&hashtags={{ twitter_tags | join: ','}}"
+    target="_blank" rel="noopener nofollow">
+    <img loading="lazy" src="{{ "/proxy/shields/-/twitter/shield.svg" | prepend: site.static_url | absolute_url }}" alt="Share Post on Twitter" width="64" height="64">
+  </a>
+  <a title="Share Post on reddit"
+    href="https://reddit.com/submit?url={{ page.url | absolute_url }}&title={{ share_text | url_encode }}"
+    target="_blank" rel="noopener nofollow">
+    <img loading="lazy" src="{{ "/proxy/shields/-/reddit/shield.svg" | prepend: site.static_url | absolute_url }}" alt="Share Post on reddit" width="64" height="64">
+  </a>
+  <a title="Share Post on Pinterest"
+    href="https://pinterest.com/pin/create/button/?url={{ page.url | absolute_url }}&description={{ page.title | url_encode }}&media={{ "/assets/images/site-card.webp" | absolute_url }}"
+    target="_blank" rel="noopener nofollow">
+    <img loading="lazy" src="{{ "/proxy/shields/-/pinterest/shield.svg" | prepend: site.static_url | absolute_url }}" alt="Share Post on Pinterest" width="64" height="64">
+  </a>
+  <a title="Share Post on Telegram"
+    href="https://telegram.me/share/url?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}"
+    target="_blank" rel="noopener nofollow">
+    <img loading="lazy" src="{{ "/proxy/shields/-/telegram/shield.svg" | prepend: site.static_url | absolute_url }}" alt="Share Post on Telegram" width="64" height="64">
+  </a>
+  <a title="Share Post on WhatsApp"
+    href="https://api.whatsapp.com/send?text={{ share_text | url_encode }}%0A%0A{{ page.url | absolute_url }}"
+    target="_blank" rel="noopener nofollow">
+    <img loading="lazy" src="{{ "/proxy/shields/-/whatsapp/shield.svg" | prepend: site.static_url | absolute_url }}" alt="Share Post on WhatsApp" width="64" height="64">
+  </a>
+  <a title="Share Post on Tumblr"
+    href="https://www.tumblr.com/widgets/share/tool?canonicalUrl={{ page.url | absolute_url }}&title={{ page.title | url_encode }}&tags={{ tumblr_tags | join: ','| url_encode }}&posttype=link&caption={{ tumblr_caption | url_encode }}"
+    target="_blank" rel="noopener nofollow">
+    <img loading="lazy" src="{{ "/proxy/shields/-/tumblr/shield.svg" | prepend: site.static_url | absolute_url }}" alt="Share Post on Tumblr" width="64" height="64">
+  </a>
+  <a title="Share Post on VK" href="https://vk.com/share.php?url={{ page.url | absolute_url }}" target="_blank"
+    rel="noopener nofollow">
+    <img loading="lazy" src="{{ "/proxy/shields/-/vk/shield.svg" | prepend: site.static_url | absolute_url }}" alt="Share Post on VK" width="64" height="64">
+  </a>
+  <a title="Share Post on Pocket" href="https://getpocket.com/edit?url={{ page.url | absolute_url }}" target="_blank"
+    rel="noopener nofollow">
+    <img loading="lazy" src="{{ "/proxy/shields/-/pocket/shield.svg"| prepend: site.static_url | absolute_url }}" alt="Share Post on Pocket" width="64" height="64">
+  </a>
+  <a title="Share Post on Mix" href="https://mix.com/mixit?su=submit&url={{ page.url | absolute_url }}"
+    target="_blank" rel="noopener nofollow">
+    <img loading="lazy" src="{{ "/proxy/shields/-/mix/shield.svg"| prepend: site.static_url | absolute_url }}" alt="Share Post on Mix" width="64" height="64">
+  </a>
+</div>
+{% endunless %}

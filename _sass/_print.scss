@@ -1,0 +1,130 @@
+$height: 5cm;
+
+@media print {
+  .no-print, .no-print * {
+    display: none !important;
+  }
+
+  .print-only {
+    display: initial !important;
+  }
+
+  @page {
+    font-size: 4.2mm !important;
+    margin: 2cm;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #body {
+    font-size: 4.2mm !important;
+    display: initial;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: "Source Sans Pro", sans-serif;
+    line-height: 1.3;
+
+    >header, >nav, >.controls, >.breadcrumb, >.policy-banner, >footer, .patreon, #copyright.text-right {
+      display: none !important;
+    }
+
+    >footer {
+      background-color: #fff;
+    }
+  }
+  
+
+  main {
+    font-size: 4.2mm !important;
+    width: 100% !important;
+    min-width: 18cm;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  p {
+    margin: 2mm 0 0;
+    width: 100%;
+  }
+
+  .shields {
+    margin: 1mm 0 0;
+    gap: 3mm;
+  }
+
+  #body.dark-theme, #body.light-theme {
+    color: #333;
+  }
+
+  .row {
+    page-break-inside: avoid;
+  }
+
+  h1, .h1 {
+    margin-top: 0;
+    font-family: "Cardo", "Times New Roman", sans-serif;
+    font-size: 9.6mm !important;
+  }
+  
+  h2, .h2 {
+    font-family: "Cardo", "Times New Roman", sans-serif;
+    font-size: 7.2mm !important;
+  }
+  
+  h3, .h3 {
+    font-family: "Cardo", "Times New Roman", sans-serif;
+    font-size: 5.6mm !important;
+  }
+
+  .col {
+    order: 2;
+    height: $height;
+    width: calc(100% - $height);
+  }
+
+  .col-12,
+  .col-print-logo {
+    order: 1;
+    height: $height;
+    width: $height + 1cm;
+    max-width: unset;
+    flex: 0 0 auto;
+
+    img {
+      width:  $height;
+      height: $height;
+    }
+  }
+
+  .print-grayscale {
+    .shields img {
+      border: 1px solid white !important;
+      filter: invert(1) grayscale(1) contrast(2.5);
+    }
+    
+    .icons {
+      a {
+        border: 1px solid black !important;
+      }
+      
+      img {
+        filter: invert(1) grayscale(1) contrast(2.5);
+      }
+    }
+
+    img {
+      filter: grayscale(1) contrast(1.5);
+    }
+  }
+
+  a:any-link {
+    text-decoration: none;
+  }
+}
+  
+.print-only {
+  display: none;
+}

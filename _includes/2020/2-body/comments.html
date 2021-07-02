@@ -1,9 +1,8 @@
 <aside id="comments" aria-hidden="true" data-nosnippet>
-{% assign slug = page.url | slugify | downcase | replace: '.', '-' | replace: '_' : '-' %}
-{% assign comments = site.data.comments.[slug] %}
+{% assign comments = site.data.comments.[page.ref] %}
 {% assign comment_count = comments | size %}
 {% if comment_count > 0 %}
-  {% assign author = site.data.staff | where: 'id', page.author| last %}
+  {% assign author = site.data.staff | where: 'id', page.author | last %}
   <h2>{% if comment_count == 1 %}One Comment{% else %}{{ comment_count }} Comments{% endif %}</h2>
   <ol>
   {% assign sorted_comments = comments | sort: 'date' %}
@@ -18,4 +17,3 @@
   {% include comments/comment-new.html %}
 {% endif %}
 </aside>
-
