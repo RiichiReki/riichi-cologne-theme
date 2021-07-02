@@ -1,8 +1,8 @@
 <h2>
   {% if page.lang == "de-DE" %}Kommentieren{% else %}Leave a Comment{% endif %}
 </h2>
-{% assign action = pages | where: 'ref', 'submit-comment' | where: 'lang', page.lang %}
-<form name="Comments" method="POST" action="{{ action }}" id="commentform" class="form-horizontal" data-netlify="true" netlify-honeypot="captcha">
+{% assign action = site.pages | where: 'ref', 'submit-comment' | where: 'lang', page.lang | last %}
+<form name="Comments" method="POST" action="{{ action.url | absolute_url }}" id="commentform" class="form-horizontal" data-netlify="true" netlify-honeypot="captcha">
   <fieldset id="commentfields">
     <div>
       <label for="name">Name</label>
