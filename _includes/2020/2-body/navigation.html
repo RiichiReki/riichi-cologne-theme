@@ -12,17 +12,17 @@
     {% if page.lang == 'de-DE' %}
     <div class="dropdown-menu" aria-labelledby="lang-dropdown">
       {% assign p = ps | where: 'ref', page.ref | where: 'lang', 'en-GB' | last %}
-      <a class="dropdown-item" title="{{ p.title }}" rel="alternate" href="{{ p.url | absolute_url }}" hreflang="en-GB">
+      <a class="dropdown-item" title="{% if p.nav_title %}{{ p.nav_title }}{% else %}{{ p.title }}{% endif %}" rel="alternate" href="{{ p.url | absolute_url }}" hreflang="en-GB">
         <img src="/assets/images/flag-uk.webp" alt="English (UK)" height="16" width="16" class="mx-0 d-inline-block">
-        {{ p.title }}
+        {% if p.nav_title %}{{ p.nav_title }}{% else %}{{ p.title }}{% endif %}
       </a>
     </div>
     {% else %}    
     <div class="dropdown-menu" aria-labelledby="lang-dropdown">
       {% assign p = ps | where: 'ref', page.ref | where: 'lang', 'de-DE' | last %}
-      <a class="dropdown-item" title="{{ p.title }}" rel="alternate" href="{{ p.url | absolute_url }}" hreflang="de-DE">
+      <a class="dropdown-item" title="{% if p.nav_title %}{{ p.nav_title }}{% else %}{{ p.title }}{% endif %}" rel="alternate" href="{{ p.url | absolute_url }}" hreflang="de-DE">
         <img src="/assets/images/flag-de.webp" alt="Deutsch" height="16" width="16" class="mx-0 d-inline-block">
-        {{ p.title }}
+        {% if p.nav_title %}{{ p.nav_title }}{% else %}{{ p.title }}{% endif %}
       </a>
     </div> 
     {% endif %}    
@@ -39,13 +39,13 @@
       {% assign p = site.pages | where: 'lang', page.lang | where: 'ref', subitem.ref | last %}
       <a
         class="dropdown-item {{ subitem.class }}"
-        title="{{ p.title | strip_html }}"
+        title="{% if p.nav_title %}{{ p.nav_title }}{% else %}{{ p.title }}{% endif %}"
         href="{{ p.url | absolute_url }}"
         {% if subitem.onclick %}onclick="{{ subitem.onclick }}"{% endif %}
         {% if subitem.type %}type="{{ subitem.type }}"{% endif %}
         {% if subitem.target %}target="{{ subitem.target }}"{% endif %}
         {% if subitem.rel %}rel="{{ subitem.rel }}"{% endif %}>
-          {{ p.title }}
+        {% if p.nav_title %}{{ p.nav_title }}{% else %}{{ p.title }}{% endif %}
       </a>
     {% endfor %}
   </div>
@@ -55,13 +55,13 @@
   {% assign p = site.pages | where: 'lang', page.lang | where: 'ref', item.ref | last %}
   <a
     class="nav-link {{ item.class }}"
-    title="{{ p.title | strip_html }}"
+    title="{% if p.nav_title %}{{ p.nav_title }}{% else %}{{ p.title }}{% endif %}"
     href="{{ p.url | absolute_url }}"
     {% if item.onclick %}onclick="{{ item.onclick }}"{% endif %}
     {% if item.type %}type="{{ item.type }}"{% endif %}
     {% if item.target %}target="{{ item.target }}"{% endif %}
     {% if item.rel %}rel="{{ item.rel }}"{% endif %}>
-      {{ p.title }}
+    {% if p.nav_title %}{{ p.nav_title }}{% else %}{{ p.title }}{% endif %}
   </a>
 </li>
 {% endif %}
