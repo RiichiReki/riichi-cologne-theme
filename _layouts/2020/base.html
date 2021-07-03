@@ -18,7 +18,7 @@ layout: compress
     {% include 2020/2-body/1-breadcrumbs/base.html %}
   </ol>
   
-  <nav class="collapse" id="navbar-toggable">
+  <nav class="navbar navbar-expand-md collapse navbar-collapse navbar-light bg-light" id="navbar-toggable">
     {% include 2020/2-body/navigation.html %}
   </nav>
   
@@ -27,8 +27,10 @@ layout: compress
       {% include 2020/2-body/2-main/structured-data-post.html %}
       {% include 2020/2-body/2-main/header-base.html %}
     </header>
+    {% unless page.disable_audio %}
     {% include 2020/2-body/2-main/header-audio.html %}
- 
+    {% endunless %}
+    
     {% if jekyll.environment != "unpublished" %}
     <section class="hyphenate" property="text" aria-flowto="navigation" id="post-content">
     {% else %}

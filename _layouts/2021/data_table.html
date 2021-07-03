@@ -23,11 +23,11 @@ layout: compress
     {% include 2020/2-body/1-breadcrumbs/base.html %}
   </ol>
   
-  <nav class="collapse" id="navbar-toggable">
+  <nav class="navbar navbar-expand-md collapse navbar-collapse navbar-light bg-light" id="navbar-toggable">
     {% include 2020/2-body/navigation.html %}
   </nav>
   
-  <main id="content" class="base">
+  <main id="content" class="data-table">
     <header>
       {% include 2020/2-body/2-main/structured-data-post.html %}
       {% include 2020/2-body/2-main/header-base.html %}
@@ -66,5 +66,5 @@ layout: compress
   <!-- hash: 'sha256-B75kuj4XBwqTynjEBPY0crnnQrCH3Uckwy8CeNtR5Mg=' -->
   <script>window['pageType']='base'</script>
 
-  <script>window.addEventListener('load',function(){$('.data-table-plain').DataTable({paging:false,searching:false,order:[],stripeClasses:["even","odd"]});$('.data-table').DataTable({paging:false,searching:true,stripeClasses:["even","odd"]});},false)</script>
+  <script>window.addEventListener('load',function(){p=$('table.data-table-plain').DataTable({paging:false,searching:false,order:[],stripeClasses:["even","odd"]});$('table.data-table').DataTable({paging:false,searching:true,stripeClasses:["even","odd"]});},false)</script>
 
