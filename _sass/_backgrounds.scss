@@ -5,13 +5,14 @@ $dark-backdrop: rgb(0,15,32);
     background-repeat: no-repeat;
     background-blend-mode: lighten;
     background-size: auto 50vh;
+    background-color: rgba(255,236,215,0.8);
 }
 
 .shodou-wa {
     background: url(/assets/images/shodou-wa.webp) fixed rgba(255,236,215,0.8);
 }
 
-.dark-theme{
+.dark-theme {
     backdrop-filter: invert(1);
 
     .controls, .tts-controls {
