@@ -1,0 +1,26 @@
+<h1 aria-label="{{ page.title }}"
+    aria-flowto="post-content">
+    {{ page.title }}
+</h1>
+<small class="float-left">
+    {% if page.lang == 'de-DE' %}
+        veröffentlicht am {{ page.date | date: "%Y-%m-%d" }}, zuletzt akutalisiert am {% last_modified_at %Y-%m-%d %}
+    {% else %}
+        published on {{ page.date | date: "%Y-%m-%d" }}, last updated on {% last_modified_at %Y-%m-%d %}
+    {% endif %}
+</small>
+<small class="float-right">
+{% if page.author %}
+{% assign author = site.data.staff | where: "id", page.author | last %}
+{% if page.lang == 'de-DE' %}
+    geschieben von {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener">{% endif %}{{ author.name }}{% if author.url %}</a>{% endif %}{% if page.checker %}, {%if page.checker.size > 1 %}<br>{% endif %}
+    geprüft mit {% for e in page.checker %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener sponsored">{% endif %}{{ editor.name }}{%  if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}{% endif %}{% if page.editor %},
+    bearbeitet durch {% for e in page.editor %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener nofollow">{% endif %}{{ editor.name }}{% if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}{% endif %}
+{% else page.lang == 'en-CA' %}
+    written by {% if author.url %}<a href="{{ author.url }}" target="_blank" ref="noopener">{% endif %}{{ author.name }}{% if author.url %}</a>{% endif %}{% if page.checker %}, {%if page.checker.size > 1 %}<br>{%endif%}checked with
+    {% for e in page.checker %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener" rel="sponsored">{% endif %}{{ editor.name }}{%  if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}{% endif %}{% if page.editor %}, edited by 
+    {% for e in page.editor %}{% assign editor = site.data.staff | where: "id", e | last %}{% if editor.url %}<a href="{{ editor.url }}" target="_blank" ref="noopener" rel="nofollow">{% endif %}{{ editor.name }}{%  if editor.url %}</a>{% endif %}{% unless forloop.last %} and {% endunless %}{% endfor %}{% endif %}
+{% endif %}
+{% endif %}
+</small>
+<div class="clearfix"></div>

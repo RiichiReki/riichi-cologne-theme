@@ -64,52 +64,8 @@ layout: compress
         {% include 2020/2-body/2-main/navigation-post.html %}
       </nav>
     </header>
-    <div class="row tts-controls align-items-center no-gutters pb-2">
-    {% if page.audio %}
-      <div class="col-6 col-md-auto mr-md-2">This post as audio:</div>
-      <audio controls class="col-6 col-md" aria-describedby="chapter-content" crossorigin="anonymous">
-        {% for mirror in page.audio_mirror %}
-        {% capture mp4-42 %}
-        <link rel="alternate" href="{{ page.path | replace: '.md', '.42.m4a' | regex_replace: '_posts/(personal/|)', mirror }}" type="audio/mp4; codecs=mp4a.40.42">
-        <source src="{{ page.path | replace: '.md', '.42.m4a' | regex_replace: '_posts/(personal/|)', mirror }}" type="audio/mp4; codecs=mp4a.40.42">
-        {% endcapture %}
-        {% capture mp4-2 %}
-        <link rel="alternate" href="{{ page.path | replace: '.md', '.2.m4a' | regex_replace: '_posts/(personal/|)', mirror }}" type="audio/mp4; codecs=mp4a.40.2">
-        <source src="{{ page.path | replace: '.md', '.2.m4a' | regex_replace: '_posts/(personal/|)', mirror }}" type="audio/mp4; codecs=mp4a.40.2">
-        {% endcapture %}
-        {% capture aac %}
-        <link rel="alternate" href="{{ page.path | replace: '.md', '.aac' | regex_replace: '_posts/(personal/|)', mirror }}" type="audio/aac">
-        <source src="{{ page.path | replace: '.md', '.aac' | regex_replace: '_posts/(personal/|)', mirror }}" type="audio/aac">
-        {% endcapture %}
-        {% capture mp3 %}
-        <link rel="alternate" href="{{ page.path | replace: '.md', '.mp3' | regex_replace: '_posts/(personal/|)', mirror }}" type="audio/mpeg">
-        <source src="{{ page.path | replace: '.md', '.mp3' | regex_replace: '_posts/(personal/|)', mirror }}" type="audio/mpeg">
-        {% endcapture %}
-        {% assign mp4-42_ms = aac_ms | append: mp4-42 %}
-        {% assign mp4-2_ms = mp4_ms | append: mp4-2 %}
-        {% assign aac_ms = aac_ms | append: aac %}
-        {% assign mp3_ms = mp3_ms | append: mp3 %}
-        {% endfor %}
-        {{ mp4-42_ms }}
-        <link rel="alternate" href="{{ page.path | replace: '.md', '.42.m4a' | regex_replace: '_posts/(personal|/)', '/blog/audio' | prepend: site.static_url | absolute_url }}" type="audio/mp4; codecs=mp4a.40.42">
-        <source src="{{ page.path | replace: '.md', '.42.m4a' | regex_replace: '_posts/(personal|/)', '/blog/audio' | prepend: site.static_url | absolute_url }}" type="audio/mp4; codecs=mp4a.40.42">
-        {{ aac_ms }}
-        <link rel="alternate" href="{{ page.path | replace: '.md', '.aac' | regex_replace: '_posts/(personal|/)', '/blog/audio' | prepend: site.static_url | absolute_url }}" type="audio/aac">
-        <source src="{{ page.path | replace: '.md', '.aac' | regex_replace: '_posts/(personal|/)', '/blog/audio' | prepend: site.static_url | absolute_url }}" type="audio/aac">
-        {{ mp4-2_ms }}
-        <link rel="alternate" href="{{ page.path | replace: '.md', '.2.m4a' | regex_replace: '_posts/(personal|/)', '/blog/audio' | prepend: site.static_url | absolute_url }}" type="audio/mp4; codecs=mp4a.40.2">
-        <source src="{{ page.path | replace: '.md', '.2.m4a' | regex_replace: '_posts/(personal|/)', '/blog/audio' | prepend: site.static_url | absolute_url }}" type="audio/mp4; codecs=mp4a.40.2">
-        {{ mp3_ms }}
-        <link rel="alternate" href="{{ page.path | replace: '.md', '.mp3' | regex_replace: '_posts/(personal|/)', '/blog/audio' | prepend: site.static_url | absolute_url }}" type="audio/mpeg">
-        <source src="{{ page.path | replace: '.md', '.mp3' | regex_replace: '_posts/(personal|/)', '/blog/audio' | prepend: site.static_url | absolute_url }}" type="audio/mpeg">
-      </audio>
-    {% endif %}
-      <div class="col-4 col-md-auto mx-md-2">Text to Speech:</div>
-      <div class="col-8 col-md{% if page.audio %}-2{% endif %} mt-2 mt-md-0">
-      <input id="tts" aria-label="Toggle Text-to-Speech" type="checkbox" data-toggle="toggle" data-off="⏸&#xFE0E;&ensp;&nbsp;" data-on="&ensp;&nbsp;▶️&#xFE0E;"
-      data-onstyle="green" data-offstyle="red" data-size="lg" data-width="100%">
-      </div>
-    </div>
+    {% include 2020/2-body/2-main/header-audio.html %}
+
     {% if jekyll.environment != "unpublished" %}
     <section class="hyphenate" property="text" aria-flowto="navigation" id="post-content">
     {% else %}

@@ -8,7 +8,7 @@ layout: compress
 {% include 2020/1-head/common.html %}
 {% include 2020/1-head/social-common.html %}
 {% include 2020/1-head/noscript.html %}
-<body id="body" class="light-theme">
+<body id="body" class="light-theme {{ page.additional_class }}">
 {% include 2020/2-body/common.html %}
   <header aria-flowto="content" id="mobile-top">
     {% include 2020/2-body/header.html %}
@@ -23,7 +23,22 @@ layout: compress
   </nav>
   
   <main id="content" class="base">
-    {{ content }}
+    <header>
+      {% include 2020/2-body/2-main/structured-data-post.html %}
+      {% include 2020/2-body/2-main/header-base.html %}
+    </header>
+    {% include 2020/2-body/2-main/header-audio.html %}
+ 
+    {% if jekyll.environment != "unpublished" %}
+    <section class="hyphenate" property="text" aria-flowto="navigation" id="post-content">
+    {% else %}
+    <section class="hyphenate" property="text" aria-flowto="navigation" id="post-content" contenteditable="true">
+    {% endif %}
+    
+      <!--sse-->
+        {{ content }}
+      <!--/sse-->
+    </section>
   </main>
 
   <footer>
