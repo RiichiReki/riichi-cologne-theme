@@ -2,13 +2,16 @@
     aria-flowto="post-content">
     {{ page.title }}
 </h1>
+{% if page.date %}
 <small class="float-left">
     {% if page.lang == 'de-DE' %}
+        
         veröffentlicht am {{ page.date | date: "%Y-%m-%d" }}, zuletzt akutalisiert am {% last_modified_at %Y-%m-%d %}
     {% else %}
         published on {{ page.date | date: "%Y-%m-%d" }}, last updated on {% last_modified_at %Y-%m-%d %}
     {% endif %}
 </small>
+{% endif %}
 <small class="float-right">
 {% if page.author %}
 {% assign author = site.data.staff | where: "id", page.author | last %}
