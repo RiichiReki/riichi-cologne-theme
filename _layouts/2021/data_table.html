@@ -1,0 +1,70 @@
+---
+# Layout Rewrite 2020: Base Layout
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+<head>
+{% include 2020/1-head/common.html %}
+{% include 2020/1-head/social-common.html %}
+{% include 2020/1-head/noscript.html %}
+<body id="body" class="light-theme {{ page.additional_class }}">
+{% include 2020/2-body/common.html %}
+  <header aria-flowto="content" id="mobile-top">
+    {% include 2020/2-body/header.html %}
+    <script defer src="{{ '/assets/2021/scripts/jquery.dataTables.min.js' | prepend: site.static_url | absolute_url }}"></script>
+    <link rel="preload" as="style" type="text/css" href="{{ '/assets/2021/css/jquery.dataTables.min.css' | prepend: site.static_url | absolute_url }}?{{ css_page.content | sha256_64 | slice: 0, 5 }}" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" type="text/css" href="{{ '/assets/2021/css/jquery.dataTables.min.css' | prepend: site.static_url | absolute_url }}?{{ css_page.content | sha256_64 | slice: 0, 5 }}">
+    </noscript>
+  </header>
+
+  <ol class="breadcrumb" aria-label="breadcrumb">
+    {% include 2020/2-body/1-breadcrumbs/base.html %}
+  </ol>
+  
+  <nav class="collapse" id="navbar-toggable">
+    {% include 2020/2-body/navigation.html %}
+  </nav>
+  
+  <main id="content" class="base">
+    <header>
+      {% include 2020/2-body/2-main/structured-data-post.html %}
+      {% include 2020/2-body/2-main/header-base.html %}
+    </header>
+    {% include 2020/2-body/2-main/header-audio.html %}
+ 
+    {% if jekyll.environment != "unpublished" %}
+    <section class="hyphenate" property="text" aria-flowto="navigation" id="post-content">
+    {% else %}
+    <section class="hyphenate" property="text" aria-flowto="navigation" id="post-content" contenteditable="true">
+    {% endif %}
+    
+      <!--sse-->
+        {{ content }}
+      <!--/sse-->
+    </section>
+  </main>
+
+  <footer>
+    <div id="support">
+      {% include 2020/3-footer/support.html %}
+    </div>
+    <div id="copyright" class="float-right">
+      {% include 2020/3-footer/copyright.html %}
+    </div>
+  </footer>
+
+  <div class="policy-banner" id="policy-banner" data-nosnippet>
+    {% include 2020/policy-banner.html %}
+  </div>
+  
+  <div class="controls buttons" data-nosnippet>
+    {% include 2020/2-body/controls.html %}
+  </div>
+
+  <!-- hash: 'sha256-B75kuj4XBwqTynjEBPY0crnnQrCH3Uckwy8CeNtR5Mg=' -->
+  <script>window['pageType']='base'</script>
+
+  <script>window.addEventListener('load',function(){$('.data-table-plain').DataTable({paging:false,searching:false,order:[],stripeClasses:["even","odd"]});$('.data-table').DataTable({paging:false,searching:true,stripeClasses:["even","odd"]});},false)</script>
+
