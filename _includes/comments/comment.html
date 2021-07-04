@@ -1,4 +1,4 @@
-<blockquote id="{{ comment.message | append: comment.date | sha256_64 }}" class="interface">
+<blockquote id="{{ comment.message | append: comment.date | sha256_64 }}" class="interface" lang="{{ comment.lang }}">
   <script type="application/ld+json">
     {
       "@context": "http://schema.org/",
@@ -15,7 +15,7 @@
   </script>
   <p>
     <span>{{ comment.name | xml_escape }}</span>
-    on
+    {% if page.lang == 'de-DE'}am{% else %}on{% endif %}
     <span>{{ comment.date | date: '%Y-%m-%d' }}</span>
   </p>
   <div class="comment-body">
