@@ -16,9 +16,9 @@
       <label for="message">{% if page.lang == "de-DE" %}Kommentar{% else %}Comment{% endif %}*</label>
       <textarea name="message" id="message" placeholder="{% if page.lang == 'de-DE' %}Kommentieren{% else %}Leave a Comment{% endif %}" class="w-100 h-25" aria-required="true" required="true"></textarea>
     </div>
-    <div>
-      <input type="checkbox" name="accept-policy" id="accept-policy" aria-required="true" required="true">
-      <label for="accept-policy">{% if page.lang == 'de-DE'}
+    <div class="row mx-2">
+      <input type="checkbox" name="accept-policy" id="accept-policy" aria-required="true" required="true" class="col-auto mt-2">
+      <label for="accept-policy" class="col">{% if page.lang == 'de-DE'}
         Ich stimme zu, dass meine Name und Kommentar von Cloudflare und Netlify verabeitet werden, und dass diese gespeichert und auf dieser Seite dargestellt werden.
         {% else %}
         I consent to my name and comment being processed by Cloudflare and Netlify and being stored and displayed on this site.
