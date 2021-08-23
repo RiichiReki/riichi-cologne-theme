@@ -313,8 +313,8 @@
     display: none;
     grid-area: controls;
     z-index: 100;
-    position: sticky;
-    top: 0;
+    /*position: sticky;*/
+    /*top: 0;*/
 
     @media screen and (min-width: 786px) {
       margin-left: 0;
