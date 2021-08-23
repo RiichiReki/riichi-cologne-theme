@@ -3,5 +3,5 @@
   {% if site.copyright.url %}
   <a title="{{ site.copyright.name }}" href="{{ site.copyright.url | absolute_url }}" target="_blank"
     rel="author noopener">{% endif %}{{ site.copyright.name }}{% if site.copyright.url %}</a>{% endif %}
-<p class="text-right">
-  <small><a title="Privacy Statement" href="{{ "/privacy/" | absolute_url }}">Privacy Statement</a></small>
+<p class="text-right">{% assign p = ps | where: 'ref', 'privacy' | where: 'lang', 'page.lang' | last %}
+  <small><a title="{{p.title}}" href="{{ p.url | absolute_url }}">{{p.title}}</a></small>
