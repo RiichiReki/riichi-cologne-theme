@@ -24,8 +24,10 @@
 {% endif %}
 </small>
 <div class="clearfix"></div>
+{% commment %}
 <small class="float-left">
     {% if page.lang == 'de-DE'%}getaggt mit
     {% else %}tagged with
     {% endif %} {% for t in page.tags %}<a href="{{ "/tags/" | absolute_url }}#{{ t | cgi_escape }}">{{ t }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
 </small>
+{% endcomment %}
