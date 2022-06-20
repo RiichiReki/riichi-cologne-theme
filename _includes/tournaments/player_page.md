@@ -108,4 +108,4 @@
   </tbody>
 </table>
 
-[Back to the Tournament Page](..)
+[Back to the Tournament Page](../..)
