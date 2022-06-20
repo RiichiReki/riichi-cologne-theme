@@ -56,7 +56,7 @@
       <td>{{ tables[round_index].table }}</td>
         {% assign player_data = tournament.scores | where: 'player_id', pid | last %}
         <td{% if pid == page.player_id %} style="font-weight:bold"{%endif%}>
-          <a href="../{{ pid | prepend: '00' | slice: -2, 2 }}">{{ player_data.surname }}, {{ player_data.name }}</a>
+          <a href="../{{ pid | prepend: '00' | slice: -2, 2 }}">{% if player_data.surname %}{{ player_data.surname }}, {{ player_data.name }}{% else %}Player {{ pid }}{%endif%}</a>
         </td>
         <td{% if page.player_id == pid %} style="font-weight:bold"{%endif%}>
           {{ player_data.[rid] }}
@@ -97,7 +97,7 @@
         </td>
 {%endcomment%}
         <td{% if pid == page.player_id %} style="font-weight:bold"{%endif%}>
-         <a href="../{{ pid | prepend: '00' | slice: -2, 2 }}"> {{ player_data.surname }}, {{ player_data.name }}</a>
+         <a href="../{{ pid | prepend: '00' | slice: -2, 2 }}">{% if player_data.surname %}{{ player_data.surname }}, {{ player_data.name }}{% else %}Player {{ pid }}{%endif%}</a>
         </td>
         <td{% if page.player_id == pid %} style="font-weight:bold"{%endif%}>
           {{ player_data.[rid] }}
