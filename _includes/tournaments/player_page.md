@@ -29,6 +29,10 @@
     <td>Current Score:</td>
     <td>{{ player_data.total }}</td>
   </tr>
+  <tr>
+    <td>Current Rank:</td>
+    <td>{{ player_data.rank }} of {{ tournament.parameters.players }}</td>
+  </tr>
 </table>
 
 <h2>Seating and Detailed Scores</h2>
@@ -63,7 +67,7 @@
   </tbody>
 </table>
 
-<table class="data-table d-none d-lg-table">
+<table class="data-table d-none d-lg-table my-4">
   <thead><tr>
     <th>R.</th>
     <th>T.</th>
