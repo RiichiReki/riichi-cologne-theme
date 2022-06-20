@@ -12,6 +12,10 @@
 
 {% assign player_data = tournament.scores | where: 'player_id', page.player_id | last %}
 
+<style>
+.dataTables_filter, .dataTables_info { display: none; }
+</style>
+
 <table>
  <tr>
     <td>Name:</td>
@@ -29,7 +33,37 @@
 
 <h2>Seating and Detailed Scores</h2>
 
-<table class="data-table">
+<table class="data-table d-lg-none">
+  <thead><tr>
+    <th>R.</th>
+    <th>T.</th>
+    <th>Name</th> 
+    <th>Score</th>
+  </tr></thead>
+  <tbody>
+{% for round in (1..tournament.parameters.rounds) %}
+  {% assign round_index = round | plus: -1 %}
+  {% assign rid = "r" | append: round %}
+  {% capture players_string%}{{ tables[round_index].s1 }},{{ tables[round_index].s2 }},{{ tables[round_index].s3 }},{{ tables[round_index].s4 }}{% endcapture %}
+  {% assign players = players_string | split: ',' %}
+      {% for pid in players %}
+      <tr>
+      <td>{{ round }}</td>
+      <td>{{ tables[round_index].table }}</td>
+        {% assign player_data = tournament.scores | where: 'player_id', pid | last %}
+        <td{% if pid == page.player_id %} style="font-weight:bold"{%endif%}>
+          {{ player_data.surname }}, {{ player_data.name }}
+        </td>
+        <td{% if page.player_id == pid %} style="font-weight:bold"{%endif%}>
+          {{ player_data.[rid] }}
+        </td>
+      </tr>
+  {% endfor %}
+{% endfor %}
+  </tbody>
+</table>
+
+<table class="data-table d-none d-lg-table">
   <thead><tr>
     <th>R.</th>
     <th>T.</th>
@@ -69,3 +103,4 @@
 {% endfor %}
   </tbody>
 </table>
+
