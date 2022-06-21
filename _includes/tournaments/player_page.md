@@ -12,10 +12,6 @@
 
 {% assign player_data = tournament.scores | where: 'player_id', page.player_id | last %}
 
-<style>
-.dataTables_filter, .dataTables_info { display: none; }
-</style>
-
 <table>
  <tr>
     <td>Name:</td>
@@ -37,7 +33,7 @@
 
 <h2>Seating and Detailed Scores</h2>
 
-<table class="data-table d-lg-none">
+<table class="data-table-plain d-lg-none">
   <thead><tr>
     <th>R.</th>
     <th>T.</th>
@@ -72,7 +68,7 @@
   </tbody>
 </table>
 
-<table class="data-table d-none d-lg-table my-4">
+<table class="data-table-plain d-none d-lg-table my-4">
   <thead><tr>
     <th>R.</th>
     <th>T.</th>
