@@ -45,7 +45,7 @@
   {% assign round_index = round | plus: -1 %}
   {% assign rid = "r" | append: round %}
   {% capture players_string%}{{ tables[round_index].s1 }},{{ tables[round_index].s2 }},{{ tables[round_index].s3 }},{{ tables[round_index].s4 }}{% endcapture %}
-  {% assign pl ayers = players_string | split: ',' %}
+  {% assign players = players_string | split: ',' %}
       {% for pid in players %}
       <tr>
       <td>{{ round }}</td>
