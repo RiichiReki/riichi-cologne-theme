@@ -54,7 +54,7 @@
         {% if pid == page.player_id %}
           <td style="font-weight:bold">
         {% else %}
-          <td><a href="../{{ pid | prepend: '00' | slice: -2, 2 }}">
+          <td><a href="../{{ pid | prepend: '00' | slice: -2, 2 }}/">
         {% endif %}
           {% if player_data.surname %}{{ player_data.surname }}, {{ player_data.name }}{% else %}Player {{ pid }}{%endif%}
         {% unless pid == page.player_id %}</a>{% endunless %}
@@ -90,7 +90,7 @@
         {% assign player_data = tournament.scores | where: 'player_id', pid | last %}{% if pid == page.player_id %}
           <td style="font-weight:bold">
         {% else %}
-          <td><a href="../{{ pid | prepend: '00' | slice: -2, 2 }}">
+          <td><a href="../{{ pid | prepend: '00' | slice: -2, 2 }}/">
         {% endif %}
           {% if player_data.surname %}{{ player_data.surname }}, {{ player_data.name }}{% else %}Player {{ pid }}{%endif%}
         {% unless pid == page.player_id %}</a>{% endunless %}
@@ -136,7 +136,7 @@
         {% assign player_data = tournament.scores | where: 'player_id', pid | last %}{% if pid == page.player_id %}
           <td style="font-weight:bold">
         {% else %}
-          <td><a href="../{{ pid | prepend: '00' | slice: -2, 2 }}">
+          <td><a href="../{{ pid | prepend: '00' | slice: -2, 2 }}/">
         {% endif %}
           {% if player_data.surname %}{{ player_data.surname }}, {{ player_data.name }}{% else %}Player {{ pid }}{%endif%}
         {% unless pid == page.player_id %}</a>{% endunless %}
