@@ -8,6 +8,7 @@
 {% if tables_2 %}{% assign tables = tables | concat: tables_2 %}{% endif %}
 {% if tables_3 %}{% assign tables = tables | concat: tables_3 %}{% endif %}
 {% if tables_4 %}{% assign tables = tables | concat: tables_4 %}{% endif %}
+{% unless tables == null %}
 {% assign tables = tables | sort: 'round' %}
 
 {% assign player_data = tournament.scores | where: 'player_id', page.player_id | last %}
@@ -149,5 +150,5 @@
 {% endfor %}
   </tbody>
 </table>
-
+{% endunless %}
 [Back to the Tournament Page](../..)
