@@ -177,12 +177,12 @@
 .btn-red {
   background-color: $red;
   border-color: $red;
-  color: $white;
+  color: #fff;
   
   &:hover,
   &:focus {
     box-shadow: 0 0 0 0.2rem rgba($red, .5);
-    color: $white !important;
+    color: #fff !important;
   }
 }
 
