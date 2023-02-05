@@ -175,13 +175,13 @@
 }
 
 .btn-red {
-  background-color: $red;
-  border-color: $red;
+  background-color: $dark-red;
+  border-color: $dark-red;
   color: #fff;
   
   &:hover,
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($red, .5);
+    box-shadow: 0 0 0 0.2rem rgba($dark-red, .5);
     color: #fff !important;
   }
 }
@@ -224,8 +224,8 @@
 }
 
 :root {
-  --red: #{$red};
-  --danger: #{$red};
+  --red: #{$dark-red};
+  --danger: #{$dark-red};
   --green: #{$green};
   --blue: #{$blue};
 }

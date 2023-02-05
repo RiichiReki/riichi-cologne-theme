@@ -1,9 +1,10 @@
-$red:          #CD7051;//rgb(156,  44,  44);
+$red:          mix(#CD7051, #fff, 50%);//rgb(156,  44,  44);
+$dark-red:     mix(#CD7051, #fff, 0%);//rgb(156,  44,  44);
 $patreon:      #ff424d;
 $blue:         #168AA2;
 $light-blue:   rgb(129, 179, 230);
 $green:        rgb( 44, 156, 100);
-$white:        #FAE589;//rgb(255, 240, 223);
+$white:        mix(#FAE589, #fff, 50%);//rgb(255, 240, 223);
 $grey:         rgb(127, 127, 127);
 $black:        rgb( 33,  33,  33);
 
