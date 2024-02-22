@@ -64,7 +64,6 @@ img{max-width:80vw}
 <link rel="stylesheet" type="text/css" href="{{ css | prepend: site.static_url | absolute_url }}?{{ css_page.content | sha256_64 | slice: 0, 5 }}">
 </noscript>
 {% unless page.layout == "2020/schema" %}
-<script defer src="{{ '/assets/2020/scripts/early.min.js' | prepend: site.static_url | absolute_url }}?{{ site.time | date: '%Y%m%d' }}" crossorigin="anonymous"></script>
 <script defer src="{{ '/assets/2020/scripts/late.min.js' | prepend: site.static_url | absolute_url }}?{{ site.time | date: '%Y%m%d' }}" crossorigin="anonymous" importance="low"></script>
 {% endunless %}
 <!-- Search Engine Verification -->
