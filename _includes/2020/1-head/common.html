@@ -65,7 +65,6 @@ img{max-width:80vw}
 </noscript>
 <script defer src="{{ '/assets/2020/scripts/jquery-3.5.1.slim.min.js' | prepend: site.static_url | absolute_url }}?{{ site.time | date: '%Y%m%d' }}" crossorigin="anonymous" importance="low"></script>
 <script defer src="{{ '/assets/2020/scripts/bootstrap.min.js' | prepend: site.static_url | absolute_url }}?{{ site.time | date: '%Y%m%d' }}" crossorigin="anonymous" importance="low"></script>
-{% endunless %}
 <!-- Search Engine Verification -->
 {% for pair in site.webmaster_verifications %}
 <meta name="{{ pair.name }}" content="{{ pair.key }}">
