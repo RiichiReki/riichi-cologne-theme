@@ -6,3 +6,49 @@
     </button>
     <a class="d-block" href="/"><span class="h1">{{ site.title }}</span><br><span class="h2">{{ site.description }}</span></a>
 </p>
+
+
+<div class="collapse navbar-collapse" id="navbar-toggable">
+    <ul class="navbar-nav mr-auto">
+      {% for item in site.data.navigation %}
+        {% if item.subitems %}
+          <li class="nav-item dropdown">
+            <a  class="nav-link dropdown-toggle"
+                id="{{ item.id }}-dropdown"
+                role="button" data-toggle="dropdown" aria-expanded="false">
+              <span class="unicode-icon">{{ item.unicode_icon }}</span>
+              {{ item.title }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="{{ item.id }}-dropdown">
+              {% for subitem in item.subitems %}
+                <a  class="dropdown-item {{ subitem.class }}"
+                    title="{{ subitem.title }}"
+                    href="{{ subitem.url | absolute_url }}"
+                    {% if subitem.onclick %}onclick="{{ subitem.onclick }}"{% endif %}
+                    {% if subitem.type %}type="{{ subitem.type }}"{% endif %}
+                    {% if subitem.target %}target="{{ subitem.target }}"{% endif %}
+                    {% if subitem.rel %}rel="{{ subitem.rel }}"{% endif %}>
+                  <span class="unicode-icon">{{subitem.unicode_icon}}</span>
+                    {{ subitem.title }}
+                  </a>
+              {% endfor %}
+            </div>
+          </li>
+        {% elsif item.url %}
+          <li class="nav-item">
+            <a  class="nav-link {{ item.class }}"
+                title="{{ item.title }}"
+                href="{{ item.url | absolute_url }}"
+                {% if item.onclick %}onclick="{{ item.onclick }}"{% endif %}
+                {% if item.type %}type="{{ item.type }}"{% endif %}
+                {% if item.target %}target="{{ item.target }}"{% endif %}
+                {% if item.rel %}rel="{{ item.rel }}"{% endif %}>
+              <span class="unicode-icon">{{item.unicode_icon}}</span>
+              {{ item.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</header>
