@@ -16,11 +16,11 @@
 <table>
  <tr>
     <td>Name:</td>
-    <td>{{ player_data.surname }}, {{ player_data.name }}</td>
+    <td>{% if player_data.surname%}%{{ player_data.surname }}, {{ player_data.name }}{% else %}Player {{ page.player_id}}{% endif %}</td>
   </tr>
   <tr>
     <td>EMA Number:</td>
-    <td>{{player_data.ema_id}}</td>
+    <td>{{ player_data.ema_id }}</td>
   </tr>
   <tr>
     <td>Current Score:</td>
@@ -29,6 +29,10 @@
   <tr>
     <td>Current Rank:</td>
     <td>{{ player_data.rank }} of {{ tournament.parameters.players }}</td>
+  </tr>
+  <tr>
+    <td>Next Table:</td>
+    <td>{% if player_data.next_table %}{{ player_data.next_table }}{% endif %}</td>
   </tr>
 </table>
 
