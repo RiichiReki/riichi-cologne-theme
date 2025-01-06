@@ -1,13 +1,5 @@
 <ul class="navbar-nav mr-auto">
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" id="lang-dropdown"
-       role="button" data-toggle="dropdown" aria-expanded="false">
-    {% if page.lang == 'de-DE' %}
-    <img src="/assets/images/flag-de.webp" alt="Deutsch" height="16" width="16" class="mx-0 d-inline-block">
-    {% else %}
-    <img src="/assets/images/flag-uk.webp" alt="English (UK)" height="16" width="16" class="mx-0 d-inline-block">
-    {% endif %}&nbsp;
-    </a>
     {% if page.type == 'posts' %}{% assign ps = site.posts %}{% else %}{% assign ps = site.pages %}{% endif %}
     {% if page.lang == 'de-DE' %}
     <div class="dropdown-menu" aria-labelledby="lang-dropdown">
