@@ -579,3 +579,10 @@ main > .row {
 }
 
 .dataTables_info {display: none;}
+
+.wide {
+  td, th {
+    padding: 5px;
+    border-bottom: 1px black solid;
+  }
+}
